@@ -103,9 +103,11 @@
   document.querySelectorAll("[data-piece-photo]").forEach(function (img) {
     var src = photos[img.getAttribute("data-piece-photo")];
     if (!src) return;
-    var placeholder = img.src;
-    img.addEventListener("error", function () { img.src = placeholder; }, { once: true });
-    img.src = src;
+    /* Preload, then swap — the placeholder stays visible until the real
+       photo is ready, so there's never a blank card. */
+    var real = new Image();
+    real.onload = function () { img.src = src; };
+    real.src = src;
   });
 
   /* ---- Gallery: built entirely from the manifest ------------------------- */
