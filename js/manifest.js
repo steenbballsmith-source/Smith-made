@@ -65,7 +65,7 @@ window.SMITH_MADE = {
      The "pay your date hold" button appears on the site the
      moment this line is filled in. Money lands in your linked
      bank account (Square pays out next business day).        */
-  dateHoldUrl: "",
+  dateHoldUrl: "https://square.link/u/w6KAdXlo",
 
   /* ---- INQUIRY FORM ---------------------------------------
      Leave empty and the form opens the visitor's email app
