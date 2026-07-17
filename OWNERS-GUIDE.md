@@ -84,19 +84,25 @@ a few lines below it between `<strong>` and `</strong>`. Change the
 number, save, done. Package prices and policies are in the same file
 under "Pricing &amp; policies".
 
-## 6. Put the site online (free)
+## 6. The site publishes itself
 
-The site is ready for GitHub Pages:
+Publishing is automatic: every change that lands on the `main` branch is
+put live by a robot (the file `.github/workflows/deploy-pages.yml`) at:
 
-1. On this repository's GitHub page, go to **Settings → Pages**.
-2. Under "Build and deployment", choose **Deploy from a branch**,
-   pick the `main` branch and the `/ (root)` folder, and save.
-3. A couple of minutes later your site is live at the address GitHub shows.
+> **https://steenbballsmith-source.github.io/Smith-made/**
 
-When you buy a real domain (for example `smithmadesc.com`), add it in the
-same Pages settings screen, and tell whoever is helping you at the time to
-update the `og:image` line in `index.html` to the full address — that makes
-the preview card show up when the site is shared by text or on social media.
+One thing to know: GitHub only hosts websites for free when the
+repository is **public**. If the address above shows an error, open the
+repository on GitHub → **Settings** → scroll to the bottom → **Change
+visibility** → **Public**. Then go to the **Actions** tab, open the
+"Deploy site to GitHub Pages" workflow, and press **Re-run**. There is
+nothing secret in this repository — it's the same files everyone's
+browser downloads when they visit the site.
+
+When you buy a real domain (for example `smithmadesc.com`), add it under
+**Settings → Pages → Custom domain**, and ask whoever is helping you at
+the time to swap the address in the `og:image`, `og:url`, `canonical`,
+`sitemap.xml`, and `robots.txt` lines to the new domain.
 
 ## 7. Phone number and Instagram
 
