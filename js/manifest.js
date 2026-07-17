@@ -24,9 +24,8 @@ window.SMITH_MADE = {
   /* ---- HERO STILL IMAGE -----------------------------------
      A wide photo (landscape, roughly 1600x900) shown behind
      the headline — and shown while the video loads too.
-     Drop it in assets/img/ and point to it here:
-       heroPoster: "assets/img/hero-poster.jpg",             */
-  heroPoster: "",
+     Drop it in assets/img/ and point to it here:            */
+  heroPoster: "assets/img/hero-poster.jpg",
 
   /* ---- PRODUCT PHOTOS -------------------------------------
      Drop each product photo into assets/img/catalog/ and add
@@ -41,6 +40,10 @@ window.SMITH_MADE = {
        champagne-wall        mobile-bar
        ceremony-arch         keepsake-established-sign      */
   photos: {
+    "seating-chart-wall": "assets/img/catalog/seating-chart-wall.jpg",
+    "framed-seating-chart": "assets/img/catalog/framed-seating-chart.jpg",
+    "champagne-wall": "assets/img/catalog/champagne-wall.jpg",
+    "ceremony-arch": "assets/img/catalog/ceremony-arch.jpg",
   },
 
   /* ---- GALLERY --------------------------------------------
