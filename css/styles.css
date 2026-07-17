@@ -298,10 +298,10 @@ a:hover { color: var(--color-bark); }
 }
 .hero__media video.is-playing { opacity: 1; }
 
-/* Default poster is a branded placeholder; hide it politely until a real
-   poster is supplied via js/manifest.js */
-.hero__poster { opacity: 0.28; filter: saturate(0.9); }
-.hero__poster.has-photo { opacity: 1; filter: none; }
+/* Default poster is a quiet wood-plank backdrop; a real photo supplied via
+   js/manifest.js shows at full strength */
+.hero__poster { opacity: 0.85; }
+.hero__poster.has-photo { opacity: 1; }
 
 .hero__scrim {
   position: absolute;
@@ -314,7 +314,6 @@ a:hover { color: var(--color-bark); }
   z-index: 1;
   padding-block: var(--space-6) var(--space-5);
   color: var(--color-cream);
-  max-width: 44rem;
 }
 
 .hero__eyebrow {

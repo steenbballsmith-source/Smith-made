@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="">
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a3a2a"/>
+      <stop offset="0.55" stop-color="#3a2d21"/>
+      <stop offset="1" stop-color="#2b2117"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wood)"/>
+  <g stroke="#241b12" stroke-width="2" opacity="0.5">
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+    <line x1="1200" y1="0" x2="1200" y2="900"/>
+    <line x1="1400" y1="0" x2="1400" y2="900"/>
+  </g>
+  <g stroke="#57432f" stroke-width="1" opacity="0.35">
+    <line x1="201" y1="0" x2="201" y2="900"/>
+    <line x1="401" y1="0" x2="401" y2="900"/>
+    <line x1="601" y1="0" x2="601" y2="900"/>
+    <line x1="801" y1="0" x2="801" y2="900"/>
+    <line x1="1001" y1="0" x2="1001" y2="900"/>
+    <line x1="1201" y1="0" x2="1201" y2="900"/>
+    <line x1="1401" y1="0" x2="1401" y2="900"/>
+  </g>
+  <path d="M310 240 c14 -10 34 -10 44 4 c8 12 2 28 -12 34 c-16 7 -34 -2 -38 -16 c-3 -10 0 -17 6 -22 z" fill="#332718" opacity="0.55"/>
+  <path d="M1130 640 c18 -12 42 -12 54 5 c10 15 2 34 -15 42 c-20 8 -42 -3 -47 -20 c-3 -12 0 -21 8 -27 z" fill="#332718" opacity="0.45"/>
+</svg>
