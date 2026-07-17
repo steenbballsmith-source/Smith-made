@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img"><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F5F0E8"/><stop offset="1" stop-color="#EDE6D9"/>
+  </linearGradient>
+  <radialGradient id="vig" cx="0.5" cy="0.42" r="0.75">
+    <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+    <stop offset="1" stop-color="#8a7a63" stop-opacity="0.10"/>
+  </radialGradient>
+  <linearGradient id="walnut" x1="0" y1="0" x2="1" y2="0.15">
+    <stop offset="0" stop-color="#6B4A2B"/><stop offset="0.5" stop-color="#7a5735"/>
+    <stop offset="1" stop-color="#57381E"/>
+  </linearGradient>
+  <linearGradient id="oak" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#C39A67"/><stop offset="1" stop-color="#9B7038"/>
+  </linearGradient>
+  <linearGradient id="honey" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#D2A86E"/><stop offset="1" stop-color="#A87C43"/>
+  </linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#EFE7D8"/><stop offset="1" stop-color="#CDBEA4"/>
+  </linearGradient>
+  <linearGradient id="chalk" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2f3630"/><stop offset="1" stop-color="#232823"/>
+  </linearGradient>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+</defs><rect width="800" height="1000" fill="url(#bg)"/><rect x="70" y="70" width="660" height="860" fill="none" stroke="#DCD2C2" stroke-width="1.5"/><line x1="70" y1="812" x2="730" y2="812" stroke="#DCD2C2" stroke-width="1.5"/><ellipse cx="400" cy="818" rx="190" ry="24" fill="#6d5b45" opacity="0.16" filter="url(#soft)"/><polygon points="400,250 300,795 250,795 380,250" fill="url(#honey)" stroke="#A87C43" stroke-width="3"/><polygon points="400,250 500,795 550,795 420,250" fill="url(#oak)" stroke="#9B7038" stroke-width="3"/><line x1="255" y1="390.0" x2="375" y2="390.0" stroke="#5c3f1e" stroke-width="1" opacity="0.1"/><line x1="255" y1="520.0" x2="375" y2="520.0" stroke="#5c3f1e" stroke-width="1" opacity="0.1"/><line x1="255" y1="650.0" x2="375" y2="650.0" stroke="#5c3f1e" stroke-width="1" opacity="0.1"/><polygon points="330,360 470,360 490,780 310,780" fill="url(#honey)" stroke="#A87C43" stroke-width="3"/><line x1="315" y1="427.1" x2="485" y2="427.1" stroke="#7a5427" stroke-width="1" opacity="0.1"/><line x1="315" y1="484.3" x2="485" y2="484.3" stroke="#7a5427" stroke-width="1" opacity="0.1"/><line x1="315" y1="541.4" x2="485" y2="541.4" stroke="#7a5427" stroke-width="1" opacity="0.1"/><line x1="315" y1="598.6" x2="485" y2="598.6" stroke="#7a5427" stroke-width="1" opacity="0.1"/><line x1="315" y1="655.7" x2="485" y2="655.7" stroke="#7a5427" stroke-width="1" opacity="0.1"/><line x1="315" y1="712.9" x2="485" y2="712.9" stroke="#7a5427" stroke-width="1" opacity="0.1"/><line x1="400" y1="250" x2="400" y2="300" stroke="#57381E" stroke-width="6" stroke-linecap="round"/><text x="400" y="470" text-anchor="middle" fill="#3B2C1C" font-family="Georgia,serif" font-size="44" letter-spacing="2">UNPLUGGED</text><text x="400" y="540" text-anchor="middle" fill="#57381E" font-family="Georgia,serif" font-style="italic" font-size="40">ceremony</text><text x="400" y="620" text-anchor="middle" fill="#6D5B45" font-family="Georgia,serif" font-size="21">be present · phones away</text><text x="400" y="672" text-anchor="middle" fill="#6D5B45" font-family="Georgia,serif" font-size="21">until we say "I do"</text><g stroke="#B08D57" stroke-width="1.2" fill="none"><line x1="626" y1="258" x2="626" y2="785"/><line x1="620" y1="258" x2="632" y2="258"/><line x1="620" y1="785" x2="632" y2="785"/></g><text x="640" y="522" fill="#B08D57" font-family="Georgia,serif" font-size="20" font-style="italic" dominant-baseline="middle">36"</text><g opacity="0.85"><text x="70" y="954" fill="#6B4A2B" font-family="Georgia,serif" font-size="21" letter-spacing="7">SMITH <tspan fill="#B08D57">MADE</tspan></text><text x="70" y="976" fill="#6D5B45" font-family="Georgia,serif" font-size="14" letter-spacing="4">CONCEPT No. 05</text></g><rect width="800" height="1000" fill="url(#vig)"/></svg>

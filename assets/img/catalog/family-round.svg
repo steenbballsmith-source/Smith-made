@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img"><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F5F0E8"/><stop offset="1" stop-color="#EDE6D9"/>
+  </linearGradient>
+  <radialGradient id="vig" cx="0.5" cy="0.42" r="0.75">
+    <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+    <stop offset="1" stop-color="#8a7a63" stop-opacity="0.10"/>
+  </radialGradient>
+  <linearGradient id="walnut" x1="0" y1="0" x2="1" y2="0.15">
+    <stop offset="0" stop-color="#6B4A2B"/><stop offset="0.5" stop-color="#7a5735"/>
+    <stop offset="1" stop-color="#57381E"/>
+  </linearGradient>
+  <linearGradient id="oak" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#C39A67"/><stop offset="1" stop-color="#9B7038"/>
+  </linearGradient>
+  <linearGradient id="honey" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#D2A86E"/><stop offset="1" stop-color="#A87C43"/>
+  </linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#EFE7D8"/><stop offset="1" stop-color="#CDBEA4"/>
+  </linearGradient>
+  <linearGradient id="chalk" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2f3630"/><stop offset="1" stop-color="#232823"/>
+  </linearGradient>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+</defs><rect width="800" height="1000" fill="url(#bg)"/><rect x="70" y="70" width="660" height="860" fill="none" stroke="#DCD2C2" stroke-width="1.5"/><line x1="70" y1="812" x2="730" y2="812" stroke="#DCD2C2" stroke-width="1.5"/><ellipse cx="400" cy="820" rx="150" ry="26" fill="#6d5b45" opacity="0.16" filter="url(#soft)"/><line x1="330" y1="500" x2="300" y2="810" stroke="#57381E" stroke-width="12" stroke-linecap="round"/><line x1="470" y1="500" x2="500" y2="810" stroke="#57381E" stroke-width="12" stroke-linecap="round"/><line x1="315" y1="690" x2="485" y2="690" stroke="#57381E" stroke-width="9" stroke-linecap="round"/><circle cx="400" cy="360" r="205" fill="url(#walnut)" stroke="#57381E" stroke-width="4"/><circle cx="400" cy="360" r="205" fill="none" stroke="#3b2c1c" stroke-width="2" opacity="0.4"/><circle cx="400" cy="360" r="176" fill="none" stroke="#B08D57" stroke-width="2" opacity="0.7"/><text x="400" y="315" text-anchor="middle" fill="#e9dcc6" font-family="Georgia,serif" font-size="52" letter-spacing="2">THE SMITHS</text><text x="400" y="372" text-anchor="middle" fill="#B08D57" font-family="Georgia,serif" font-style="italic" font-size="34">established</text><line x1="330" y1="392" x2="470" y2="392" stroke="#e9dcc6" stroke-width="1.5" opacity="0.6"/><text x="400" y="440" text-anchor="middle" fill="#e9dcc6" font-family="Georgia,serif" font-size="46" letter-spacing="6">2026</text><g stroke="#B08D57" stroke-width="1.2" fill="none"><line x1="636" y1="155" x2="636" y2="565"/><line x1="630" y1="155" x2="642" y2="155"/><line x1="630" y1="565" x2="642" y2="565"/></g><text x="650" y="360" fill="#B08D57" font-family="Georgia,serif" font-size="20" font-style="italic" dominant-baseline="middle">24"</text><g transform="translate(250,812) scale(1,1)" opacity="0.9"><path d="M0,0 C 20,-30 30,-70 24,-110" fill="none" stroke="#7f8a6c" stroke-width="3"/><circle cx="19" cy="-18" r="9" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><circle cx="21" cy="-46" r="11" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><circle cx="22" cy="-74" r="10" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><circle cx="23" cy="-98" r="8" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><path d="M14,-32 q -22,-6 -34,-22" fill="none" stroke="#8a9576" stroke-width="2.5"/><path d="M14,-60 q -22,-6 -34,-22" fill="none" stroke="#8a9576" stroke-width="2.5"/><path d="M14,-88 q -22,-6 -34,-22" fill="none" stroke="#8a9576" stroke-width="2.5"/></g><g opacity="0.85"><text x="70" y="954" fill="#6B4A2B" font-family="Georgia,serif" font-size="21" letter-spacing="7">SMITH <tspan fill="#B08D57">MADE</tspan></text><text x="70" y="976" fill="#6D5B45" font-family="Georgia,serif" font-size="14" letter-spacing="4">CONCEPT No. 03</text></g><rect width="800" height="1000" fill="url(#vig)"/></svg>

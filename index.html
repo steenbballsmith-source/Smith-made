@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smith Made — Custom Wood Wedding Signage &amp; Décor | Greenville, SC</title>
-  <meta name="description" content="Handbuilt wedding signs, seating charts, and statement pieces in Greenville, SC. Rent for your weekend, buy as a keepsake, or rent-to-own. Delivered, styled, and picked up after the last dance.">
+  <title>Custom Wood Wedding Signs Greenville SC — Rent or Buy | Smith Made</title>
+  <meta name="description" content="Wedding sign rental and custom wood signs in Greenville, SC. Welcome signs, seating charts, ceremony arches, backdrops, and keepsakes — rent for your weekend, buy forever, or rent-to-own. Delivered and styled across the Upstate.">
   <meta name="theme-color" content="#3a2d21">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Smith Made">
-  <meta property="og:title" content="Smith Made — Custom Wood Wedding Signage & Décor">
+  <meta property="og:title" content="Custom Wood Wedding Signs Greenville SC — Rent or Buy | Smith Made">
   <meta property="og:description" content="Handbuilt wedding signs, seating charts, and statement pieces in Greenville, SC. Rent for the weekend, buy forever, or rent-to-own.">
   <meta property="og:image" content="https://steenbballsmith-source.github.io/Smith-made/assets/img/og-image.png">
   <meta property="og:url" content="https://steenbballsmith-source.github.io/Smith-made/">
   <meta property="og:locale" content="en_US">
   <link rel="canonical" href="https://steenbballsmith-source.github.io/Smith-made/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -30,7 +33,7 @@
       "addressCountry": "US"
     },
     "areaServed": ["Greenville SC", "Spartanburg SC", "Anderson SC", "Clemson SC", "Asheville NC", "Upstate South Carolina"],
-    "priceRange": "$75-$550",
+    "priceRange": "$25-$550",
     "knowsAbout": ["wedding sign rental", "custom wood wedding signs", "seating chart rental", "wedding décor rental"]
   }
   </script>
@@ -41,7 +44,7 @@
   <header class="site-header" id="top">
     <div class="wrap site-header__inner">
       <a class="brand" href="#top" aria-label="Smith Made — home">
-        <span class="brand__name">Smith&nbsp;Made</span>
+        <span class="brand__name">Smith&nbsp;<span class="brand__made">Made</span></span>
         <span class="brand__tag">Greenville,&nbsp;SC</span>
       </a>
       <nav class="site-nav" aria-label="Main">
@@ -101,126 +104,136 @@
 
     <section class="section section--alt" id="collection" aria-labelledby="collection-title">
       <div class="wrap">
-        <p class="section__eyebrow">The collection</p>
+        <p class="section__eyebrow">The signs</p>
         <h2 class="section__title" id="collection-title">Ten pieces, built new to order</h2>
-        <p class="section__intro">Every piece starts in the shop, not a warehouse. A 50% deposit books your date and covers materials — then we build yours.</p>
+        <p class="section__intro">Every piece starts in the shop, not a warehouse. A 50% deposit books your date and covers materials — then we build yours. Wording approved in writing, free proof, before anything is cut.</p>
+        <div class="chips" role="group" aria-label="Filter the signs">
+          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-filter="rental" aria-pressed="false">Rentals</button>
+          <button class="chip" type="button" data-filter="keepsake" aria-pressed="false">Keepsakes</button>
+          <button class="chip" type="button" data-filter="statement" aria-pressed="false">Statement pieces</button>
+        </div>
         <ul class="catalog">
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/arch-welcome-wall.svg" alt="The Arch Welcome Wall — seven-foot arched wood welcome wall" width="800" height="1000" loading="lazy" data-piece-photo="arch-welcome-wall">
+          <li class="piece" data-cats="rental keepsake">
+            <img class="piece__photo" src="assets/img/catalog/arched-welcome.svg" alt="Arched walnut wedding welcome sign engraved with couple names on a handmade easel" width="800" height="1000" loading="lazy" data-piece-photo="arched-welcome">
             <div class="piece__body">
-              <p class="piece__kicker">Statement rental &middot; the flagship</p>
-              <h3 class="piece__name">The Arch Welcome Wall</h3>
-              <p class="piece__desc">Our seven-foot arched statement wall — the first thing your guests see. Lettered with your names in a removable layer, so it arrives personalized every time.</p>
+              <p class="piece__kicker">No. 01 &middot; Rent or buy · the flagship</p>
+              <h3 class="piece__name">The Arched Welcome</h3>
+              <p class="piece__desc">The flagship. A walnut arch on a handmade easel, carrying your names and date — the first thing your guests see.</p>
               <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$225</strong></p>
-                <p class="piece__price">Buy <strong>$550</strong></p>
+                <p class="piece__price">Rent <strong>from $75</strong></p><p class="piece__price">Buy <strong>from $195</strong></p>
               </div>
               <p class="piece__flag">Rent&#8209;to&#8209;own eligible</p>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Welcome sign" data-piece="The Arched Welcome (No. 01)">Book this piece</button></p>
             </div>
           </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/arched-welcome-sign.svg" alt="Arched Welcome Sign — classic arched wood welcome sign on an easel" width="800" height="1000" loading="lazy" data-piece-photo="arched-welcome-sign">
+          <li class="piece" data-cats="rental statement">
+            <img class="piece__photo" src="assets/img/catalog/seating-chart-wall.svg" alt="Oak plank seating chart wall with hand-lettered table assignments" width="800" height="1000" loading="lazy" data-piece-photo="seating-chart-wall">
             <div class="piece__body">
-              <p class="piece__kicker">Semi-custom rental</p>
-              <h3 class="piece__name">Arched Welcome Sign</h3>
-              <p class="piece__desc">The classic — a 24&Prime;&times;36&Prime; arched sign on a wood easel, personalized with your names and date in elegant lettering.</p>
-              <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$95</strong></p>
-                <p class="piece__price">Buy <strong>$250</strong></p>
-              </div>
-              <p class="piece__flag">Rent&#8209;to&#8209;own eligible</p>
-            </div>
-          </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/a-frame-welcome-sign.svg" alt="A-Frame Welcome Sign — freestanding wood A-frame sign" width="800" height="1000" loading="lazy" data-piece-photo="a-frame-welcome-sign">
-            <div class="piece__body">
-              <p class="piece__kicker">Semi-custom rental</p>
-              <h3 class="piece__name">A&#8209;Frame Welcome Sign</h3>
-              <p class="piece__desc">A sturdy freestanding A-frame that needs no easel — perfect for ceremony entrances, garden paths, and gravel drives.</p>
-              <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$75</strong></p>
-                <p class="piece__price">Buy <strong>$195</strong></p>
-              </div>
-              <p class="piece__flag">Rent&#8209;to&#8209;own eligible</p>
-            </div>
-          </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/live-edge-welcome-sign.svg" alt="Live-Edge Welcome Sign — natural-edge slab welcome sign" width="800" height="1000" loading="lazy" data-piece-photo="live-edge-welcome-sign">
-            <div class="piece__body">
-              <p class="piece__kicker">Semi-custom rental</p>
-              <h3 class="piece__name">Live&#8209;Edge Welcome Sign</h3>
-              <p class="piece__desc">A natural-edge slab with the bark line left in — organic, one of a kind, and beautiful at barn and outdoor venues.</p>
-              <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$95</strong></p>
-                <p class="piece__price">Buy <strong>$275</strong></p>
-              </div>
-              <p class="piece__flag">Rent&#8209;to&#8209;own eligible</p>
-            </div>
-          </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/seating-chart-wall.svg" alt="Seating Chart Wall — large freestanding wood seating chart wall" width="800" height="1000" loading="lazy" data-piece-photo="seating-chart-wall">
-            <div class="piece__body">
-              <p class="piece__kicker">Statement rental</p>
+              <p class="piece__kicker">No. 02 &middot; Statement rental</p>
               <h3 class="piece__name">Seating Chart Wall</h3>
-              <p class="piece__desc">A large freestanding wall that turns finding your table into a moment. First 100 names included, then $0.75 per name.</p>
+              <p class="piece__desc">An oak plank wall that turns finding your table into a moment. Priced by guest count — first 100 names included, then $0.75 per name.</p>
               <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$175</strong></p>
+                <p class="piece__price">Rent <strong>from $125</strong></p>
               </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Seating chart" data-piece="Seating Chart Wall (No. 02)">Book this piece</button></p>
             </div>
           </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/framed-seating-chart.svg" alt="Framed Seating Chart — standing framed wood seating chart" width="800" height="1000" loading="lazy" data-piece-photo="framed-seating-chart">
+          <li class="piece" data-cats="keepsake">
+            <img class="piece__photo" src="assets/img/catalog/family-round.svg" alt="Round dark walnut keepsake sign engraved The Smiths established 2026" width="800" height="1000" loading="lazy" data-piece-photo="family-round">
             <div class="piece__body">
-              <p class="piece__kicker">Semi-custom rental</p>
-              <h3 class="piece__name">Framed Seating Chart</h3>
-              <p class="piece__desc">A standing framed chart for more intimate guest lists — same handbuilt frame, lighter footprint. First 100 names included, then $0.75 per name.</p>
+              <p class="piece__kicker">No. 03 &middot; Keepsake · yours forever</p>
+              <h3 class="piece__name">The Family Round</h3>
+              <p class="piece__desc">Deep-carved dark walnut: your name, your date, established forever. Hangs at the reception, then above your mantel.</p>
               <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$125</strong></p>
+                <p class="piece__price">Buy <strong>from $225</strong></p>
               </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Keepsake" data-piece="The Family Round (No. 03)">Book this piece</button></p>
             </div>
           </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/champagne-wall.svg" alt="The Champagne Wall — wood champagne serving wall" width="800" height="1000" loading="lazy" data-piece-photo="champagne-wall">
+          <li class="piece" data-cats="rental statement">
+            <img class="piece__photo" src="assets/img/catalog/champagne-wall.svg" alt="Limewash wood champagne wall holding glasses of bubbly" width="800" height="1000" loading="lazy" data-piece-photo="champagne-wall">
             <div class="piece__body">
-              <p class="piece__kicker">Statement rental</p>
-              <h3 class="piece__name">The Champagne Wall</h3>
-              <p class="piece__desc">Glasses waiting in the wall as guests arrive at cocktail hour — the photo everyone takes. Doubles as a donut wall for brunch weddings.</p>
+              <p class="piece__kicker">No. 04 &middot; Statement rental</p>
+              <h3 class="piece__name">Champagne Wall</h3>
+              <p class="piece__desc">Fifteen glasses served straight from the wall as cocktail hour opens — the photo everyone takes home.</p>
               <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$250</strong></p>
+                <p class="piece__price">Rent <strong>from $150</strong></p>
               </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Champagne wall" data-piece="Champagne Wall (No. 04)">Book this piece</button></p>
             </div>
           </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/mobile-bar.svg" alt="The Mobile Bar — handbuilt rolling wood bar front" width="800" height="1000" loading="lazy" data-piece-photo="mobile-bar">
+          <li class="piece" data-cats="rental">
+            <img class="piece__photo" src="assets/img/catalog/unplugged-ceremony.svg" alt="Honey oak A-frame unplugged ceremony sign with painted lettering" width="800" height="1000" loading="lazy" data-piece-photo="unplugged-ceremony">
             <div class="piece__body">
-              <p class="piece__kicker">Statement rental</p>
+              <p class="piece__kicker">No. 05 &middot; Rental</p>
+              <h3 class="piece__name">Unplugged Ceremony</h3>
+              <p class="piece__desc">A honey-oak A-frame with painted lettering that politely puts the phones away until you say “I do.”</p>
+              <div class="piece__pricing">
+                <p class="piece__price">Rent <strong>from $25</strong></p>
+              </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Something custom" data-piece="Unplugged Ceremony (No. 05)">Book this piece</button></p>
+            </div>
+          </li>
+          <li class="piece" data-cats="rental">
+            <img class="piece__photo" src="assets/img/catalog/bar-menu.svg" alt="Wood framed chalkboard bar menu sign with signature cocktails" width="800" height="1000" loading="lazy" data-piece-photo="bar-menu">
+            <div class="piece__body">
+              <p class="piece__kicker">No. 06 &middot; Rental</p>
+              <h3 class="piece__name">The Bar Menu</h3>
+              <p class="piece__desc">A wood frame with a swappable chalk insert — your signature cocktails, hand-lettered, changed for every event.</p>
+              <div class="piece__pricing">
+                <p class="piece__price">Rent <strong>from $35</strong></p>
+              </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Bar" data-piece="The Bar Menu (No. 06)">Book this piece</button></p>
+            </div>
+          </li>
+          <li class="piece" data-cats="rental keepsake statement">
+            <img class="piece__photo" src="assets/img/catalog/grand-arch-welcome-wall.svg" alt="Seven foot freestanding arched welcome wall in limewash and walnut with raised lettering" width="800" height="1000" loading="lazy" data-piece-photo="grand-arch-welcome-wall">
+            <div class="piece__body">
+              <p class="piece__kicker">No. 07 &middot; Rent or buy · statement</p>
+              <h3 class="piece__name">Grand Arch Welcome Wall</h3>
+              <p class="piece__desc">Seven feet by four feet, freestanding, limewash and walnut with raised lettering. Carpenter-scale welcome.</p>
+              <div class="piece__pricing">
+                <p class="piece__price">Rent <strong>from $225</strong></p><p class="piece__price">Buy <strong>from $550</strong></p>
+              </div>
+              <p class="piece__flag">Rent&#8209;to&#8209;own eligible</p>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Welcome sign" data-piece="Grand Arch Welcome Wall (No. 07)">Book this piece</button></p>
+            </div>
+          </li>
+          <li class="piece" data-cats="rental statement">
+            <img class="piece__photo" src="assets/img/catalog/ceremony-arch-set.svg" alt="Set of three freestanding wooden ceremony arches with hanging engraved monogram" width="800" height="1000" loading="lazy" data-piece-photo="ceremony-arch-set">
+            <div class="piece__body">
+              <p class="piece__kicker">No. 08 &middot; Statement rental</p>
+              <h3 class="piece__name">Ceremony Arch Set</h3>
+              <p class="piece__desc">Three hollow arches stepping up to seven feet, with your engraved monogram hanging in the frame you say your vows in.</p>
+              <div class="piece__pricing">
+                <p class="piece__price">Rent <strong>from $295/set</strong></p>
+              </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Arch set" data-piece="Ceremony Arch Set (No. 08)">Book this piece</button></p>
+            </div>
+          </li>
+          <li class="piece" data-cats="rental statement">
+            <img class="piece__photo" src="assets/img/catalog/slat-backdrop.svg" alt="Eight foot fluted wood slat backdrop with round monogram plaque" width="800" height="1000" loading="lazy" data-piece-photo="slat-backdrop">
+            <div class="piece__body">
+              <p class="piece__kicker">No. 09 &middot; Statement rental</p>
+              <h3 class="piece__name">Slat Monogram Backdrop</h3>
+              <p class="piece__desc">An eight-foot fluted slat wall with a round limewash monogram plaque — the backdrop for the sweetheart table or first dance.</p>
+              <div class="piece__pricing">
+                <p class="piece__price">Rent <strong>from $250</strong></p>
+              </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Backdrop" data-piece="Slat Monogram Backdrop (No. 09)">Book this piece</button></p>
+            </div>
+          </li>
+          <li class="piece" data-cats="rental statement">
+            <img class="piece__photo" src="assets/img/catalog/mobile-bar.svg" alt="Mobile bar facade with fluted front walnut counter and engraved cheers sign" width="800" height="1000" loading="lazy" data-piece-photo="mobile-bar">
+            <div class="piece__body">
+              <p class="piece__kicker">No. 10 &middot; Statement rental</p>
               <h3 class="piece__name">The Mobile Bar</h3>
-              <p class="piece__desc">A handbuilt rolling bar front that makes any corner of the venue the bar. Your bartender will thank you; your photos will show it.</p>
+              <p class="piece__desc">A fluted façade, walnut counter, and engraved header that makes any corner of the venue the bar.</p>
               <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$250</strong></p>
+                <p class="piece__price">Rent <strong>from $275</strong></p>
               </div>
-            </div>
-          </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/ceremony-arch.svg" alt="Ceremony Arch — wood wedding ceremony arch" width="800" height="1000" loading="lazy" data-piece-photo="ceremony-arch">
-            <div class="piece__body">
-              <p class="piece__kicker">Statement rental</p>
-              <h3 class="piece__name">Ceremony Arch</h3>
-              <p class="piece__desc">The frame you say your vows in. Solid joinery, ready for florals or left beautifully bare — and steady in a South Carolina breeze.</p>
-              <div class="piece__pricing">
-                <p class="piece__price">Rent <strong>$195</strong></p>
-              </div>
-            </div>
-          </li>
-          <li class="piece">
-            <img class="piece__photo" src="assets/img/catalog/keepsake-established-sign.svg" alt="Keepsake Established Sign — engraved last-name heirloom sign" width="800" height="1000" loading="lazy" data-piece-photo="keepsake-established-sign">
-            <div class="piece__body">
-              <p class="piece__kicker">Keepsake build &middot; yours forever</p>
-              <h3 class="piece__name">Keepsake &ldquo;Established&rdquo; Sign</h3>
-              <p class="piece__desc">Your last name and wedding date, deep-engraved in solid wood. Hangs at the reception, then above your mantel for the rest of your lives.</p>
-              <div class="piece__pricing">
-                <p class="piece__price">Buy from <strong>$195</strong></p>
-              </div>
+              <p class="piece__book"><button class="button button--ghost" type="button" data-book="Bar" data-piece="The Mobile Bar (No. 10)">Book this piece</button></p>
             </div>
           </li>
         </ul>
@@ -299,7 +312,8 @@
             <li><strong>50% deposit books your date.</strong> The deposit covers materials and your build starts once it&rsquo;s paid. Non&#8209;refundable inside 60 days of the event.</li>
             <li><strong>Refundable damage deposit on rentals.</strong> $100 (or 25% of the rental price), returned after pickup inspection. Candle wax washes off; we just check.</li>
             <li><strong>Rent&#8209;to&#8209;own credit.</strong> Keep any eligible rental after the wedding: 50% of the rent you paid comes off the purchase price, up to one event&rsquo;s rent.</li>
-            <li><strong>Venue&#8209;ready.</strong> We carry general liability insurance and can send a certificate of insurance straight to your venue.</li>
+            <li><strong>Your wording, approved in writing.</strong> You get a free proof of every piece and sign off on the exact wording before anything is cut. No surprises on your biggest day.</li>
+            <li><strong>Simple, safe payment.</strong> Invoices come through Square or PayPal (goods &amp; services). The balance is due at delivery — never before you&rsquo;ve seen the piece.</li>
           </ul>
         </div>
       </div>
@@ -340,7 +354,7 @@
         <div class="faq">
           <details>
             <summary>How far do you deliver?</summary>
-            <p>Anywhere in the Upstate. Delivery, setup, and pickup is a flat $75 within 25 miles of Greenville, then $2 per mile beyond — which puts Spartanburg, Anderson, Clemson, and Asheville, NC all comfortably in range.</p>
+            <p>Anywhere in the Upstate. Delivery, setup, and pickup is a flat $75 within 25 miles of Greenville, then $2 per mile beyond — Travelers Rest, Greer, Simpsonville, Spartanburg, Anderson, Clemson, Pickens, Hendersonville, and Asheville are all in range. We extend the radius for mountain venues, and large builds never ship — we deliver them ourselves.</p>
           </details>
           <details>
             <summary>How far ahead should we book?</summary>
@@ -374,6 +388,11 @@
           <div>
             <p class="section__intro">Send the form and we&rsquo;ll confirm whether your date is open and put a simple quote together — usually within a day or two. No obligation, no sales call.</p>
             <p>Prefer email? Write to us directly at <a href="mailto:steenbballsmith@gmail.com" data-contact-email>steenbballsmith@gmail.com</a>.</p>
+            <div class="hold-callout" hidden data-hold-callout>
+              <h3>Ready to lock your Saturday?</h3>
+              <p>Pay the <strong>$50 date hold</strong> and your date comes off the calendar today. Every dollar of it counts toward your balance, and it&rsquo;s fully refundable for 7 days while we settle your quote.</p>
+              <a class="button button--solid" href="#" target="_blank" rel="noopener" data-hold-link>Pay the $50 date hold</a>
+            </div>
           </div>
           <form class="form" data-inquiry-form novalidate>
             <div class="form__row">
@@ -403,17 +422,13 @@
             <fieldset>
               <legend>Which pieces caught your eye?</legend>
               <div class="form__checks">
-                <label><input type="checkbox" name="pieces" value="The Arch Welcome Wall"> The Arch Welcome Wall</label>
-                <label><input type="checkbox" name="pieces" value="Arched Welcome Sign"> Arched Welcome Sign</label>
-                <label><input type="checkbox" name="pieces" value="A-Frame Welcome Sign"> A&#8209;Frame Welcome Sign</label>
-                <label><input type="checkbox" name="pieces" value="Live-Edge Welcome Sign"> Live&#8209;Edge Welcome Sign</label>
-                <label><input type="checkbox" name="pieces" value="Seating Chart Wall"> Seating Chart Wall</label>
-                <label><input type="checkbox" name="pieces" value="Framed Seating Chart"> Framed Seating Chart</label>
-                <label><input type="checkbox" name="pieces" value="The Champagne Wall"> The Champagne Wall</label>
-                <label><input type="checkbox" name="pieces" value="The Mobile Bar"> The Mobile Bar</label>
-                <label><input type="checkbox" name="pieces" value="Ceremony Arch"> Ceremony Arch</label>
-                <label><input type="checkbox" name="pieces" value="Keepsake Established Sign"> Keepsake &ldquo;Established&rdquo; Sign</label>
-                <label><input type="checkbox" name="pieces" value="Full signage package"> The full signage package</label>
+                <label><input type="checkbox" name="pieces" value="Welcome sign"> Welcome sign</label>
+                <label><input type="checkbox" name="pieces" value="Seating chart"> Seating chart</label>
+                <label><input type="checkbox" name="pieces" value="Arch set"> Arch set</label>
+                <label><input type="checkbox" name="pieces" value="Backdrop"> Backdrop</label>
+                <label><input type="checkbox" name="pieces" value="Champagne wall"> Champagne wall</label>
+                <label><input type="checkbox" name="pieces" value="Bar"> Bar</label>
+                <label><input type="checkbox" name="pieces" value="Keepsake"> Keepsake</label>
                 <label><input type="checkbox" name="pieces" value="Something custom"> Something custom</label>
               </div>
             </fieldset>
@@ -445,7 +460,7 @@
   <footer class="site-footer">
     <div class="wrap site-footer__inner">
       <div class="site-footer__col">
-        <p class="brand__name">Smith Made</p>
+        <p class="brand__name">Smith <span class="brand__made">Made</span></p>
         <p>Custom wood wedding signage &amp; décor, handbuilt in Greenville, South Carolina. Serving the Upstate — Greenville, Spartanburg, Anderson, Clemson, and Asheville, NC.</p>
       </div>
       <div class="site-footer__col">
