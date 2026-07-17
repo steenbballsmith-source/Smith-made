@@ -43,7 +43,7 @@ window.SMITH_MADE = {
     "seating-chart-wall": "assets/img/catalog/seating-chart-wall.jpg",
     "framed-seating-chart": "assets/img/catalog/framed-seating-chart.jpg",
     "champagne-wall": "assets/img/catalog/champagne-wall.jpg",
-    "ceremony-arch": "assets/img/catalog/ceremony-arch.jpg",
+    "arch-welcome-wall": "assets/img/catalog/arch-welcome-wall.jpg",
   },
 
   /* ---- GALLERY --------------------------------------------
