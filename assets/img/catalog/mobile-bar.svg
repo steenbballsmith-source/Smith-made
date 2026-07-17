@@ -1,11 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="The Mobile Bar — photo coming soon">
-  <rect width="800" height="1000" fill="#f2ead9"/>
-  <rect x="42" y="42" width="716" height="916" fill="none" stroke="#c9b795" stroke-width="2"/>
-  <rect x="56" y="56" width="688" height="888" fill="none" stroke="#c9b795" stroke-width="1"/>
-  <text x="400" y="150" text-anchor="middle" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-size="28" letter-spacing="10" fill="#a97e42">SMITH MADE</text>
-  <line x1="340" y1="185" x2="460" y2="185" stroke="#a97e42" stroke-width="1"/>
-  <text x="400" y="480" text-anchor="middle" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="58" fill="#3a2d21">The Mobile</text>
-  <text x="400" y="555" text-anchor="middle" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-style="italic" font-size="58" fill="#3a2d21">Bar</text>
-  <line x1="340" y1="620" x2="460" y2="620" stroke="#7a5c43" stroke-width="1"/>
-  <text x="400" y="870" text-anchor="middle" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-size="22" letter-spacing="6" fill="#7a5c43">PHOTO COMING SOON</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img"><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F5F0E8"/><stop offset="1" stop-color="#EDE6D9"/>
+  </linearGradient>
+  <radialGradient id="vig" cx="0.5" cy="0.42" r="0.75">
+    <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+    <stop offset="1" stop-color="#8a7a63" stop-opacity="0.10"/>
+  </radialGradient>
+  <linearGradient id="walnut" x1="0" y1="0" x2="1" y2="0.15">
+    <stop offset="0" stop-color="#6B4A2B"/><stop offset="0.5" stop-color="#7a5735"/>
+    <stop offset="1" stop-color="#57381E"/>
+  </linearGradient>
+  <linearGradient id="oak" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#C39A67"/><stop offset="1" stop-color="#9B7038"/>
+  </linearGradient>
+  <linearGradient id="honey" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#D2A86E"/><stop offset="1" stop-color="#A87C43"/>
+  </linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="0.2">
+    <stop offset="0" stop-color="#EFE7D8"/><stop offset="1" stop-color="#CDBEA4"/>
+  </linearGradient>
+  <linearGradient id="chalk" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2f3630"/><stop offset="1" stop-color="#232823"/>
+  </linearGradient>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+</defs><rect width="800" height="1000" fill="url(#bg)"/><rect x="70" y="70" width="660" height="860" fill="none" stroke="#DCD2C2" stroke-width="1.5"/><line x1="70" y1="828" x2="730" y2="828" stroke="#DCD2C2" stroke-width="1.5"/><ellipse cx="400" cy="836" rx="210" ry="24" fill="#6d5b45" opacity="0.16" filter="url(#soft)"/><line x1="300" y1="250" x2="300" y2="470" stroke="#57381E" stroke-width="9"/><line x1="500" y1="250" x2="500" y2="470" stroke="#57381E" stroke-width="9"/><rect x="262" y="196" width="276" height="72" rx="6" fill="url(#walnut)" stroke="#57381E" stroke-width="3"/><text x="400" y="245" text-anchor="middle" fill="#e9dcc6" font-family="Georgia,serif" font-style="italic" font-size="42">cheers</text><rect x="250" y="470" width="300" height="34" rx="4" fill="url(#walnut)" stroke="#57381E" stroke-width="2"/><rect x="266" y="504" width="268" height="324" fill="url(#oak)" stroke="#9B7038" stroke-width="3"/><rect x="276.0" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="322.7" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="369.5" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="416.2" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="462.9" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="509.6" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="556.4" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="603.1" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="649.8" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="696.5" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><rect x="743.3" y="516" width="43.7" height="300" rx="4" fill="#CBA06B" stroke="#9B7038" stroke-width="0.8" opacity="0.9"/><path d="M317,452 L321,486 L339,486 L343,452 Z" fill="#e7edf0" opacity="0.85" stroke="#c7d0d4" stroke-width="1"/><ellipse cx="330" cy="452" rx="13" ry="4" fill="#f3d9a6"/><path d="M457,452 L461,486 L479,486 L483,452 Z" fill="#e7edf0" opacity="0.85" stroke="#c7d0d4" stroke-width="1"/><ellipse cx="470" cy="452" rx="13" ry="4" fill="#f3d9a6"/><g stroke="#B08D57" stroke-width="1.2" fill="none"><line x1="250" y1="880" x2="550" y2="880"/><line x1="250" y1="874" x2="250" y2="886"/><line x1="550" y1="874" x2="550" y2="886"/></g><text x="400" y="868" fill="#B08D57" font-family="Georgia,serif" font-size="20" font-style="italic" text-anchor="middle">48&#8243;</text><g transform="translate(232,830) scale(1,1)" opacity="0.9"><path d="M0,0 C 20,-30 30,-70 24,-110" fill="none" stroke="#7f8a6c" stroke-width="3"/><circle cx="19" cy="-18" r="9" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><circle cx="21" cy="-46" r="11" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><circle cx="22" cy="-74" r="10" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><circle cx="23" cy="-98" r="8" fill="#f3efe6" stroke="#d9d2c4" stroke-width="1.5"/><path d="M14,-32 q -22,-6 -34,-22" fill="none" stroke="#8a9576" stroke-width="2.5"/><path d="M14,-60 q -22,-6 -34,-22" fill="none" stroke="#8a9576" stroke-width="2.5"/><path d="M14,-88 q -22,-6 -34,-22" fill="none" stroke="#8a9576" stroke-width="2.5"/></g><g opacity="0.85"><text x="70" y="954" fill="#6B4A2B" font-family="Georgia,serif" font-size="21" letter-spacing="7">SMITH <tspan fill="#B08D57">MADE</tspan></text><text x="70" y="976" fill="#6D5B45" font-family="Georgia,serif" font-size="14" letter-spacing="4">CONCEPT No. 10</text></g><rect width="800" height="1000" fill="url(#vig)"/></svg>

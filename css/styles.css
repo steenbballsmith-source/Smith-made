@@ -5,20 +5,22 @@
    ========================================================================== */
 
 :root {
-  /* Brand palette — warm wood, linen, brass */
-  --color-bark:   #3a2d21;   /* deep walnut — headings, footer bg   */
-  --color-ink:    #443627;   /* body text on light backgrounds      */
-  --color-wood:   #7a5c43;   /* mid walnut — secondary text, rules  */
-  --color-brass:  #a97e42;   /* accent — eyebrows, focus, details   */
+  /* Brand palette — Smith Made brand system (handoff Section 3) */
+  --color-bark:   #3b2c1c;   /* ink — headings, footer bg           */
+  --color-ink:    #3b2c1c;   /* body text on light backgrounds      */
+  --color-wood:   #6d5b45;   /* soft ink — secondary text, rules    */
+  --color-walnut: #6b4a2b;   /* walnut primary — buttons, wordmark  */
+  --color-walnut-hover: #57381e;
+  --color-brass:  #b08d57;   /* gold accent — eyebrows, details     */
   --color-sage:   #6f7d63;   /* quiet accent — badges               */
-  --color-cream:  #faf6ee;   /* page background                     */
-  --color-linen:  #f2ead9;   /* alternate section background        */
-  --color-white:  #fffdf8;   /* cards                               */
-  --color-line:   #e0d5c1;   /* hairlines and card borders          */
+  --color-cream:  #f5f0e8;   /* linen page background               */
+  --color-linen:  #ede6d9;   /* alternate section background        */
+  --color-white:  #faf7f1;   /* cards                               */
+  --color-line:   #dcd2c2;   /* gold hairlines and card borders     */
 
-  /* Type — system stacks only: zero font requests, instant paint */
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Type — brand faces with system fallbacks */
+  --font-display: "Italiana", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Lora", "Iowan Old Style", Palatino, Georgia, serif;
 
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
@@ -65,7 +67,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400; /* Italiana ships one weight */
   line-height: 1.15;
   color: var(--color-bark);
   margin: 0 0 var(--space-2);
@@ -154,10 +156,11 @@ a:hover { color: var(--color-bark); }
 }
 
 .button--solid {
-  background: var(--color-bark);
+  background: var(--color-walnut);
+  border-color: var(--color-walnut);
   color: var(--color-cream);
 }
-.button--solid:hover { background: var(--color-ink); color: var(--color-cream); }
+.button--solid:hover { background: var(--color-walnut-hover); border-color: var(--color-walnut-hover); color: var(--color-cream); }
 
 .button--ghost {
   background: transparent;
@@ -190,12 +193,14 @@ a:hover { color: var(--color-bark); }
 
 .brand__name {
   font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-bark);
+  color: var(--color-walnut);
 }
+
+.brand__made { color: var(--color-brass); }
 
 .brand__tag {
   font-size: var(--text-xs);
@@ -384,6 +389,32 @@ a:hover { color: var(--color-bark); }
 /* --------------------------------------------------------------------------
    Catalog
    -------------------------------------------------------------------------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.chip {
+  padding: 0.45em 1.1em;
+  border: 1.5px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-white);
+  font: 500 var(--text-sm) var(--font-body);
+  color: var(--color-wood);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.chip:hover { border-color: var(--color-brass); color: var(--color-bark); }
+
+.chip.is-active {
+  background: var(--color-walnut);
+  border-color: var(--color-walnut);
+  color: var(--color-cream);
+}
 
 .catalog {
   display: grid;
@@ -708,6 +739,19 @@ a:hover { color: var(--color-bark); }
 }
 
 .form__checks input { width: auto; accent-color: var(--color-brass); }
+
+.piece__book { margin: var(--space-1) 0 0; }
+.piece__book .button { width: 100%; text-align: center; padding: 0.6em 1em; }
+
+.hold-callout {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-white);
+  border: 1.5px solid var(--color-brass);
+  border-radius: var(--radius);
+}
+.hold-callout h3 { font-size: var(--text-lg); margin-bottom: var(--space-1); }
+.hold-callout p { font-size: var(--text-sm); color: var(--color-wood); }
 
 /* Honeypot — hidden from humans, present for bots */
 .form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

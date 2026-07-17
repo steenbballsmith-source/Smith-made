@@ -251,6 +251,52 @@ name like `smithmadesc.com` looks better on a business card:
    `canonical` in `index.html`, plus `sitemap.xml` and `robots.txt` —
    so search engines and link previews use the new name.
 
+## Part 11 — Take money on the website (Square)
+
+Couples can pay a **$50 date hold** right on the site — it locks their
+Saturday, counts toward their balance, and lands in your bank account.
+The bigger payments (50% build deposit, final balance) go out as Square
+invoices from your phone once you've quoted the exact price. Here's the
+one-time setup, about 20 minutes:
+
+**A. Create your free Square account** (this is the part only you can
+do — it's your identity and your bank):
+
+1. Go to **squareup.com** and sign up with steenbballsmith@gmail.com.
+2. It will ask what kind of business — pick something like Events/
+   Rentals; "Smith Made" as the business name.
+3. It asks for your legal name, address, and SSN (or EIN once the LLC
+   exists) — that's federal law for anyone who processes card payments
+   (identity verification), not Square being nosy.
+4. Under **Settings → Bank accounts**, link your checking account.
+   Square then deposits card money the next business day, automatically.
+   Fee: 2.9% + 30¢ per online payment — a $50 hold nets you about $48.25.
+
+**B. Create the date-hold payment link:**
+
+1. In the Square dashboard, find **Payment Links** (also called Online
+   Checkout) → **Create a link** → "Collect a payment."
+2. Name: `Smith Made — Date Hold` · Amount: `$50`.
+3. Turn on the option to collect the buyer's **name and email**, and add
+   a custom question if offered: "Wedding date + which piece(s)?"
+4. Create it, and copy the link (looks like `https://square.link/u/AbCdEf`).
+
+**C. Turn it on for the site** — one line: open `js/manifest.js`, find
+`dateHoldUrl`, and paste your link between the quotes. Commit. The gold
+"Pay the $50 date hold" button appears in the booking section, and every
+"Book this piece" button leads couples to it.
+
+**D. Deposits and balances** (no code — just Square): when you've agreed
+on the exact quote, open Square → **Invoices** → new invoice → line items
+("Grand Arch Welcome Wall — build deposit (50%)"), send to their email.
+Same again for the balance, due at delivery. Square chases the reminders
+for you.
+
+**Refund a date hold** (if plans change inside the 7 days you promise on
+the site): Square dashboard → Transactions → find it → Refund. The site's
+wording and your policy stay in step automatically because both came from
+the same plan.
+
 ## Reference — what every file is
 
 | File / folder | What it is |

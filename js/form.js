@@ -53,7 +53,9 @@
     })
       .then(function (response) {
         if (!response.ok) throw new Error("HTTP " + response.status);
-        say("Sent! We’ll get back to you within a day or two.", true);
+        say(config.dateHoldUrl
+          ? "Sent! We’ll get back to you within a day or two. Want the date locked today? Pay the $50 date hold above — it counts toward your balance."
+          : "Sent! We’ll get back to you within a day or two.", true);
         form.reset();
       })
       .catch(function () {

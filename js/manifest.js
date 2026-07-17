@@ -33,17 +33,17 @@ window.SMITH_MADE = {
      below exactly (it's the product's id). Example:
        "arch-welcome-wall": "assets/img/catalog/arch-welcome-wall.jpg",
 
-     Product ids:
-       arch-welcome-wall     arched-welcome-sign
-       a-frame-welcome-sign  live-edge-welcome-sign
-       seating-chart-wall    framed-seating-chart
-       champagne-wall        mobile-bar
-       ceremony-arch         keepsake-established-sign      */
+     Product ids (No. 01-10):
+       arched-welcome        seating-chart-wall
+       family-round          champagne-wall
+       unplugged-ceremony    bar-menu
+       grand-arch-welcome-wall  ceremony-arch-set
+       slat-backdrop         mobile-bar                     */
   photos: {
     "seating-chart-wall": "assets/img/catalog/seating-chart-wall.jpg",
-    "framed-seating-chart": "assets/img/catalog/framed-seating-chart.jpg",
     "champagne-wall": "assets/img/catalog/champagne-wall.jpg",
-    "arch-welcome-wall": "assets/img/catalog/arch-welcome-wall.jpg",
+    "grand-arch-welcome-wall": "assets/img/catalog/grand-arch-welcome-wall.jpg",
+    "ceremony-arch-set": "assets/img/catalog/ceremony-arch-set.jpg",
   },
 
   /* ---- GALLERY --------------------------------------------
@@ -54,6 +54,18 @@ window.SMITH_MADE = {
      least one photo in it.                                  */
   gallery: [
   ],
+
+  /* ---- PAYMENTS: THE $50 DATE HOLD ------------------------
+     Lets couples lock their date on the spot. Make a FREE
+     Square account (squareup.com), link your bank, then in
+     Square go to: Payment Links -> Create link -> "Collect a
+     payment" -> name it "Smith Made Date Hold", amount $50.
+     Copy the link Square gives you and paste it here:
+       dateHoldUrl: "https://square.link/u/XXXXXXXX",
+     The "pay your date hold" button appears on the site the
+     moment this line is filled in. Money lands in your linked
+     bank account (Square pays out next business day).        */
+  dateHoldUrl: "",
 
   /* ---- INQUIRY FORM ---------------------------------------
      Leave empty and the form opens the visitor's email app

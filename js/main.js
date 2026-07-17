@@ -110,6 +110,52 @@
     real.src = src;
   });
 
+  /* ---- Booking: date-hold payment link + per-piece Book buttons ---------- */
+
+  var holdCallout = document.querySelector("[data-hold-callout]");
+  var holdLink = document.querySelector("[data-hold-link]");
+  if (holdCallout && holdLink && config.dateHoldUrl) {
+    holdLink.href = config.dateHoldUrl;
+    holdCallout.hidden = false;
+  }
+
+  var inquiryForm = document.querySelector("[data-inquiry-form]");
+  document.querySelectorAll("[data-book]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (!inquiryForm) return;
+      var box = inquiryForm.querySelector('input[name="pieces"][value="' + button.getAttribute("data-book") + '"]');
+      if (box) box.checked = true;
+      var message = inquiryForm.querySelector("#f-message");
+      var note = "Booking: " + button.getAttribute("data-piece");
+      if (message && message.value.indexOf(note) === -1) {
+        message.value = (message.value ? message.value + "\n" : "") + note;
+      }
+      document.getElementById("inquire").scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+      var names = inquiryForm.querySelector("#f-names");
+      if (names) names.focus({ preventScroll: true });
+    });
+  });
+
+  /* ---- Catalog filter chips ---------------------------------------------- */
+
+  var chips = document.querySelectorAll(".chip[data-filter]");
+  var catalogPieces = document.querySelectorAll(".piece[data-cats]");
+
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var filter = chip.getAttribute("data-filter");
+      chips.forEach(function (c) {
+        var active = c === chip;
+        c.classList.toggle("is-active", active);
+        c.setAttribute("aria-pressed", String(active));
+      });
+      catalogPieces.forEach(function (piece) {
+        piece.hidden = filter !== "all" &&
+          piece.getAttribute("data-cats").split(" ").indexOf(filter) === -1;
+      });
+    });
+  });
+
   /* ---- Gallery: built entirely from the manifest ------------------------- */
 
   var gallerySection = document.querySelector("[data-gallery-section]");
