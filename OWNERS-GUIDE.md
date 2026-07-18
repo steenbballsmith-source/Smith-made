@@ -25,7 +25,7 @@ Five ideas, one minute, and everything else in this guide will make sense:
    "upload the site" anywhere — you change files, and the robot publishes.
 
 4. **The live address.** Once hosting is on (Part 2), your site is at:
-   **https://steenbballsmith-source.github.io/Smith-made/**
+   **https://smithmadesc.com/**
 
 5. **The one settings file.** `js/manifest.js` controls your photos,
    video, gallery, contact details, and inquiry form. Almost every
@@ -79,7 +79,7 @@ repo, this happens for you automatically within a few minutes):
 4. Watch the new row: a spinning amber circle means working, a **green
    check** means published, a **red X** means something failed (see
    "If something goes wrong" at the end).
-5. When it's green, open **https://steenbballsmith-source.github.io/Smith-made/**
+5. When it's green, open **https://smithmadesc.com/**
    — your site is live. Check it on your phone too.
 
 From now on you never repeat this Part — every future change publishes
@@ -209,7 +209,7 @@ example appears in a couple of places.
 
 ## Part 10 — Later: your own domain name
 
-`steenbballsmith-source.github.io/Smith-made` works fine to start, but a
+`smithmadesc.com` works fine to start, but a
 name like `smithmadesc.com` looks better on a business card:
 
 1. Buy the domain (about $12/year at Namecheap, Cloudflare, or
