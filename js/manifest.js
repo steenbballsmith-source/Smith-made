@@ -68,15 +68,17 @@ window.SMITH_MADE = {
   dateHoldUrl: "https://square.link/u/w6KAdXlo",
 
   /* ---- INQUIRY FORM ---------------------------------------
-     Leave empty and the form opens the visitor's email app
-     with everything pre-filled, addressed to you. To receive
-     inquiries directly instead: make a free account at
-     formspree.io, create a form, and paste its link here:
-       formEndpoint: "https://formspree.io/f/YOUR-ID",       */
-  formEndpoint: "",
+     The form sends straight to the email below through
+     FormSubmit (free, no account). ONE-TIME ACTIVATION: the
+     very first submission triggers a confirmation email to
+     that inbox — open it and click the activate button once,
+     and every inquiry after that lands in the inbox.
+     (To route through Formspree instead, paste its link here
+     in place of the FormSubmit one.)                         */
+  formEndpoint: "https://formsubmit.co/ajax/will.smithmade@gmail.com",
 
   /* ---- CONTACT DETAILS ------------------------------------ */
-  email: "steenbballsmith@gmail.com",
+  email: "will.smithmade@gmail.com",
   phone: "",                 /* e.g. "(864) 555-0123"        */
   instagram: ""              /* e.g. "https://instagram.com/smithmadesc" */
 };

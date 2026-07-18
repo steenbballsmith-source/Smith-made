@@ -35,6 +35,10 @@
     data.delete("company");
 
     if (config.formEndpoint) {
+      /* Delivery-service niceties (FormSubmit/Formspree understand these;
+         harmless extras otherwise): subject line + tidy table layout. */
+      data.append("_subject", "Wedding inquiry — " + (data.get("names") || "new couple"));
+      data.append("_template", "table");
       submitToEndpoint(data);
     } else {
       submitViaEmail(data);
