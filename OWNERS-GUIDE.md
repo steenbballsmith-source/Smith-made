@@ -234,7 +234,11 @@ one-time setup, about 20 minutes:
 **A. Create your free Square account** (this is the part only you can
 do — it's your identity and your bank):
 
-1. Go to **squareup.com** and sign up with steenbballsmith@gmail.com.
+1. Go to **squareup.com** and sign up with will.smithmade@gmail.com.
+   (Already created the account under a different email? No problem —
+   in Square go to **Settings → Account → Email** and change it to
+   will.smithmade@gmail.com so payment notifications land in the
+   business inbox with everything else.)
 2. It will ask what kind of business — pick something like Events/
    Rentals; "Smith Made" as the business name.
 3. It asks for your legal name, address, and SSN (or EIN once the LLC

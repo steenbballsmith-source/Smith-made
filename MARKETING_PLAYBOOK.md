@@ -15,7 +15,10 @@ Site: https://steenbballsmith-source.github.io/Smith-made/
 ## 1. Google Business Profile (do first — it's free local search)
 
 This is how couples searching "wedding sign rental greenville sc" find
-you. Go to **business.google.com** → Add business. Use exactly this:
+you. **Sign in to Google as will.smithmade@gmail.com first** — the
+Google account that creates the profile owns it, and the business inbox
+should be the owner. Then go to **business.google.com** → Add business.
+Use exactly this:
 
 | Field | What to enter |
 |---|---|
