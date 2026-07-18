@@ -85,62 +85,42 @@ repo, this happens for you automatically within a few minutes):
 From now on you never repeat this Part — every future change publishes
 itself.
 
-## Part 4 — Put your ten renders on the product cards
+## Part 4 — Put your renders on the product cards
 
-Four pieces already have renders (sent to Claude in chat): the Seating
-Chart Wall, Framed Seating Chart, Champagne Wall, and Ceremony Arch —
-and the hero backdrop uses a styled crop of the wall render. The other
-six cards show a tidy "photo coming soon" placeholder until you add
-them. Your renders are on your PC in `Downloads\Smith Made\web`; if a
-render is already placed but on the wrong piece, just say so in chat —
-it's a one-line swap.
+Four pieces already show your photoreal renders — **Seating Chart Wall
+(02), Champagne Wall (04), Grand Arch Welcome Wall (07), and Ceremony
+Arch Set (08)** — and the hero backdrop is a styled crop of the wall
+render. The other six show original Smith Made concept drawings until
+you replace them with photoreal renders or real photos.
 
-**4a. Rename copies on your PC.** Make a copy of the ten images and
-rename them exactly as follows (keep whatever ending the files already
-have — `.jpg` or `.png` — just make the names match):
+**4a. Rename copies on your PC** to these exact names (keep `.jpg` or
+`.png`, whichever the file already is):
 
 | Piece on the site | Name the file |
 | --- | --- |
-| The Arch Welcome Wall | `arch-welcome-wall.jpg` |
-| Arched Welcome Sign | `arched-welcome-sign.jpg` |
-| A-Frame Welcome Sign | `a-frame-welcome-sign.jpg` |
-| Live-Edge Welcome Sign | `live-edge-welcome-sign.jpg` |
-| Seating Chart Wall | `seating-chart-wall.jpg` |
-| Framed Seating Chart | `framed-seating-chart.jpg` |
-| The Champagne Wall | `champagne-wall.jpg` |
-| The Mobile Bar | `mobile-bar.jpg` |
-| Ceremony Arch | `ceremony-arch.jpg` |
-| Keepsake "Established" Sign | `keepsake-established-sign.jpg` |
+| No. 01 The Arched Welcome | `arched-welcome.jpg` |
+| No. 02 Seating Chart Wall | `seating-chart-wall.jpg` |
+| No. 03 The Family Round | `family-round.jpg` |
+| No. 04 Champagne Wall | `champagne-wall.jpg` |
+| No. 05 Unplugged Ceremony | `unplugged-ceremony.jpg` |
+| No. 06 The Bar Menu | `bar-menu.jpg` |
+| No. 07 Grand Arch Welcome Wall | `grand-arch-welcome-wall.jpg` |
+| No. 08 Ceremony Arch Set | `ceremony-arch-set.jpg` |
+| No. 09 Slat Monogram Backdrop | `slat-backdrop.jpg` |
+| No. 10 The Mobile Bar | `mobile-bar.jpg` |
 
-**4b. Upload them.** In the repo, click into the `assets` folder, then
-`img`, then `catalog`. Click **Add file → Upload files**, drag all ten
-renamed images in, and press the green **Commit changes** button.
-(The little message box above the button is just a note-to-self about
-what you changed — "add product photos" is perfect.)
+**4b. Upload them** to `assets/img/catalog/` in the repo (**Add file →
+Upload files** → drag → **Commit changes**).
 
-**4c. Tell the site they exist.** Open `js/manifest.js` in the repo,
-click the **pencil** icon to edit, find the part that says
-`photos: {` and make it look like this (copy-paste, then fix any `.jpg`
-to `.png` where your files are PNGs):
+**4c. Tell the site they exist:** edit `js/manifest.js` and add one line
+per photo inside `photos: {` — the four already there show the pattern:
 
 ```js
-photos: {
-  "arch-welcome-wall": "assets/img/catalog/arch-welcome-wall.jpg",
-  "arched-welcome-sign": "assets/img/catalog/arched-welcome-sign.jpg",
-  "a-frame-welcome-sign": "assets/img/catalog/a-frame-welcome-sign.jpg",
-  "live-edge-welcome-sign": "assets/img/catalog/live-edge-welcome-sign.jpg",
-  "seating-chart-wall": "assets/img/catalog/seating-chart-wall.jpg",
-  "framed-seating-chart": "assets/img/catalog/framed-seating-chart.jpg",
-  "champagne-wall": "assets/img/catalog/champagne-wall.jpg",
-  "mobile-bar": "assets/img/catalog/mobile-bar.jpg",
-  "ceremony-arch": "assets/img/catalog/ceremony-arch.jpg",
-  "keepsake-established-sign": "assets/img/catalog/keepsake-established-sign.jpg"
-},
+"arched-welcome": "assets/img/catalog/arched-welcome.jpg",
 ```
 
-Press **Commit changes**, wait a minute, refresh the site — real photos.
-If one card still shows the placeholder, its file name and its line
-don't match exactly (check for typos and `.jpg` vs `.png`).
+Commit, wait a minute, refresh. If a card still shows the drawing, the
+file name and the line don't match exactly (`.jpg` vs `.png` counts).
 
 ## Part 5 — The hero video
 
@@ -183,29 +163,21 @@ gallery: [
 The Gallery section and its menu link appear automatically once there's
 at least one photo, and stay hidden while the list is empty.
 
-## Part 7 — Get inquiries straight into your inbox
+## Part 7 — Inquiries land in your inbox (already wired)
 
-**Today, with zero setup:** when a couple presses "Send inquiry," their
-own email app opens with everything they typed pre-filled, addressed to
-you. That works — but a visitor whose phone has no mail app set up can
-stall there.
+The form sends every inquiry straight to **will.smithmade@gmail.com**
+through FormSubmit — a free delivery service that needs no account.
 
-**The five-minute upgrade (recommended):**
+**One-time activation:** the very first submission makes FormSubmit send
+a confirmation email to that inbox. Open it and press the blue
+**Activate** button once. After that, every inquiry arrives
+automatically, formatted as a tidy table, and you can just press Reply
+to answer the couple.
 
-1. Go to **formspree.io** and create a free account (free tier is plenty
-   at this stage — 50 inquiries a month).
-2. Click **New form**, name it "Smith Made inquiries", and copy the
-   endpoint address it gives you — it looks like
-   `https://formspree.io/f/abcd1234`.
-3. In `js/manifest.js`, paste it into the `formEndpoint` line:
-
-```js
-formEndpoint: "https://formspree.io/f/abcd1234",
-```
-
-From then on the form sends directly from the website and inquiries
-land in your inbox. (First submission may ask you to confirm your email
-with Formspree — click the link they send once.)
+**If inquiries ever stop arriving:** check the spam folder first, then
+send a test from the site. To change the receiving address, edit the
+`formEndpoint` and `email` lines in `js/manifest.js` — the address
+appears right in the URL.
 
 ## Part 8 — Phone number and Instagram
 

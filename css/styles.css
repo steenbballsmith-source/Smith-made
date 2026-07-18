@@ -50,6 +50,9 @@
 *::before,
 *::after { box-sizing: border-box; }
 
+/* The hidden attribute always wins, even over display:flex/grid rules */
+[hidden] { display: none !important; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 1rem);
@@ -249,6 +252,7 @@ a:hover { color: var(--color-bark); }
 
 .site-nav__menu a:not(.button) {
   display: block;
+  position: relative;
   padding: 0.4em 0.25em;
   font-size: var(--text-sm);
   font-weight: 600;
@@ -257,6 +261,20 @@ a:hover { color: var(--color-bark); }
   color: var(--color-ink);
 }
 .site-nav__menu a:not(.button):hover { color: var(--color-brass); }
+
+.site-nav__menu a:not(.button)::after {
+  content: "";
+  position: absolute;
+  left: 0.25em;
+  right: 0.25em;
+  bottom: 0.1em;
+  height: 1.5px;
+  background: var(--color-brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+.site-nav__menu a:not(.button):hover::after { transform: scaleX(1); }
 
 @media (min-width: 56em) {
   .site-nav__toggle { display: none; }
@@ -435,9 +453,24 @@ a:hover { color: var(--color-bark); }
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 
-.piece__photo { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; background: var(--color-linen); }
+.piece:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-brass);
+  box-shadow: 0 2px 4px rgba(59, 44, 28, 0.08), 0 18px 40px rgba(59, 44, 28, 0.16);
+}
+
+.piece__photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  object-fit: cover;
+  background: var(--color-linen);
+  transition: transform 450ms ease;
+}
+
+.piece:hover .piece__photo { transform: scale(1.03); }
 
 .piece__body {
   display: flex;
@@ -581,6 +614,9 @@ a:hover { color: var(--color-bark); }
 
 .price-table td:last-child { white-space: nowrap; font-weight: 600; color: var(--color-bark); }
 
+.price-table tbody tr { transition: background 150ms ease; }
+.price-table tbody tr:hover { background: var(--color-linen); }
+
 .policies { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
 
 .policies li {
@@ -662,7 +698,11 @@ a:hover { color: var(--color-bark); }
   font-weight: 600;
   color: var(--color-bark);
   list-style-position: outside;
+  transition: color 150ms ease;
 }
+.faq summary:hover { color: var(--color-brass); }
+.faq details { transition: border-color 150ms ease; }
+.faq details:hover { border-color: var(--color-brass); }
 
 .faq details[open] summary { margin-bottom: var(--space-1); }
 .faq details p { margin: 0; font-size: var(--text-sm); color: var(--color-wood); }
