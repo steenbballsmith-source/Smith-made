@@ -13,7 +13,7 @@ Try **@smithmadesc** everywhere (fallbacks: @smithmade.sc, @smithmadeupstate).
 > Greenville, SC · serving the Upstate
 > Rent it for the weekend or keep it forever
 > Check your date ⤵
-(link: https://steenbballsmith-source.github.io/Smith-made/)
+(link: https://smithmadesc.com/)
 
 **TikTok bio:** Handbuilt wedding signage · Greenville SC · rent it or keep it forever
 **Pinterest bio:** Custom wood wedding signs, seating chart walls, arches & backdrops — handbuilt in Greenville, SC. Rent or buy.

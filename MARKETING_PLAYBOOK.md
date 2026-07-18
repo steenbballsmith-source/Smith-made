@@ -8,7 +8,7 @@ plan: relationships and search beat paid directories at launch.
 Google) → land on the website → inquire or pay the $50 date hold → Square
 invoice for the 50% deposit → build, deliver, review, repeat.
 
-Site: https://steenbballsmith-source.github.io/Smith-made/
+Site: https://smithmadesc.com/
 
 ---
 
@@ -28,7 +28,7 @@ Use exactly this:
 | Business type | **Service-area business** (no storefront — do NOT show your home address) |
 | Service areas | Greenville, Travelers Rest, Greer, Simpsonville, Easley, Taylors, Spartanburg, Anderson, Clemson, Pickens, Hendersonville NC, Asheville NC |
 | Phone | your cell |
-| Website | `https://steenbballsmith-source.github.io/Smith-made/` |
+| Website | `https://smithmadesc.com/` |
 | Hours | By appointment (or Mon–Sat 9–6) |
 | Opening date | July 2026 |
 
@@ -162,7 +162,7 @@ Zack Bradley Photography.
 > the photos. And any couple you send my way gets founder pricing while
 > I build my first-year portfolio.
 >
-> Full catalog: https://steenbballsmith-source.github.io/Smith-made/
+> Full catalog: https://smithmadesc.com/
 > Could I stop by for ten minutes some weekday?
 >
 > — Steen · Smith Made · Greenville · [phone]
