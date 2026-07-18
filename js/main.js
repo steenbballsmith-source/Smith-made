@@ -1,5 +1,7 @@
 /* Smith Made — site behavior. Reads owner settings from js/manifest.js
-   (window.SMITH_MADE) and progressively enhances the static page. */
+   (window.SMITH_MADE) and progressively enhances the static page.
+   The 3D scene and scroll animation live in js/scene.js; this file stays
+   dependency-free so contact details and booking work no matter what. */
 
 (function () {
   "use strict";
@@ -7,20 +9,26 @@
   var config = window.SMITH_MADE || {};
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Ask the scene (if it booted) to re-measure section anchors after
+     anything that changes page height — filters, gallery, photo swaps. */
+  function refreshScene() {
+    if (typeof window.__smRefresh === "function") window.__smRefresh();
+  }
+
   /* ---- Mobile navigation ------------------------------------------------ */
 
-  var nav = document.querySelector(".site-nav");
-  var toggle = document.querySelector(".site-nav__toggle");
+  var nav = document.getElementById("nav");
+  var toggle = document.querySelector(".nav-toggle");
 
   if (nav && toggle) {
     toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
+      var open = nav.classList.toggle("menu-open");
       toggle.setAttribute("aria-expanded", String(open));
     });
 
     nav.addEventListener("click", function (event) {
       if (event.target.closest("a")) {
-        nav.classList.remove("is-open");
+        nav.classList.remove("menu-open");
         toggle.setAttribute("aria-expanded", "false");
       }
     });
@@ -53,50 +61,6 @@
     instagram.hidden = false;
   }
 
-  /* ---- Hero: poster upgrade + optional background video ------------------ */
-
-  var heroMedia = document.querySelector("[data-hero-media]");
-  var heroPoster = document.querySelector("[data-hero-poster]");
-
-  if (heroPoster && config.heroPoster) {
-    var poster = new Image();
-    poster.onload = function () {
-      heroPoster.src = config.heroPoster;
-      heroPoster.classList.add("has-photo");
-    };
-    poster.src = config.heroPoster;
-  }
-
-  /* Only attempt video when the owner has supplied one, the visitor hasn't
-     asked for reduced motion, and they aren't on a data-saver connection. */
-  var connection = navigator.connection || {};
-  if (heroMedia && config.heroVideo && !reducedMotion && !connection.saveData) {
-    var video = document.createElement("video");
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.autoplay = true;
-    video.preload = "metadata";
-    video.setAttribute("aria-hidden", "true");
-    video.tabIndex = -1;
-    if (config.heroPoster) video.poster = config.heroPoster;
-
-    video.addEventListener("canplay", function () {
-      video.classList.add("is-playing");
-    });
-    video.addEventListener("error", function () {
-      video.remove(); /* fall back to the still image, no fuss */
-    });
-
-    video.src = config.heroVideo;
-    heroMedia.appendChild(video);
-
-    var playing = video.play();
-    if (playing && playing.catch) {
-      playing.catch(function () { video.remove(); });
-    }
-  }
-
   /* ---- Catalog photos: swap in real photos from the manifest ------------- */
 
   var photos = config.photos || {};
@@ -119,6 +83,11 @@
     holdCallout.hidden = false;
   }
 
+  function scrollToEl(el) {
+    if (window.__smLenis) window.__smLenis.scrollTo(el, { duration: 1.4 });
+    else el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+  }
+
   var inquiryForm = document.querySelector("[data-inquiry-form]");
   document.querySelectorAll("[data-book]").forEach(function (button) {
     button.addEventListener("click", function () {
@@ -130,7 +99,7 @@
       if (message && message.value.indexOf(note) === -1) {
         message.value = (message.value ? message.value + "\n" : "") + note;
       }
-      document.getElementById("inquire").scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+      scrollToEl(document.getElementById("inquire"));
       var names = inquiryForm.querySelector("#f-names");
       if (names) names.focus({ preventScroll: true });
     });
@@ -153,6 +122,7 @@
         piece.hidden = filter !== "all" &&
           piece.getAttribute("data-cats").split(" ").indexOf(filter) === -1;
       });
+      refreshScene();
     });
   });
 
@@ -177,8 +147,6 @@
     });
 
     gallerySection.hidden = false;
-    document.querySelectorAll("[data-gallery-link]").forEach(function (link) {
-      link.hidden = false;
-    });
+    refreshScene();
   }
 })();
