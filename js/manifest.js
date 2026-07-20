@@ -25,7 +25,7 @@ window.SMITH_MADE = {
      A wide photo (landscape, roughly 1600x900) shown behind
      the headline — and shown while the video loads too.
      Drop it in assets/img/ and point to it here:            */
-  heroPoster: "assets/img/hero-poster.jpg",
+  heroPoster: "",
 
   /* ---- PRODUCT PHOTOS -------------------------------------
      Drop each product photo into assets/img/catalog/ and add
@@ -40,10 +40,6 @@ window.SMITH_MADE = {
        grand-arch-welcome-wall  ceremony-arch-set
        slat-backdrop         mobile-bar                     */
   photos: {
-    "seating-chart-wall": "assets/img/catalog/seating-chart-wall.jpg",
-    "champagne-wall": "assets/img/catalog/champagne-wall.jpg",
-    "grand-arch-welcome-wall": "assets/img/catalog/grand-arch-welcome-wall.jpg",
-    "ceremony-arch-set": "assets/img/catalog/ceremony-arch-set.jpg",
   },
 
   /* ---- GALLERY --------------------------------------------

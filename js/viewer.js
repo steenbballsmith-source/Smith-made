@@ -408,7 +408,7 @@ const BUILD = {
     const eng = engraving(256, 256, (x) => {
       x.textAlign = 'center';
       x.font = '400 96px "Great Vibes", cursive';
-      x.fillText('S&M', 128, 160);
+      x.fillText('SM', 128, 160);
     });
     const plaque = new THREE.Group();
     const discGeo = new THREE.CylinderGeometry(0.42, 0.42, 0.05, 44);
