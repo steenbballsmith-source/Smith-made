@@ -34,6 +34,8 @@
     },
     "areaServed": ["Greenville SC", "Spartanburg SC", "Anderson SC", "Clemson SC", "Asheville NC", "Upstate South Carolina"],
     "priceRange": "$25-$550",
+    "url": "https://smithmadesc.com/",
+    "image": "https://smithmadesc.com/assets/img/og-image.png",
     "knowsAbout": ["wedding sign rental", "custom wood wedding signs", "seating chart rental", "wedding décor rental"]
   }
   </script>
@@ -59,6 +61,7 @@
       <a href="#collection" data-scroll>The Collection</a>
       <a href="#how-it-works" data-scroll>How It Works</a>
       <a href="#pricing" data-scroll>Pricing</a>
+      <a href="#gallery" hidden data-gallery-link data-scroll>Gallery</a>
       <a href="#faq" data-scroll>FAQ</a>
       <a class="btn nav-cta" href="#inquire" data-scroll>Check Your Date</a>
     </div>
@@ -82,6 +85,9 @@
             <a class="btn ghost" href="#collection" data-scroll>See the Collection</a>
           </div>
           <p class="hero-note" data-reveal>Rent it for the weekend &middot; buy it forever &middot; or rent&#8209;to&#8209;own</p>
+          <figure class="hero-media" data-hero-media data-reveal>
+            <img src="assets/img/hero-default.svg" alt="" width="1600" height="900" fetchpriority="high" data-hero-poster>
+          </figure>
         </div>
         <div class="hero-spacer" aria-hidden="true"></div>
       </div>
@@ -101,6 +107,8 @@
             calligraphy studio can&rsquo;t make and a party&#8209;rental warehouse doesn&rsquo;t carry:
             seven&#8209;foot arched walls, seating charts that stand on their own, a champagne wall,
             a rolling bar.</p>
+          <p class="lede" data-reveal>The biggest, most photographed pieces of your wedding
+            shouldn&rsquo;t have to be bought, shipped, or thrown away.</p>
           <div class="craft-points">
             <div data-reveal><span class="dot" aria-hidden="true">✦</span><span><b>Rent it.</b>&nbsp;
               Have a handbuilt piece for your whole wedding weekend. We deliver, style it at the venue,
@@ -302,7 +310,8 @@
         <p class="lede" data-reveal>Piece prices are on each design above. Packages, add&#8209;ons, and
           the fine print — the whole of it — live here.</p>
         <div class="pricing-grid">
-          <table class="price-table" data-reveal>
+          <div class="table-scroll" data-reveal>
+          <table class="price-table">
             <caption>Packages &amp; add&#8209;ons</caption>
             <thead>
               <tr>
@@ -334,6 +343,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
           <ul class="policies">
             <li data-reveal><strong>50% deposit books your date.</strong> The deposit covers materials and your build starts once it&rsquo;s paid. Non&#8209;refundable inside 60 days of the event.</li>
             <li data-reveal><strong>Refundable damage deposit on rentals.</strong> $100 (or 25% of the rental price), returned after pickup inspection. Candle wax washes off; we just check.</li>
@@ -364,27 +374,27 @@
         </div>
         <div class="faq">
           <details data-reveal>
-            <summary>How far do you deliver?</summary>
+            <summary><span class="faq-q">How far do you deliver?</span></summary>
             <p>Anywhere in the Upstate. Delivery, setup, and pickup is a flat $75 within 25 miles of Greenville, then $2 per mile beyond — Travelers Rest, Greer, Simpsonville, Spartanburg, Anderson, Clemson, Pickens, Hendersonville, and Asheville are all in range. We extend the radius for mountain venues, and large builds never ship — we deliver them ourselves.</p>
           </details>
           <details data-reveal>
-            <summary>How far ahead should we book?</summary>
+            <summary><span class="faq-q">How far ahead should we book?</span></summary>
             <p>Weddings happen on Saturdays, and we only take what one shop can deliver and style well in a day. Spring and fall Saturdays go first — if you have your date, it&rsquo;s worth checking now. The 50% deposit is what locks it.</p>
           </details>
           <details data-reveal>
-            <summary>Can we personalize a rental piece?</summary>
+            <summary><span class="faq-q">Can we personalize a rental piece?</span></summary>
             <p>Yes — that&rsquo;s the design. Your names and date go on in a removable layer (lettering, an engraved plaque, or a chalkboard insert), so the piece arrives personalized to you. Permanent, deep-engraved personalization is what our keepsake line is for.</p>
           </details>
           <details data-reveal>
-            <summary>What happens if something gets damaged?</summary>
+            <summary><span class="faq-q">What happens if something gets damaged?</span></summary>
             <p>Rentals carry a refundable damage deposit — $100 or 25% of the rental price — returned after pickup inspection. Normal wear is our problem, not yours. We also carry general liability insurance and can send a certificate to your venue.</p>
           </details>
           <details data-reveal>
-            <summary>How exactly does rent&#8209;to&#8209;own work?</summary>
+            <summary><span class="faq-q">How exactly does rent&#8209;to&#8209;own work?</span></summary>
             <p>Half of what you paid in rent counts toward the purchase price, capped at one event&rsquo;s rent. Example: the arched welcome sign rents for $95 and sells for $250 — keep it after your wedding for $250 &minus; $47 = $203. Just tell us before we load out.</p>
           </details>
           <details data-reveal>
-            <summary>Do you build things that aren&rsquo;t for weddings?</summary>
+            <summary><span class="faq-q">Do you build things that aren&rsquo;t for weddings?</span></summary>
             <p>Happily. Anniversary and &ldquo;established&rdquo; signs, housewarming pieces, holiday commissions — winter is build season in the shop. Use the inquiry form and tell us what you&rsquo;re imagining.</p>
           </details>
         </div>
@@ -432,11 +442,11 @@
             </div>
             <div class="form-row">
               <div>
-                <label for="f-phone">Phone <span aria-hidden="true">(optional)</span></label>
+                <label for="f-phone">Phone <span>(optional)</span></label>
                 <input id="f-phone" name="phone" type="tel" autocomplete="tel">
               </div>
               <div>
-                <label for="f-date">Wedding date <span aria-hidden="true">(a guess is fine)</span></label>
+                <label for="f-date">Wedding date <span>(a guess is fine)</span></label>
                 <input id="f-date" name="date" type="date">
               </div>
             </div>

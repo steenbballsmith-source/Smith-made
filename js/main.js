@@ -61,6 +61,50 @@
     instagram.hidden = false;
   }
 
+  /* ---- Hero: poster upgrade + optional background video ------------------ */
+
+  var heroMedia = document.querySelector("[data-hero-media]");
+  var heroPoster = document.querySelector("[data-hero-poster]");
+
+  if (heroPoster && config.heroPoster) {
+    var poster = new Image();
+    poster.onload = function () {
+      heroPoster.src = config.heroPoster;
+      heroPoster.classList.add("has-photo");
+    };
+    poster.src = config.heroPoster;
+  }
+
+  /* Only attempt video when the owner has supplied one, the visitor hasn't
+     asked for reduced motion, and they aren't on a data-saver connection. */
+  var connection = navigator.connection || {};
+  if (heroMedia && config.heroVideo && !reducedMotion && !connection.saveData) {
+    var video = document.createElement("video");
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.preload = "metadata";
+    video.setAttribute("aria-hidden", "true");
+    video.tabIndex = -1;
+    if (config.heroPoster) video.poster = config.heroPoster;
+
+    video.addEventListener("canplay", function () {
+      video.classList.add("is-playing");
+    });
+    video.addEventListener("error", function () {
+      video.remove(); /* fall back to the still image, no fuss */
+    });
+
+    video.src = config.heroVideo;
+    heroMedia.appendChild(video);
+
+    var playing = video.play();
+    if (playing && playing.catch) {
+      playing.catch(function () { video.remove(); });
+    }
+  }
+
   /* ---- Catalog photos: swap in real photos from the manifest ------------- */
 
   var photos = config.photos || {};
@@ -147,6 +191,9 @@
     });
 
     gallerySection.hidden = false;
+    document.querySelectorAll("[data-gallery-link]").forEach(function (link) {
+      link.hidden = false;
+    });
     refreshScene();
   }
 })();

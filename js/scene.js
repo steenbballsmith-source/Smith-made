@@ -26,6 +26,11 @@ if (!reduced && hasGsap && typeof window.Lenis === 'function') {
   window.gsap.ticker.lagSmoothing(0);
 }
 
+/* keep keyboard + history behavior when we hijack anchor clicks */
+function focusScrollTarget(el) {
+  if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+  el.focus({ preventScroll: true });
+}
 document.querySelectorAll('[data-scroll]').forEach((a) => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
@@ -33,8 +38,12 @@ document.querySelectorAll('[data-scroll]').forEach((a) => {
     const el = document.querySelector(id);
     if (!el) return;
     e.preventDefault();
-    if (lenis) lenis.scrollTo(el, { duration: 1.6 });
-    else el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+    history.replaceState(null, '', id);
+    if (lenis) lenis.scrollTo(el, { duration: 1.6, onComplete: () => focusScrollTarget(el) });
+    else {
+      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      focusScrollTarget(el);
+    }
   });
 });
 
@@ -148,6 +157,19 @@ function engravingTexture(w, h, draw) {
   t.colorSpace = THREE.SRGBColorSpace;
   t.anisotropy = 4;
   return t;
+}
+
+/* ============================================================
+   LOADER (declared before the renderer branch — the no-WebGL
+   path calls finishLoad() during module evaluation)
+============================================================ */
+let loaderDone = false;
+function finishLoad() {
+  if (loaderDone) return;
+  loaderDone = true;
+  const l = document.getElementById('loader');
+  if (l) setTimeout(() => l.classList.add('done'), 250);
+  if (hasGsap) setTimeout(() => window.ScrollTrigger.refresh(), 900);
 }
 
 const PAL_WALNUT = ['#7c4e26', '#956336', '#5e3a1c'];
@@ -405,21 +427,29 @@ if (!renderer) {
   const UNIT = 6.4;                    /* world units per viewport height */
   const vh = () => state.h;
   const objects = [];
+  /* outer groups ride the scroll journey (layout owns position/scale/rotY);
+     inner groups belong to the intro + finale tweens so the two systems
+     never write to the same property */
   let heroSign = null, finalSign = null;
+  let heroInner = null, finalInner = null;
 
   function journeyDepth() {
     return (document.body.scrollHeight / vh()) * UNIT;
   }
 
   function buildScene() {
-    heroSign = makeArchSign({ engrave: heroEngrave });
+    heroInner = makeArchSign({ engrave: heroEngrave });
+    heroSign = new THREE.Group();
+    heroSign.add(heroInner);
     const round = makeRoundSign({ engrave: roundEngrave });
     const heart = makeHeartSign({ engrave: heartEngrave });
     const trio = makeArchTrio({ engrave: monogramEngrave });
-    finalSign = makeArchSign({ palette: PAL_OAK, engrave: heroEngrave });
+    finalInner = makeArchSign({ palette: PAL_OAK, engrave: heroEngrave });
+    finalSign = new THREE.Group();
+    finalSign.add(finalInner);
 
     objects.push(
-      { group: heroSign, sel: '#hero',        xDesk: 1.85,  xMob: 1.15,  anchor: 0.46, scale: 1,    scaleMob: 0.44, rotY: -0.16, spin: 1 },
+      { group: heroSign, sel: '#hero',        xDesk: 1.85,  xMob: 1.22,  anchor: 0.46, scale: 1,    scaleMob: 0.44, rotY: -0.16, spin: 1 },
       { group: round,    sel: '#craft',       xDesk: -2.15, xMob: -0.8,  anchor: 0.42, scale: 1,    scaleMob: 0.5,  rotY: 0.22,  spin: -1 },
       { group: heart,    sel: '#collection',  xDesk: 2.55,  xMob: 0.8,   anchor: 0.45, scale: 0.85, scaleMob: 0.42, rotY: -0.2,  spin: 1 },
       { group: trio,     sel: '#faq',         xDesk: -2.45, xMob: -0.85, anchor: 0.7,  scale: 0.78, scaleMob: 0.44, rotY: 0.18,  spin: -1 },
@@ -470,10 +500,14 @@ if (!renderer) {
   function intro() {
     if (reduced || !hasGsap) return;
     const gsap = window.gsap;
-    gsap.from(heroSign.position, { y: heroSign.position.y - 1.6, duration: 1.6, ease: 'power3.out', delay: 0.15 });
-    gsap.from(heroSign.rotation, { y: -0.85, duration: 1.8, ease: 'power3.out', delay: 0.15 });
-    const s = heroSign.scale.x;
-    gsap.from(heroSign.scale, { x: s * 0.7, y: s * 0.7, z: s * 0.7, duration: 1.6, ease: 'power3.out', delay: 0.15 });
+    const heroObj = objects[0];
+    /* tick() adds introY to the hero's y every frame, so this survives the
+       per-frame position writes; rotation/scale ride the inner group, which
+       the scroll scrub (outer) never touches */
+    heroObj.introY = -1.6;
+    gsap.to(heroObj, { introY: 0, duration: 1.6, ease: 'power3.out', delay: 0.15 });
+    gsap.from(heroInner.rotation, { y: -0.85, duration: 1.8, ease: 'power3.out', delay: 0.15 });
+    gsap.from(heroInner.scale, { x: 0.7, y: 0.7, z: 0.7, duration: 1.6, ease: 'power3.out', delay: 0.15 });
   }
 
   /* scroll-scrubbed rotation as each section passes */
@@ -489,10 +523,12 @@ if (!renderer) {
         scrollTrigger: { trigger: o.el, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
       });
     });
-    /* the final sign grows slightly as the ending approaches */
-    gsap.fromTo(finalSign.scale,
-      { x: finalSign.scale.x * 0.8, y: finalSign.scale.y * 0.8, z: finalSign.scale.z * 0.8 },
-      { x: finalSign.scale.x, y: finalSign.scale.y, z: finalSign.scale.z, ease: 'none',
+    /* the final sign grows slightly as the ending approaches — tweens the
+       inner layer with fixed relative values, so breakpoint changes to the
+       outer layout scale never fight it */
+    gsap.fromTo(finalInner.scale,
+      { x: 0.8, y: 0.8, z: 0.8 },
+      { x: 1, y: 1, z: 1, ease: 'none',
         scrollTrigger: { trigger: '#inquire', start: 'top bottom', end: 'center center', scrub: 1.2 } });
   }
 
@@ -522,7 +558,7 @@ if (!renderer) {
         o.group.position.y = o.baseY;
         o.group.position.x = o.baseX;
       } else {
-        o.group.position.y = o.baseY + Math.sin(t * 0.75 + i * 1.7) * 0.075;
+        o.group.position.y = o.baseY + Math.sin(t * 0.75 + i * 1.7) * 0.075 + (o.introY || 0);
         o.group.position.x = o.baseX + Math.sin(t * 0.5 + i * 2.3) * 0.03;
       }
     });
@@ -561,16 +597,4 @@ if (!renderer) {
     tick();
     finishLoad();
   });
-}
-
-/* ============================================================
-   LOADER
-============================================================ */
-let loaderDone = false;
-function finishLoad() {
-  if (loaderDone) return;
-  loaderDone = true;
-  const l = document.getElementById('loader');
-  if (l) setTimeout(() => l.classList.add('done'), 250);
-  if (hasGsap) setTimeout(() => window.ScrollTrigger.refresh(), 900);
 }
