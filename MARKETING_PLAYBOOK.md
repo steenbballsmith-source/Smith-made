@@ -47,10 +47,10 @@ Use exactly this:
 > your date. Check your date on our website.
 
 **Services to add** (Services tab — each with price "from"):
-Wedding welcome sign rental, from $75 · Seating chart rental, from $125 ·
-Ceremony arch rental, from $295 · Wedding backdrop rental, from $250 ·
-Champagne wall rental, from $150 · Mobile bar rental, from $275 ·
-Custom keepsake wedding sign, from $195 · Delivery, setup & styling, from $75
+Wedding welcome sign rental, from $125 · Seating chart rental, from $275 ·
+Ceremony arch rental, from $425 · Wedding backdrop rental, from $375 ·
+Champagne wall rental, from $225 · Mobile bar rental, from $425 ·
+Custom keepsake wedding sign, from $375 · Delivery, setup & styling, from $95
 
 **Verification:** Google will verify by video (film your shop/tools/a
 piece) or postcard. Do it same day — profile is invisible until verified.
@@ -62,8 +62,8 @@ descriptively before uploading ("wedding-welcome-sign-greenville-sc.jpg").
 1. "Now booking fall 2026 weddings across the Upstate. Handbuilt wood
    signage — rent it for the weekend or keep it forever. Founder pricing
    for our first five couples." + arch render + Learn more → site
-2. "Rent-to-own: rent the arched welcome sign for $95, fall in love,
-   keep it for $203. Half your rent counts toward keeping the piece." +
+2. "Rent-to-own: rent the arched welcome sign for $150, fall in love,
+   keep it for $320. Half your rent counts toward keeping the piece." +
    render 01
 3. "Seating chart walls, champagne walls, a mobile bar — carpenter-scale
    pieces, delivered and styled at your venue. Check your date." + render 08
@@ -79,24 +79,24 @@ reviews' button]." 15+ reviews makes you the obvious local pick.
 Two ready-to-paste listings. Renew weekly (Marketplace buries old posts).
 Photos: use the renders. Location Greenville. Category: Home & Garden.
 
-**Listing A — flagship arch ($225):**
+**Listing A — flagship arch ($350):**
 > **Custom Wood Wedding Welcome Wall — Handbuilt in Greenville, Rent or Buy**
 > Seven-foot arched welcome wall, handbuilt to order in my Greenville
 > shop — limewash + walnut with your names in raised lettering. RENT for
-> your wedding weekend (from $225 — I deliver, style it at your venue,
-> and pick up after) or BUY it outright (from $550). Rent-to-own: half
+> your wedding weekend (from $350 — I deliver, style it at your venue,
+> and pick up after) or BUY it outright (from $995). Rent-to-own: half
 > your rent credits toward keeping it. Also building: seating chart
 > walls, champagne walls, ceremony arches, backdrops, mobile bar, and
-> engraved keepsake signs (from $25–$295). Made-to-order — your wording
+> engraved keepsake signs (from $45–$425). Made-to-order — your wording
 > approved in writing with a free proof before I cut anything. 50%
 > deposit books your date. Serving the whole Upstate + Asheville.
 > Founder pricing for my first five 2026–27 couples in exchange for
 > photos & a review. Website + full catalog in comments.
 
-**Listing B — keepsake round ($225):**
+**Listing B — keepsake round ($375):**
 > **Engraved "Established" Family Sign — Deep-Carved Walnut Keepsake**
 > Your family name and wedding date, deep-carved into solid dark walnut.
-> Hangs at the reception, then above your mantel forever. From $225,
+> Hangs at the reception, then above your mantel forever. From $375,
 > made to order in Greenville (2–3 week build). Free proof of the exact
 > design before anything is cut; 50% deposit to start. Local pickup or
 > delivery. Also: welcome signs, seating charts, arches & more for

@@ -223,6 +223,12 @@ summary:focus-visible {
   transition: color 0.3s;
 }
 .nav-links a:hover { color: var(--caramel); }
+.nav-links a.active {
+  color: var(--caramel-deep);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-color: var(--brass);
+}
 
 .nav-toggle {
   display: none;
@@ -293,7 +299,24 @@ summary:focus-visible {
 
 /* ---------- shared section bones ---------- */
 section { position: relative; padding: 0 clamp(20px, 6vw, 72px); }
-.wrap { max-width: 1200px; margin: 0 auto; width: 100%; }
+.wrap { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+
+/* giant script whispers behind a couple of sections */
+.watermark {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-script);
+  font-size: clamp(6rem, 17vw, 15rem);
+  line-height: 1;
+  white-space: nowrap;
+  color: rgba(90, 63, 40, 0.05);
+}
+#craft .watermark { top: 2vh; right: -2vw; transform: rotate(-4deg); }
+#inquire .watermark { top: 40vh; left: 50%; transform: translateX(-50%) rotate(-3deg); }
+/* watermarks never widen the page */
+#craft, #inquire { overflow: hidden; }
 .kicker {
   font-size: 0.78rem;
   letter-spacing: 0.34em;
@@ -418,7 +441,7 @@ p.lede.center { margin: 0 auto; }
 
 /* ---------- craft feature ---------- */
 .feature { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 10vh; padding-bottom: 8vh; }
-.feature .wrap:first-child {
+.feature .feature-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(30px, 6vw, 90px);
@@ -514,6 +537,9 @@ p.lede.center { margin: 0 auto; }
   transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .piece:hover .piece-media img { transform: scale(1.045); }
+@keyframes photoIn { from { opacity: 0; } to { opacity: 1; } }
+.piece-media img.has-photo,
+.hero-media img.has-photo { animation: photoIn 0.7s ease; }
 .piece-body { padding: 22px 24px 24px; }
 .piece-kicker {
   font-family: var(--font-display);
@@ -948,7 +974,7 @@ p.lede.center { margin: 0 auto; }
   #hero .wrap { grid-template-columns: 1fr; }
   .hero-spacer { display: none; }
   .hero-media { width: min(100%, 440px); margin-top: 36px; transform: none; }
-  .feature .wrap:first-child { grid-template-columns: 1fr; }
+  .feature .feature-grid { grid-template-columns: 1fr; }
   .feature .filler { display: none; }
   .process-grid { grid-template-columns: 1fr; }
   .sticky-side { position: static; }

@@ -29,20 +29,20 @@ Post the image named, paste the caption, add hashtag set A or B (rotate).
    after the last dance. Welcome, y'all. 🪵"
 2. **The Arched Welcome (render 01).** "The first thing your guests
    see. The Arched Welcome — walnut, your names, your date. Rent from
-   $75 or keep it forever from $195. Concept No. 01 of 10."
+   $125 or keep it forever from $395. Concept No. 01 of 10."
 3. **Rent-to-own explainer (render 01 again or graphic).** "Our
-   favorite math: rent the welcome sign for $95. Fall in love with it.
-   Half your rent comes off the price — take it home for $203, not
-   $250. That's rent-to-own, and it works on eligible pieces."
+   favorite math: rent the welcome sign for $150. Fall in love with it.
+   Half your rent comes off the price — take it home for $320, not
+   $395. That's rent-to-own, and it works on eligible pieces."
 4. **Seating Chart Wall (photo render 02).** "Finding your table
    should feel like part of the evening. Oak plank seating chart wall,
-   hand-lettered for your guest list. From $125."
+   hand-lettered for your guest list. From $275."
 5. **Champagne Wall (photo render 04).** "Fifteen glasses served
    straight from the wall as cocktail hour opens. The photo everyone
-   takes home. From $150 for the weekend."
+   takes home. From $225 for the weekend."
 6. **The Family Round (render 03).** "Some pieces don't come back to
    the shop. Deep-carved walnut — your name, your date, established
-   forever. Hangs at the reception, then above your mantel. From $225."
+   forever. Hangs at the reception, then above your mantel. From $375."
 7. **How it works (Grand Arch photo render 07).** "How it works: pick
    your pieces → 50% deposit books your Saturday → we build yours new →
    we deliver, style, and pick up. You never lift a thing."
