@@ -114,7 +114,10 @@
     /* Preload, then swap — the placeholder stays visible until the real
        photo is ready, so there's never a blank card. */
     var real = new Image();
-    real.onload = function () { img.src = src; };
+    real.onload = function () {
+      img.src = src;
+      img.classList.add("has-photo");
+    };
     real.src = src;
   });
 

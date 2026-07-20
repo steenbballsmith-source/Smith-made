@@ -47,10 +47,19 @@ document.querySelectorAll('[data-scroll]').forEach((a) => {
   });
 });
 
-/* nav frosting on scroll */
+/* nav frosting + section spy on scroll */
 const nav = document.getElementById('nav');
+const spyLinks = Array.from(document.querySelectorAll('.nav-links a:not(.nav-cta)'))
+  .map((a) => ({ a, el: document.querySelector(a.getAttribute('href') || '') }))
+  .filter((x) => x.el);
 function updateNav() {
   if (nav) nav.classList.toggle('scrolled', (window.scrollY || 0) > 60);
+  const probe = (window.scrollY || 0) + window.innerHeight * 0.35;
+  let current = null;
+  spyLinks.forEach((x) => {
+    if (!x.a.hidden && x.el.offsetTop <= probe) current = x;
+  });
+  spyLinks.forEach((x) => x.a.classList.toggle('active', x === current));
 }
 window.addEventListener('scroll', updateNav, { passive: true });
 updateNav();
@@ -72,6 +81,18 @@ function bindReveals() {
     gsap.to(beam, { scaleY: 1, ease: 'none',
       scrollTrigger: { trigger: '.steps', start: 'top 75%', end: 'bottom 55%', scrub: 1 } });
   }
+  /* shop facts count up as they enter */
+  document.querySelectorAll('.facts strong').forEach((el) => {
+    const m = el.textContent.trim().match(/^(\d+)(.*)$/);
+    if (!m) return;
+    const end = Number(m[1]), suffix = m[2];
+    const counter = { v: 0 };
+    gsap.to(counter, {
+      v: end, duration: 1.6, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+      onUpdate: () => { el.textContent = Math.round(counter.v) + suffix; }
+    });
+  });
 }
 bindReveals();
 
@@ -449,11 +470,11 @@ if (!renderer) {
     finalSign.add(finalInner);
 
     objects.push(
-      { group: heroSign, sel: '#hero',        xDesk: 1.85,  xMob: 1.22,  anchor: 0.46, scale: 1,    scaleMob: 0.44, rotY: -0.16, spin: 1 },
+      { group: heroSign, sel: '#hero',        xDesk: 1.85,  xMob: 1.22,  anchor: 0.46, scale: 1,    scaleMob: 0.44, rotY: -0.16, spin: 1, sway: 1 },
       { group: round,    sel: '#craft',       xDesk: -2.15, xMob: -0.8,  anchor: 0.42, scale: 1,    scaleMob: 0.5,  rotY: 0.22,  spin: -1 },
       { group: heart,    sel: '#collection',  xDesk: 2.55,  xMob: 0.8,   anchor: 0.45, scale: 0.85, scaleMob: 0.42, rotY: -0.2,  spin: 1 },
       { group: trio,     sel: '#faq',         xDesk: -2.45, xMob: -0.85, anchor: 0.7,  scale: 0.78, scaleMob: 0.44, rotY: 0.18,  spin: -1 },
-      { group: finalSign, sel: '#inquire',    xDesk: 0,     xMob: 0,     anchor: 0.12, scale: 0.94, scaleMob: 0.56, rotY: 0,     spin: 0.8 }
+      { group: finalSign, sel: '#inquire',    xDesk: 0,     xMob: 0,     anchor: 0.12, scale: 0.94, scaleMob: 0.56, rotY: 0,     spin: 0.8, sway: 1 }
     );
     objects.forEach((o) => {
       o.el = document.querySelector(o.sel);
@@ -560,6 +581,8 @@ if (!renderer) {
       } else {
         o.group.position.y = o.baseY + Math.sin(t * 0.75 + i * 1.7) * 0.075 + (o.introY || 0);
         o.group.position.x = o.baseX + Math.sin(t * 0.5 + i * 2.3) * 0.03;
+        /* hanging signs sway gently on their ropes */
+        if (o.sway) o.group.rotation.z = Math.sin(t * 0.55 + i * 2.1) * 0.02;
       }
     });
 
