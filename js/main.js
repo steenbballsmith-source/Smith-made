@@ -66,6 +66,12 @@
   var heroMedia = document.querySelector("[data-hero-media]");
   var heroPoster = document.querySelector("[data-hero-poster]");
 
+  /* No real photo or video yet? Hide the card — the 3D sign carries the
+     hero until the owner drops a real shot into the manifest. */
+  if (heroMedia && !config.heroPoster && !config.heroVideo) {
+    heroMedia.hidden = true;
+  }
+
   if (heroPoster && config.heroPoster) {
     var poster = new Image();
     poster.onload = function () {

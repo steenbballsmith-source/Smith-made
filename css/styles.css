@@ -972,6 +972,13 @@ p.lede.center { margin: 0 auto; }
   color: var(--ink-soft);
   margin-top: 6px;
 }
+.viewer-sample {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--caramel-text);
+  margin-top: 8px;
+}
 .viewer-close {
   position: absolute;
   top: -6px;
