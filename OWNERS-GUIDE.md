@@ -198,13 +198,13 @@ All the words and prices live in one file: `index.html`.
 1. Open `index.html` in the repo and click the **pencil** to edit.
 2. Press `Ctrl+F` and search for the piece or phrase — for example
    "Arched Welcome Sign". Its price is a few lines below, between
-   `<strong>` and `</strong>` — like `<strong>$150</strong>`.
+   `<strong>` and `</strong>` — like `<strong>$175</strong>`.
 3. Change the number (or the sentence), leave the surrounding tags
    exactly as they are, and **Commit changes**.
 
 Packages, delivery fees, and policy wording are in the same file under
 the "Pricing" section. The FAQ answers and the rent-to-own example are
-there too — if you raise the welcome-sign price, remember the $150/$320
+there too — if you raise a price, remember any example that quotes it elsewhere
 example appears in a couple of places.
 
 ## Part 10 — Later: your own domain name

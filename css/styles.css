@@ -359,19 +359,17 @@ p.lede.center { margin: 0 auto; }
   align-items: center;
   padding-top: 80px;
 }
-#hero .wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 30px;
-  align-items: center;
-}
+#hero .wrap { max-width: 820px; text-align: center; }
+#hero .kicker { justify-content: center; }
+#hero p.lede { margin-left: auto; margin-right: auto; }
+.hero-ctas { justify-content: center; }
 #hero h1 { font-size: clamp(2.7rem, 6vw, 5.2rem); }
 #hero h1 .script {
   display: block;
   font-size: clamp(3.2rem, 7vw, 6.2rem);
   margin-top: 0.06em;
   transform: rotate(-2deg);
-  transform-origin: left;
+  transform-origin: center;
 }
 #hero p.lede { margin: 28px 0 38px; }
 .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
@@ -392,7 +390,7 @@ p.lede.center { margin: 0 auto; }
 /* framed photo card (owner's manifest heroPoster/heroVideo land here),
    pinned under the hero copy like a photo on a workbench */
 .hero-media {
-  margin: 44px 0 0;
+  margin: 44px auto 0;
   width: min(100%, 380px);
   aspect-ratio: 16 / 10;
   border-radius: 18px;
@@ -403,7 +401,6 @@ p.lede.center { margin: 0 auto; }
   transform: rotate(-2deg);
   background: var(--cream-2);
 }
-.hero-spacer { min-height: 10px; }
 .hero-media img,
 .hero-media video {
   width: 100%;
@@ -448,14 +445,8 @@ p.lede.center { margin: 0 auto; }
 
 /* ---------- craft feature ---------- */
 .feature { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 10vh; padding-bottom: 8vh; }
-.feature .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(30px, 6vw, 90px);
-  align-items: center;
-}
+.feature .feature-grid { max-width: 720px; }
 .feature h2 { margin-bottom: 24px; }
-.feature .filler { min-height: 1px; }
 .craft-points { margin-top: 34px; display: flex; flex-direction: column; gap: 18px; }
 .craft-points > div { display: flex; gap: 16px; align-items: baseline; color: var(--ink-soft); line-height: 1.65; }
 .craft-points b { font-weight: 500; color: var(--ink); }
@@ -565,13 +556,6 @@ p.lede.center { margin: 0 auto; }
 .piece-desc { color: var(--ink-soft); line-height: 1.7; font-size: 0.95rem; }
 .piece-price { margin-top: 14px; font-size: 0.92rem; color: var(--ink-soft); }
 .piece-price strong { font-weight: 500; color: var(--ink); }
-.piece-flag {
-  margin-top: 6px;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--link);
-}
 .piece-book { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 .view3d { border-color: rgba(193, 154, 98, 0.7); }
 .view3d::before { content: "◆ "; color: var(--brass-text); }
@@ -645,16 +629,6 @@ p.lede.center { margin: 0 auto; }
 .step h3 { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; margin: 8px 0 10px; }
 .step p { color: var(--ink-soft); line-height: 1.75; max-width: 46ch; }
 
-.rto-callout {
-  border: 1px solid rgba(176, 125, 79, 0.45);
-  border-radius: 18px;
-  padding: 28px 30px;
-  background: linear-gradient(160deg, rgba(255, 236, 210, 0.5), rgba(255, 255, 255, 0.12));
-}
-.rto-callout h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; margin-bottom: 10px; }
-.rto-script { font-size: 1.25em; }
-.rto-callout p { color: var(--ink-soft); line-height: 1.75; }
-.rto-callout strong { color: var(--ink); font-weight: 500; }
 
 /* ---------- pricing ---------- */
 #pricing { padding-top: 12vh; padding-bottom: 14vh; }
@@ -792,7 +766,7 @@ p.lede.center { margin: 0 auto; }
 /* ---------- contact / inquire ---------- */
 #inquire { padding-top: 14vh; padding-bottom: 0; }
 /* empty stage where the finale sign floats alone before the heading arrives */
-.finale-space { height: 62vh; }
+.finale-space { height: 8vh; }
 .contact-head { text-align: center; }
 .script-line {
   font-family: var(--font-script);
@@ -1044,16 +1018,13 @@ body.viewer-open { overflow: hidden; }
   .nav-toggle { display: inline-flex; }
 
   #hero { padding-top: 110px; padding-bottom: 96px; }
-  #hero .wrap { grid-template-columns: 1fr; }
-  .hero-spacer { display: none; }
   .hero-media { width: min(100%, 440px); margin-top: 36px; transform: none; }
-  .feature .feature-grid { grid-template-columns: 1fr; }
   .feature .filler { display: none; }
   .process-grid { grid-template-columns: 1fr; }
   .sticky-side { position: static; }
   .steps { margin-top: 10px; }
   .foot { grid-template-columns: 1fr; gap: 24px; }
-  .finale-space { height: 40vh; }
+  .finale-space { height: 5vh; }
 }
 
 @media (max-width: 480px) {
