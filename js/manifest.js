@@ -83,6 +83,6 @@ window.SMITH_MADE = {
 
   /* ---- CONTACT DETAILS ------------------------------------ */
   email: "will.smithmade@gmail.com",
-  phone: "",                 /* e.g. "(864) 555-0123"        */
+  phone: "(541) 570-5570",
   instagram: ""              /* e.g. "https://instagram.com/smithmadesc" */
 };
