@@ -1,7 +1,7 @@
 # Smith Made
 
 Custom wood wedding signage & décor — handbuilt in Greenville, SC.
-Rent it for the weekend, buy it forever, or rent-to-own.
+Rent it for the weekend, or buy it forever.
 
 This repository is the production website: a fast, static, single-page
 site with no frameworks and no build step — now a scroll-based 3D
