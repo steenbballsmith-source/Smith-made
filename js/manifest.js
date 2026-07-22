@@ -49,6 +49,14 @@ window.SMITH_MADE = {
      The gallery section stays hidden until this list has at
      least one photo in it.                                  */
   gallery: [
+    "assets/img/gallery/lookbook-06-arch-trio.jpg",
+    "assets/img/gallery/lookbook-01-arch-shelf.jpg",
+    "assets/img/gallery/lookbook-08-walkthrough-arch.jpg",
+    "assets/img/gallery/lookbook-02-wave-backdrop.jpg",
+    "assets/img/gallery/lookbook-03-plinths.jpg",
+    "assets/img/gallery/lookbook-04-cake-rounds.jpg",
+    "assets/img/gallery/lookbook-07-arch-pair.jpg",
+    "assets/img/gallery/lookbook-05-round-disc.jpg",
   ],
 
   /* ---- PAYMENTS: THE $50 DATE HOLD ------------------------
