@@ -190,7 +190,7 @@
       var item = document.createElement("li");
       var img = document.createElement("img");
       img.src = src;
-      img.alt = "Smith Made piece at a wedding — gallery photo " + (index + 1);
+      img.alt = "Smith Made design render — lookbook image " + (index + 1);
       img.loading = "lazy";
       img.width = 600;
       img.height = 600;
