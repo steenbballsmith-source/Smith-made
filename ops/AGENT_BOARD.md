@@ -310,3 +310,13 @@ enable Codex to choose the local package.
 Local branch `codex/site-qa-resilience` has tested commit `bc4fad2`. It has not
 been pushed. Steen must specifically approve the public-safe draft PR. This
 does not replace Will's separate real-inbox delivery test.
+
+---
+
+### STATE-BRIDGE-004 — Bridge the authorized Smith Digital outreach state
+**Status: ACTIVE · Owner: CODEX · Started 2026-07-30 16:24 PDT**
+
+Record only the public-safe authorization, bounded-send guardrails, aggregate
+completion, follow-up ownership, and release-check automation. Keep prospect
+identities, addresses, subjects, message IDs, findings, and private pipeline
+details in the local ops repository.
