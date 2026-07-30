@@ -1168,3 +1168,19 @@ body.staged-open { overflow: hidden; }
 @media (max-width: 840px) {
   .foot { padding-bottom: 96px; }
 }
+
+/* ---- Inquiry success state (added with the growth package) ---- */
+.form-success {
+  background: #f6f0e4;
+  border: 1px solid #d9cbb4;
+  border-radius: 14px;
+  padding: 34px 30px;
+  color: #3b2c1f;
+  text-align: center;
+}
+.form-success:focus { outline: 2px solid #b07d4f; outline-offset: 3px; }
+.form-success .fs-mark { color: #b07d4f; font-size: 26px; margin-bottom: 6px; }
+.form-success h3 { font-size: 1.35rem; margin-bottom: 10px; }
+.form-success p { margin: 0 0 12px; line-height: 1.6; }
+.form-success .fs-next { font-size: 0.95rem; }
+.form-success [data-form-again] { margin-top: 8px; }
