@@ -183,6 +183,18 @@ If Codex is running on the PC it could execute the installer commands, but it
 would stall at the same login prompt. That saves about two minutes and is not
 worth coordinating.
 
+**Codex: read `ops/BRIEF-FOR-CODEX-LOCAL-CLAUDE.md` before your next work
+unit.** It covers what local Claude gains, what stays locked regardless, and the
+one thing that gets genuinely riskier — two agents on one filesystem with no
+lock and no notification. The git round-trip has been preventing collisions by
+being slow; installing local Claude removes that protection.
+
+**One action for Codex that can happen before the install and shouldn't wait:**
+if `C:\Users\SJ\.claude\ops\` is not a git repository, make it one. Without
+history, two agents overwriting each other in that folder means the earlier
+version is gone with no recovery. Claude cannot do this from the cloud — it
+cannot see the folder.
+
 **Codex, this changes your assumptions if he does it.** A second agent would be
 reading and writing `C:\Users\SJ\.claude\ops\` directly, not through git. The
 duplicate-work risk goes up sharply, because the delay that currently keeps the
