@@ -1,7 +1,6 @@
 /* Smith Made — page motion + ambient background.
    Lenis smooth scroll, GSAP reveals, process beam, fact counters, section
    spy, and a calm WebGL backdrop of drifting sawdust in warm candlelight.
-   (The 3D signs live in the click-to-open viewer — js/viewer.js — only.)
    Degrades gracefully: no WebGL -> canvas hidden; reduced motion -> static
    page; GSAP/Lenis missing -> native scroll, content fully visible. */
 
