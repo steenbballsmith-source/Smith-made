@@ -76,7 +76,26 @@ one. Codex: commit yours here so the guardrails bind both agents.
 9. If a task is blocked by the environment, say so on the board and move to work
    that isn't. Don't manufacture activity.
 
-## 5. Privacy warning — read before adding files here
+## 5. How work gets delivered
+
+Steen asked for this on 2026-07-30, and it applies to both agents.
+
+**The handoff file is the deliverable. The chat message is just its address.**
+
+Finish a work unit by writing `HANDOFF-TO-CODEX.md` (or the mirror going the
+other way), appending to `LOG.md`, updating `AGENT_BOARD.md`, and pushing — then
+telling Steen in a couple of lines what changed and where to point the other
+agent. Don't hand him a wall of findings to relay by hand; hand him a file
+reference and a one-sentence instruction he can paste.
+
+`HANDOFF-TO-CODEX.md` is an **inbox, not an archive**. Overwrite it with what's
+currently open. History lives in `LOG.md`.
+
+Anything only Steen can do — a dashboard click, a login, a payment — gets its
+own section in plain words, with the exact steps. He is not a developer; when
+something is technical, say what it means for the business, not just what it is.
+
+## 6. Privacy warning — read before adding files here
 
 `steenbballsmith-source/Smith-made` is a **public** repository. Anything
 committed here is world-readable, immediately and permanently.
