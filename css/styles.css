@@ -527,6 +527,8 @@ p.lede.center { margin: 0 auto; }
 }
 .piece:hover::before { opacity: 1; }
 /* 4:3 — the staged photos' own shape, so the whole scene shows */
+/* deep links land below the fixed nav, not under it */
+.piece { scroll-margin-top: 96px; }
 .piece-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream-2); }
 /* the media is a button: tap it to open the piece staged and larger */
 .piece-stage {
@@ -725,6 +727,15 @@ p.lede.center { margin: 0 auto; }
   box-shadow: 0 44px 70px -34px rgba(59, 44, 31, 0.7);
 }
 .gallery figure { margin: 0; }
+.gallery-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: 16px;
+}
 .gallery figcaption {
   margin-top: 10px;
   font-size: 0.74rem;
