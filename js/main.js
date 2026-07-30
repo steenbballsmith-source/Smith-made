@@ -206,6 +206,26 @@
     });
   });
 
+  /* ---- Phone action bar: appears once the hero is behind you ------------- */
+
+  var actionBar = document.querySelector("[data-action-bar]");
+  var actionCall = document.querySelector("[data-action-call]");
+  if (actionBar) {
+    if (actionCall && config.phone) {
+      actionCall.href = "tel:" + config.phone.replace(/[^+\d]/g, "");
+      actionCall.hidden = false;
+    }
+    var hero = document.getElementById("hero");
+    if (hero && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        /* visible hero -> no bar; the opening screen stays uncluttered */
+        actionBar.hidden = entries[0].isIntersecting;
+      }, { rootMargin: "-70% 0px 0px 0px" }).observe(hero);
+    } else {
+      actionBar.hidden = false;
+    }
+  }
+
   /* ---- Reviews: real ones only, straight from the manifest --------------- */
 
   var reviewsSection = document.querySelector("[data-reviews-section]");
