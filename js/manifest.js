@@ -88,6 +88,17 @@ window.SMITH_MADE = {
      in place of the FormSubmit one.)                         */
   formEndpoint: "https://formsubmit.co/ajax/will.smithmade@gmail.com",
 
+  /* ---- REVIEWS --------------------------------------------
+     REAL reviews only — never write one yourself, and never
+     paste one a couple didn't actually send you. Add each as:
+       { name: "Hannah & Cole", date: "June 2026",
+         venue: "The Hollow at Paris Mountain",
+         text: "The arch was the first thing everyone saw." },
+     `venue` and `date` are optional. The Couples section and
+     its menu link stay hidden until there's one in here.    */
+  reviews: [
+  ],
+
   /* ---- CONTACT DETAILS ------------------------------------ */
   email: "will.smithmade@gmail.com",
   phone: "(541) 570-5570",
