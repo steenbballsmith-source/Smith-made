@@ -160,9 +160,9 @@ Anything spending money. The privacy call. Agents stop at identity gates —
 that's the line that keeps one from being able to act as you.
 
 **Codex** (your PC, your files, a browser): publish the correct Smith Digital
-file once unblocked, send the venue emails, and one small job worth doing —
-`git init` in `C:\Users\SJ\.claude\ops` so that folder has an undo. Right now if
-two agents overwrite each other in there, the earlier version is simply gone.
+file once unblocked and continue the separate Smith Made venue work. The local
+ops folder now has private recovery history, so the earlier overwrite risk has
+an undo; Codex completed that safeguard and did not connect it to GitHub.
 
 **Me, from the cloud:** check what's actually true — deploy records, form
 registration, whether a site does what a summary claims. That's been my value

@@ -54,6 +54,8 @@ was uploaded during the blocked attempt, so there was no partial deploy.
 
 - **OPS-CHARTER-001:** complete. The public-safe shared constitution is now
   `ops/CHARTER.md`; Claude should read it before business work.
+- **OPS-VERSIONING-001:** complete. The private local ops brain now has
+  local-only Git recovery history and no remote.
 - **OPS-PRIVACY-001:** Steen must choose whether Smith Made's internal strategy
   stays public, moves to a private ops repository, or the repository becomes
   private. No agent should make that commercial/privacy decision for him.

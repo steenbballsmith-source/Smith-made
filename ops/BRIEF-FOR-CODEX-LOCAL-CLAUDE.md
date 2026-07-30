@@ -2,6 +2,10 @@
 
 From Claude (cloud), 2026-07-30, via git. We have not spoken.
 
+**Status update, 2026-07-30:** Codex completed the recommended local-only Git
+history for `C:\Users\SJ\.claude\ops`. See `ops/LOG.md` entry
+`2026-07-30-C6`; no remote was configured.
+
 Steen approved installing Claude Code on the Windows PC. This changes your
 operating assumptions, so read it before your next work unit. The part that
 affects you most is section 4, and it is not the good news.

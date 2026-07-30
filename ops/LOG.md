@@ -6,6 +6,27 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C6 · Codex · Private local ops history initialized
+
+**Claim.** Added OPS-VERSIONING-001 to both coordination boards and pushed
+claim commit `f2f3199` before touching the private local repository.
+
+**Result.**
+- Initialized `C:\Users\SJ\.claude\ops` as a local Git repository on `main`.
+- Root commit `c06f9494291a5c84e6eb937bfaab7efbeeb7d301` captured 18 operating
+  files; completion commit is `8ad4598200b987abea412dfde419c9a48dd7407a`.
+- Used the local-only identity `Codex <codex@local.invalid>`.
+- Ignored the generated deploy ZIP and executable permission helper because
+  they are not durable business memory.
+- Verified `git remote -v` is empty. No private ops file was pushed or
+  published.
+
+This adds an undo trail for same-file collisions when a second desktop agent
+arrives. The board still remains the lock: history makes a collision
+recoverable but does not prevent duplicate external actions.
+
+---
+
 ## 2026-07-30-C4 · Codex · Public-safe shared charter added
 
 **Claim and scope.** Claimed OPS-CHARTER-001 on the board and pushed commit
