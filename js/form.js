@@ -57,9 +57,16 @@
     })
       .then(function (response) {
         if (!response.ok) throw new Error("HTTP " + response.status);
-        say(config.dateHoldUrl
-          ? "Sent! We’ll get back to you within a day or two. Want the date locked today? Pay the $50 date hold above — it counts toward your balance."
-          : "Sent! We’ll get back to you within a day or two.", true);
+        /* Analytics: the inquiry happened + which channel produced it.
+           Deliberately NO names, emails, phones, or message text. */
+        if (window.smTrack) {
+          window.smTrack("inquiry_submit", {
+            heard_about: data.get("heard_about") || "(not answered)",
+            utm_source: data.get("utm_source") || "",
+            utm_medium: data.get("utm_medium") || ""
+          });
+        }
+        showSuccess();
         form.reset();
       })
       .catch(function () {
@@ -68,6 +75,28 @@
       .then(function () {
         button.disabled = false;
       });
+  }
+
+  /* Replace the form with a clear success state: what happened, when we
+     reply, and the next step. The form stays in the DOM (display:none)
+     so "Send another inquiry" can bring it straight back. */
+  function showSuccess() {
+    var success = document.querySelector("[data-form-success]");
+    if (!success) { say("Sent! We’ll get back to you within a day or two.", true); return; }
+    form.style.display = "none";
+    success.hidden = false;
+    success.focus();
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
+    var again = success.querySelector("[data-form-again]");
+    if (again && !again.__wired) {
+      again.__wired = true;
+      again.addEventListener("click", function () {
+        success.hidden = true;
+        form.style.display = "";
+        say("", true);
+        form.querySelector("input, select, textarea").focus();
+      });
+    }
   }
 
   function submitViaEmail(data) {

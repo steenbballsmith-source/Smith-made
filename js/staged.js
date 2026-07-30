@@ -50,8 +50,16 @@
       if (look.src && img.getAttribute("src") !== look.src) img.src = look.src;
     };
     img.src = look.webp || look.src;
-    img.alt = "Smith Made piece staged — " + look.finish;
+    img.alt = look.alt || ("Smith Made piece staged — " + look.finish);
     finishLine.textContent = look.finish;
+    /* Analytics (no personal data): which piece + finish was viewed. */
+    if (window.smTrack) {
+      var pieceLi = opener && opener.closest("li.piece");
+      window.smTrack("finish_view", {
+        piece: pieceLi && pieceLi.id ? pieceLi.id.replace(/^piece-/, "") : "",
+        finish: look.finish
+      });
+    }
     dots.querySelectorAll("button").forEach(function (dot, n) {
       dot.setAttribute("aria-selected", String(n === index));
       dot.classList.toggle("is-active", n === index);
