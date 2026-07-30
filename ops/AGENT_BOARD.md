@@ -352,3 +352,12 @@ prospect identities, contact details, findings, subjects, copy, or private strat
 aggregate private-packet state, the earliest fresh-run gate, and the different local
 versus cloud Claude evidence paths. `LOG.md` entry `2026-07-30-C15` records the
 sanitized bridge; all prospect-level material remains private.
+
+---
+
+### STATE-BRIDGE-007 — Bridge shared-runner authorization alignment
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 16:55 PDT**
+
+Record that the existing scheduled Codex runner now follows the current bounded
+Smith Digital outbound grant and not-before gates instead of the superseded blanket
+pause. Preserve its schedule and disclose no prospect-level material.
