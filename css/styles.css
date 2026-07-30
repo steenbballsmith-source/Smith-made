@@ -553,7 +553,6 @@ p.lede.center { margin: 0 auto; }
   margin: 8px 0 10px;
   color: var(--ink);
 }
-.piece-desc { color: var(--ink-soft); line-height: 1.7; font-size: 0.95rem; }
 .piece-price { margin-top: 14px; font-size: 0.92rem; color: var(--ink-soft); }
 .piece-price strong { font-weight: 500; color: var(--ink); }
 .piece-book { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
