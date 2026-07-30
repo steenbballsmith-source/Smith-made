@@ -71,9 +71,11 @@
   --ink-soft: #6b5741;
   --caramel: #b07d4f;
   --caramel-deep: #a06f43;
-  --caramel-text: #96653a;  /* AA on cream for small caramel text */
+  --caramel-text: #875430;  /* 5.54:1 on --cream, 4.67:1 on --cream-3 — AA everywhere
+                               the body gradient paints */
   --brass: #c19a62;
-  --brass-text: #8a6a3c;    /* AA on cream for small brass labels */
+  --brass-text: #795a31;    /* 5.57:1 on --cream, 4.70:1 on --cream-3 — AA everywhere
+                               the body gradient paints */
   --link: #8f6039;
   --walnut: #5a3f28;
   --walnut-deep: #4a331f;
@@ -142,7 +144,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--caramel);
+  outline: 2px solid var(--walnut);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -561,6 +563,10 @@ p.lede.center { margin: 0 auto; }
 .piece:hover .piece-stage-cue,
 .piece-stage:focus-visible .piece-stage-cue { opacity: 1; transform: none; }
 @media (hover: none) { .piece-stage-cue { opacity: 1; transform: none; } }
+/* .piece-media is overflow:hidden, so a ring on .piece-stage (which fills it)
+   would be clipped away entirely. Ring the card instead: outside the clip,
+   on known cream rather than on top of a render. */
+.piece:has(.piece-stage:focus-visible) { outline: 3px solid var(--walnut); outline-offset: 3px; }
 .piece-media img {
   width: 100%;
   height: 100%;
@@ -1092,6 +1098,10 @@ body.staged-open { overflow: hidden; }
 [data-reveal] { opacity: 0; transform: translateY(42px); }
 .no-js [data-reveal],
 .reduced [data-reveal] { opacity: 1; transform: none; }
+/* A keyboard user must be able to see what they have focused even if the
+   scroll reveal has not played yet — the form and every FAQ question sit
+   inside [data-reveal]. !important because GSAP writes inline styles. */
+[data-reveal]:focus-within { opacity: 1 !important; transform: none !important; }
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

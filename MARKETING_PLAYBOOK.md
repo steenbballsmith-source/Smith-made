@@ -38,9 +38,9 @@ Use exactly this:
 > SC — and you can rent it for your weekend or keep it forever. Handbuilt
 > arched welcome signs, seating chart walls, champagne walls, ceremony
 > arches, backdrops, and a mobile bar, all made to order in our shop.
-> Every rental includes delivery, setup at your venue, and pickup after
-> the last dance. Our signature rent-to-own option credits half of your
-> rent toward keeping the piece. Engraved keepsake signs — names, wedding
+> Every rental includes delivery and pickup after
+> the last dance; placing and styling the pieces is the couple's, their
+> planner's, or their florist's. Engraved keepsake signs — names, wedding
 > date, "established" family rounds — go home with you forever. Serving
 > the Upstate: Greenville, Travelers Rest, Greer, Simpsonville,
 > Spartanburg, Anderson, Clemson, and Asheville, NC. A 50% deposit books
@@ -50,12 +50,12 @@ Use exactly this:
 Wedding welcome sign rental, from $175 · Seating chart rental, from $375 ·
 Ceremony arch rental, from $595 · Wedding backdrop rental, from $525 ·
 Champagne wall rental, from $325 · Mobile bar rental, from $595 ·
-Custom keepsake wedding sign, from $495 · Delivery, setup & styling, from $125
+Custom keepsake wedding sign, from $495 · Delivery & pickup, flat $125 within 25 miles
 
 **Verification:** Google will verify by video (film your shop/tools/a
 piece) or postcard. Do it same day — profile is invisible until verified.
 
-**Photos:** upload all 10 renders + every real photo you take. Name files
+**Photos:** upload all 8 renders + every real photo you take. Name files
 descriptively before uploading ("wedding-welcome-sign-greenville-sc.jpg").
 
 **First 3 GBP posts (paste one per week):**
@@ -66,7 +66,7 @@ descriptively before uploading ("wedding-welcome-sign-greenville-sc.jpg").
    for the weekend or keep it forever." +
    render 01
 3. "Seating chart walls, champagne walls, a mobile bar — carpenter-scale
-   pieces, delivered and styled at your venue. Check your date." + render 08
+   pieces, delivered to your venue. Check your date." + render 08
 
 **Review engine (start at wedding #1):** within a week of every event,
 text the couple: "It was an honor building for y'all. If you have 60
@@ -79,14 +79,14 @@ reviews' button]." 15+ reviews makes you the obvious local pick.
 Two ready-to-paste listings. Renew weekly (Marketplace buries old posts).
 Photos: use the renders. Location Greenville. Category: Home & Garden.
 
-**Listing A — flagship arch ($495):**
+**Listing A — Grand Arch Welcome Wall ($495):**
 > **Custom Wood Wedding Welcome Wall — Handbuilt in Greenville, Rent or Buy**
 > Seven-foot arched welcome wall, handbuilt to order in my Greenville
 > shop — limewash + walnut with your names in raised lettering. RENT for
-> your wedding weekend (from $495 — I deliver, style it at your venue,
+> your wedding weekend (from $495 — I deliver and pick up; you style it,
 > and pick up after) or BUY it outright (from $1,450). Also building: seating chart
 > walls, champagne walls, ceremony arches, backdrops, mobile bar, and
-> engraved keepsake signs (from $65–$595). Made-to-order — your wording
+> engraved keepsake signs (from $495). Made-to-order — your wording
 > approved in writing with a free proof before I cut anything. 50%
 > deposit books your date. Serving the whole Upstate + Asheville.
 > Founder pricing for my first five 2026–27 couples in exchange for
@@ -180,7 +180,7 @@ date sent / reply / next step.
   décor · Greenville, SC · rent it or keep it forever · check your date ↓"
   + site link.
 - **3–4 posts/week.** Rotation: build process clip (these outperform
-  everything) → finished piece → rent-to-own explainer → behind-the-scenes.
+  everything) → finished piece → finish options → behind-the-scenes.
 - Film every build in parts (Part 1 / Part 2 / reveal) — vertical for
   Reels/TikTok. The shot list is in the handoff §11: planing close-ups,
   lettering, dust in window light, loading the truck, venue reveal.

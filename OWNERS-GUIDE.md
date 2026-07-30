@@ -87,11 +87,9 @@ itself.
 
 ## Part 4 — Put your renders on the product cards
 
-Four pieces already show your photoreal renders — **Seating Chart Wall
-(02), Champagne Wall (04), Grand Arch Welcome Wall (07), and Ceremony
-Arch Set (08)** — and the hero backdrop is a styled crop of the wall
-render. The other six show original Smith Made concept drawings until
-you replace them with photoreal renders or real photos.
+All eight cards currently show styled design renders, and the hero is a
+wide crop of the champagne wall render. Replace any of them with a real
+photo whenever you have one — a real photo always beats a render.
 
 **4a. Rename copies on your PC** to these exact names (keep `.jpg` or
 `.png`, whichever the file already is):
@@ -111,7 +109,8 @@ you replace them with photoreal renders or real photos.
 Upload files** → drag → **Commit changes**).
 
 **4c. Tell the site they exist:** edit `js/manifest.js` and add one line
-per photo inside `photos: {` — the four already there show the pattern:
+per photo inside `photos: {` — the block starts empty; one line looks
+like this:
 
 ```js
 "arched-welcome": "assets/img/catalog/arched-welcome.jpg",
@@ -203,10 +202,11 @@ All the words and prices live in one file: `index.html`.
 3. Change the number (or the sentence), leave the surrounding tags
    exactly as they are, and **Commit changes**.
 
-Packages, delivery fees, and policy wording are in the same file under
-the "Pricing" section. The FAQ answers and the rent-to-own example are
-there too — if you raise a price, remember any example that quotes it elsewhere
-example appears in a couple of places.
+Delivery fees and policy wording are in the same file under the
+"Pricing" section, and the FAQ answers are just below it. Each piece's
+price appears twice in `index.html` — once on the card and once in the
+structured data near the top of the file. Search for the number and
+change both.
 
 ## Part 10 — Later: your own domain name
 
