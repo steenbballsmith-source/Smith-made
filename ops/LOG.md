@@ -49,6 +49,46 @@ silence. This entry is a live example — the collision was caught here only
 because git refused the push. On one filesystem there is no such refusal.
 
 ---
+## 2026-07-30-C3 · Codex · Smith Digital form source verified; deploy blocked before upload
+
+**Branch handoff received.** Fetched and checked out
+`claude/codex-team-coordination-shomkq`, read `ops/README.md` and
+`ops/HANDOFF-TO-CODEX.md`, claimed SD-FORMS-001 on the board, committed the
+claim as `597c20a`, and pushed it before attempting the external action.
+
+**Local source evidence.**
+- `C:\Users\SJ\Smith-Digital-Site\index.html` is 52,858 bytes, SHA-256
+  `e6273977584b4032deec4ddbd002c3c7332aec0cc1cd63b3f5fd906a32fe73bc`.
+- It contains one native POST form with `name="audit-request"`,
+  `data-netlify="true"`, a matching hidden
+  `name="form-name" value="audit-request"`, and
+  `netlify-honeypot="company-website-hp"`.
+- Conclusion: Claude's required form structure is already present locally. The
+  defect is that the corrected local file is not the file currently deployed.
+
+**Live evidence.**
+- A fresh HTTPS fetch returned 200, 23,205 bytes, SHA-256
+  `88914d825e65c6339c008ea1bd2e16d89ff86dd9320492ba8f2df033622c7c80`.
+- The fetched live HTML contains zero `<form>` elements, no `audit-request`,
+  and still contains the old proof-placeholder content.
+- The signed-in Netlify dashboard still identifies production deploy
+  `6a6a34440418d1b5f6dc57e0` as the latest deploy.
+
+**Deploy attempt and blocker.**
+- Opened the signed-in deploy page for `candid-starship-c2ce98` and selected
+  its single-file upload path.
+- Chrome stopped before a file could be attached because the ChatGPT Chrome
+  Extension lacks **Allow access to file URLs**.
+- No file was uploaded, no deploy started, and the live site was not changed.
+- Human handoff: on the home computer, open `chrome://extensions`, open Details
+  for the ChatGPT Chrome Extension, enable **Allow access to file URLs**, and
+  tell Codex `Chrome file access is enabled`.
+
+**Next verification after that toggle.** Codex deploys the already-correct
+local `index.html`, verifies the live HTML contains the form, and leaves Claude
+an updated log signal to re-query Netlify form registration. SD-FORMS-002 and
+SD-FORMS-003 remain blocked until registration is proven.
+---
 
 ## 2026-07-30-C1 · Claude · Bridge established, Smith Digital reconciled
 

@@ -44,7 +44,7 @@ in any repository Claude can reach.
 ---
 
 ### SD-FORMS-001 — The audit form is not capturing anything 🔴
-**Status: ACTIVE · Owner: CODEX · Priority: highest · Claimed 2026-07-30 15:13 PDT**
+**Status: BLOCKED · Owner: CODEX · Priority: highest · Last attempted 2026-07-30 15:14 PDT**
 
 **Netlify has zero forms registered for this site.** The Forms *feature* is
 enabled, but `get-forms-for-project` returns an empty array. Netlify detects
@@ -63,6 +63,20 @@ What follows from that, and this is the part that matters:
 Three of the six steps on Claude's original instruction list — verify the form,
 configure notifications, submit a test that arrives — were resting on a form
 that does not exist yet.
+
+**Codex's local/live reconciliation, 2026-07-30:** the local
+`C:\Users\SJ\Smith-Digital-Site\index.html` already has the required native
+POST form, `data-netlify="true"`, matching `name` and hidden `form-name`
+values (`audit-request`), and a matching honeypot. The live page is an older,
+different file with no `<form>`. No HTML rewrite is needed; the local file must
+be deployed.
+
+**Current blocker:** the signed-in Netlify deploy page is open and exposes its
+single-file upload control, but Chrome refused the file chooser because the
+ChatGPT Chrome Extension does not have **Allow access to file URLs** enabled.
+No file was uploaded and no deploy started. Steen must enable that one
+extension setting on the home computer, then tell Codex `Chrome file access is
+enabled`.
 
 **Why Codex owns this:** the fix is in the HTML on the Windows machine, and
 verifying it needs a browser that can load the live site. Claude has neither.
