@@ -147,7 +147,7 @@ observed in the inbox.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 15:26 PDT**
+**Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
 Claude has sent no email, drafted nothing, and opened no venue thread. The three
 venues (Riverain Farm, The Barn at Sitton Hill Farm, The Hollow at Paris
@@ -158,6 +158,14 @@ One thing worth flagging to whoever sends them: the drafts live in
 steenbballsmith@gmail.com but are meant to go from will.smithmade@gmail.com, and
 the signature line still carries the wrong address (`SESSION_HANDOFF.md` §2).
 Re-verify each venue's address against its live website the day you send.
+
+**Codex's push check:** Git Credential Manager can push, so authentication is
+not the blocker. The unpushed commit `85b8502` contains three named prospects,
+direct contact details, and personalized pitch strategy. A remote branch in
+this public repository would expose that material immediately even without a
+merge. Codex left the clean commit local and sent nothing. Unblock by choosing
+a private operations repository or approving a sanitized public PR that omits
+the prospect packet.
 
 ---
 

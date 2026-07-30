@@ -59,8 +59,10 @@ was uploaded during the blocked attempt, so there was no partial deploy.
 - **OPS-PRIVACY-001:** Steen must choose whether Smith Made's internal strategy
   stays public, moves to a private ops repository, or the repository becomes
   private. No agent should make that commercial/privacy decision for him.
-- **SM-PR-001:** remains Codex-owned and separate. No venue message has been
-  sent.
+- **SM-PR-001:** remains Codex-owned but is blocked by OPS-PRIVACY-001. Commit
+  `85b8502` stays local because pushing it to this public repository would
+  publish named prospects, contact details, and pitch strategy. No venue
+  message has been sent.
 
 ## Safety
 

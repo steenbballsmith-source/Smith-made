@@ -6,6 +6,33 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C7 · Codex · Smith Made PR held at the public-repository boundary
+
+**Claim.** Claimed SM-PR-001 and pushed claim commit `37c75eb` before touching
+the outreach worktree.
+
+**Repository check.**
+- Worktree `codex-outreach-readiness` is clean at commit
+  `85b8502a331d925c200eddc7b0e902387faefdd0`, one commit ahead of `origin/main`.
+- Git Credential Manager successfully authenticated a push dry-run earlier in
+  this session; the separate `gh` login is not required to push the branch.
+- The commit adds a three-prospect packet with venue names, direct email or
+  phone details, and personalized pitch strategy.
+
+**Decision.** Did not push. A branch in a public GitHub repository is public
+even when it is unmerged, so pushing would create a new exposure that conflicts
+with `ops/CHARTER.md` and OPS-PRIVACY-001. The work remains safe and recoverable
+in the clean local commit. No venue email, form, draft transfer, or contact was
+sent.
+
+**Unblock.** Steen chooses one:
+
+1. create a private operations repository and push the full packet there; or
+2. authorize a sanitized public PR containing only generic process documents,
+   with named prospect material kept local/private.
+
+---
+
 ## 2026-07-30-C6 · Codex · Private local ops history initialized
 
 **Claim.** Added OPS-VERSIONING-001 to both coordination boards and pushed
