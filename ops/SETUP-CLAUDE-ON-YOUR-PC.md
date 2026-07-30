@@ -12,6 +12,40 @@ stops being locked in a box.
 
 ---
 
+## ⚡ If you just want to get it done — two pastes
+
+Steen approved this on 2026-07-30 while away from the machine. When you sit
+down at the PC: Start → type `powershell` → Enter, then paste these.
+
+**Paste 1** — installs Claude Code and Git, then close the window and open a
+new PowerShell so it picks them up:
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements
+```
+
+**Paste 2** — in the new window:
+
+```powershell
+cd C:\Users\SJ
+claude
+```
+
+It opens your browser. Log in with the Claude account you already pay for.
+That login is yours to do — no agent can do it for you, here or anywhere.
+
+Then type this as your first message, which proves the whole thing works:
+
+```
+read C:\Users\SJ\.claude\ops and tell me what Codex has set up
+```
+
+If it reads those files back, you're done. Everything below is the longer
+explanation if you want it.
+
+---
+
 ## What actually changes for you
 
 Right now, from the cloud, I can't see:

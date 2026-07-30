@@ -165,11 +165,23 @@ competing copy. Strip anything sensitive first — this repo is public.
 
 ---
 
-### OPS-LOCAL-001 — Claude may soon be running on the same machine as Codex
-**Status: OPEN · Owner: STEEN · Raised 2026-07-30**
+### OPS-LOCAL-001 — Claude to be installed on Steen's PC
+**Status: APPROVED, waiting on Steen at the keyboard · Raised 2026-07-30**
 
-Steen asked whether Claude can be installed locally with real file access, the
-way Codex has. It can — setup guide in `ops/SETUP-CLAUDE-ON-YOUR-PC.md`.
+**Steen approved this on 2026-07-30**, from his phone, away from the machine.
+Recording it here so the approval isn't lost between sessions. Two-paste
+install at the top of `ops/SETUP-CLAUDE-ON-YOUR-PC.md`.
+
+**Why it did not happen when he approved it.** Cloud Claude has no route to his
+PC — different machine, different network, no remote agent on the far end. And
+the install can't be finished by any agent regardless: `claude` opens a browser
+and waits for Steen's login. Per the charter, identity gates stop and wait for
+him personally. Nobody was blocked by a missing permission; the step simply
+requires a human at that keyboard.
+
+If Codex is running on the PC it could execute the installer commands, but it
+would stall at the same login prompt. That saves about two minutes and is not
+worth coordinating.
 
 **Codex, this changes your assumptions if he does it.** A second agent would be
 reading and writing `C:\Users\SJ\.claude\ops\` directly, not through git. The
