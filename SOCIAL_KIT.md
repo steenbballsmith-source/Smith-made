@@ -23,13 +23,13 @@ Try **@smithmadesc** everywhere (fallbacks: @smithmade.sc, @smithmadeupstate).
 Post the image named, paste the caption, add hashtag set A or B (rotate).
 
 1. **Intro — the wordmark or hero image.** "Smith Made is open. One
-   carpenter, one shop in Greenville, and ten handbuilt pieces couples
+   carpenter, one shop in Greenville, and eight handbuilt pieces couples
    can rent for their wedding weekend or keep forever. Every piece is
-   built new to order — delivered, styled at your venue, and picked up
+   built new to order — delivered to your venue and picked up
    after the last dance. Welcome, y'all. 🪵"
 2. **The Arched Welcome (render 01).** "The first thing your guests
    see. The Arched Welcome — walnut, your names, your date. Rent from
-   $175 or keep it forever from $545. Concept No. 01 of 10."
+   $175 or keep it forever from $1,450. Concept No. 01 of 8."
 3. **Rent-to-own explainer (render 01 again or graphic).** "Our
    favorite thing: every piece is drawn around one couple's names.
    Rent it for your weekend — or have it built as a keepsake that
@@ -45,7 +45,7 @@ Post the image named, paste the caption, add hashtag set A or B (rotate).
    forever. Hangs at the reception, then above your mantel. From $495."
 7. **How it works (Grand Arch photo render 07).** "How it works: pick
    your pieces → 50% deposit books your Saturday → we build yours new →
-   we deliver, style, and pick up. You never lift a thing."
+   we deliver and collect; you place and style it your way."
 8. **Founder offer (Ceremony Arch Set photo render 08).** "Founder
    batch: our first five 2026–27 couples get 20% off any build — in
    exchange for nothing but photos and an honest review. Five slots.

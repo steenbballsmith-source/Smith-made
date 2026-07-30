@@ -1,10 +1,9 @@
 /* Smith Made — page motion + ambient background.
    Lenis smooth scroll, GSAP reveals, process beam, fact counters, section
-   spy, and a calm WebGL backdrop of drifting sawdust in warm candlelight.
-   Degrades gracefully: no WebGL -> canvas hidden; reduced motion -> static
+   and scrollspy. Degrades gracefully: no JS -> the page still reads; reduced
+   motion -> static
    page; GSAP/Lenis missing -> native scroll, content fully visible. */
 
-import * as THREE from '../assets/vendor/three.module.min.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
@@ -114,93 +113,14 @@ window.__smRefresh = () => {
   if (hasGsap) window.ScrollTrigger.refresh();
 };
 
-/* ============================================================
-   AMBIENT BACKDROP — sawdust motes in warm candlelight
-============================================================ */
+/* ==============================================================
+   AMBIENT BACKDROP — removed
+   The three.js backdrop cost 670 KB (166 KB gzipped) to draw a few
+   sub-pixel motes and a light that never reached the page: toggling the
+   canvas within one page load changed 17-130 pixels of 1.3 million, a
+   max delta of 38/255. The warm gradients and film grain in the CSS are
+   what the page's atmosphere was actually coming from.
+   ============================================================== */
 const canvas = document.getElementById('webgl');
-const state = { w: window.innerWidth, h: window.innerHeight };
-
-let renderer = null;
-try {
-  renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
-} catch (e) {
-  renderer = null;
-}
-
-if (!renderer) {
-  canvas.style.display = 'none';
-  finishLoad();
-} else {
-  renderer.setSize(state.w, state.h);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-  const scene = new THREE.Scene();
-  const camGroup = new THREE.Group();
-  const camera = new THREE.PerspectiveCamera(34, state.w / state.h, 0.1, 100);
-  camera.position.z = 7;
-  camGroup.add(camera);
-  scene.add(camGroup);
-
-  const candle = new THREE.PointLight(0xffb36b, 8, 18, 1.6);
-  candle.position.set(2.4, 0.5, 3.2);
-  scene.add(candle);
-
-  const UNIT = 6.4; /* world units per viewport height of scroll */
-  const vh = () => state.h;
-  const journeyDepth = () => (document.body.scrollHeight / vh()) * UNIT;
-
-  const count = 240;
-  const pos = new Float32Array(count * 3);
-  const depth = journeyDepth();
-  for (let i = 0; i < count; i++) {
-    pos[i * 3] = (Math.random() - 0.5) * 14;
-    pos[i * 3 + 1] = 4 - Math.random() * (depth + 10);
-    pos[i * 3 + 2] = -3.5 + Math.random() * 5.5;
-  }
-  const pGeo = new THREE.BufferGeometry();
-  pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const pMat = new THREE.PointsMaterial({
-    color: 0xc9a26b, size: 0.045, sizeAttenuation: true,
-    transparent: true, opacity: 0.55, depthWrite: false
-  });
-  scene.add(new THREE.Points(pGeo, pMat));
-
-  const cursor = { x: 0, y: 0 };
-  window.addEventListener('pointermove', (e) => {
-    cursor.x = e.clientX / state.w - 0.5;
-    cursor.y = e.clientY / state.h - 0.5;
-  }, { passive: true });
-
-  const clock = new THREE.Clock();
-  function tick() {
-    const t = clock.getElapsedTime();
-    const scrollY = window.scrollY || window.pageYOffset || 0;
-    camera.position.y = -(scrollY / vh()) * UNIT;
-
-    if (!reduced) {
-      const px = cursor.x * 0.4, py = -cursor.y * 0.25;
-      camGroup.position.x += (px - camGroup.position.x) * 0.045;
-      camGroup.position.y += (py - camGroup.position.y) * 0.045;
-    }
-
-    candle.intensity = reduced ? 8 : 8 + Math.sin(t * 7.3) * 0.7 + Math.sin(t * 13.7) * 0.45;
-    candle.position.y = camera.position.y + 0.6;
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('resize', () => {
-    state.w = window.innerWidth;
-    state.h = window.innerHeight;
-    camera.aspect = state.w / state.h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(state.w, state.h);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    if (hasGsap) window.ScrollTrigger.refresh();
-  });
-
-  tick();
-  finishLoad();
-}
+if (canvas) canvas.style.display = 'none';
+finishLoad();

@@ -72,7 +72,11 @@
     heroMedia.hidden = true;
   }
 
-  if (heroPoster && config.heroPoster) {
+  /* Skip the preload-and-swap when the manifest names the file the markup
+     already ships: the fetch is redundant (340 KB of JPEG the <picture> never
+     displays) and the fade would replay over an already-visible hero. Mirrors
+     the guard inside dropWebpSources(). */
+  if (heroPoster && config.heroPoster && heroPoster.getAttribute("src") !== config.heroPoster) {
     var poster = new Image();
     poster.onload = function () {
       dropWebpSources(heroPoster, config.heroPoster);

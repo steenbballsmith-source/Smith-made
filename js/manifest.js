@@ -31,7 +31,7 @@ window.SMITH_MADE = {
      Drop each product photo into assets/img/catalog/ and add
      one line here. The name on the left must match the list
      below exactly (it's the product's id). Example:
-       "arch-welcome-wall": "assets/img/catalog/arch-welcome-wall.jpg",
+       "arched-welcome": "assets/img/catalog/arched-welcome.jpg",
 
      Product ids (No. 01-08):
        arched-welcome        seating-chart-wall
