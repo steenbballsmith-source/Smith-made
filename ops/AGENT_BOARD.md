@@ -337,3 +337,13 @@ cloud versus local Claude should use it.
 **Result:** `HANDOFF-TO-CODEX.md` gives local Claude the private path and tells
 cloud Claude to rederive evidence from authenticated Gmail plus official sites;
 `LOG.md` entry `2026-07-30-C14` records the safe aggregate.
+
+---
+
+### STATE-BRIDGE-006 — Bridge paced next-window prospect readiness
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 16:50 PDT**
+
+Record only the public-safe aggregate next-window state: a private source-backed
+packet exists, no second same-day wave was sent, one-wave-per-local-day pacing
+applies, and local versus cloud Claude have different evidence access. Do not expose
+prospect identities, contact details, findings, subjects, copy, or private strategy.
