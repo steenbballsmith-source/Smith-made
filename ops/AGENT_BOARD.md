@@ -147,7 +147,7 @@ observed in the inbox.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: RESERVED TO CODEX · Claude has not touched it.**
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 15:26 PDT**
 
 Claude has sent no email, drafted nothing, and opened no venue thread. The three
 venues (Riverain Farm, The Barn at Sitton Hill Farm, The Hollow at Paris
