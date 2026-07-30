@@ -75,6 +75,7 @@
   if (heroPoster && config.heroPoster) {
     var poster = new Image();
     poster.onload = function () {
+      dropWebpSources(heroPoster, config.heroPoster);
       heroPoster.src = config.heroPoster;
       heroPoster.classList.add("has-photo");
     };
@@ -114,6 +115,19 @@
   /* ---- Catalog photos: swap in real photos from the manifest ------------- */
 
   var photos = config.photos || {};
+  /* A <picture> would keep serving our WebP over an owner's uploaded photo,
+     so drop the <source> before swapping in a file from the manifest. */
+  function dropWebpSources(img, nextSrc) {
+    /* If the manifest points at the same file the markup already has, leave
+       the <source> alone — dropping it there would throw away the WebP (and
+       waste the hero preload) for no reason. */
+    if (nextSrc && img.getAttribute("src") === nextSrc) return;
+    var parent = img.parentElement;
+    if (parent && parent.tagName === "PICTURE") {
+      parent.querySelectorAll("source").forEach(function (source) { source.remove(); });
+    }
+  }
+
   document.querySelectorAll("[data-piece-photo]").forEach(function (img) {
     var src = photos[img.getAttribute("data-piece-photo")];
     if (!src) return;
@@ -121,6 +135,7 @@
        photo is ready, so there's never a blank card. */
     var real = new Image();
     real.onload = function () {
+      dropWebpSources(img, src);
       img.src = src;
       img.classList.add("has-photo");
     };
@@ -235,7 +250,19 @@
       img.width = 600;
       img.height = 450;
       img.addEventListener("error", function () { item.remove(); }, { once: true });
-      figure.appendChild(img);
+
+      /* Visitors try to tap a photo this size, so let them: the same staged
+         viewer the collection cards use opens with this one image. */
+      var opener = document.createElement("button");
+      opener.type = "button";
+      opener.className = "gallery-open";
+      opener.setAttribute("data-staged", JSON.stringify([
+        { src: src, finish: finish || "Styled design render" },
+      ]));
+      opener.setAttribute("aria-label", "See this render larger"
+        + (finish ? " — " + finish : ""));
+      opener.appendChild(img);
+      figure.appendChild(opener);
       if (finish) {
         var caption = document.createElement("figcaption");
         caption.textContent = finish;

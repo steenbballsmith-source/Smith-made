@@ -6,9 +6,6 @@
 (function () {
   "use strict";
 
-  var triggers = document.querySelectorAll("[data-staged]");
-  if (!triggers.length) return;
-
   var lenis = null;
   var opener = null;
   var looks = [];
@@ -93,8 +90,10 @@
     opener = null;
   }
 
-  triggers.forEach(function (trigger) {
-    trigger.addEventListener("click", function () { open(trigger); });
+  /* Delegated, so gallery items built later by main.js work too. */
+  document.addEventListener("click", function (event) {
+    var trigger = event.target.closest("[data-staged]");
+    if (trigger && !box.contains(trigger)) open(trigger);
   });
 
   box.addEventListener("click", function (event) {
@@ -105,9 +104,25 @@
 
   document.addEventListener("keydown", function (event) {
     if (box.hidden) return;
-    if (event.key === "Escape") close();
-    else if (event.key === "ArrowRight") show(index + 1);
-    else if (event.key === "ArrowLeft") show(index - 1);
+    if (event.key === "Escape") return close();
+    if (event.key === "ArrowRight") return show(index + 1);
+    if (event.key === "ArrowLeft") return show(index - 1);
+
+    /* Keep Tab inside the dialog — otherwise focus wanders onto the page
+       behind the backdrop, where a keyboard user can't see where they are. */
+    if (event.key !== "Tab") return;
+    var stops = [].slice.call(box.querySelectorAll("button:not([hidden])"))
+      .filter(function (el) { return el.offsetParent !== null; });
+    if (!stops.length) return;
+    var first = stops[0];
+    var last = stops[stops.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
 
   /* swipe, for the phones this is mostly used on */
