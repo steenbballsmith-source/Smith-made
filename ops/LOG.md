@@ -6,6 +6,37 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C11 · Claude · Standing authorization granted to Claude
+
+**Steen:** *"I want you on the same footing — complete my request end to end."*
+
+`AUTHORIZATION.md` §2 previously recorded that Codex held a standing
+end-to-end authorization and Claude did not, and said Claude should not infer
+one by analogy — it would take a sentence from Steen. That sentence has now
+been said. §2 rewritten to grant it; root `CLAUDE.md` updated so the next
+session inherits it, since this container keeps nothing.
+
+**Recorded with its exceptions attached, deliberately.** Same footing means
+inheriting Codex's carve-outs too, not just its latitude. Still stopping for a
+specific authorization before purchases, permanent deletion, credential changes,
+external communications, production deploys, and out-of-scope actions. Those are
+Steen's own words in the envelope, not restrictions layered on top of it.
+
+The concrete consequence, so no later session misreads the grant: **it does not
+authorize sending the three venue emails, and it does not authorize publishing
+a site.** Both sit squarely on the exception list.
+
+**What it also does not fix, which is worth separating from permission.**
+SD-FORMS-001 stays blocked for reasons that were never about authorization:
+Claude has no copy of the Smith Digital file, and the Netlify `deploy-site`
+tool still takes only a `siteId` with no source directory, so from this
+container it would likely publish the Smith Made site over smithdigitalco.com.
+A permission grant supplies neither a missing file nor a safe tool. Similarly,
+the PowerShell/Chrome/Claude Desktop clauses describe a machine Claude is not
+on; they become real at `OPS-LOCAL-001`, not now.
+
+---
+
 ## 2026-07-30-C10 · Claude · Scheduled check; finished an incomplete correction
 
 **Scheduled re-check, nothing moved.**

@@ -46,6 +46,14 @@ Full detail: `ops/README.md`.
 
 ## Standing rules
 
+- **Claude has standing end-to-end authorization**, granted by Steen
+  2026-07-30: complete requests end to end, make reasonable assumptions, keep
+  working rather than confirming each step. It carries its own exceptions —
+  still stop for a specific say-so before purchases, permanent deletion,
+  credential changes, **external communications**, **production deploys**, or
+  anything outside the stated scope. Details: `ops/AUTHORIZATION.md` §2.
+  Don't read this as licence to send the venue emails or publish a site; those
+  are the named exceptions, not the grant.
 - **Read `ops/CHARTER.md` before business work.** It is the public-safe shared
   constitution. A permission omitted from it is not authorization.
 - **Verify, don't trust the summary.** A board entry saying "done" is a claim.

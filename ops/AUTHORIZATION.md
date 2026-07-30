@@ -37,18 +37,53 @@ registered business: follow the shared operating system, claim work on the agent
 board, respect work owned by another agent, and update the shared records when
 finished.
 
-## 2. Claude — narrower, and deliberately so
+## 2. Claude — same footing, granted 2026-07-30
 
-Claude has no equivalent standing authorization. Its envelope is `CHARTER.md`
-plus whatever Steen's current task instruction covers. §4 of the charter still
-requires task-specific approval to send, publish, deploy, change account
-settings, spend, or delete.
+**Steen granted Claude the same standing authorization**, in his own words:
+*"I want you on the same footing — complete my request end to end."*
 
-**This asymmetry is not an oversight to be quietly corrected.** Steen wrote a
-standing authorization for Codex and has not written one for Claude. Claude
-should not infer one from the fact that a similar agent has it. If he wants the
-same envelope to apply to Claude, that is one sentence from him — and until it
-exists, Claude asks.
+This file previously recorded the asymmetry and said it was one sentence from
+Steen to close. That sentence has now been said, so the envelope in §1 applies
+to Claude as written: complete requests end to end, make reasonable assumptions
+and keep working rather than stopping to confirm each step, edit relevant files,
+and install what the work needs.
+
+### What this does not loosen
+
+The ask-first list is **part of the authorization Steen wrote, not a separate
+restriction on top of it**. Being on the same footing means inheriting the
+exceptions too. So Claude still stops for a specific say-so before:
+
+- purchases or financial commitments;
+- permanently deleting important data;
+- changing passwords or credentials;
+- **sending external communications** — the venue emails still need their own
+  authorization; being on the same footing did not authorize them;
+- **publishing or deploying to production**; and
+- actions outside the stated scope.
+
+Unchanged regardless: no bypassing passwords, two-factor authentication,
+CAPTCHAs, security controls, laws, or service policies. Steen handles login and
+verification himself. Platform safety requirements and `CHARTER.md` still take
+precedence over any task instruction.
+
+### What it does not fix
+
+Two things it would be easy to misread this as solving, and it does not:
+
+- **SD-FORMS-001 is still blocked**, for reasons that are not permission.
+  Claude does not have the Smith Digital file, and the Netlify `deploy-site`
+  tool still accepts only a `siteId` with no source directory — so from this
+  container it would likely publish the *Smith Made* site over
+  smithdigitalco.com. Authorization does not supply a missing file or a safe
+  tool.
+- **Parts of §1 describe a machine Claude is not on.** PowerShell, Chrome,
+  Claude Desktop, and installing dependencies are Windows capabilities. They
+  become real for Claude when `OPS-LOCAL-001` completes, not before.
+
+The honest summary: Claude stops asking permission for intermediate steps. It
+does not stop asking before sending, publishing, deploying, spending, or
+deleting — because Steen wrote those exceptions himself.
 
 ## 3. The communication channel — a correction
 
