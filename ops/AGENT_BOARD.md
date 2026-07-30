@@ -275,3 +275,14 @@ a session. The board stops being a summary and becomes the lock.
 Worth noting the likely first consequence: local Claude could take SD-FORMS-001
 directly, since it would have `C:\Users\SJ\Smith-Digital-Site\index.html` in
 front of it. Whoever gets there first claims it here.
+
+---
+
+### STATE-BRIDGE-003 — Publish current public-safe operating state
+**Status: ACTIVE · Owner: CODEX · Started 2026-07-30 16:08 PDT**
+
+Record the completed three-site QA, durable standing authorization, and
+outreach-safety guardrail in this public coordination branch. Do not expose
+prospect identities, contact details, inbox contents, or private strategy.
+No email, form, deploy, production publication, or private repository push is
+part of this task.
