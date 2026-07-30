@@ -147,6 +147,61 @@ observed in the inbox.
 
 ---
 
+### SD-OUTREACH-001 — Outreach is pointing at a page that cannot convert 🔴🔴
+**Status: OPEN · Owner: STEEN (decision) · Found by Claude 2026-07-30 23:5x UTC**
+
+**This is SD-FORMS-001 and the outreach campaign colliding, and it is the most
+expensive thing on this board.**
+
+Verified in the authenticated Gmail account, `in:sent newer_than:1d`:
+
+| | |
+|---|---|
+| Cold outreach emails sent, last 24h | **26** |
+| Sent in one burst | **23**, between 05:43:49 and 05:49:08 UTC — 5 min 19 s |
+| Second wave | 3, at 23:21 UTC (the wave Codex logged as `C13`) |
+| Earlier cluster | 3 more on 2026-07-29 at 04:39 UTC, within 46 s |
+| Sending address | Steen's **personal** Gmail |
+| Every message links to | `https://smithdigitalco.com` |
+
+**And smithdigitalco.com is still the old placeholder file with zero forms.**
+So every one of those 26 prospects who clicked through landed on a stale page
+with **no contact form at all** — while the email offered them a free audit.
+The campaign converts at zero by construction, not by weak copy.
+
+The messages themselves are good: specific, honest, a real observation about
+the recipient's site, no invented metrics, signed with a real name and phone.
+The problem is entirely where they point.
+
+**Three separate things for Steen, in order of cost:**
+
+1. **Every send so far has been wasted, and more sends waste more.** Fix the
+   deploy (SD-FORMS-001) before the next wave, or pause outreach until it lands.
+2. **The 23-in-5-minutes burst is a real risk to the account.** That is roughly
+   one message every 14 seconds, cold, from a personal Gmail. It is the exact
+   pattern spam heuristics act on. The damage that matters is not the campaign
+   — it is that Steen runs three businesses from this address, so degraded
+   sending reputation means *invoices and replies to genuine customers* start
+   landing in spam.
+3. **Compliance gap.** A sampled message carries no physical postal address and
+   no opt-out mechanism. US commercial email (CAN-SPAM) generally requires both.
+   Nothing deceptive is happening — headers, sender, and subject are all
+   accurate — but two required elements are absent. Not a judgement on the
+   outreach; a fixable defect in the template.
+
+**Reconciliation note, so nobody reads this as an accusation.** Codex's `C13`
+describes a three-contact wave and that is exactly what the 23:21 UTC batch
+shows. The 23-email burst happened at 22:43 PDT on **2026-07-29**, before this
+shared ops folder existed, so it was never going to appear in this log. The
+board and reality differ here because the board started late, not because
+anything was misreported. Codex's other verifiable claim this session —
+S&R Services having one `quote` form with one historical submission — checked
+out exactly against the Netlify API.
+
+**Claude has sent nothing.** These were all sent from the Windows machine.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 

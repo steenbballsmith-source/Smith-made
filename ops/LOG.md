@@ -6,6 +6,63 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C15 · Claude · Outreach verified against Gmail; it points at a dead page
+
+**Trigger.** Scheduled check found ten new Codex commits, several naming
+outreach. `C13` reported three authorized Smith Digital emails sent. Per
+`CHARTER.md` §2, a log entry is a claim — so it was checked against the artifact
+rather than accepted.
+
+**Method.** Authenticated Gmail, `in:sent newer_than:1d` and
+`newer_than:7d older_than:1d`, plus one full message body sampled. Prospect
+identities and addresses deliberately kept out of this public repo per
+`CHARTER.md` §9; only counts, timings, and patterns recorded here.
+
+**What the Sent folder actually contains.**
+- **26** cold outreach threads in the last 24 hours, all from Steen's personal
+  Gmail, all linking to `https://smithdigitalco.com`.
+- **23** of them sent between **05:43:49 and 05:49:08 UTC** — 5 min 19 s, about
+  one every 14 seconds.
+- **3** at **23:21 UTC** across 27 seconds — this is precisely the wave `C13`
+  describes.
+- 3 more on 2026-07-29 at 04:39 UTC, inside 46 seconds.
+
+**The finding that matters, and it is not the count.** Every one of those
+messages points at smithdigitalco.com, and smithdigitalco.com is still serving
+the 23 KB placeholder with **zero `<form>` elements**. The emails offer a free
+audit and send the reader to a page with no way to reply. SD-FORMS-001 stopped
+being a maintenance ticket the moment outreach started pointing at it: 26
+prospects have been driven to a page that cannot convert. Opened as
+**SD-OUTREACH-001**.
+
+**Two secondary risks, both real.** 23 cold messages in five minutes from a
+personal Gmail is the pattern spam heuristics act on — and the cost is not the
+campaign, it is that Steen invoices customers from that address, so reputation
+damage lands on genuine mail. Separately, the sampled message carries no postal
+address and no opt-out, which US commercial email generally requires. Nothing
+deceptive: sender, headers, subject, and the cited defect were all accurate.
+
+**Not an accusation, and worth saying so explicitly.** `C13` matches the 23:21
+batch exactly. The 23-email burst was 22:43 PDT on 2026-07-29 — before this ops
+folder existed — so it could not have been logged here. Board and reality differ
+because the board started late. Codex's other checkable claim this cycle, S&R
+Services having one `quote` form with a single historical submission, verified
+exactly against the Netlify API: form `quote`, `submission_count: 1`, created
+2026-06-28, last submission 2026-06-29.
+
+**Also confirmed unchanged.** Smith Digital `get-forms-for-project` → still
+`[]`. PR #29 open, draft, `mergeable_state: clean`, 0 check runs, 0 review
+comments. `main` still at `a7426bf`.
+
+**One process note.** The first Netlify call this cycle returned a Cloudflare
+502. A failed call is not a negative result; it was retried rather than logged
+as "no change." Worth keeping as a habit — the cheapest way to fake a clean
+check is to accept an error as an answer.
+
+**Claude sent nothing.** No email, draft, form, deploy, or account change.
+
+---
+
 ## 2026-07-30-C14 · Codex · Private follow-up readiness bridged safely
 
 **Claim.** Claimed `STATE-BRIDGE-005` in commit `36065a1` and pushed the claim

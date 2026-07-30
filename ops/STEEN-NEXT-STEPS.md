@@ -5,7 +5,39 @@ gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## ⚠️ Read this part first
+## 🔴 New, and it moved to the top of the list
+
+**You've sent 26 cold emails in the last 24 hours pointing at a website that
+can't take a reply.**
+
+I checked your Sent folder. 26 outreach emails since yesterday, every one
+linking to smithdigitalco.com — and smithdigitalco.com is still the old
+placeholder page with **no contact form on it at all**. The emails offer a free
+audit. The page they land on gives them no way to accept.
+
+The emails themselves are good — specific, honest, a real observation about
+each recipient's site, your name and number at the bottom. Nothing wrong with
+the pitch. It is pointed at a dead end.
+
+So the form fix stopped being housekeeping. Every email sent before it lands is
+spent for nothing. **Fix the site first, or pause outreach until it's fixed.**
+
+Two more things while I was in there:
+
+- **23 of those 26 went out in five minutes** — one every 14 seconds, from your
+  personal Gmail. That's the pattern spam filters look for. The risk isn't the
+  campaign; it's that you invoice customers from that address. If Gmail starts
+  treating it as a bulk sender, your *real* mail to *real* customers goes to
+  spam.
+- **No postal address or unsubscribe line** in the emails. US commercial email
+  usually requires both. Nothing shady in them — but it's a gap worth closing in
+  the template.
+
+None of this was Claude. Those were all sent from your PC.
+
+---
+
+## ⚠️ Also still true
 
 **Both of your businesses have a contact form that may be losing every inquiry.**
 
