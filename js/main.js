@@ -115,6 +115,18 @@
   /* ---- Catalog photos: swap in real photos from the manifest ------------- */
 
   var photos = config.photos || {};
+  /* A <picture> carrying a WebP source, or a plain fragment when there
+     isn't one — so callers can append the <img> either way. */
+  function webpFrame(webpSrc) {
+    if (!webpSrc) return document.createDocumentFragment();
+    var picture = document.createElement("picture");
+    var source = document.createElement("source");
+    source.type = "image/webp";
+    source.srcset = webpSrc;
+    picture.appendChild(source);
+    return picture;
+  }
+
   /* A <picture> would keep serving our WebP over an owner's uploaded photo,
      so drop the <source> before swapping in a file from the manifest. */
   function dropWebpSources(img, nextSrc) {
@@ -194,6 +206,26 @@
     });
   });
 
+  /* ---- Phone action bar: appears once the hero is behind you ------------- */
+
+  var actionBar = document.querySelector("[data-action-bar]");
+  var actionCall = document.querySelector("[data-action-call]");
+  if (actionBar) {
+    if (actionCall && config.phone) {
+      actionCall.href = "tel:" + config.phone.replace(/[^+\d]/g, "");
+      actionCall.hidden = false;
+    }
+    var hero = document.getElementById("hero");
+    if (hero && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        /* visible hero -> no bar; the opening screen stays uncluttered */
+        actionBar.hidden = entries[0].isIntersecting;
+      }, { rootMargin: "-70% 0px 0px 0px" }).observe(hero);
+    } else {
+      actionBar.hidden = false;
+    }
+  }
+
   /* ---- Reviews: real ones only, straight from the manifest --------------- */
 
   var reviewsSection = document.querySelector("[data-reviews-section]");
@@ -241,6 +273,13 @@
 
       var item = document.createElement("li");
       var figure = document.createElement("figure");
+
+      /* Our own staged-*.jpg renders ship with a WebP sibling; offer it. An
+         owner-uploaded photo gets a plain <img>, so a file we never made
+         can't 404 inside a <source> and break their picture. */
+      var ours = /\/staged-[^/]+\.jpg$/.test(src);
+      var webp = ours ? src.replace(/\.jpg$/, ".webp") : "";
+      var frame = webpFrame(webp);
       var img = document.createElement("img");
       img.src = src;
       img.alt = finish
@@ -257,11 +296,12 @@
       opener.type = "button";
       opener.className = "gallery-open";
       opener.setAttribute("data-staged", JSON.stringify([
-        { src: src, finish: finish || "Styled design render" },
+        { src: src, webp: webp, finish: finish || "Styled design render" },
       ]));
       opener.setAttribute("aria-label", "See this render larger"
         + (finish ? " — " + finish : ""));
-      opener.appendChild(img);
+      frame.appendChild(img);
+      opener.appendChild(frame);
       figure.appendChild(opener);
       if (finish) {
         var caption = document.createElement("figcaption");

@@ -746,6 +746,31 @@ p.lede.center { margin: 0 auto; }
 
 .gallery-custom { margin-top: 40px; max-width: 640px; }
 
+/* ---------- phone action bar ---------- */
+.action-bar { display: none; }
+@media (max-width: 840px) {
+  .action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(246, 240, 228, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    animation: barIn 0.4s ease both;
+  }
+  .action-bar .btn { flex: 1 1 auto; text-align: center; max-width: 220px; }
+  body.staged-open .action-bar { display: none; }
+}
+@keyframes barIn { from { transform: translateY(100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .action-bar { animation: none; } }
+
 /* ---------- reviews ---------- */
 #reviews { padding-top: 10vh; padding-bottom: 12vh; }
 .reviews {
@@ -1124,4 +1149,12 @@ body.staged-open { overflow: hidden; }
   .steps { padding-left: 30px; }
   .step::before { left: -30px; }
   .step::after { left: -24px; }
+}
+
+/* ---------- last word: keep content clear of the fixed phone action bar ----
+   This lives at the end on purpose. The footer's own padding is declared
+   further down the file than the action-bar block, so a rule placed there
+   loses to it. */
+@media (max-width: 840px) {
+  .foot { padding-bottom: 96px; }
 }
