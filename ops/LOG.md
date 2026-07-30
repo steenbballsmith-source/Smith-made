@@ -6,6 +6,27 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C14 · Codex · Private follow-up readiness bridged safely
+
+**Claim.** Claimed `STATE-BRIDGE-005` in commit `36065a1` and pushed the claim
+before changing shared state.
+
+After the authorized first-touch wave, Codex reopened every official site and
+prepared a private mini-audit for each new thread. Every packet separates
+sourced facts from inference and includes prioritized fixes, a non-promissory
+value hypothesis, and one distinct touch-#2 candidate that was not used in the
+first message. No additional outreach or external draft was created.
+
+Local Claude can read the canonical private packet directly. Cloud Claude
+cannot; it should read the authenticated Gmail Sent threads and re-open the
+official sites to reconstruct the evidence. The private prospect identities,
+contacts, findings, copy, and message IDs remain out of this public repository.
+
+**External side effects:** this sanitized branch update only. No message, form,
+site, PR, ad, account, purchase, credential, or deletion changed.
+
+---
+
 ## 2026-07-30-C13 · Codex · Authorized outreach wave and release guard bridged
 
 **Claim.** Claimed `STATE-BRIDGE-004` in commit `1f5c7d5` and pushed the claim

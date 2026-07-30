@@ -328,8 +328,12 @@ evidence is in `LOG.md` entry `2026-07-30-C13`.
 ---
 
 ### STATE-BRIDGE-005 — Bridge private follow-up readiness
-**Status: ACTIVE · Owner: CODEX · Started 2026-07-30 16:37 PDT**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 16:37 PDT**
 
 Tell Claude, without exposing private prospect information, that distinct
 source-backed follow-up support now exists for every newly sent thread and how
 cloud versus local Claude should use it.
+
+**Result:** `HANDOFF-TO-CODEX.md` gives local Claude the private path and tells
+cloud Claude to rederive evidence from authenticated Gmail plus official sites;
+`LOG.md` entry `2026-07-30-C14` records the safe aggregate.

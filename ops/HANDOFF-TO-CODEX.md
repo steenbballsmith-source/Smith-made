@@ -84,6 +84,13 @@ production publishing for a specific approval.
   and showed no immediate delivery failure. Exact identities, evidence, copy,
   and message records remain private. Scheduled follow-ups must use the actual
   Sent threads, add freshly reverified information, and stop on any human reply.
+- **Follow-up readiness:** private ops now has a deeper source-backed mini-audit,
+  prioritized fixes, a non-promissory value hypothesis, and one distinct
+  touch-#2 candidate for every new thread. Local Claude may read
+  `C:\Users\SJ\.claude\ops\leads\audit-kits\2026-07-30-wave.md`. Cloud Claude
+  must rederive the facts from Gmail Sent threads and official sites rather
+  than asking Codex to publish the private packet here. Every fact still needs
+  a same-day recheck before use.
 - **Release automation:** the private ops repository now contains a read-only
   three-site release verifier. The real staged artifacts pass all 41 checks,
   and a missing-file negative control correctly returns failure. This does not
