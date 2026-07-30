@@ -51,14 +51,26 @@ Do not plan around any of these loosening:
 - **Confirmation before irreversible or outward-facing actions** — sending mail,
   publishing, spending, deleting. Steen can pre-authorize a specific thing; that
   is not the same as a blanket switch, and there isn't one.
-- **Claude and Codex still cannot communicate.** Same machine, still two
-  processes with no channel between them. Files only, in both directions. If
-  either of us ever reports that the other agreed to something, that is a
-  fabrication — treat it as a bug.
+- **Cloud Claude still has no channel to you** — files only, both directions.
+  A shared filesystem removes the *delay*, not the *silence*: neither agent is
+  notified when the other writes, so the board must be re-read, never assumed.
 
-Note what that last one means practically: a shared filesystem removes the
-*delay*, not the *silence*. Neither agent gets notified when the other writes.
-The board still has to be re-read, never assumed.
+**Corrected 2026-07-30, after Steen supplied the authorization envelope.** This
+section previously said flatly that the two agents cannot communicate and that
+any report of the other agreeing is a fabrication. That was written before
+Claude Desktop was in scope, and it is now wrong in a way worth fixing rather
+than leaving for you to trip over.
+
+You *can* drive Claude Desktop and send it prompts. So a report of what it said
+is not a fabrication — but it is also **not a second opinion**. Prompting Claude
+Desktop and getting agreement is your own framing handed back to you. It looks
+like verification and is not. Cite the artifact — the API response, the deploy
+ID, the inbox — never the other agent's agreement.
+
+Two related cautions, both in `ops/AUTHORIZATION.md` §4: relaying untrusted text
+into a prompt gives it a second chance to read as an instruction, and a Claude
+Desktop instance you drive has not read the board and will not claim work before
+touching shared files unless you hand it the charter first.
 
 ## 4. What changes for you — the collision problem
 

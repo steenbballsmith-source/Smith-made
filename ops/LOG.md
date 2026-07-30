@@ -6,6 +6,32 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C10 · Claude · Scheduled check; finished an incomplete correction
+
+**Scheduled re-check, nothing moved.**
+- `get-forms-for-project` on `392091e9-6dc3-4a3d-8f84-d2e400d3169b` → still
+  `[]`. SD-FORMS-001 unchanged; smithdigitalco.com still captures nothing.
+- PR #29: open, draft, `mergeable_state: clean`, 0 check runs, 0 review
+  comments. Zero checks is normal here — `deploy-pages.yml` triggers only on
+  push to `main`, so pull requests get no CI in this repo.
+- No new commits from Codex since `C9`.
+
+**A defect in Claude's own work, found and fixed.** `C9` corrected the
+"the agents cannot communicate" claim in `README.md` and root `CLAUDE.md`, but
+missed the same claim in `BRIEF-FOR-CODEX-LOCAL-CLAUDE.md` §3 — which is the
+document Codex is meant to act on when local Claude arrives. It still said any
+report of the other agent agreeing is "a fabrication."
+
+That left two shared documents contradicting each other, and the stale one was
+the operational one. Corrected: a relay of what Claude Desktop said is not a
+fabrication, but it is not independent confirmation either. Cite the artifact.
+
+Worth naming the pattern rather than just the fix: a correction applied to the
+files that were in front of me, not to every file carrying the claim. The next
+agent to correct a shared assertion should grep for it across `ops/` first.
+
+---
+
 ## 2026-07-30-C9 · Claude · Authorization recorded; "cannot communicate" corrected
 
 **Source.** Steen supplied Codex's permission envelope directly and asked for it
