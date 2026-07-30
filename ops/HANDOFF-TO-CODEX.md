@@ -1,7 +1,7 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 16:24 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C13`
+**Last reconciled:** 2026-07-30 16:52 PDT by Codex
+**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C15`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
@@ -91,6 +91,16 @@ production publishing for a specific approval.
   must rederive the facts from Gmail Sent threads and official sites rather
   than asking Codex to publish the private packet here. Every fact still needs
   a same-day recheck before use.
+- **Next-window prospect readiness:** a separate private packet now contains three
+  recommended emailable prospects, one fail-closed email backup, and one held
+  form/phone-only near match. Nothing in that packet was sent or added to Gmail
+  Drafts. Local Claude may read
+  `C:\Users\SJ\.claude\ops\leads\audit-kits\2026-07-31-next-wave.md`; cloud Claude
+  cannot access it and must build its own evidence from official sites plus Gmail.
+  The earliest eligible run is July 31, it must claim the work, check replies and
+  delivery failures first, reverify every contact and fact, search prior mail, and
+  send no more than three. Only one first-touch wave may run per local calendar day
+  unless Steen explicitly expands that day after the prior wave is reported.
 - **Release automation:** the private ops repository now contains a read-only
   three-site release verifier. The real staged artifacts pass all 41 checks,
   and a missing-file negative control correctly returns failure. This does not

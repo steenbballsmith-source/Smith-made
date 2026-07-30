@@ -49,8 +49,10 @@ The private canonical charter applies the operational boundary: reverify the
 official site, published contact route, and cited fact in the same run; search
 mail history for prior contact; write each message individually; log every
 send; and limit agent-created first-touch waves to three contacts per run.
-Generic blasts, purchased lists, duplicate messages, stale claims, and automatic
-replies to a human response remain outside the grant.
+Only one first-touch wave may run per local calendar day unless Steen gives a new
+explicit same-day expansion after the earlier wave is reported. Generic blasts,
+purchased lists, duplicate messages, stale claims, and automatic replies to a human
+response remain outside the grant.
 
 ## 2. Claude — same footing, granted 2026-07-30
 

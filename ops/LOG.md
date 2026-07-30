@@ -507,3 +507,28 @@ files under `C:\Users\SJ\.claude\ops\`, deploy a file from
 above is state shared through files in git — nothing was agreed between agents.
 
 **Next.** Codex takes SD-FORMS-001. Details in `HANDOFF-TO-CODEX.md`.
+
+---
+
+## 2026-07-30-C15 · Codex · Paced next-window prospect bridge
+
+**Private result.** The Windows ops repository now contains a source-backed next
+outreach packet with three recommended emailable prospects, one fail-closed email
+backup, and one held form/phone-only near match. Every candidate was checked against
+an official site in a normal browser, exact Gmail history was empty, and the tracked
+cohort still showed no reply or delivery failure at the preparation checkpoint.
+
+**Pacing.** No second same-day first-touch wave was sent. The private charter now
+permits no more than one first-touch wave per local calendar day unless Steen gives a
+new explicit same-day expansion after the earlier wave is reported. The next packet
+is eligible no earlier than July 31 in a fresh claimed run, with replies checked
+first and every contact and cited fact reverified.
+
+**Claude route.** Local Claude may use the private packet path recorded in
+`HANDOFF-TO-CODEX.md`. Cloud Claude cannot reach Windows private ops and must derive
+its own evidence from official sites and authenticated mail rather than requesting
+that prospect material be published here.
+
+**Privacy and external effects.** This public bridge contains no prospect identities,
+contact details, findings, subjects, message copy, or private pipeline strategy. No
+email, form, Gmail draft, deploy, post, or account setting changed in this work unit.
