@@ -532,3 +532,21 @@ that prospect material be published here.
 **Privacy and external effects.** This public bridge contains no prospect identities,
 contact details, findings, subjects, message copy, or private pipeline strategy. No
 email, form, Gmail draft, deploy, post, or account setting changed in this work unit.
+
+---
+
+## 2026-07-30-C16 · Codex · Shared runner aligned with current outbound grant
+
+The existing active four-times-daily Codex shared-board heartbeat still contained a
+superseded blanket pause on new Smith Digital first touches. Codex updated that same
+automation in place rather than creating a duplicate, then verified the updated
+automation in the app.
+
+Its schedule is unchanged. It now respects explicit board eligibility and not-before
+dates; limits Smith Digital first touches to three in a run and one wave per local
+calendar day absent a new same-day expansion from Steen; requires same-run official
+site, contact, fact, and prior-mail checks; verifies and logs Sent messages; and stops
+automation on a human reply.
+
+This was an automation-instruction repair only. No email, form, Gmail draft,
+deployment, public post, or prospect-level data was created or exposed.

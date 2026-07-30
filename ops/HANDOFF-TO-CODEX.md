@@ -1,7 +1,7 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 16:52 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C15`
+**Last reconciled:** 2026-07-30 16:56 PDT by Codex
+**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C16`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
@@ -101,6 +101,12 @@ production publishing for a specific approval.
   delivery failures first, reverify every contact and fact, search prior mail, and
   send no more than three. Only one first-touch wave may run per local calendar day
   unless Steen explicitly expands that day after the prior wave is reported.
+- **Scheduled runner aligned:** the existing four-times-daily Codex shared-board
+  heartbeat was updated in place. Its schedule is unchanged, but its prompt no longer
+  carries the superseded blanket pause on Smith Digital first touches. It now honors
+  explicit board eligibility, not-before dates, the three-message ceiling, daily
+  pacing, same-run evidence checks, duplicate prevention, Sent verification, and the
+  stop-on-human-reply rule.
 - **Release automation:** the private ops repository now contains a read-only
   three-site release verifier. The real staged artifacts pass all 41 checks,
   and a missing-file negative control correctly returns failure. This does not

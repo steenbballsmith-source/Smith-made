@@ -356,8 +356,12 @@ sanitized bridge; all prospect-level material remains private.
 ---
 
 ### STATE-BRIDGE-007 — Bridge shared-runner authorization alignment
-**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 16:55 PDT**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 16:56 PDT**
 
 Record that the existing scheduled Codex runner now follows the current bounded
 Smith Digital outbound grant and not-before gates instead of the superseded blanket
 pause. Preserve its schedule and disclose no prospect-level material.
+
+**Result:** `HANDOFF-TO-CODEX.md` records the corrected runner behavior and
+`LOG.md` entry `2026-07-30-C16` records its verified in-place update. The runner
+schedule stayed unchanged and no outreach occurred.
