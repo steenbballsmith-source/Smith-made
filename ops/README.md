@@ -27,9 +27,22 @@ assumed one machine where there are two.
 
 ## 2. The shared channel is git. There is no other one.
 
-Claude and Codex have never exchanged a message and cannot. **Never write or say
-that the two agents "spoke," "agreed," or "confirmed with each other."** Every
-piece of shared state travels one way:
+**Corrected 2026-07-30 — see `AUTHORIZATION.md` §3.** This section originally
+said the two agents cannot communicate at all. That is true of *cloud* Claude,
+which is what existed when it was written. It is not true of Claude Desktop:
+Codex can drive that app and send it prompts. The accurate line is —
+
+> Cloud Claude has no channel to anything except committed files. Codex can
+> operate Claude Desktop as a tool, which is one agent using another, not two
+> peers conferring.
+
+**Never write or say that the two agents "spoke," "agreed," or "confirmed with
+each other"** unless a real channel recorded it — and then name which one. In
+particular, Codex prompting Claude Desktop and getting agreement is *not*
+independent confirmation; it is Codex's framing handed back to Codex. Cite the
+artifact, not the other agent's opinion.
+
+For cloud Claude, every piece of shared state still travels one way:
 
 ```
 agent writes a file  →  commits  →  pushes  →  other agent pulls  →  reads

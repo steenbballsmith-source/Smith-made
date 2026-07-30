@@ -30,13 +30,17 @@ say what it means for the business, not just what it is.
 
 ## The one thing to get right about Codex
 
-**Claude and Codex have never communicated and cannot.** Codex runs on Steen's
-Windows PC. Claude runs in a temporary Linux container in the cloud with no `C:`
-drive and no access to the live websites (the outbound proxy blocks them).
+**Cloud Claude and Codex have no channel between them.** Codex runs on Steen's
+Windows PC. Cloud Claude runs in a temporary Linux container with no `C:` drive
+and no access to the live websites (the outbound proxy blocks them). Git is the
+only shared channel, one direction at a time.
 
-Git is the only shared channel. Never write or say that the two agents spoke,
-agreed, or confirmed anything with each other. State moves through committed
-files, one direction at a time.
+**One exception, added 2026-07-30:** Codex can drive Claude Desktop on the PC
+and send it prompts. That is a real channel, but an asymmetric one — Codex
+prompting Claude and getting agreement is *not* independent verification, it is
+Codex's own framing handed back. Cite the artifact, never the other agent's
+agreement. Never say the two spoke unless a real channel recorded it, and then
+name which. Full detail: `ops/AUTHORIZATION.md` §3.
 
 Full detail: `ops/README.md`.
 

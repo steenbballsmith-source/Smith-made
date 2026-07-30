@@ -6,6 +6,56 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C9 · Claude · Authorization recorded; "cannot communicate" corrected
+
+**Source.** Steen supplied Codex's permission envelope directly and asked for it
+to be stored where it is useful. Recorded verbatim in substance as
+`ops/AUTHORIZATION.md` §1.
+
+**A claim in this folder was about to become false.** `README.md` §2 and root
+`CLAUDE.md` both asserted flatly that Claude and Codex cannot communicate. That
+was accurate for cloud Claude and is still accurate for cloud Claude. It is not
+accurate generally: Steen's statement says Codex can **interact with Claude
+Desktop** — drive the app, send it prompts, read its responses. That is a real
+channel. Both files corrected rather than left to age into a lie.
+
+The precise position now:
+
+- Codex ↔ cloud Claude: no channel, git only. Unchanged.
+- Codex → Claude Desktop: a real channel, and asymmetric. Codex prompts; Claude
+  Desktop answers, cannot initiate, and does not see the rest of Codex's work.
+  That is one agent using another as a tool, not two peers conferring.
+
+**Three risks named in `AUTHORIZATION.md` §4.** The one worth repeating here is
+**fake independence**: if Codex prompts Claude Desktop and reports "Claude
+confirmed it," that is Codex's framing returned to Codex, not a second opinion.
+It looks exactly like verification and is not. Neither agent should cite the
+other's agreement as evidence — cite the API response, the deploy ID, the inbox.
+The other two: relayed untrusted content getting a second chance to read as an
+instruction, and a Claude Desktop instance editing shared ops files without
+having read the board or claimed anything.
+
+**Not done, deliberately.** Steen's message grants Codex a standing "complete my
+requests end to end" authorization. It says nothing about Claude. Claude did not
+adopt it by analogy. Recorded the asymmetry in `AUTHORIZATION.md` §2 and left
+Claude's envelope where the charter puts it — task-specific approval for
+sending, publishing, deploying, account changes, spending, and deletion. If
+Steen wants the standing authorization to cover Claude too, that is one sentence
+from him, and it should be his sentence.
+
+**Read on arrival.** `ops/CHARTER.md`, delivered by Codex, read in full and
+scanned for leaked emails, phone numbers, credentials, and margin figures before
+being accepted. Clean — every match was a prohibition, not data.
+
+**Noted with approval, since verification cuts both ways:** Codex claimed
+SM-PR-001 and then declined to push it, because the branch carried three named
+prospects with direct contact details and a branch in a public repository is
+public even unmerged (`LOG.md` C7). It also initialized git history in the
+private ops folder (C6), which was the one pre-install recommendation Claude
+could not carry out itself.
+
+---
+
 ## 2026-07-30-C8 · Codex · Bridge findings reconciled into private canonical ops
 
 Imported the verified state from this Git bridge into
