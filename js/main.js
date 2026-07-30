@@ -186,16 +186,30 @@
   var galleryPhotos = Array.isArray(config.gallery) ? config.gallery.filter(Boolean) : [];
 
   if (gallerySection && galleryList && galleryPhotos.length) {
-    galleryPhotos.forEach(function (src, index) {
+    galleryPhotos.forEach(function (entry, index) {
+      /* an entry is either "path/to.jpg" or { src: "...", finish: "..." } */
+      var src = typeof entry === "string" ? entry : entry.src;
+      var finish = typeof entry === "string" ? "" : entry.finish || "";
+      if (!src) return;
+
       var item = document.createElement("li");
+      var figure = document.createElement("figure");
       var img = document.createElement("img");
       img.src = src;
-      img.alt = "Smith Made design render — lookbook image " + (index + 1);
+      img.alt = finish
+        ? "Smith Made design render — " + finish
+        : "Smith Made design render — lookbook image " + (index + 1);
       img.loading = "lazy";
       img.width = 600;
-      img.height = 600;
+      img.height = 450;
       img.addEventListener("error", function () { item.remove(); }, { once: true });
-      item.appendChild(img);
+      figure.appendChild(img);
+      if (finish) {
+        var caption = document.createElement("figcaption");
+        caption.textContent = finish;
+        figure.appendChild(caption);
+      }
+      item.appendChild(figure);
       galleryList.appendChild(item);
     });
 

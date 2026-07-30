@@ -102,12 +102,10 @@ you replace them with photoreal renders or real photos.
 | No. 02 Seating Chart Wall | `seating-chart-wall.jpg` |
 | No. 03 The Family Round | `family-round.jpg` |
 | No. 04 Champagne Wall | `champagne-wall.jpg` |
-| No. 05 Unplugged Ceremony | `unplugged-ceremony.jpg` |
-| No. 06 The Bar Menu | `bar-menu.jpg` |
-| No. 07 Grand Arch Welcome Wall | `grand-arch-welcome-wall.jpg` |
-| No. 08 Ceremony Arch Set | `ceremony-arch-set.jpg` |
-| No. 09 Slat Monogram Backdrop | `slat-backdrop.jpg` |
-| No. 10 The Mobile Bar | `mobile-bar.jpg` |
+| No. 05 Grand Arch Welcome Wall | `grand-arch-welcome-wall.jpg` |
+| No. 06 Ceremony Arch Set | `ceremony-arch-set.jpg` |
+| No. 07 Slat Monogram Backdrop | `slat-backdrop.jpg` |
+| No. 08 The Mobile Bar | `mobile-bar.jpg` |
 
 **4b. Upload them** to `assets/img/catalog/` in the repo (**Add file →
 Upload files** → drag → **Commit changes**).
@@ -156,9 +154,12 @@ After every wedding, add the best shots:
 ```js
 gallery: [
   "assets/img/gallery/june-wedding-01.jpg",
-  "assets/img/gallery/june-wedding-02.jpg",
+  { src: "assets/img/gallery/june-wedding-02.jpg", finish: "Natural white oak" },
 ],
 ```
+
+The second form prints that little caption under the photo — handy for
+naming the finish (natural oak, painted cream, walnut, blackened frame).
 
 The Gallery section and its menu link appear automatically once there's
 at least one photo, and stay hidden while the list is empty.
