@@ -735,6 +735,39 @@ p.lede.center { margin: 0 auto; }
 
 .gallery-custom { margin-top: 40px; max-width: 640px; }
 
+/* ---------- reviews ---------- */
+#reviews { padding-top: 10vh; padding-bottom: 12vh; }
+.reviews {
+  list-style: none;
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 22px;
+}
+.reviews li {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: clamp(22px, 2.6vw, 32px);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12));
+}
+.reviews blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.reviews blockquote::before { content: "\201C"; color: var(--brass); margin-right: 2px; }
+.reviews blockquote::after { content: "\201D"; color: var(--brass); margin-left: 2px; }
+.reviews cite {
+  display: block;
+  margin-top: 16px;
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass-text);
+}
+
 /* ---------- staged viewer ---------- */
 .staged { position: fixed; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; }
 .staged-backdrop {

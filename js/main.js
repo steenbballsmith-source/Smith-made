@@ -179,6 +179,38 @@
     });
   });
 
+  /* ---- Reviews: real ones only, straight from the manifest --------------- */
+
+  var reviewsSection = document.querySelector("[data-reviews-section]");
+  var reviewsList = document.querySelector("[data-reviews-list]");
+  var reviews = Array.isArray(config.reviews) ? config.reviews.filter(Boolean) : [];
+
+  if (reviewsSection && reviewsList && reviews.length) {
+    reviews.forEach(function (review) {
+      if (!review.text) return;
+      var item = document.createElement("li");
+      var quote = document.createElement("blockquote");
+      quote.textContent = review.text;
+      item.appendChild(quote);
+
+      var credit = [review.name, review.venue, review.date].filter(Boolean).join(" · ");
+      if (credit) {
+        var cite = document.createElement("cite");
+        cite.textContent = credit;
+        item.appendChild(cite);
+      }
+      reviewsList.appendChild(item);
+    });
+
+    if (reviewsList.children.length) {
+      reviewsSection.hidden = false;
+      document.querySelectorAll("[data-reviews-link]").forEach(function (link) {
+        link.hidden = false;
+      });
+      refreshScene();
+    }
+  }
+
   /* ---- Gallery: built entirely from the manifest ------------------------- */
 
   var gallerySection = document.querySelector("[data-gallery-section]");
