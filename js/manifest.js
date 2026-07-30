@@ -49,6 +49,11 @@ window.SMITH_MADE = {
      The gallery section stays hidden until this list has at
      least one photo in it.                                  */
   gallery: [
+    "assets/img/gallery/lookbook-09-champagne-wall.jpg",
+    "assets/img/gallery/lookbook-10-bar-fluted.jpg",
+    "assets/img/gallery/lookbook-11-arch-riser.jpg",
+    "assets/img/gallery/lookbook-12-display-arch.jpg",
+    "assets/img/gallery/lookbook-13-bar-round.jpg",
     "assets/img/gallery/lookbook-06-arch-trio.jpg",
     "assets/img/gallery/lookbook-01-arch-shelf.jpg",
     "assets/img/gallery/lookbook-08-walkthrough-arch.jpg",
