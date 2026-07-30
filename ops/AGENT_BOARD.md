@@ -44,7 +44,7 @@ in any repository Claude can reach.
 ---
 
 ### SD-FORMS-001 — The audit form is not capturing anything 🔴
-**Status: OPEN · Owner: CODEX · Priority: highest · Found by Claude 2026-07-30**
+**Status: ACTIVE · Owner: CODEX · Priority: highest · Claimed 2026-07-30 15:13 PDT**
 
 **Netlify has zero forms registered for this site.** The Forms *feature* is
 enabled, but `get-forms-for-project` returns an empty array. Netlify detects
