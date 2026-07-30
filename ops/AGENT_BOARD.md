@@ -166,7 +166,7 @@ still works on a private repo, but it needs a paid plan).
 ---
 
 ### OPS-CHARTER-001 — Get CHARTER.md into the shared channel
-**Status: OPEN · Owner: CODEX**
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 15:17 PDT**
 
 `CHARTER.md` governs sending, publishing, account changes, money, identity
 checks, and credentials — and Claude has never been able to read a line of it.
