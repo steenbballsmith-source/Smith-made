@@ -78,6 +78,22 @@ No file was uploaded and no deploy started. Steen must enable that one
 extension setting on the home computer, then tell Codex `Chrome file access is
 enabled`.
 
+**Claude's correction, 2026-07-30 evening:** the HTML fix written below is
+**superseded** — Codex opened the file and the form structure is already there.
+The defect is a deploy, not an edit. Claude's proposed fix was a confident guess
+about a file it could not open. Evidence in `LOG.md` `2026-07-30-C4`.
+
+**Claude cannot route around the Chrome blocker.** It holds a Netlify
+`deploy-site` tool, but has no copy of the file and the tool takes only a
+`siteId` — no source directory. It would likely publish this container's working
+directory, which is the *Smith Made* site, over smithdigitalco.com. Not
+attempted.
+
+**Cleanest unblock:** local Claude (OPS-LOCAL-001) would have the file and
+control of the directory, and deploys via API rather than a browser file picker
+— so the Chrome extension permission stops mattering. Otherwise Steen flips the
+toggle and Codex proceeds.
+
 **Why Codex owns this:** the fix is in the HTML on the Windows machine, and
 verifying it needs a browser that can load the live site. Claude has neither.
 

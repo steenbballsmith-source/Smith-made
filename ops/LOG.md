@@ -28,6 +28,69 @@ authorization.
 root `CLAUDE.md`, marked OPS-CHARTER-001 complete, and updated the current
 handoff. A scan found no email address, phone number, known private address,
 credential-shaped value, or other known sensitive literal in the charter.
+---
+
+## 2026-07-30-C5 · Claude · Correction: my diagnosis of the form was wrong
+
+**Codex's C3 corrects me, and the correction matters.** Recording it here rather
+than quietly moving on.
+
+- **What I got right, and it was verified:** Netlify has zero forms registered
+  for `candid-starship-c2ce98`, so smithdigitalco.com is capturing nothing. That
+  came from the API and it held up.
+- **What I got wrong:** I proposed the fix was to add `data-netlify="true"` and
+  a hidden `form-name` input to the HTML, and wrote that into
+  `HANDOFF-TO-CODEX.md` and the board as *the* fix. Codex opened the actual file
+  and found all of it already present — `name="audit-request"`,
+  `data-netlify="true"`, matching hidden `form-name`, honeypot. Local file
+  52,858 bytes, SHA-256 `e627397…`.
+- **The real cause:** the wrong file is deployed. Live is 23,205 bytes, SHA-256
+  `88914d8…`, zero `<form>` elements, old placeholder content. The corrected
+  page was simply never published.
+
+I was reasoning about a file I could not open. The reasoning was sound and the
+conclusion was wrong, which is the failure mode worth naming: a plausible cause
+stated confidently is still a guess. Codex had the file and checked. Anyone
+reading the earlier entries should treat my proposed HTML fix as superseded.
+
+**On the blocker.** Codex is stopped because Chrome won't let it attach a file
+without the ChatGPT extension's *Allow access to file URLs*. Steen can flip that
+in 30 seconds.
+
+**Whether Claude could route around it — checked, and deliberately not
+attempted.** Claude does hold a Netlify `deploy-site` tool. Two reasons it was
+not used:
+
+1. Claude does not have the file. It lives on the Windows machine and is in no
+   repository Claude can reach.
+2. The tool's schema accepts only `siteId` — nothing that names a source
+   directory. It would presumably publish this container's working directory,
+   which is the **Smith Made** website. Running it against Smith Digital's site
+   ID could have replaced smithdigitalco.com with Smith Made's homepage.
+
+That is a live example of why the charter says confirm before publishing. The
+tool was available, the task was authorized, and using it would have broken a
+different business's website. Not attempted, and not to be attempted from a
+cloud container without a way to specify the source directory.
+
+**The clean unblock, for whoever gets there first:** local Claude on the Windows
+machine would have both the file and control of the working directory, and
+publishes through the API rather than a browser file picker — so the Chrome
+extension permission stops mattering entirely. Steen has already approved that
+install.
+
+**Handoff unchanged in substance:** SD-FORMS-001 stays Codex's, still BLOCKED,
+and the fix is a deploy of the existing local file rather than any edit to it.
+Claude will re-query Netlify form registration once a deploy lands.
+
+**Renumbered C4 → C5.** Codex and Claude each wrote a `C4` entry at the same
+position in this file within the same minute. Git raised it as a merge conflict
+and it was resolved by hand, keeping both entries intact. That is the collision
+described in `BRIEF-FOR-CODEX-LOCAL-CLAUDE.md` §4, happening for real on the
+same day it was written about — and it surfaced *only* because the two agents
+are on separate machines and had to pass through git. On one shared filesystem
+there is no merge, no conflict, and no warning: the second write would simply
+have replaced the first, and the lost entry would never have been noticed.
 
 ---
 
