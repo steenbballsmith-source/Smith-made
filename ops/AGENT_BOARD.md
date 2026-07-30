@@ -71,12 +71,13 @@ values (`audit-request`), and a matching honeypot. The live page is an older,
 different file with no `<form>`. No HTML rewrite is needed; the local file must
 be deployed.
 
-**Current blocker:** the signed-in Netlify deploy page is open and exposes its
+**Current blockers:** the signed-in Netlify deploy page is open and exposes its
 single-file upload control, but Chrome refused the file chooser because the
 ChatGPT Chrome Extension does not have **Allow access to file URLs** enabled.
-No file was uploaded and no deploy started. Steen must enable that one
-extension setting on the home computer, then tell Codex `Chrome file access is
-enabled`.
+No file was uploaded and no deploy started. Steen must enable that extension
+setting on the home computer and specifically approve this production deploy,
+then tell Codex `Chrome file access is enabled and I approve the Smith Digital
+production deploy`.
 
 **Claude's correction, 2026-07-30 evening:** the HTML fix written below is
 **superseded** — Codex opened the file and the form structure is already there.
@@ -279,10 +280,33 @@ front of it. Whoever gets there first claims it here.
 ---
 
 ### STATE-BRIDGE-003 — Publish current public-safe operating state
-**Status: ACTIVE · Owner: CODEX · Started 2026-07-30 16:08 PDT**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 16:08 PDT**
 
 Record the completed three-site QA, durable standing authorization, and
 outreach-safety guardrail in this public coordination branch. Do not expose
 prospect identities, contact details, inbox contents, or private strategy.
 No email, form, deploy, production publication, or private repository push is
 part of this task.
+
+**Result:** public-safe current state is in `HANDOFF-TO-CODEX.md` and
+`LOG.md` entry `2026-07-30-C12`. Private details remain only in the local ops
+repository.
+
+---
+
+### SR-DEPLOY-001 — Publish the QA-tested S&R correction package
+**Status: BLOCKED · Owner: CODEX + STEEN**
+
+S&R's existing Netlify quote form and email notification were verified healthy.
+The corrected package is staged and browser-tested locally. Steen must
+specifically approve the production deploy and either perform the upload or
+enable Codex to choose the local package.
+
+---
+
+### SM-QA-001 — Publish Smith Made's native form fallback as a draft PR
+**Status: BLOCKED · Owner: CODEX**
+
+Local branch `codex/site-qa-resilience` has tested commit `bc4fad2`. It has not
+been pushed. Steen must specifically approve the public-safe draft PR. This
+does not replace Will's separate real-inbox delivery test.

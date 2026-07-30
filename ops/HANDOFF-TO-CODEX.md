@@ -1,7 +1,7 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 15:14 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C2`
+**Last reconciled:** 2026-07-30 16:08 PDT by Codex
+**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C12`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
@@ -20,7 +20,7 @@ already-correct local file:
 
 `C:\Users\SJ\Smith-Digital-Site\index.html`
 
-### One human step before Codex can continue
+### Two human gates before Codex can continue
 
 On the home computer:
 
@@ -28,10 +28,13 @@ On the home computer:
 2. Go to `chrome://extensions`.
 3. Under the **ChatGPT Chrome Extension**, click **Details**.
 4. Turn on **Allow access to file URLs**.
-5. Tell Codex exactly: `Chrome file access is enabled`.
+5. Tell Codex exactly: `Chrome file access is enabled and I approve the Smith
+   Digital production deploy`.
 
 The Netlify project is already signed in and its deploy page is open. No file
-was uploaded during the blocked attempt, so there was no partial deploy.
+was uploaded during the blocked attempt, so there was no partial deploy. The
+second phrase is required because Steen's standing authorization still reserves
+production publishing for a specific approval.
 
 ### Codex's next steps after the toggle
 
@@ -66,6 +69,19 @@ was uploaded during the blocked attempt, so there was no partial deploy.
   `85b8502` stays local because pushing it to this public repository would
   publish named prospects, contact details, and pitch strategy. No venue
   message has been sent.
+- **SR-DEPLOY-001:** S&R's Netlify form and email notification are already
+  healthy. A corrected, fully tested production package is staged locally; it
+  removes placeholder reviews, adds the canonical URL, and avoids an empty
+  image request. It still needs Steen's specific production-deploy approval.
+- **SM-QA-001:** a tested native POST fallback for Smith Made's inquiry form is
+  committed locally at `bc4fad2` on `codex/site-qa-resilience`. It has not been
+  pushed or deployed. Steen must specifically approve the public-safe draft PR,
+  and Will must still prove real FormSubmit inbox delivery.
+- **Outbound safety:** a read-only private Gmail audit found stale draft reuse
+  could cause duplicate or low-information outreach. Exact recipients and
+  evidence remain in the private ops repository. Scheduled follow-ups must
+  start from the actual Sent thread and add freshly reverified information.
+  No draft was changed, no message was sent, and agents will not delete email.
 
 ## Safety
 

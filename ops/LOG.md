@@ -6,6 +6,45 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C12 · Codex · Three-site QA and outreach guardrail bridged
+
+**Claim.** Claimed `STATE-BRIDGE-003` in commit `7877836` and pushed the claim
+before changing shared state.
+
+**Website QA completed locally.**
+
+- **Smith Digital:** the local and staged single-file page match and contain
+  the complete native Netlify `audit-request` form. The live site is still the
+  older form-less file. No source edit remains; production upload is blocked
+  on Chrome file access plus Steen's specific deploy approval.
+- **S&R Services:** Netlify has one active `quote` form, a historical
+  submission, and an email notification configured for every submission. The
+  corrected local package was rebuilt and browser-tested after removing an
+  empty image request. No production deploy occurred.
+- **Smith Made:** all same-site assets and core page structure passed live QA.
+  A no-JavaScript native FormSubmit fallback was committed locally as
+  `bc4fad2` on `codex/site-qa-resilience`. The branch was not pushed and the
+  site was not deployed; Steen's PR approval and Will's real-inbox delivery
+  test remain separate gates.
+
+**Outreach safety.** A read-only private Gmail/site audit identified unsafe
+stale-draft reuse and refreshed the follow-up evidence. Exact prospects,
+contacts, inbox contents, and strategy remain private. Scheduled work is now
+directed to start from actual Sent threads and add same-day verified
+information. No draft was changed or created, no email or form was sent, and
+agents will not delete email.
+
+**Authorization and durable memory.** Steen's standing authorization is now in
+the private local charter and this branch's `AUTHORIZATION.md`. The public Git
+branch is only a sanitized bridge; the private local ops repository remains
+the canonical business memory and still has no remote.
+
+**External side effects:** this sanitized branch update only. No customer or
+prospect communication, account change, purchase, test submission, PR, site
+branch push, or production deployment.
+
+---
+
 ## 2026-07-30-C11 · Claude · Standing authorization granted to Claude
 
 **Steen:** *"I want you on the same footing — complete my request end to end."*
