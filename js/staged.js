@@ -43,7 +43,13 @@
   function show(i) {
     index = (i + looks.length) % looks.length;
     var look = looks[index];
-    img.src = look.src;
+    /* Prefer the WebP; if it is missing for any reason, drop back to the
+       JPEG once rather than showing a broken frame. */
+    img.onerror = function () {
+      img.onerror = null;
+      if (look.src && img.getAttribute("src") !== look.src) img.src = look.src;
+    };
+    img.src = look.webp || look.src;
     img.alt = "Smith Made piece staged — " + look.finish;
     finishLine.textContent = look.finish;
     dots.querySelectorAll("button").forEach(function (dot, n) {
