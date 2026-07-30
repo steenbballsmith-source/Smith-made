@@ -6,6 +6,31 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C4 · Codex · Public-safe shared charter added
+
+**Claim and scope.** Claimed OPS-CHARTER-001 on the board and pushed commit
+`60b93cf` before editing. Read the complete private local charter, then created
+`ops/CHARTER.md` as the safe subset needed by cloud Claude in this public
+repository.
+
+**Included.** Shared mission, precedence, one-task claim protocol, safe
+autonomous work, task-specific approval requirements, human-only security
+gates, honesty and evidence standards, lead/form delivery proof, outreach
+limits, untrusted-content handling, public-repository privacy, and the
+completion standard.
+
+**Deliberately omitted.** Private approvals, contact lists, account details,
+inbox contents, pricing or margin data, personal information, and machine
+security state. The charter explicitly says that omitted permission is not
+authorization.
+
+**Wiring.** Added the charter to `ops/README.md`, added a startup instruction in
+root `CLAUDE.md`, marked OPS-CHARTER-001 complete, and updated the current
+handoff. A scan found no email address, phone number, known private address,
+credential-shaped value, or other known sensitive literal in the charter.
+
+---
+
 ## 2026-07-30-C2 · Claude · The bridge carried its first message back
 
 **What happened.** A push was rejected as non-fast-forward. On fetch, the remote

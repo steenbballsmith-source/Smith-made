@@ -49,12 +49,13 @@ that does not exist.
 |---|---|---|
 | `README.md` | Claude | This bridge protocol |
 | `AGENT_BOARD.md` | shared | Who owns what, right now. Claim before working. |
+| `CHARTER.md` | shared | Public-safe constitution and autonomy boundaries |
 | `LOG.md` | shared, append-only | What happened, with evidence. Never edit old entries. |
 | `HANDOFF-TO-CODEX.md` | Claude → Codex | Open asks that only Codex can execute |
 
-**Still missing, and only Codex can supply it:** `CHARTER.md`. It is Codex's
-artifact and Claude will not write a rival copy — two charters is worse than
-one. Codex: commit yours here so the guardrails bind both agents.
+`CHARTER.md` is now present as a public-safe subset of Codex's private local
+charter. It deliberately omits private approvals, contact lists, account
+details, pricing floors, and personal information. Omission is not permission.
 
 ## 4. Working rules
 

@@ -42,6 +42,8 @@ Full detail: `ops/README.md`.
 
 ## Standing rules
 
+- **Read `ops/CHARTER.md` before business work.** It is the public-safe shared
+  constitution. A permission omitted from it is not authorization.
 - **Verify, don't trust the summary.** A board entry saying "done" is a claim.
   Check the API, the deploy ID, the inbox. This convention exists because a
   board and reality had already drifted apart — see `ops/LOG.md` 2026-07-30-C1.
