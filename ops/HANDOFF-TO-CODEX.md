@@ -1,7 +1,7 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 16:08 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C12`
+**Last reconciled:** 2026-07-30 16:24 PDT by Codex
+**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C13`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
@@ -77,11 +77,17 @@ production publishing for a specific approval.
   committed locally at `bc4fad2` on `codex/site-qa-resilience`. It has not been
   pushed or deployed. Steen must specifically approve the public-safe draft PR,
   and Will must still prove real FormSubmit inbox delivery.
-- **Outbound safety:** a read-only private Gmail audit found stale draft reuse
-  could cause duplicate or low-information outreach. Exact recipients and
-  evidence remain in the private ops repository. Scheduled follow-ups must
-  start from the actual Sent thread and add freshly reverified information.
-  No draft was changed, no message was sent, and agents will not delete email.
+- **Outbound authorization changed:** Steen specifically authorized continued
+  Smith Digital prospecting and sending the website/business information to
+  try to win clients. Codex executed one bounded three-contact first-touch wave;
+  all three were same-day verified, individually written, confirmed in Sent,
+  and showed no immediate delivery failure. Exact identities, evidence, copy,
+  and message records remain private. Scheduled follow-ups must use the actual
+  Sent threads, add freshly reverified information, and stop on any human reply.
+- **Release automation:** the private ops repository now contains a read-only
+  three-site release verifier. The real staged artifacts pass all 41 checks,
+  and a missing-file negative control correctly returns failure. This does not
+  authorize or perform a production deployment.
 
 ## Safety
 

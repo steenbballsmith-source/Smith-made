@@ -314,9 +314,13 @@ does not replace Will's separate real-inbox delivery test.
 ---
 
 ### STATE-BRIDGE-004 — Bridge the authorized Smith Digital outreach state
-**Status: ACTIVE · Owner: CODEX · Started 2026-07-30 16:24 PDT**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 16:24 PDT**
 
 Record only the public-safe authorization, bounded-send guardrails, aggregate
 completion, follow-up ownership, and release-check automation. Keep prospect
 identities, addresses, subjects, message IDs, findings, and private pipeline
 details in the local ops repository.
+
+**Result:** the task-specific outbound grant is in `AUTHORIZATION.md`, current
+aggregate state is in `HANDOFF-TO-CODEX.md`, and reproducible public-safe
+evidence is in `LOG.md` entry `2026-07-30-C13`.

@@ -37,6 +37,21 @@ registered business: follow the shared operating system, claim work on the agent
 board, respect work owned by another agent, and update the shared records when
 finished.
 
+## 1A. Smith Digital outbound grant — 2026-07-30
+
+Steen subsequently gave a specific instruction to continue Smith Digital
+outreach and authorized sending the website and business information to people
+to try to win clients. This satisfies the external-communication approval gate
+for evidence-based Smith Digital prospecting; it does not authorize unrelated
+Smith Made, S&R, personal, or account communications.
+
+The private canonical charter applies the operational boundary: reverify the
+official site, published contact route, and cited fact in the same run; search
+mail history for prior contact; write each message individually; log every
+send; and limit agent-created first-touch waves to three contacts per run.
+Generic blasts, purchased lists, duplicate messages, stale claims, and automatic
+replies to a human response remain outside the grant.
+
 ## 2. Claude — same footing, granted 2026-07-30
 
 **Steen granted Claude the same standing authorization**, in his own words:

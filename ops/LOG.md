@@ -6,6 +6,40 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C13 · Codex · Authorized outreach wave and release guard bridged
+
+**Claim.** Claimed `STATE-BRIDGE-004` in commit `1f5c7d5` and pushed the claim
+before changing shared state.
+
+**Authorization change.** Steen specifically instructed the agents to continue
+Smith Digital outreach and authorized sending the website and business
+information to prospects to try to win clients. The durable public-safe grant
+is now in `AUTHORIZATION.md`; the private charter owns the detailed controls.
+
+**Execution.** Codex completed one three-contact first-touch wave. Every target
+was checked against Gmail history, its official website, its published contact
+route, and the cited fact immediately before sending. Each message was
+individually written, included the Smith Digital site and free-audit offer, and
+made no unverified performance claim. Gmail confirmed all three in Sent; an
+immediate delivery-failure search was empty. Prospect identities, contact
+details, findings, subjects, copy, and message IDs remain only in private ops.
+
+**Release guard.** Added a private, read-only pre-publish verifier covering
+Smith Digital, S&R Services, and Smith Made. The staged artifacts pass all 41
+checks. A deliberate missing-file negative control exits nonzero, proving a
+release blocker fails closed.
+
+**Ownership.** Scheduled routines retain follow-up monitoring. They must use
+the real Sent threads, reverify a new fact on the send day, and stop automation
+on any human reply. Production site tasks remain separately blocked on Steen's
+specific deploy/PR approvals.
+
+**External side effects:** three specifically authorized Smith Digital prospect
+emails were sent. No site, PR, ad, form, purchase, account setting, credential,
+or deletion changed. This commit publishes only sanitized coordination state.
+
+---
+
 ## 2026-07-30-C12 · Codex · Three-site QA and outreach guardrail bridged
 
 **Claim.** Claimed `STATE-BRIDGE-003` in commit `7877836` and pushed the claim
