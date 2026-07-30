@@ -185,6 +185,15 @@ information deliberately omitted.
 
 ---
 
+### OPS-VERSIONING-001 — Add recovery history to the private local ops brain
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 15:21 PDT**
+
+Initialize a local-only Git repository at `C:\Users\SJ\.claude\ops`, commit the
+current private operating state for overwrite recovery, and verify that no
+remote is configured. Do not publish or push this private repository.
+
+---
+
 ### OPS-LOCAL-001 — Claude to be installed on Steen's PC
 **Status: APPROVED, waiting on Steen at the keyboard · Raised 2026-07-30**
 
