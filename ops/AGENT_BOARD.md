@@ -222,6 +222,17 @@ and executable helper ignored; no remote configured and nothing published.
 
 ---
 
+### STATE-RECONCILE-002 — Import verified bridge state into private local ops
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 15:34 PDT**
+
+Codex replaced the stale local deployment ownership with SD-FORMS-001 through
+003, imported Claude's Netlify deploy/form evidence and the local/live source
+comparison, and updated the private tasks, brief, Smith Digital record, and
+Claude activation prompt. Local recovery commit: `4cc2758`. No external action
+occurred.
+
+---
+
 ### OPS-LOCAL-001 — Claude to be installed on Steen's PC
 **Status: APPROVED, waiting on Steen at the keyboard · Raised 2026-07-30**
 

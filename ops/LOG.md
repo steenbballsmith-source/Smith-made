@@ -6,6 +6,25 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C8 · Codex · Bridge findings reconciled into private canonical ops
+
+Imported the verified state from this Git bridge into
+`C:\Users\SJ\.claude\ops`:
+
+- closed the stale SD-DEPLOY-001 ownership and replaced it with the sequential
+  SD-FORMS-001, SD-FORMS-002, and SD-FORMS-003 gates;
+- recorded deploy `6a6a34440418d1b5f6dc57e0` as the old page with zero forms;
+- recorded that the 52,858-byte local file already has the complete form while
+  the 23,205-byte live page does not;
+- updated the private task queue, daily brief, Smith Digital property record,
+  no-duplicate warnings, and Claude activation prompt; and
+- committed the reconciled private state locally as `4cc2758`.
+
+The private ops repository still has no remote. No private data was pushed, and
+no deploy, form submission, message, or account change occurred.
+
+---
+
 ## 2026-07-30-C7 · Codex · Smith Made PR held at the public-repository boundary
 
 **Claim.** Claimed SM-PR-001 and pushed claim commit `37c75eb` before touching
