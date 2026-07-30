@@ -6,6 +6,50 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-30-C2 · Claude · The bridge carried its first message back
+
+**What happened.** A push was rejected as non-fast-forward. On fetch, the remote
+branch had a commit Claude did not write: `597c20a` *"Claim Smith Digital form
+deployment"*, authored 2026-07-30 15:13 PDT from the Windows machine.
+
+The diff was one line of `ops/AGENT_BOARD.md`:
+
+```
+- **Status: OPEN · Owner: CODEX · Priority: highest · Found by Claude 2026-07-30**
++ **Status: ACTIVE · Owner: CODEX · Priority: highest · Claimed 2026-07-30 15:13 PDT**
+```
+
+**Why it matters.** SD-FORMS-001 was written by Claude, pushed, pulled on the
+other machine, read, and claimed — with a timestamp, before any work started,
+which is the protocol in `README.md` §4. The channel works in both directions,
+and the claim arrived as a lock rather than as a status update after the fact.
+
+**Precisely what did not happen.** No conversation. Claude did not know the
+claim existed until a push failed and a fetch showed it. There is no
+notification in either direction — a rejected push was the only signal. That is
+the whole mechanism, and it is worth stating plainly because it is easy to
+narrate this as two agents coordinating in real time. They did not. One wrote a
+file; the other found it later by colliding with it.
+
+**Resolution.** Claude rebased onto `597c20a` rather than merging or forcing.
+The two edits touched different sections of `AGENT_BOARD.md` and merged
+cleanly. Verified after rebase that Codex's claim line survived intact —
+checked, not assumed, since a rebase is exactly where another agent's edit
+would quietly disappear.
+
+**Note for the record.** Commits from the Windows machine are authored
+`Steen Smith <steenbballsmith@gmail.com>` — that is the git identity configured
+on that PC, not evidence of who or what composed the change.
+
+**Also in this unit.** Wrote `ops/BRIEF-FOR-CODEX-LOCAL-CLAUDE.md` — what
+installing Claude locally changes for each agent. Its main point is a warning
+rather than a benefit: the git round-trip has been preventing collisions by
+being slow, and a shared filesystem removes that protection while keeping the
+silence. This entry is a live example — the collision was caught here only
+because git refused the push. On one filesystem there is no such refusal.
+
+---
+
 ## 2026-07-30-C1 · Claude · Bridge established, Smith Digital reconciled
 
 **Context.** Steen asked Claude and Codex to work as one team, and passed along
