@@ -1,0 +1,164 @@
+# AGENT BOARD
+
+Claim before you work. Pull before you read. Push the claim before you start.
+
+**Last reconciled:** 2026-07-30 by Claude, against the live Netlify API.
+**Agents:** Codex (Windows, local files + browser) · Claude (cloud container, MCP APIs)
+
+---
+
+## Verified state — Smith Digital
+
+Checked 2026-07-30 by Claude against the Netlify API. Reproduce with the
+Netlify MCP reader tools; site ID below.
+
+| Fact | Value | How it was verified |
+|---|---|---|
+| Netlify account | steenbballsmith@gmail.com, Google login, 2 sites | `get-user` |
+| Project | `candid-starship-c2ce98` | `get-projects` |
+| Site ID | `392091e9-6dc3-4a3d-8f84-d2e400d3169b` | `get-projects` |
+| Custom domain | `https://smithdigitalco.com` — bound and primary | `get-projects` |
+| Live deploy | `6a6a34440418d1b5f6dc57e0`, state `ready`, published **2026-07-29 17:11:34 UTC** | `get-deploy-for-site` |
+| Deploy method | `deploy_source: "drop"`, `manual_deploy: true` — drag-and-drop, not git | `get-deploy-for-site` |
+| Deploy contents | **1 file: `index.html`.** No functions, no redirects, no headers | deploy summary |
+| Forms feature | `enabled` on the project | `get-projects` |
+| Forms registered | **`[]` — zero** | `get-forms-for-project` |
+| MFA on Netlify | `mfa_enabled: false` | `get-user` |
+
+## Tasks
+
+### SD-DEPLOY-001 — Deploy Smith Digital to Netlify
+**Status: ALREADY DONE — closed, not by Claude. Do not repeat.**
+
+The board Claude was handed said to take this task and deploy. The API says a
+production deploy went live on **2026-07-29 at 17:11 UTC**, one day before
+Claude was asked to do it. Re-deploying would have been a duplicate deployment,
+which the operating contract forbids.
+
+Claude could not have done it regardless: the source file
+`C:\Users\SJ\Smith-Digital-Site\index.html` is on the Windows machine and is not
+in any repository Claude can reach.
+
+*Whoever ran that drop deploy should confirm on this board that it was them.*
+
+---
+
+### SD-FORMS-001 — The audit form is not capturing anything 🔴
+**Status: OPEN · Owner: CODEX · Priority: highest · Found by Claude 2026-07-30**
+
+**Netlify has zero forms registered for this site.** The Forms *feature* is
+enabled, but `get-forms-for-project` returns an empty array. Netlify detects
+forms by parsing HTML at deploy time; nothing was detected in the deploy that is
+live right now.
+
+What follows from that, and this is the part that matters:
+
+- Any audit request submitted on smithdigitalco.com today is **not being
+  captured**. There is no inbox for it and no record of it.
+- Email notifications **cannot be configured** — there is no form object to
+  attach a notification to.
+- A test submission would **not arrive**. Reporting it as working would have
+  been a false success.
+
+Three of the six steps on Claude's original instruction list — verify the form,
+configure notifications, submit a test that arrives — were resting on a form
+that does not exist yet.
+
+**Why Codex owns this:** the fix is in the HTML on the Windows machine, and
+verifying it needs a browser that can load the live site. Claude has neither.
+
+**The fix.** In `C:\Users\SJ\Smith-Digital-Site\index.html`, the `<form>` needs:
+
+```html
+<form name="audit" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="audit">
+  <p hidden><label>Leave blank: <input name="bot-field"></label></p>
+  <!-- existing fields -->
+</form>
+```
+
+- `name="audit"` and `data-netlify="true"` are what Netlify's parser looks for.
+- The hidden `form-name` input is **required** if anything submits via JS/fetch
+  rather than a plain HTML POST. It is the most common cause of a silently
+  dead Netlify form.
+- `netlify-honeypot` is optional but keeps bot spam out of the inbox.
+
+Then redeploy, and confirm the form now appears. Claude can verify the
+registration from the API side the moment it is pushed.
+
+---
+
+### SD-FORMS-002 — Email notifications to steenbballsmith@gmail.com
+**Status: BLOCKED by SD-FORMS-001 · Owner: STEEN or CODEX (browser required)**
+
+Not doable by Claude even once the form exists. The Netlify MCP server exposes
+only: enable/disable forms, and read/delete submissions. **Notification
+configuration is not in the toolset** — it is a dashboard action.
+
+Steen or Codex: Netlify → `candid-starship-c2ce98` → Project configuration →
+Notifications → *Form submission notifications* → add an email notification to
+**steenbballsmith@gmail.com**.
+
+---
+
+### SD-FORMS-003 — Labelled test inquiry, delivery confirmed
+**Status: BLOCKED by SD-FORMS-001 and SD-FORMS-002 · Owner: CODEX**
+
+Submit one clearly-labelled test inquiry through the live form. Then confirm it
+in **both** places, because either alone can lie:
+
+1. the Netlify submissions list (`manage-form-submissions` → `get-submissions`), and
+2. the actual Gmail inbox.
+
+**Do not report success from the submit action returning 200.** A 200 from a
+form Netlify never registered still looks like a success. Delivery must be
+observed in the inbox.
+
+---
+
+### SM-PR-001 — Smith Made venue outreach
+**Status: RESERVED TO CODEX · Claude has not touched it.**
+
+Claude has sent no email, drafted nothing, and opened no venue thread. The three
+venues (Riverain Farm, The Barn at Sitton Hill Farm, The Hollow at Paris
+Mountain) remain entirely Codex's. Ownership transfers only by an explicit edit
+to this line.
+
+One thing worth flagging to whoever sends them: the drafts live in
+steenbballsmith@gmail.com but are meant to go from will.smithmade@gmail.com, and
+the signature line still carries the wrong address (`SESSION_HANDOFF.md` §2).
+Re-verify each venue's address against its live website the day you send.
+
+---
+
+### OPS-PRIVACY-001 — Strategy documents are public 🟠
+**Status: OPEN · Owner: STEEN (his call) · Raised by Claude 2026-07-30**
+
+`steenbballsmith-source/Smith-made` is a public repo, and already-merged files
+publish material that is normally kept in: the 14-venue lead list with
+commentary and the 10-planner list (`MARKETING_PLAYBOOK.md` §3), the
+founder-discount offer (§3), and the internal margin floor of ~50–55% gross
+(`SESSION_HANDOFF.md` §4).
+
+This is not a leak of anything dangerous — no credentials, no customer data —
+but it is Smith Made's go-to-market plan and its pricing floor, readable by any
+competitor who finds the repo.
+
+Claude has not changed this. Deciding what a business publishes is Steen's, not
+an agent's. Two options when he wants it: move the strategy docs to a private
+`smith-ops` repo, or make this repo private (GitHub Pages on a custom domain
+still works on a private repo, but it needs a paid plan).
+
+---
+
+### OPS-CHARTER-001 — Get CHARTER.md into the shared channel
+**Status: OPEN · Owner: CODEX**
+
+`CHARTER.md` governs sending, publishing, account changes, money, identity
+checks, and credentials — and Claude has never been able to read a line of it.
+Until it is committed here, Claude is operating on the summary in the original
+instructions rather than the document itself, and is staying conservative
+because of that.
+
+Codex: commit your canonical `CHARTER.md` to `ops/`. Claude will not write a
+competing copy. Strip anything sensitive first — this repo is public.
