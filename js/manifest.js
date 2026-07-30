@@ -25,7 +25,7 @@ window.SMITH_MADE = {
      A wide photo (landscape, roughly 1600x900) shown behind
      the headline — and shown while the video loads too.
      Drop it in assets/img/ and point to it here:            */
-  heroPoster: "",
+  heroPoster: "assets/img/hero-staged.jpg",
 
   /* ---- PRODUCT PHOTOS -------------------------------------
      Drop each product photo into assets/img/catalog/ and add
@@ -33,10 +33,9 @@ window.SMITH_MADE = {
      below exactly (it's the product's id). Example:
        "arch-welcome-wall": "assets/img/catalog/arch-welcome-wall.jpg",
 
-     Product ids (No. 01-10):
+     Product ids (No. 01-08):
        arched-welcome        seating-chart-wall
        family-round          champagne-wall
-       unplugged-ceremony    bar-menu
        grand-arch-welcome-wall  ceremony-arch-set
        slat-backdrop         mobile-bar                     */
   photos: {
@@ -44,25 +43,27 @@ window.SMITH_MADE = {
 
   /* ---- GALLERY --------------------------------------------
      Real-wedding and shop photos. Drop files into
-     assets/img/gallery/ and add one line per photo:
+     assets/img/gallery/ and add one line per photo. Either
+     form works:
        "assets/img/gallery/june-wedding-01.jpg",
-     The gallery section stays hidden until this list has at
-     least one photo in it.                                  */
+       { src: "assets/img/gallery/june.jpg", finish: "Natural oak" },
+     The second form prints that little caption under the photo.
+     The gallery stays hidden until this list has one photo.  */
   gallery: [
-    "assets/img/gallery/lookbook-14-heart.jpg",
-    "assets/img/gallery/lookbook-15-display-shelf.jpg",
-    "assets/img/gallery/lookbook-16-arch-opening.jpg",
-    "assets/img/gallery/lookbook-17-welcome-panel.jpg",
-    "assets/img/gallery/lookbook-18-cream-bar.jpg",
-    "assets/img/gallery/lookbook-09-champagne-wall.jpg",
-    "assets/img/gallery/lookbook-10-bar-fluted.jpg",
-    "assets/img/gallery/lookbook-11-arch-riser.jpg",
-    "assets/img/gallery/lookbook-12-display-arch.jpg",
-    "assets/img/gallery/lookbook-13-bar-round.jpg",
-    "assets/img/gallery/lookbook-06-arch-trio.jpg",
-    "assets/img/gallery/lookbook-08-walkthrough-arch.jpg",
-    "assets/img/gallery/lookbook-02-wave-backdrop.jpg",
-    "assets/img/gallery/lookbook-05-round-disc.jpg",
+    { src: "assets/img/gallery/staged-arch-riser.jpg", finish: "The Arched Welcome · natural white oak" },
+    { src: "assets/img/gallery/staged-arch-opening.jpg", finish: "Grand Arch Welcome Wall · painted cream" },
+    { src: "assets/img/gallery/staged-bar-fluted.jpg", finish: "The Mobile Bar · fluted natural oak" },
+    { src: "assets/img/gallery/staged-slat-arch-black.jpg", finish: "Slat Monogram Backdrop · blackened frame, oak slats" },
+    { src: "assets/img/gallery/staged-champagne-wall.jpg", finish: "Champagne Wall · natural white oak" },
+    { src: "assets/img/gallery/staged-welcome-panel.jpg", finish: "Seating Chart Wall · painted panel, walnut base" },
+    { src: "assets/img/gallery/staged-cream-bar.jpg", finish: "The Mobile Bar · painted cream with an oak top" },
+    { src: "assets/img/gallery/staged-heart.jpg", finish: "Keepsake shapes · natural white oak" },
+    { src: "assets/img/gallery/staged-display-shelf.jpg", finish: "Display wall · painted cream" },
+    { src: "assets/img/gallery/staged-arch-trio.jpg", finish: "Ceremony Arch Set · natural birch" },
+    { src: "assets/img/gallery/staged-round-disc.jpg", finish: "The Family Round · natural white oak" },
+    { src: "assets/img/gallery/staged-wave-backdrop.jpg", finish: "Slat Monogram Backdrop · sculpted wave edge" },
+    { src: "assets/img/gallery/staged-bar-round.jpg", finish: "The Mobile Bar · round, natural oak" },
+    { src: "assets/img/gallery/staged-walkthrough.jpg", finish: "Grand Arch Welcome Wall · natural birch" },
   ],
 
   /* ---- PAYMENTS: THE $50 DATE HOLD ------------------------
