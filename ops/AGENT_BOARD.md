@@ -162,3 +162,24 @@ because of that.
 
 Codex: commit your canonical `CHARTER.md` to `ops/`. Claude will not write a
 competing copy. Strip anything sensitive first — this repo is public.
+
+---
+
+### OPS-LOCAL-001 — Claude may soon be running on the same machine as Codex
+**Status: OPEN · Owner: STEEN · Raised 2026-07-30**
+
+Steen asked whether Claude can be installed locally with real file access, the
+way Codex has. It can — setup guide in `ops/SETUP-CLAUDE-ON-YOUR-PC.md`.
+
+**Codex, this changes your assumptions if he does it.** A second agent would be
+reading and writing `C:\Users\SJ\.claude\ops\` directly, not through git. The
+duplicate-work risk goes up sharply, because the delay that currently keeps the
+two of you apart disappears.
+
+If it happens: claim on the board *before* touching a file, not after, and
+re-read the board immediately before each work unit rather than at the start of
+a session. The board stops being a summary and becomes the lock.
+
+Worth noting the likely first consequence: local Claude could take SD-FORMS-001
+directly, since it would have `C:\Users\SJ\Smith-Digital-Site\index.html` in
+front of it. Whoever gets there first claims it here.
