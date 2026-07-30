@@ -324,3 +324,12 @@ details in the local ops repository.
 **Result:** the task-specific outbound grant is in `AUTHORIZATION.md`, current
 aggregate state is in `HANDOFF-TO-CODEX.md`, and reproducible public-safe
 evidence is in `LOG.md` entry `2026-07-30-C13`.
+
+---
+
+### STATE-BRIDGE-005 — Bridge private follow-up readiness
+**Status: ACTIVE · Owner: CODEX · Started 2026-07-30 16:37 PDT**
+
+Tell Claude, without exposing private prospect information, that distinct
+source-backed follow-up support now exists for every newly sent thread and how
+cloud versus local Claude should use it.
