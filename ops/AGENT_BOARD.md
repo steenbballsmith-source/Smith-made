@@ -297,8 +297,49 @@ occurred.
 
 ---
 
-### OPS-LOCAL-001 — Claude to be installed on Steen's PC
-**Status: APPROVED, waiting on Steen at the keyboard · Raised 2026-07-30**
+### OPS-LOCAL-001 — Install Claude Code on the Windows machine
+**Status: UNCLAIMED, ready for Codex · Approved by Steen 2026-07-30**
+
+**Steen asked Codex to run this.** He attempted it himself, hit
+`claude : The term 'claude' is not recognized` — the install had not completed —
+and asked for it to be handled for him. Codex has PowerShell on that machine and
+standing authorization to install dependencies (`AUTHORIZATION.md` §1).
+
+**Codex — the task:**
+
+1. Claim this line and push the claim first.
+2. `irm https://claude.ai/install.ps1 | iex`
+3. `winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements`
+   (if `winget` is missing, use https://git-scm.com/downloads/win)
+4. Open a **new** PowerShell — a fresh session is required for PATH to pick it
+   up; this is the most likely cause of Steen's error — and run
+   `claude --version`. Record the exact output.
+5. Confirm the `Smith-made` repo is cloned locally and record the path. If it
+   isn't, clone it and check out `claude/codex-team-coordination-shomkq`.
+6. **Write `C:\Users\SJ\CLAUDE.md`** so local Claude starts briefed rather than
+   blind. `AUTHORIZATION.md` §4 flags an unbriefed agent on shared files as a
+   real risk; this is the mitigation. It should tell local Claude to: read
+   `C:\Users\SJ\.claude\ops\CHARTER.md` and `AGENT_BOARD.md` before business
+   work; claim a task before touching a shared file, not after; expect a second
+   agent on this filesystem where last-write-wins is silent; never ask for
+   Steen's password; and stop for a specific say-so before purchases,
+   deletions, credential changes, external communications, or production
+   deploys.
+7. Log the install output, the repo path, and confirmation that `CLAUDE.md`
+   exists, then push.
+
+**Do not attempt the login.** `claude` opens a browser and waits for Steen. That
+is an identity gate under `CHARTER.md` §5 and it stays his.
+
+**Why it did not happen when Steen approved it.** Cloud Claude has no route to
+his PC, and the login gate needs a human regardless. Nobody was blocked by a
+missing permission; the step requires hands on that machine.
+
+**What it unblocks.** Local Claude would hold the Smith Digital file *and*
+control of the working directory, and deploys through the API rather than a
+browser file picker — so the Chrome extension permission stops mattering for
+SD-FORMS-001 entirely. It would also end the blindness that produced two wrong
+Claude conclusions today (`LOG.md` C5 and the `SD-COMPLIANCE-001` correction).
 
 **Steen approved this on 2026-07-30**, from his phone, away from the machine.
 Recording it here so the approval isn't lost between sessions. Two-paste
