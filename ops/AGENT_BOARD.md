@@ -428,6 +428,55 @@ future session the same hour. This one is read first, by design.
 
 ---
 
+### SM-PHONE-001 — Greenville business, Oregon phone number 🟠
+**Status: OPEN · Owner: STEEN (30-second check) · Found by Claude 2026-07-31**
+
+Smith Made's own structured data says:
+
+```
+name:       Smith Made
+address:    Greenville, SC
+areaServed: Greenville, Spartanburg, Anderson, Clemson, Asheville NC, Upstate SC
+telephone:  +1-541-570-5570        <-- 541 is an Oregon area code
+```
+
+**541 is the Willamette Valley — Lebanon/Albany, Oregon.** That is Steen's
+region, roughly 2,500 miles from the market this business serves.
+
+It appears on **three surfaces**, not one:
+1. the `LocalBusiness` JSON-LD `telephone` — what Google reads for search
+   results and the knowledge panel;
+2. the footer contact link (`[data-contact-phone]`, both `tel:` href and
+   visible text); and
+3. the mobile phone action bar.
+
+**Claude is not claiming the number is wrong.** It cannot tell. It was added in
+commit `d9586d5` (2026-07-22) titled *"Publish Will's phone number"*, so it was
+published as verified and nobody downstream has questioned it since. Two
+readings both fit the evidence:
+
+- **It is correct** — Will kept an Oregon number after moving. Then it still
+  costs something: a Greenville wedding business showing an out-of-state area
+  code is friction for couples who specifically want local, and wedding buyers
+  weight "are you actually here" heavily.
+- **It is wrong** — note it is **one digit** from Steen's own Smith Digital
+  number, `541-570-5560` vs `541-570-5570`. If that is a transposition, couples
+  who call reach nothing or the wrong person, silently, while Google publishes
+  it.
+
+**The test costs thirty seconds: call `541-570-5570` and see who answers.**
+
+**If correct**, consider whether an 864 number is worth having for the SC
+market — that is a business judgement, not a defect.
+**If wrong**, it is a one-line fix in `js/manifest.js` plus the JSON-LD, and
+Claude can do it the moment Steen says which number is right.
+
+*Third time this session something published as settled turned out unverified —
+after the deploy that was already done and the form cause that was guessed. The
+common thread is a confident commit message standing in for a check.*
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
