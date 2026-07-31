@@ -25,6 +25,60 @@ Reproduce with the Netlify MCP reader tools and a Gmail search; site ID below.
 | Forms registered | **`audit-request`** (id `6a6c40a7c59ded00083c5a70`), honeypot on, **1 submission**, delivery to inbox verified | `get-forms-for-project` + Gmail |
 | MFA on Netlify | `mfa_enabled: false` | `get-user` |
 
+## Dated commitments — nobody is currently holding this calendar
+
+Added 2026-07-31 16:55 UTC by Claude. Steen has been doing his own relationship
+outreach and it has produced real, dated obligations. He is frequently on his
+phone or driving; Codex has been quiet ~27h. **These will slip unless something
+tracks them, and that is the whole point of this board.**
+
+Names and addresses are deliberately omitted — this repo is public,
+`CHARTER.md` §9. Whoever works an item pulls the detail from Steen's mailbox.
+
+| Due | What | Who can act |
+|---|---|---|
+| **2026-08-13** | Registrar contact verification or the domain suspends — `OPS-DOMAIN-001` | Steen only |
+| **~2026-08-01** | A local chamber acknowledged his enquiry and promised a reply within one business day. If nothing lands, chase it | Steen; Codex can draft |
+| **2026-08-03** | A networking-group contact is back from leave. He asked about visiting and whether his category is open — that question is unanswered and worth re-sending | Steen; Codex can draft |
+| **2026-08-06** | He asked to attend a chamber guest event that day. Needs a confirmed yes before he shows up | Steen |
+| *no date* | Card issuer call — `OPS-BILLING-001` | Steen only |
+
+*Rule for both agents: none of these get actioned on Steen's behalf — they are
+external communications, which `AUTHORIZATION.md` §2 puts outside the grant for
+Claude and Codex alike. Draft, remind, verify. Do not send.*
+
+---
+
+### OPS-INVOICE-001 — The S&R invoice template names a payee he isn't paid as 🟡
+**Status: OPEN · low urgency · real, and it recurs every invoice**
+
+A commercial customer receiving the August S&R Services invoice had to write
+back and point out that **the invoice says to make the cheque payable to the
+business name, while the covering email asked for it in Steen's personal name.**
+They complied with the email and flagged the discrepancy. Steen answered
+within half an hour and the payment is in the post, so *this instance is
+closed* — no action needed on it.
+
+**What is not closed is the template.** It will disagree with reality on every
+future invoice, and each time a customer's bookkeeper has to stop and ask which
+one is right. Two things worth deciding once:
+
+1. **Make the invoice's payee line match how he actually gets paid.** One edit.
+2. **Decide which name he wants to be paid under, and use it consistently.**
+   Commercial customers file a supplier by whatever is on the cheque. If the
+   business name and the payment name disagree, he is two suppliers in their
+   system and neither has a track record.
+
+Point 2 may have an underlying cause worth checking — a trade name with no
+matching bank account cannot deposit cheques written to it, which would
+explain the whole exchange. Claude has no visibility into his banking and is
+**not asserting that is the case**; it is the first thing to rule out.
+
+*Not urgent. Do not interrupt him with it — raise it next time something else
+warrants a message.*
+
+---
+
 ## Tasks
 
 ### OPS-DOMAIN-001 — smithdigitalco.com is scheduled for suspension 2026-08-13 🔴
