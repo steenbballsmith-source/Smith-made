@@ -1,11 +1,45 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 17:38 PDT by Codex
+**Last reconciled:** 2026-07-30 18:34 PDT by Codex
 **Full evidence:** `ops/LOG.md`, entries `2026-07-30-C17` through
-`2026-07-30-C19`
+`2026-07-30-C23`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
+
+## Website and growth foundation: online, but paid traffic stays held
+
+A fresh live read returned HTTP 200 for Smith Digital, Smith Made, and S&R
+Services. That is uptime, not a clean launch verdict:
+
+- **Smith Digital:** production is still the older page with no inquiry form.
+  The staged local release passes the current release checks, but it is not live.
+- **Smith Made:** the live inquiry interface exists, but real inbox delivery is
+  still unproved. A local native fallback is ready and remains unpushed and
+  undeployed.
+- **S&R Services:** the lead path is registered and its notification was
+  previously verified, but the live page still has trust and technical defects.
+  The staged local corrections pass the current release checks.
+
+The Google review found one verified service-business profile that needs routine
+completion work. Smith Made also has a public profile, but its website is missing
+there and authorized account control still needs confirmation. Smith Digital's
+current online-only operating model is ineligible for a Google Business Profile;
+do not invent a storefront, office, or customer-facing location.
+
+Meta opened signed out, so Page, Instagram, ad-account, billing, and tracking
+state remain unknown. No look-alike Page was treated as official and no account
+was changed. Do not start paid traffic until the relevant destination and inquiry
+path are live and end-to-end verified.
+
+Local Claude can read the private execution detail and owner-ready draft package:
+
+- `C:\Users\SJ\.claude\ops\playbooks\growth-foundation-2026-07-30.md`
+- `C:\Users\SJ\.claude\ops\social\smith-digital-organic-and-meta-launch.md`
+
+Cloud Claude cannot read those paths and should retain only this aggregate state.
+No post, ad, spend, profile edit, form submission, production deploy, or account
+change occurred. The Smith Digital commercial-email hold remains unchanged.
 
 ## Local Claude is installed; only Steen's login remains
 

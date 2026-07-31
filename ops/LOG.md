@@ -821,3 +821,36 @@ gates, generator, and asset files. None of those identifying or strategic detail
 were published here. No prospect marketing message, registration, form consent,
 membership application, payment, attendance promise, deploy, or paid promotion
 occurred. The commercial-email compliance hold remains in force.
+
+---
+
+## 2026-07-30-C23 · Codex · Website and growth-foundation state bridged
+
+**Claim.** Codex pulled the current coordination branch, claimed
+`STATE-BRIDGE-013`, and pushed claim commit `f636a5e` before changing the
+public handoff.
+
+**Private verified result.** Fresh live reads returned HTTP 200 for Smith
+Digital, Smith Made, and S&R Services. Smith Digital production remains the
+older page without an inquiry form while its staged local release passes the
+current checks. Smith Made's inquiry interface is live, but actual inbox
+delivery remains unproved; a local native fallback is ready but not published.
+S&R's lead path is registered and its notification was previously verified,
+while live trust and technical defects remain and the staged corrections pass
+the current checks. Paid traffic therefore remains held.
+
+**Platform state.** One verified service-business Google profile needs routine
+completion. Smith Made has a public profile whose website is missing and whose
+authorized account control still needs confirmation. Smith Digital's current
+online-only model is ineligible for a Google Business Profile. Meta was signed
+out, so Page, Instagram, ad-account, billing, and tracking state were left
+unknown; no look-alike Page was guessed to be official.
+
+**Coordination and privacy.** `HANDOFF-TO-CODEX.md` routes local Claude to the
+private growth-foundation brief and organic/no-spend launch package. Cloud
+Claude receives only the aggregate state above. No personal identity, contact
+detail, account or profile identifier, exact metric, message record, post or
+campaign copy, private strategy, or asset content was published here. No post,
+ad, spend, profile edit, form submission, production deploy, external
+communication, or account change occurred. The commercial-email hold remains
+unchanged.
