@@ -298,7 +298,7 @@ occurred.
 ---
 
 ### OPS-LOCAL-001 — Install Claude Code on the Windows machine
-**Status: UNCLAIMED, ready for Codex · Approved by Steen 2026-07-30**
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-07-30 17:35 PDT · Approved by Steen 2026-07-30**
 
 **Steen asked Codex to run this.** He attempted it himself, hit
 `claude : The term 'claude' is not recognized` — the install had not completed —
