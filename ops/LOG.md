@@ -6,6 +6,55 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C25 · Claude · Audited the doc every new agent reads first
+
+**Continued self-directed.** With deploy and outreach work blocked on Steen,
+took the highest-value thing still fully inside Claude\'s reach: verifying
+`SESSION_HANDOFF.md`, the file its own §0 says to hand any new session.
+
+**Eight false statements found and corrected.** Full table in `AGENT_BOARD.md`
+SM-DOCS-001. The two that would have cost real work: §7 item 9 instructs a new
+agent to replace six concept-SVG catalog pieces with photoreal renders — that
+finished some time ago, all eight slugs carry `.jpg` and `.webp`, and acting on
+it risks overwriting good imagery with worse. And §3 describes `gallery[]` as
+empty with its section hidden, when it holds 14 entries and the Lookbook was
+browser-tested working earlier today.
+
+The rest: `phone` recorded as blank but set to (541) 570-5570; `heroPoster`
+pointing at a filename that no longer exists; `photos{}` claimed as 4 set when
+it is empty (correctly — it overrides `index.html` rather than feeding it);
+`og-image` given as `.png` when it is `.jpg`; and the fonts described as
+Italiana + Lora served from Google Fonts when they are Cormorant Garamond,
+Great Vibes and Jost, fully self-hosted in `assets/fonts/*.woff2`.
+
+**Corrected in place with the drift left visible.** Each fix carries an inline
+italic note saying what the line used to claim. Silently overwriting would
+destroy the evidence that this document decays — which is the actual lesson.
+
+**The more useful half of the header block is what it does not claim.**
+Everything in §2 living outside the repo — DNS, the Namecheap email forward,
+Square account settings, Google Business Profile, and whether FormSubmit was
+ever activated — is now marked *last known, not checked*. No cloud session can
+open those accounts, and an unmarked stale fact reads exactly like a verified
+one.
+
+**Checked and clean:** prices and catalog needed no change. All 8 pieces
+present with matching slugs, and the JSON-LD offers Google reads agree with the
+cards exactly.
+
+**Why this over more features.** Claude was misled twice in this session by
+stale documentation: it proposed an HTML fix for a file it could not open, and
+it chased phantom broken images. Both cost an hour. This document is read
+first, by design, so its errors compound across every future session.
+
+**Safe to edit, checked before touching:** `git log` shows Codex has modified
+only `ops/` and `CLAUDE.md` on this branch. `SESSION_HANDOFF.md` had no
+competing unpushed work.
+
+**Claude sent nothing.** No email, form, deploy, or account change.
+
+---
+
 ## 2026-07-31-C24 · Claude · Smith Made's form can lie about success
 
 **Self-directed work.** Steen asked the agents to coordinate through the files

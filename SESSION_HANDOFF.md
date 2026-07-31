@@ -2,6 +2,23 @@
 **Everything done, everywhere it lives, and everything still open.**
 Compiled 2026-07-18. Give this file to any new Claude chat and it knows the whole story.
 
+> **Verified against the repo 2026-07-31 by Claude.** Section 3 and section 7
+> item 9 had drifted — eight statements were false, and two of them were
+> actively harmful: the checklist told a new agent to redo imagery that was
+> already finished, and the technical map said the Lookbook gallery was empty
+> and hidden when it holds 14 live images. Corrections are marked inline in
+> *(italics)* so the drift stays visible rather than silently overwritten.
+>
+> **Still unverified from a cloud session**, and not to be assumed: everything
+> in section 2 that lives outside this repo — DNS records, the Namecheap email
+> forward, Square's account settings, Google Business Profile state, and
+> whether FormSubmit was ever activated. Those need someone who can open the
+> accounts. Treat section 2 as last known, not as checked.
+>
+> Whoever reads this next: prices and catalog were checked and are consistent
+> (all 8 pieces, JSON-LD offers match the cards). The front end passed a full
+> browser QA the same day — see `ops/AGENT_BOARD.md` SM-QA-002.
+
 ## 0. PASTE THIS PROMPT IN THE NEW CHAT
 
 ```
@@ -39,10 +56,10 @@ smithmadesc.com (Section 7, item 1) so the website is live on it.
 ## 3. WEBSITE — TECHNICAL MAP (plain HTML/CSS/JS, no build step)
 
 - `index.html` — everything: hero (with photo + price line), values, 8-card catalog + filter chips, how-it-works, pricing & policies + pickup-savings callout, Lookbook (14 captioned renders) + custom invitation, hidden Couples/reviews section, FAQ, inquiry form + $50-hold callout, footer, phone action bar. SEO title "Custom Wood Wedding Signs Greenville SC — Rent or Buy | Smith Made", LocalBusiness JSON-LD, OG tags → https://smithmadesc.com.
-- `css/styles.css` — brand tokens (handoff §3): linen `#F5F0E8`/`#EDE6D9`/card `#FAF7F1`, walnut `#6B4A2B` hover `#57381E`, ink `#3B2C1C`, soft ink `#6D5B45`, gold `#B08D57`, hairline `#DCD2C2`. Fonts: Italiana (display) + Lora (body) via Google Fonts, system fallbacks. Includes `[hidden]{display:none!important}` (fixes filter chips — don't remove). Hover system: card lift + photo zoom, nav underline, table-row + FAQ highlights, reduced-motion respected.
-- `js/manifest.js` — **the only file the owner edits**: `heroVideo`, `heroPoster` (set: assets/img/hero-poster.jpg), `photos{}` (4 set), `gallery[]` (empty → section hidden), `dateHoldUrl` (set: the Square link), `formEndpoint` (set: https://formsubmit.co/ajax/will.smithmade@gmail.com), `email` (will.smithmade@gmail.com), `phone` "", `instagram` "".
+- `css/styles.css` — brand tokens (handoff §3): linen `#F5F0E8`/`#EDE6D9`/card `#FAF7F1`, walnut `#6B4A2B` hover `#57381E`, ink `#3B2C1C`, soft ink `#6D5B45`, gold `#B08D57`, hairline `#DCD2C2`. Fonts: **Cormorant Garamond** (display/body) + **Great Vibes** (script) + **Jost** (UI), **self-hosted** as `assets/fonts/*.woff2` — no Google Fonts request at runtime. *(Corrected 2026-07-31: this line previously said Italiana + Lora via Google Fonts. Both the typefaces and the delivery method had changed.)* Includes `[hidden]{display:none!important}` (fixes filter chips — don't remove). Hover system: card lift + photo zoom, nav underline, table-row + FAQ highlights, reduced-motion respected.
+- `js/manifest.js` — **the only file the owner edits**. Values verified against the file 2026-07-31: `heroVideo` empty · `heroPoster` = `assets/img/hero-staged.jpg` · `photos{}` **empty** (the catalog images are baked into `index.html`; this block only *overrides* them, so empty is correct and expected) · `gallery[]` **14 entries — the Lookbook is live, not hidden** · `dateHoldUrl` = the Square link · `formEndpoint` = `https://formsubmit.co/ajax/will.smithmade@gmail.com` · `email` = will.smithmade@gmail.com · `phone` = **(541) 570-5570 (set)** · `instagram` empty. *(Corrected 2026-07-31: this line previously said heroPoster was hero-poster.jpg, photos had 4 set, the gallery was empty and its section hidden, and phone was blank. All four were wrong.)*
 - `js/main.js` — nav toggle, hero video probe + graceful fallback (reduced-motion/data-saver aware), catalog photo preload-then-swap, chips filter, per-piece **Book** buttons (prefill form + scroll), hold-callout wiring. `js/form.js` — posts FormData + `_subject`/`_template=table` to endpoint, honeypot field `company` silently drops bots, mailto fallback if endpoint empty.
-- `assets/img/catalog/` — photoreal renders (from chat uploads): `seating-chart-wall.jpg` (02), `champagne-wall.jpg` (04), `grand-arch-welcome-wall.jpg` (07), `ceremony-arch-set.jpg` (08). All other pieces: original drawn concept SVGs in brand style (linen ground, gold dimension lines, "SMITH MADE · CONCEPT No. X" stamp). `assets/img/hero-poster.jpg` = landscape crop of 02. `og-image.png` 1200×630.
+- `assets/img/catalog/` — **all eight pieces now have photoreal `.jpg` renders plus `.webp` versions**; the original concept `.svg` files are retained alongside them but are no longer what the cards display. Hero poster is `assets/img/hero-staged.jpg`. Social image is `assets/img/og-image.jpg` (1200×630). *(Corrected 2026-07-31: this line previously named only four pieces as photoreal and described the rest as concept SVGs, and gave the OG image as `.png`. Verified on disk — every slug has a `.jpg`.)*
 - `CNAME` = `smithmadesc.com` · `robots.txt` + `sitemap.xml` → smithmadesc.com · `favicon.svg` SM monogram.
 - Git flow used: branch `claude/smith-made-website-rnm7no` → PR → merge to `main` → auto-deploy. PRs #1–#9 all merged.
 
@@ -74,4 +91,4 @@ smithmadesc.com (Section 7, item 1) so the website is live on it.
 6. **Post 2 Marketplace listings** (playbook §2); renew weekly.
 7. **Create @smithmadesc socials**, paste bios, run the 9-post sequence (SOCIAL_KIT.md).
 8. **Build the flagship arch + film the 3 scripts** — unlocks real photos everywhere and the first $70 boosted-Reel ad test.
-9. Replace the 6 concept-SVG pieces with photoreal renders from Steen's PC (`Downloads\Smith Made\web`, slugs in OWNERS-GUIDE Part 4); later: hero.mp4, gallery photos, Etsy keepsakes, premium pricing at 15–20 reviews.
+9. ~~Replace the 6 concept-SVG pieces with photoreal renders~~ — **DONE, verified 2026-07-31.** All eight catalog slugs have `.jpg` + `.webp` renders on disk and the cards display them. Do not redo this; treating it as open risks replacing good imagery. Also done: the 14-image Lookbook gallery is live. **Still genuinely open:** `hero.mp4` (heroVideo is empty), Instagram link (empty), Etsy keepsakes, premium pricing at 15–20 reviews.

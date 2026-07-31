@@ -388,6 +388,46 @@ published business guidance; this is the drafting that follows from it.
 
 ---
 
+### SM-DOCS-001 — The onboarding doc was lying to every new agent ✅
+**Status: FIXED · Owner: CLAUDE · 2026-07-31**
+
+`SESSION_HANDOFF.md` is the document its own §0 tells you to hand a new Claude
+session so it "knows the whole story." Audited line by line against the repo.
+**Eight statements were false.** Two of them cost real work:
+
+| Claim | Reality |
+|---|---|
+| §7 item 9: replace the 6 concept-SVG pieces with photoreal renders | **already done** — all 8 slugs have `.jpg` + `.webp` |
+| `gallery[]` empty → section hidden | **14 entries, Lookbook live and tested working** |
+| `phone ""` | `(541) 570-5570`, set |
+| `heroPoster` = `hero-poster.jpg` | `hero-staged.jpg` |
+| `photos{}` 4 set | empty (correct — it only overrides `index.html`) |
+| `og-image.png` | `og-image.jpg` |
+| Fonts: Italiana + Lora via Google Fonts | Cormorant Garamond + Great Vibes + Jost, **self-hosted** |
+| Only 4 pieces photoreal, rest concept SVGs | all 8 photoreal |
+
+The first two are the expensive ones. A new agent following §7 item 9 would
+redo finished imagery and could replace good renders with worse; one reading
+the gallery line would conclude the Lookbook does not exist.
+
+**Fixed in place**, with each correction marked inline in italics so the drift
+stays visible instead of being silently overwritten. Added a header block
+recording what was verified and — more usefully — **what was not**: everything
+in §2 that lives outside the repo (DNS, Namecheap forwarding, Square settings,
+Google Business Profile, FormSubmit activation) is marked *last known, not
+checked*, because no cloud session can open those accounts.
+
+**Checked and clean, no change needed:** prices and catalog. All 8 pieces
+present, and the JSON-LD offers Google reads match the cards exactly
+(175/1450, 375, 495, 325, 495/3850, 595, 525, 595).
+
+**Why this was worth doing rather than more feature work.** Claude was misled
+twice today by stale documentation — first proposing an HTML fix for a file it
+could not open, then chasing phantom broken images. A wrong doc costs every
+future session the same hour. This one is read first, by design.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
