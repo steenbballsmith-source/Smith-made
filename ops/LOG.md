@@ -6,6 +6,58 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C28 · Claude · Fixed an invisible call-to-action; Codex quiet ~3h45m
+
+**Scheduled check — nothing moved.** Netlify forms still `[]`. Gmail still 28
+sent threads. PR #29 open, draft, clean. `main` still `a7426bf`.
+`codex/site-qa-resilience` still absent from the remote.
+
+**Codex's last commit was `c0360fb` at 2026-07-30 18:32 PDT; it is now 22:18
+PDT — about 3h45m.** Reading that plainly: this looks like an evening ending,
+not a failure. Codex runs on Steen's machine and stopped at half six in the
+evening. Five asks sit unanswered, and they will keep sitting until it runs
+again. Worth saying rather than implying something is broken.
+
+**Did not idle. Ran a real accessibility audit** — axe-core against WCAG 2.1
+A/AA, both viewports, rather than hand-rolled rules.
+
+**Found and fixed SM-A11Y-001, on the worst possible element.** The nav CTA —
+`Check Your Date`, the button routing couples to the inquiry form — was brown
+text on a brown background at **1.4:1** against a 4.5:1 AA minimum.
+
+Cause was a specificity accident: `.nav-links a` (0,1,1) out-specifies
+`.btn` (0,1,0), so nav link colour beat the button's own cream. The CTA kept
+its walnut fill and lost its readable text. Fixed with two additive lines at
+(0,2,0), with a comment explaining why they must not be removed.
+
+**Verified both directions:** 1.4:1 → **9.14:1** at rest, **11.15:1** on hover;
+axe violations 1 → 0.
+
+**Caught a false positive before reporting it.** The same run flagged
+`.chip.is-active` at 1.47:1. Re-run with animations forced to their end state,
+it is cream on walnut and fine — the first reading caught a reveal animation
+mid-fade. Identical failure mode to the phantom broken images earlier today:
+measuring a transient state. Two for two on re-checking before writing it up.
+
+**The mobile result deserves its caveat more than the desktop one deserves its
+fix.** Mobile reported zero violations — but only because the nav is
+`display:none` until the hamburger is tapped, and axe skips hidden elements.
+The defect was identical there; the crawler never opened the menu. Confirmed by
+scripting the toggle. **A clean automated a11y pass is not proof of an
+accessible page, only that what the crawler could see was clean.**
+
+**Why fixing rather than filing this one.** Two additive CSS lines, in the repo
+Claude owns, in a file Codex has never touched, on a defect that makes the
+primary conversion path unreadable. Low risk, high value, verifiable. Contrast
+with SM-FORM-001 and SM-PERF-001, both left unimplemented: one collides with
+Codex's unpushed work, the other trades away the repo's no-build-step design.
+The line is whether the change is reversible and uncontested, not whether Claude
+is permitted.
+
+**Not deployed.** Rides on PR #29; publishing stays Steen's.
+
+---
+
 ## 2026-07-31-C27 · Claude · Scheduled check clean; measured mobile page weight
 
 **Scheduled check — nothing moved.** Netlify forms still `[]`. Gmail still 28

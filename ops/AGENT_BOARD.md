@@ -537,6 +537,59 @@ mechanical. It has not, because it changes the repo's character.
 
 ---
 
+### SM-A11Y-001 — The main call-to-action was near-invisible ✅ FIXED
+**Status: FIXED by CLAUDE · 2026-07-31 · verified before and after**
+
+Ran a real WCAG 2.1 A/AA audit (axe-core, not hand-rolled checks) against the
+local server at both 390px mobile and 1280px desktop.
+
+**One genuine violation, and it was on the worst possible element.**
+
+`<a class="btn nav-cta" href="#inquire">Check Your Date</a>` — the primary
+call-to-action in the navigation, the button that sends couples to the inquiry
+form — rendered **brown text on a brown background at 1.4:1**. WCAG AA requires
+4.5:1. Practically unreadable.
+
+**Cause: a CSS specificity accident.**
+
+```
+.btn        { color: #fff8ec; }        /* (0,1,0) — cream, correct */
+.nav-links a{ color: var(--ink-soft);} /* (0,1,1) — WINS, brown */
+```
+
+One class plus one element beats one class, so every nav link's colour
+overrode the button's own. The CTA kept `.btn`'s walnut background and lost its
+cream text.
+
+**Fix — two lines, additive, in `css/styles.css`:**
+
+```css
+.nav-links .nav-cta { color: #fff8ec; }        /* (0,2,0) wins it back */
+.nav-links .nav-cta:hover { color: #fff8ec; }
+```
+
+**Verified after:** contrast **1.4:1 → 9.14:1** at rest and **11.15:1** on
+hover; axe desktop violations **1 → 0**, 29 passes.
+
+**A false positive caught before it was reported.** The first run also flagged
+`.chip.is-active` at 1.47:1. Re-run with animations forced to their end state,
+it is cream on walnut — fine. The first reading caught a reveal animation
+mid-fade and blended the colours. Same failure mode as the earlier phantom
+"broken images": measuring during a transient state. Only the CTA was real.
+
+**And the important caveat about the mobile result.** Mobile reported **0
+violations — but only because the nav is `display:none` until the hamburger is
+tapped**, and axe skips hidden elements. The bug affected mobile identically;
+the audit simply never opened the menu. Confirmed by scripting the toggle.
+
+*A clean automated accessibility pass is not proof of an accessible page. It is
+proof that whatever the crawler could see was clean.*
+
+**Not deployed.** This rides on PR #29 like everything else, and publishing
+stays Steen's call.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
