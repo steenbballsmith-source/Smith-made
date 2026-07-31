@@ -6,6 +6,66 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C24 · Claude · Smith Made's form can lie about success
+
+**Self-directed work.** Steen asked the agents to coordinate through the files
+and choose their own tasks. Claude audited `js/form.js` in the repo it owns.
+
+**Finding — SM-FORM-001, and it is the SD-FORMS-001 failure mode again on the
+other business.** The success path is gated only on `response.ok`:
+
+```js
+if (!response.ok) throw new Error("HTTP " + response.status);
+...
+showSuccess();
+```
+
+The JSON body is never read. Any 2xx response carrying a failure payload takes
+the success branch — the form is replaced and the couple is told they will hear
+back within a day or two. Nothing is delivered and nothing is recorded.
+
+This part is certain from the source and needs no external access. Genuine
+network failures are handled correctly; the `.catch` tells the visitor to email
+directly. It is specifically "200 with a failure body" that escapes.
+
+**What is not yet proven.** Cloud Claude's proxy 403s `formsubmit.co`, so the
+exact trigger is unverified. FormSubmit's AJAX endpoint is understood to return
+a JSON `success` field and to hold the first submission until a one-time
+activation link is clicked. If that holds, then while activation stays
+unconfirmed **every couple sees a success screen and no inquiry arrives** —
+which is precisely the standing worry about will.smithmade@gmail.com. Marked as
+needing confirmation rather than asserted; an agent with live web access should
+check the response shape.
+
+**Patch written, not applied — deliberately.** Codex holds unpushed work in this
+exact file (`bc4fad2` on `codex/site-qa-resilience`). Two agents editing
+`js/form.js` with one copy unpushed is the collision `README.md` §4 exists to
+prevent, and the file handles lead capture, so a botched merge is expensive.
+The proposed diff is on the board under SM-FORM-001, ready to fold into
+`bc4fad2` — the two changes are complementary. Codex's covers JavaScript being
+unavailable; Claude's covers JavaScript reporting a success that did not happen.
+
+Also noted there: the `fetch` has no timeout, so a hanging endpoint leaves the
+visitor on "Sending…" with the button disabled and no fallback.
+
+**Second piece of work — SD-COMPLIANCE-002.** `SD-COMPLIANCE-001` holds all
+Smith Digital marketing mail until a compliant footer exists, but drafting that
+footer was nobody's task. Claude wrote it (charter §3 permits unsent drafts):
+solicitation identification, a reply-to-opt-out that needs no infrastructure and
+suits hand-written one-to-one mail, and a clearly marked slot for the postal
+address. The address stays empty on purpose — `CHARTER.md` §5 forbids an agent
+guessing or exposing a residential address, and it is the one input only Steen
+can give. Everything else is ready to install the moment he names one.
+
+Recorded there too: the hold should not be routed around by moving the same
+pitch to social DMs. That is the same solicitation in a venue with its own
+rules.
+
+**Claude sent nothing.** No email, draft, form, deploy, or account change. No
+file outside `ops/` was modified.
+
+---
+
 ## 2026-07-31-C23 · Claude · Smith Made QA clean; PR #29 proven safe to merge
 
 **Took unclaimed work in its own lane.** Steen asked Claude to work with Codex

@@ -281,6 +281,113 @@ that reads exactly like a negative finding.
 
 ---
 
+### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🔴
+**Status: OPEN · Owner: unclaimed — see conflict warning · Found by Claude 2026-07-31**
+
+**This is the same class of bug as SD-FORMS-001, on the other business.**
+
+`js/form.js` line 59 gates the entire success path on the HTTP status alone:
+
+```js
+.then(function (response) {
+  if (!response.ok) throw new Error("HTTP " + response.status);
+  ...
+  showSuccess();          // form disappears, "Sent! We'll get back to you"
+```
+
+**The response body is never read.** So any reply with a 2xx status but a
+failure payload takes the success branch: the form is replaced, the couple is
+told they will hear back within a day or two, and no inquiry exists anywhere.
+
+This is certain from the code and needs no external confirmation. Network
+failures *are* handled correctly — the `.catch` tells the visitor to email
+directly. It is specifically "200 with a failure body" that slips through.
+
+**What still needs confirming, by an agent that can reach the internet.** Cloud
+Claude's proxy 403s `formsubmit.co`, so the exact trigger is unverified.
+FormSubmit's AJAX endpoint is understood to return JSON carrying a `success`
+field, and to *hold* the first submission until the one-time activation link is
+clicked. If both are true, then while activation is unconfirmed **every couple
+who submits sees a success screen and nothing is delivered** — which is exactly
+the open worry about will.smithmade@gmail.com. Someone with live access should
+confirm the response shape before this is called proven.
+
+**The fix, safe whichever way that lands.** Parse the body and require positive
+confirmation instead of trusting the status:
+
+```js
+.then(function (response) {
+  if (!response.ok) throw new Error("HTTP " + response.status);
+  return response.json().catch(function () { return null; });
+})
+.then(function (body) {
+  // FormSubmit returns success as the string "true"; be permissive about shape,
+  // but require an explicit non-failure rather than assuming.
+  if (body && String(body.success).toLowerCase() === "false") {
+    throw new Error(body.message || "endpoint reported failure");
+  }
+  ...existing tracking + showSuccess()
+})
+```
+
+Trusting a parsed body is strictly more correct than trusting a status code,
+regardless of what FormSubmit turns out to return.
+
+**Second, smaller defect in the same function:** the `fetch` has no timeout. If
+the endpoint hangs, the submit button stays disabled and the visitor sits on
+"Sending…" indefinitely with no fallback offered. An `AbortController` on a
+~15s timer routing into the existing `.catch` would close that.
+
+**⚠ Conflict warning — why Claude did not just fix it.** Codex has unpushed work
+in this same file: `bc4fad2` on `codex/site-qa-resilience`, a native POST
+fallback for this form. Two agents editing `js/form.js` with one copy unpushed
+is precisely the collision `README.md` §4 warns about. Claude wrote the patch
+instead of applying it.
+
+**Whoever takes this:** claim this line first. If that is Codex, fold it into
+`bc4fad2` — the two changes are complementary, not competing. Claude's covers a
+lying success state; Codex's covers JavaScript being unavailable at all.
+
+---
+
+### SD-COMPLIANCE-002 — The compliant footer, drafted and waiting on one input
+**Status: READY · Owner: CLAUDE (drafted) → STEEN (one decision) · 2026-07-31**
+
+`SD-COMPLIANCE-001` holds all Smith Digital marketing email until a compliant
+footer exists. The footer itself was nobody's task, so Claude drafted it —
+charter §3 permits preparing drafts that are not sent. Only one field is
+missing, and it is the one no agent may invent.
+
+```
+—
+Steen Smith · Smith Digital · https://smithdigitalco.com
+[ STREET ADDRESS OR REGISTERED MAILBOX — Steen supplies; never guessed ]
+
+This is a business-services solicitation. If you would rather not hear from
+me again, reply with "no thanks" and I will remove you — no reply needed
+beyond that, and I will not contact you again.
+```
+
+Why it is worded this way:
+
+- **"This is a business-services solicitation"** — the required identification
+  as an advertisement, stated plainly rather than buried.
+- **Reply-to-opt-out** — needs no unsubscribe infrastructure, which suits
+  hand-written one-to-one mail. It must actually be honored, promptly, and the
+  address recorded so no later wave re-contacts them.
+- **The address line is the blocker.** It must be a real postal address Steen
+  deliberately authorizes prospects to see. `CHARTER.md` §5 forbids an agent
+  guessing or exposing a residential address, and that stands.
+
+**Ready to install the moment Steen names an address.** Until then the hold is
+correct and should not be worked around — including by moving the same pitch to
+social DMs, which would be the same solicitation in a venue with its own rules.
+
+**Not claimed as legal advice.** Codex verified the gap against the FTC's
+published business guidance; this is the drafting that follows from it.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
