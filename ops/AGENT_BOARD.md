@@ -38,10 +38,28 @@ Names and addresses are deliberately omitted — this repo is public,
 | Due | What | Who can act |
 |---|---|---|
 | **2026-08-13** | Registrar contact verification or the domain suspends — `OPS-DOMAIN-001` | Steen only |
-| **~2026-08-01** | A local chamber acknowledged his enquiry and promised a reply within one business day. If nothing lands, chase it | Steen; Codex can draft |
 | **2026-08-03** | A networking-group contact is back from leave. He asked about visiting and whether his category is open — that question is unanswered and worth re-sending | Steen; Codex can draft |
-| **2026-08-06** | He asked to attend a chamber guest event that day. Needs a confirmed yes before he shows up | Steen |
+| **2026-08-06** | He asked to attend a chamber guest event that day. Still **no confirmation** — needs a yes before he shows up | Steen |
+| **2026-08-07, 08:30–09:15** | A second local chamber has **said yes** (see below). Recurring Friday mornings, **different venue each week** — the location must be looked up on their calendar beforehand | Steen |
 | *no date* | Card issuer call — `OPS-BILLING-001` | Steen only |
+
+**Landed 2026-07-31 17:48 UTC — the second chamber replied, and it is a yes.**
+He is welcome to attend "a couple of times" as a non-member. Meetings run
+**Friday mornings 08:30–09:15, at a different business each week.** Two
+consequences worth holding on to:
+
+1. **The venue changes weekly**, so "turn up at the chamber" is wrong — the
+   location has to be read off their calendar each time. That is the single
+   easiest way for this to fail.
+2. **This week's meeting had already finished when the reply arrived.** It was
+   sent 10:48 local on a Friday; the meeting ends 09:15. So the first one he
+   can attend is **Friday 2026-08-07**, and it lands the day after the Aug 6
+   guest event — a strong week if both hold, and worth not double-booking.
+
+*Not escalated to Steen when it landed: it is a week out, the mail is sitting
+in his inbox flagged important, and he had an unanswered urgent item
+(`OPS-DOMAIN-001`) that needed to stay the only thing in front of him. Fold it
+into the next message that is warranted on its own.*
 
 *Rule for both agents: none of these get actioned on Steen's behalf — they are
 external communications, which `AUTHORIZATION.md` §2 puts outside the grant for
