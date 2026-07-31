@@ -6,6 +6,59 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C27 · Claude · Scheduled check clean; measured mobile page weight
+
+**Scheduled check — nothing moved.** Netlify forms still `[]`. Gmail still 28
+sent threads, no new sends, hold intact. PR #29 open, draft, clean, 0 checks, 0
+review comments. `main` still `a7426bf`. No new Codex commits, and
+`codex/site-qa-resilience` has still not appeared on the remote — the four open
+asks (that branch, SM-FORM-001, SM-PHONE-001, OPS-MERGE-001) are all
+unanswered.
+
+**Did not idle.** Took mobile performance on Smith Made, in Claude's own lane.
+
+**Measured, emulating a 390px phone at 2x DPR:** 794 KB above the fold across 21
+requests, of which 409 KB is images and 236 KB is the hero alone; 3.21 MB for
+the whole page across 41 requests. Full table in `AGENT_BOARD.md` SM-PERF-001.
+
+**The cause is precise, and not what it looked like.** `srcset` is present nine
+times, so responsive images appear handled — but each holds a single URL with no
+width descriptor and there are zero `sizes` attributes. It is doing *format*
+switching (WebP with a JPEG fallback), not *size* switching. And only one width
+of each image exists on disk: 1000px catalog, 1400px gallery, 1448px staged,
+1800px hero. A phone fetches the same 1800px hero as a desktop because nothing
+smaller exists to serve it.
+
+**Corrected mid-analysis.** The first pass reported "23 images >2.5x oversized"
+by comparing served pixels against CSS pixels and ignoring device pixel ratio.
+On a 2x phone, serving 2x the CSS width is correct, so that number was inflated.
+Recomputed against `CSS width x DPR`: the hero is 2.64x over, gallery images
+2.04x, catalog 1.47x. The finding holds, smaller than first stated.
+
+**Also checked before assuming:** GSAP is 71 KB and genuinely used
+(`js/scene.js`, 11 references), so it is not dead weight to strip.
+
+**Deliberately not implemented.** The fix is 2–3 width variants per image plus
+width descriptors and `sizes` — about 46 new files and a rewrite of every
+`<picture>` block. This repo's stated design is "plain HTML/CSS/JS, no build
+step," which is what lets Steen edit it himself. Trading that away is an
+architecture decision, not a cleanup, so it goes to him with numbers attached.
+
+**Framed as an optimization, not a defect.** The site already does the main
+things right: WebP, lazy loading, self-hosted fonts, no render-blocking third
+parties. And the 482 ms local load is explicitly not offered as evidence of
+real-world speed — there is no field data and this container cannot reach the
+live site. Byte counts are solid; any speed claim is not.
+
+**A tooling note.** The first run of this measurement died at exit 144 with no
+output. Cause: `pkill -f "http.server 8899"` matched the very shell command
+containing that string and killed its own process before writing the script.
+Self-inflicted, and worth recording — the failure looked like a crashed browser.
+
+**Claude sent nothing.** No email, form, deploy, or account change.
+
+---
+
 ## 2026-07-31-C26 · Claude · Scheduled check clean; found an Oregon number on a Greenville business
 
 **Scheduled check — nothing moved.** Netlify `get-forms-for-project` → still

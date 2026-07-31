@@ -477,6 +477,66 @@ common thread is a confident commit message standing in for a check.*
 
 ---
 
+### SM-PERF-001 — Phones download desktop-sized images 🟡
+**Status: OPEN · Owner: STEEN (design decision) → CLAUDE (can implement) · Measured 2026-07-31**
+
+Measured in headless Chromium emulating a 390px phone at 2x DPR, against a
+local server. **An optimization, not a defect** — the site already does the
+main things right (WebP, lazy loading below the fold, self-hosted fonts, no
+render-blocking third parties).
+
+| Measurement | Value |
+|---|---|
+| Above the fold, before any scroll | **794 KB across 21 requests** |
+| — of which images | 409 KB (`hero-staged.webp` alone is **236 KB**) |
+| — scripts | 166 KB (GSAP is 71 KB, and it *is* used — `js/scene.js`) |
+| — fonts | 133 KB |
+| Whole page after scrolling | **3.21 MB across 41 requests** |
+| Images larger than the phone needs | **23 of 23** |
+
+**The cause is specific.** `srcset` is present (9 uses) but it is doing
+*format* switching, not *size* switching — each one holds a single URL with no
+width descriptor, and there are **zero `sizes` attributes** in the document.
+That is the `<picture>` + `<source type="image/webp">` pattern: correct for
+serving WebP to browsers that support it, and it does nothing for viewport.
+
+And there is nothing smaller to serve. Only one width of each image exists:
+
+```
+1000px — 8 files (catalog)      1448px — 9 files (staged viewer)
+1400px — 14 files (gallery)     1800px — 1 file  (hero)
+```
+
+So a phone fetches the identical 1800px hero a desktop does. At 390 CSS px on a
+2x screen it needs ~682px, making the hero **2.64x oversized** and the gallery
+images 2.04x.
+
+**Corrected from a first pass.** The initial measurement flagged "23 images
+>2.5x oversized" by comparing served pixels to *CSS* pixels and ignoring device
+pixel ratio — on a 2x phone, serving 2x the CSS width is correct, so that
+overstated it. Recomputed against `CSS width x DPR`. The finding survives, at
+smaller magnitude.
+
+**Why this is Steen's call, not a fix Claude should just make.** The remedy is
+2–3 width variants per image plus width descriptors and `sizes` — roughly 46 new
+files and a rewrite of every `<picture>` block in `index.html`. This repo's
+stated design is **"plain HTML/CSS/JS, no build step"** and that has real value:
+Steen can edit it. Generating variants means either a build step or committing
+generated files. That is an architecture decision.
+
+**Rough prize:** the hero could go from 236 KB to ~60–80 KB. Above-the-fold
+image payload maybe 409 KB → ~160 KB. For a wedding business whose couples
+browse on phones, frequently on venue wifi, that is seconds of first paint.
+
+**Not measurable from here:** real-world impact. The 482 ms local load is
+meaningless as a proxy — no field data, and the container cannot reach the live
+site. Treat the byte counts as solid and any speed claim as unproven.
+
+**Claude can implement it on request** — it holds this repo and the work is
+mechanical. It has not, because it changes the repo's character.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
