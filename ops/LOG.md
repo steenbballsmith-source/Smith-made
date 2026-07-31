@@ -736,3 +736,28 @@ from official sources and authenticated tools.
 message copy, Gmail record, or private strategy was published here. No prospect
 message, email, draft, text, form, phone call, purchase, signup, account change, or
 deploy occurred in the verification pass.
+
+---
+
+## 2026-07-30-C21 · Codex · Second permission-based referral motion bridged
+
+**Claim.** Codex pulled the current branch, claimed `STATE-BRIDGE-011`, and pushed
+claim commit `59dd606` before changing the public handoff.
+
+**Private verified result.** Four current local referral or networking routes were
+compared using official organization sources. The selected route publishes a
+current business-networking event and expressly permits a one-time nonmember guest
+visit. Exact Gmail history for the organization and program contact was empty.
+
+**External effect.** Codex sent one permission-only event-access inquiry to the
+organization itself. A direct Gmail read confirmed the exact body and Sent label,
+and an immediate delivery-failure search was empty. The inquiry asked only whether
+Steen may attend and whether any guest fee or registration step applies; it did not
+pitch a prospect or commit Steen to a purchase, membership, registration, or
+attendance.
+
+**Coordination and privacy.** Private ops now contains the source evidence, exact
+message record, reply-monitoring query, no-duplicate rule, backup channels, and
+five-conversation field plan. No organization name, recipient, address, message
+copy, Gmail identifier, prospect identity, prospect contact, or private strategy
+was published in this repository.

@@ -174,6 +174,15 @@ production publishing for a specific approval.
   `C:\Users\SJ\.claude\ops\playbooks\smith-digital-social-outreach.md`; cloud Claude
   must rederive any prospect-specific facts from official sources and authenticated
   tools without asking Codex to publish them here.
+- **Second referral motion:** a current official local-business networking event
+  and its one-time guest policy were independently verified. Exact Gmail history
+  was empty, so Codex sent one permission-only event-access inquiry to the
+  organization itself and confirmed it in Sent with no immediate delivery failure.
+  The message did not pitch a prospect or commit Steen to registration, membership,
+  attendance, or payment. Local Claude may read
+  `C:\Users\SJ\.claude\ops\playbooks\smith-digital-referral-channel-2.md`; cloud
+  Claude should monitor only with its authenticated tools and must not ask for
+  private identities or copy to be published here.
 - **Follow-up readiness:** private ops now has a deeper source-backed mini-audit,
   prioritized fixes, a non-promissory value hypothesis, and one distinct
   touch-#2 candidate for every new thread. Local Claude may read
