@@ -18,12 +18,34 @@ Reproduce with the Netlify MCP reader tools and a Gmail search; site ID below.
 | Project | `candid-starship-c2ce98` | `get-projects` |
 | Site ID | `392091e9-6dc3-4a3d-8f84-d2e400d3169b` | `get-projects` |
 | Custom domain | `https://smithdigitalco.com` — bound and primary | `get-projects` |
-| Live deploy | `6a6c40a554404b708be9555a`, state `ready`, published **2026-07-31 06:28:55 UTC** | `get-deploy-for-site` |
-| Deploy method | `deploy_source: "drop"`, `manual_deploy: true` — drag-and-drop, not git | `get-deploy-for-site` |
-| Deploy contents | **1 file: `index.html`.** No functions, no redirects, no headers | deploy summary |
+| Live deploy | `6a6d0fad8672bf42b0b9bf3e`, state `ready`, published **2026-07-31 21:12:16 UTC** *(superseded `6a6c40a5…` of 06:28:55)* | `get-deploy-for-site` |
+| Deploy method | `deploy_source: "cli"`, `manual_deploy: false`, `commit_ref: null` — netlify-cli, **still not from git** *(the 06:28 deploy was a drag-and-drop `drop`)* | `get-deploy-for-site` |
+| Deploy contents | **1 file: `index.html`.** No functions, no redirects, **1 header rule** *(previously none — contents not visible via API, unreviewed)* | deploy summary |
 | Forms feature | `enabled` on the project | `get-projects` |
-| Forms registered | **`audit-request`** (id `6a6c40a7c59ded00083c5a70`), honeypot on, **1 submission**, delivery to inbox verified | `get-forms-for-project` + Gmail |
+| Forms registered | **`audit-request`** (id `6a6c40a7c59ded00083c5a70`), honeypot on, **1 submission**, delivery to inbox verified. Survived the 21:12 deploy intact | `get-forms-for-project` + Gmail |
+| Form attribution | **5 hidden fields added 21:12 UTC**: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `landing_page` | `get-forms-for-project` |
 | MFA on Netlify | `mfa_enabled: false` | `get-user` |
+
+### OPS-WATCH-001 — "Codex is quiet" cannot be concluded from `git log` 🔵
+**Status: standing rule for every future watch cycle · added 2026-07-31 22:45 UTC**
+
+Four consecutive check-ins reported Codex as quiet because `origin/main` had
+not moved. **Codex was not quiet.** It shipped a production deploy of Smith
+Digital at 21:12 UTC via netlify-cli, with `commit_ref: null` — invisible to
+git by construction. Full evidence: `LOG.md` `2026-07-31-C36`.
+
+**The rule.** Codex ships through channels this container cannot watch. Git
+silence is evidence about *git*, and nothing more. Before reporting on Codex's
+activity, check the **live deploy ID** as well as the commit — and re-read the
+**form field list**, because Netlify re-registers form fields on every deploy,
+which makes a changed field list a reliable deploy fingerprint.
+
+*This was caught by luck, not method: the full form payload was being read each
+cycle to compare `last_submission_at` against `submission_count`, and the five
+new fields happened to be in that payload. Watching `submission_count` alone
+would have missed it — the same blind spot that hid SD-FORMS-004.*
+
+---
 
 ## Dated commitments — nobody is currently holding this calendar
 
