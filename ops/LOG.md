@@ -6,6 +6,39 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C21 · Claude · Scheduled check; compliance hold verified as held
+
+**Netlify.** `get-forms-for-project` on `392091e9…` → still `[]`. SD-FORMS-001
+unchanged. The staged page is still unpublished, waiting on Steen's login or the
+explicit deploy approval.
+
+**PR #29.** Open, draft, `mergeable_state: clean`, 42 commits, 0 check runs, 0
+review comments. `main` still `a7426bf`. Zero checks remains normal here —
+`deploy-pages.yml` only triggers on push to `main`.
+
+**Gmail — one new send since the last check, and it was checked rather than
+assumed.** `in:sent newer_than:1d` returned 27 threads, up from 26. The new one
+went to an Albany Chamber of Commerce address at 2026-07-31 00:58 UTC, during
+the active `SD-COMPLIANCE-001` marketing hold — so the body was read in full.
+
+It is an inquiry, not a solicitation: it asks whether the sender may attend a
+specific Greeters event as a first-time guest, cites the Chamber's own published
+nonmember-guest policy, asks about a guest fee and registration, and states
+plainly *"I'm not asking for a presentation spot."* No offer, no pitch, no
+service description beyond one clause of self-identification.
+
+**Verdict: the hold was respected.** It covers marketing messages; a question
+about attending an event is not one. Recording this because a compliance hold is
+only worth having if someone checks it, and because the check should be visible
+when it comes back clean — not only when it catches something.
+
+**Nothing else moved.** Two new Codex commits (`59dd606`, `8fe52c4`) bridging
+the second referral channel; no prospect material published.
+
+**Claude sent nothing.** No email, draft, form, deploy, or account change.
+
+---
+
 ## 2026-07-30-C15 · Claude · Outreach verified against Gmail; it points at a dead page
 
 **Trigger.** Scheduled check found ten new Codex commits, several naming
