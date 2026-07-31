@@ -147,11 +147,13 @@ observed in the inbox.
 
 ---
 
-### SD-OUTREACH-001 — Outreach is pointing at a page that cannot convert 🔴🔴
-**Status: OPEN · Owner: STEEN (decision) · Found by Claude 2026-07-30 23:5x UTC**
+### SD-COMPLIANCE-001 — Future outreach needs a compliant footer 🔴
+**Status: BLOCKED · Owner: STEEN + CODEX or local Claude · Found by Claude and verified by Codex 2026-07-30**
 
-**This is SD-FORMS-001 and the outreach campaign colliding, and it is the most
-expensive thing on this board.**
+This replaces the broader `SD-OUTREACH-001` framing with the verified actionable
+task. Claude correctly found the Gmail pattern and compliance gap; Codex verified
+the message bodies, checked the official FTC source, and corrected the unsupported
+"cannot convert" conclusion.
 
 Verified in the authenticated Gmail account, `in:sent newer_than:1d`:
 
@@ -164,30 +166,36 @@ Verified in the authenticated Gmail account, `in:sent newer_than:1d`:
 | Sending address | Steen's **personal** Gmail |
 | Every message links to | `https://smithdigitalco.com` |
 
-**And smithdigitalco.com is still the old placeholder file with zero forms.**
-So every one of those 26 prospects who clicked through landed on a stale page
-with **no contact form at all** — while the email offered them a free audit.
-The campaign converts at zero by construction, not by weak copy.
+**smithdigitalco.com is still the old file with zero registered forms.** It also
+still offers visible phone, text, and email routes, so the page is not a contact
+dead end and no zero-conversion claim is justified. The verified conversion
+problem is a missing form plus stale local positioning and old pricing.
 
 The messages themselves are good: specific, honest, a real observation about
 the recipient's site, no invented metrics, signed with a real name and phone.
-The problem is entirely where they point.
+They also need a complete compliant footer before another marketing send.
 
 **Three separate things for Steen, in order of cost:**
 
-1. **Every send so far has been wasted, and more sends waste more.** Fix the
-   deploy (SD-FORMS-001) before the next wave, or pause outreach until it lands.
-2. **The 23-in-5-minutes burst is a real risk to the account.** That is roughly
+1. **Choose a valid public postal address or keep outreach paused.** The FTC's
+   business guide says individual and B2B commercial messages need accurate
+   sender/subject information, clear commercial identification, a valid physical
+   postal address, and a clear opt-out. The approved footer will also say a recipient
+   can reply "stop." No agent may guess or expose a residential address.
+2. **Publish and verify the staged site under SD-FORMS-001.** The live phone, text,
+   and email still work, but the staged form, national positioning, and intended
+   prices are materially better for conversion.
+3. **The 23-in-5-minutes burst is a real risk to the account.** That is roughly
    one message every 14 seconds, cold, from a personal Gmail. It is the exact
    pattern spam heuristics act on. The damage that matters is not the campaign
    — it is that Steen runs three businesses from this address, so degraded
    sending reputation means *invoices and replies to genuine customers* start
    landing in spam.
-3. **Compliance gap.** A sampled message carries no physical postal address and
-   no opt-out mechanism. US commercial email (CAN-SPAM) generally requires both.
-   Nothing deceptive is happening — headers, sender, and subject are all
-   accurate — but two required elements are absent. Not a judgement on the
-   outreach; a fixable defect in the template.
+
+Official source:
+`https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business`.
+The private runner and board now block every Smith Digital marketing send until this
+task is explicitly complete. Research and human-reply monitoring continue.
 
 **Reconciliation note, so nobody reads this as an accusation.** Codex's `C13`
 describes a three-contact wave and that is exactly what the 23:21 UTC batch
@@ -198,7 +206,7 @@ anything was misreported. Codex's other verifiable claim this session —
 S&R Services having one `quote` form with one historical submission — checked
 out exactly against the Netlify API.
 
-**Claude has sent nothing.** These were all sent from the Windows machine.
+**External effects during reconciliation:** no new email, draft, form, or deploy.
 
 ---
 
@@ -424,7 +432,7 @@ schedule stayed unchanged and no outreach occurred.
 ---
 
 ### STATE-BRIDGE-008 — Bridge reply-conversion readiness
-**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 17:09 PDT**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 17:25 PDT**
 
 Record only the public-safe aggregate state: a private response and free-audit
 playbook now exists for local agents, human replies stop automation and require
@@ -432,3 +440,9 @@ Steen's review, and the current live/staged offer mismatch is a price-quotation
 guardrail until the national relaunch is specifically approved and live-verified.
 Do not expose prospect identities, replies, contacts, copy, findings, or private
 pricing strategy beyond the already public live-site mismatch.
+
+**Result:** `AUTHORIZATION.md`, `HANDOFF-TO-CODEX.md`, this board, and
+`STEEN-NEXT-STEPS.md` now carry the verified compliance hold, local/private playbook
+route, current live/staged conversion distinction, and user unblock. `LOG.md` entry
+`2026-07-30-C17` preserves the reconciliation. No prospect-level material was
+published.

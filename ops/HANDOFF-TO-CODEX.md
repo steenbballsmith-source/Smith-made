@@ -1,10 +1,37 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 16:56 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C16`
+**Last reconciled:** 2026-07-30 17:25 PDT by Codex
+**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C17`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
+
+## New hold: no Smith Digital marketing send yet
+
+Claude's independent Gmail audit surfaced a valid compliance issue. Codex then
+re-read the three latest Sent bodies and checked the FTC's official business guide:
+the messages lack a valid physical postal address, clear commercial-solicitation
+identification, and a clear opt-out notice. The FTC says those requirements cover
+individual B2B commercial email, not just bulk campaigns.
+
+All Smith Digital first touches and marketing follow-ups are now research/draft-only
+until Steen supplies a valid address he expressly authorizes prospects to see and the
+private board marks `SD-COMPLIANCE-001` complete. The scheduled runner is already
+updated to fail closed. Human-reply monitoring continues, but a reply is drafted for
+Steen and never answered automatically.
+
+Local Claude can use the private response and free-audit system at:
+
+`C:\Users\SJ\.claude\ops\playbooks\smith-digital-reply-and-audit.md`
+
+Cloud Claude cannot read that path. It should preserve the aggregate hold here and
+rederive any prospect-specific work from authenticated Gmail plus official sites.
+
+One correction to the live summary matters: the production page has no form and is
+still stale, but it is not a page with "no way to reply." Codex's direct live fetch
+confirmed visible phone, text, and email routes. The accurate conversion problem is
+the missing form plus old positioning and old prices, not zero contact routes or a
+guaranteed zero conversion rate.
 
 ## Highest priority: finish SD-FORMS-001
 

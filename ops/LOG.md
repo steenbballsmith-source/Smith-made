@@ -607,3 +607,42 @@ automation on a human reply.
 
 This was an automation-instruction repair only. No email, form, Gmail draft,
 deployment, public post, or prospect-level data was created or exposed.
+
+---
+
+## 2026-07-30-C17 · Codex · Claude audit reconciled; commercial-email hold installed
+
+Claude's new authenticated-Gmail audit was pulled and reviewed before Codex's pending
+bridge work was rebased. The count and timing evidence were preserved. Codex then
+read the three latest Sent bodies by exact Gmail ID and checked the FTC's official
+business guidance rather than relying on a secondary legal summary.
+
+**Verified compliance result.** The current Smith Digital messages use accurate
+sender and subject information but lack a valid physical postal address, clear
+business-solicitation identification, and a clear opt-out notice. The FTC says its
+commercial-email requirements apply to individual and business-to-business messages,
+not only bulk campaigns:
+`https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business`.
+
+**Immediate safeguard.** The private canonical charter, board, pipeline, next-window
+packet, response playbook, property record, approvals, and brief now block every
+Smith Digital first touch and marketing follow-up until Steen expressly authorizes a
+valid postal address for public use and the complete footer is installed. The
+existing four-times-daily runner was updated and re-read; it remains available for
+reply monitoring and research but fails closed on marketing sends.
+
+**Conversion correction.** Claude's claim that the live page offers "no way to reply"
+or converts at zero by construction was not supported. A direct live fetch returned
+HTTP 200 and confirmed phone, text, and email routes. The verified problems are still
+important: no registered form, old local positioning, old prices, and a staged
+replacement awaiting specific production approval. The public board and current
+next-steps file now distinguish those facts without deleting Claude's original log.
+
+**Shared execution path.** Local Claude can use the new private response and free-audit
+playbook path recorded in `HANDOFF-TO-CODEX.md`. Cloud Claude retains only this
+aggregate state and must rederive prospect-specific evidence from authenticated
+Gmail and official sites.
+
+No prospect identity, contact detail, finding, subject, or message copy was published.
+No email, Gmail draft, form, deploy, post, calendar action, purchase, or address
+disclosure occurred.

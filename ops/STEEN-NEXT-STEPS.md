@@ -7,33 +7,32 @@ gets overwritten. History lives in `ops/LOG.md`.
 
 ## 🔴 New, and it moved to the top of the list
 
-**You've sent 26 cold emails in the last 24 hours pointing at a website that
-can't take a reply.**
+**Future Smith Digital marketing email is paused until its footer is compliant.**
 
-I checked your Sent folder. 26 outreach emails since yesterday, every one
-linking to smithdigitalco.com — and smithdigitalco.com is still the old
-placeholder page with **no contact form on it at all**. The emails offer a free
-audit. The page they land on gives them no way to accept.
+Claude checked Gmail independently and found 26 cold messages in the last 24 hours;
+23 were sent in about five minutes. Codex then re-read the three latest message
+bodies and checked the FTC's own business guidance. The messages have accurate
+sender and subject information, but they do not include:
 
-The emails themselves are good — specific, honest, a real observation about
-each recipient's site, your name and number at the bottom. Nothing wrong with
-the pitch. It is pointed at a dead end.
+- a valid physical postal address;
+- clear identification as a business-services solicitation; or
+- a clear way to opt out.
 
-So the form fix stopped being housekeeping. Every email sent before it lands is
-spent for nothing. **Fix the site first, or pause outreach until it's fixed.**
+The FTC says those rules cover individual and business-to-business commercial email,
+not only bulk campaigns. All future Smith Digital first touches and marketing
+follow-ups are now paused. To reopen them, tell the agents one valid street address,
+registered PO box, or registered private mailbox that you deliberately authorize
+prospects to see — or say to keep outreach paused until you obtain one.
 
-Two more things while I was in there:
+The website still needs its staged replacement published, but one correction matters:
+the current page is not a total dead end. It has phone, text, and email links. What it
+lacks is the much better staged form, and it still shows the old local positioning
+and old prices. Do not treat every prior message as automatically wasted or claim a
+guaranteed zero conversion rate.
 
-- **23 of those 26 went out in five minutes** — one every 14 seconds, from your
-  personal Gmail. That's the pattern spam filters look for. The risk isn't the
-  campaign; it's that you invoice customers from that address. If Gmail starts
-  treating it as a bulk sender, your *real* mail to *real* customers goes to
-  spam.
-- **No postal address or unsubscribe line** in the emails. US commercial email
-  usually requires both. Nothing shady in them — but it's a gap worth closing in
-  the template.
-
-None of this was Claude. Those were all sent from your PC.
+The fast prior burst is still a sender-reputation warning because the same personal
+Gmail also carries normal business mail. Future pacing remains capped even after the
+compliance hold is cleared.
 
 ---
 

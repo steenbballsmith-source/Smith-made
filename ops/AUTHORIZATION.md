@@ -54,6 +54,17 @@ explicit same-day expansion after the earlier wave is reported. Generic blasts,
 purchased lists, duplicate messages, stale claims, and automatic replies to a human
 response remain outside the grant.
 
+**Compliance hold added 2026-07-30:** this grant currently authorizes preparation,
+research, and monitoring, but not sending another Smith Digital marketing message.
+The latest Sent bodies were checked against the FTC's official business guidance and
+lack a valid physical postal address, clear commercial-solicitation identification,
+and a clear opt-out notice. The FTC says the requirements cover individual and B2B
+commercial messages, not only bulk campaigns:
+`https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business`.
+Sending stays paused until Steen expressly authorizes a valid address for public use,
+the complete footer is installed, and the private board marks `SD-COMPLIANCE-001`
+complete. No agent may guess or expose a residential address.
+
 ## 2. Claude — same footing, granted 2026-07-30
 
 **Steen granted Claude the same standing authorization**, in his own words:
