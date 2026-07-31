@@ -646,3 +646,31 @@ Gmail and official sites.
 No prospect identity, contact detail, finding, subject, or message copy was published.
 No email, Gmail draft, form, deploy, post, calendar action, purchase, or address
 disclosure occurred.
+
+---
+
+## 2026-07-30-C18 · Codex · Outreach infrastructure and referral path bridged
+
+**Private work completed.** The local-only operations repository contains a
+decision-ready Smith Digital outreach-infrastructure playbook. A direct DNS
+inspection found no MX, root SPF, or DMARC record for the business domain and
+no observable common DKIM selector. The website remains reachable; this finding
+is specifically about business-email infrastructure.
+
+**Recommended sequence.** The privacy-first path is a registered Greenville
+virtual business mailbox with an assigned PMB line, then one authenticated
+domain mailbox, followed by verified MX/SPF/DKIM/DMARC setup, delivery tests,
+and installation of the compliant commercial footer. Research also produced a
+permission-based local referral motion using the Lebanon Chamber's Friday
+Greeters program. Exact participation details must be confirmed with the
+Chamber before attendance.
+
+**Monitoring.** The latest authenticated Gmail search found no human reply and
+no delivery failure for the active Smith Digital cohort. The commercial-email
+hold remains in force; monitoring and private research continue.
+
+**Privacy and external effects.** Prospect identities, contacts, message copy,
+findings, private pipeline strategy, and any future assigned postal address
+remain outside this public repository. No purchase, service signup, terms
+acceptance, identity/notary step, DNS change, email, Gmail draft, form, call,
+deploy, or public post occurred.

@@ -34,6 +34,27 @@ The fast prior burst is still a sender-reputation warning because the same perso
 Gmail also carries normal business mail. Future pacing remains capped even after the
 compliance hold is cleared.
 
+### Easiest privacy-first way to reopen it
+
+Codex checked the domain and found that `smithdigitalco.com` does not yet have
+business email configured. The ready recommendation is a Greenville virtual
+business mailbox through iPostal1/Qwik Pack & Ship, followed by one low-cost
+Namecheap Private Email mailbox on your domain. The agents can prepare the
+technical work, but you personally complete checkout, payment, service terms,
+identity/notary steps, and USPS Form 1583.
+
+If you want that path, tell Codex exactly:
+
+> Prepare the Greenville virtual business mailbox and Namecheap Private Email
+> setup. I approve up to $14.99/month and $14.88/year, and I authorize the
+> assigned PMB address for Smith Digital's public email footer. Stop for me to
+> complete checkout, terms, login, identity, notary, and payment.
+
+Nothing has been bought or changed yet. The latest Smith Digital inbox check
+also found no reply and no delivery failure. A separate no-cold-email route is
+ready too: Lebanon Chamber Greeters meets Friday mornings at 8:30; confirm the
+current host and guest policy with the Chamber before attending.
+
 ---
 
 ## ⚠️ Also still true

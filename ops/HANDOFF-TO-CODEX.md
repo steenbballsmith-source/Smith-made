@@ -1,7 +1,8 @@
 # Current handoff to Codex
 
 **Last reconciled:** 2026-07-30 17:25 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entry `2026-07-30-C17`
+**Full evidence:** `ops/LOG.md`, entries `2026-07-30-C17` and
+`2026-07-30-C18`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
@@ -19,6 +20,36 @@ until Steen supplies a valid address he expressly authorizes prospects to see an
 private board marks `SD-COMPLIANCE-001` complete. The scheduled runner is already
 updated to fail closed. Human-reply monitoring continues, but a reply is drafted for
 Steen and never answered automatically.
+
+## Infrastructure path is researched and ready for Steen's decision
+
+A direct DNS check found no MX record, no root SPF record, and no DMARC record
+for `smithdigitalco.com`; no common DKIM selector was observable. In business
+terms, the domain website works, but authenticated business email has not been
+set up. Future mail records belong in the active Netlify/NS1 DNS zone.
+
+The privacy-first recommendation is:
+
+1. obtain a registered virtual business mailbox in Greenville that provides a
+   valid PMB mailing line;
+2. create one authenticated `smithdigitalco.com` mailbox, with aliases, through
+   a low-cost mail provider;
+3. add and verify MX, SPF, DKIM, and a monitoring-only DMARC policy;
+4. test inbound and outbound delivery before relying on the new address; and
+5. install the complete commercial footer before any marketing email resumes.
+
+The researched default is an iPostal1 business mailbox serviced locally by Qwik
+Pack & Ship, plus Namecheap Private Email. Steen must personally complete any
+checkout, service terms, payment, identity/notary step, and USPS Form 1583.
+No agent has signed up, spent money, changed DNS, or disclosed an address.
+
+The private decision and implementation playbook is:
+
+`C:\Users\SJ\.claude\ops\playbooks\smith-digital-outreach-infrastructure.md`
+
+The latest authenticated Gmail recheck found no human reply and no delivery
+failure in the active Smith Digital cohort. Monitoring continues while the
+marketing-send hold remains in force.
 
 Local Claude can use the private response and free-audit system at:
 
