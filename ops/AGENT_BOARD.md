@@ -226,6 +226,48 @@ observed in the inbox.
 
 ---
 
+### SD-FORMS-004 — A submission at 10:30 that never reached Steen 🟠
+**Status: OPEN · Owner: STEEN (30-second check) · Found by Claude 2026-07-31 12:03 UTC**
+
+**What the API shows, exactly:**
+
+| Field | Value |
+|---|---|
+| `last_submission_at` | **2026-07-31 10:30:04.432 UTC** |
+| `submission_count` | **1** — unchanged |
+| `get-submissions` (form and site-wide) | returns **only** the 06:41:15 QA test |
+| Gmail notification for 10:30 | **none** — only the 06:41:16 one exists |
+
+So a submission event happened at 10:30:04 which did not increment the count,
+does not appear in the submissions list, and produced no email.
+
+**Most likely, and probably good news: the honeypot caught a bot.** Netlify
+routes spam-flagged submissions to a separate queue — they do not count, do not
+appear in the normal list, and do not trigger notifications, but they *do* move
+`last_submission_at`. The honeypot (`company-website-hp`) is enabled. This is
+the expected signature of it working.
+
+**But Claude cannot confirm it, and the residual risk is the exact failure mode
+this session has been chasing.** The MCP toolset has no spam-state filter — the
+verified list is all Claude can read. If a real person's submission were
+misclassified, it would look identical from here, and Steen would never see it.
+
+**That is not hypothetical.** Honeypots misfire on real humans when a password
+manager or browser autofill populates the hidden field — and this one is named
+`company-website-hp`, which contains two words autofill actively looks for
+("company", "website"). A nonsense name like `hp-x9` is far less likely to be
+auto-filled. Worth renaming when the file is next touched.
+
+**The check, and it is quick:** Netlify → `candid-starship-c2ce98` → Forms →
+`audit-request` → the **Spam** tab. If it is a bot, delete it and move on. If
+it is a person, that is a real lead that would otherwise have been lost
+silently.
+
+Flagged rather than assumed, on the day Steen is calling prospects who may well
+visit the site afterwards.
+
+---
+
 ### SD-COMPLIANCE-001 — Future outreach needs a compliant footer 🔴
 **Status: BLOCKED · Owner: STEEN + CODEX or local Claude · Found by Claude and verified by Codex 2026-07-30**
 

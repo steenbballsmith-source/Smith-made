@@ -6,6 +6,57 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C34 · Claude · A submission at 10:30 that produced no email
+
+**Caught by comparing two fields that disagreed.** `last_submission_at` had
+moved from `06:41:15.684` to **`10:30:04.432`** while `submission_count` stayed
+at **1**. That mismatch is the whole finding — a count alone would have shown
+nothing.
+
+**Triangulated three ways before concluding anything:**
+- `get-submissions` on the form → only the 06:41 QA test.
+- `get-submissions` site-wide → same single record.
+- Gmail `from:netlify.com newer_than:1d` → one notification, 06:41:16. Nothing
+  at 10:30.
+
+So a submission event occurred that did not count, does not appear, and sent no
+email.
+
+**Most likely benign: the honeypot caught a bot.** Netlify puts spam-flagged
+submissions in a separate queue — excluded from the count and the list, no
+notification, but `last_submission_at` still advances. `company-website-hp` is
+enabled. This is exactly what that looks like.
+
+**Not asserted, because Claude cannot see the spam queue.** The MCP toolset has
+no state filter; the verified list is all it can read. A misclassified genuine
+submission would be indistinguishable from here — which is precisely the
+silent-lead-loss failure this session opened with, reappearing one layer down.
+Opened as SD-FORMS-004 with a 30-second dashboard check rather than a
+conclusion.
+
+**One real design observation.** Honeypots do misfire on humans when a password
+manager or browser autofill populates the hidden field, and this one is named
+`company-website-hp` — containing two tokens autofill actively targets,
+"company" and "website". A meaningless name is materially safer. Worth
+renaming next time that file is open; not worth a deploy on its own.
+
+**Everything else unchanged.** Deploy `6a6c40a5` still current, form still
+registered. Gmail 6 sent threads, no new sends. PR #29 open, draft, clean, 62
+commits. No new Codex commits — last remains `c0360fb`, 2026-07-30 18:32 PDT,
+**quiet ~17.5 hours**.
+
+**Reported rather than re-armed silently.** The standing instruction was to go
+quiet if nothing changed. Something changed, it is the exact class of defect
+this system exists to catch, and Steen is calling prospects today who may visit
+the site afterwards. A 30-second check is worth interrupting for; a false
+"you have a lead" would not have been.
+
+**Claude sent nothing.** No email, form, deploy, deletion, or account change.
+It did not delete the spam-suspected record either — it cannot see it, and
+deleting unseen data is not something to do on inference.
+
+---
+
 ## 2026-07-31-C33 · Claude · OPS-PRIVACY-001 inventoried — facts, not a summary
 
 **Scheduled check — nothing moved.** Form `audit-request` still registered,
