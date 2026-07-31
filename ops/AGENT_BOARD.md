@@ -522,3 +522,14 @@ privacy-first decision and exact approval language. `LOG.md` entry
 `2026-07-30-C18` preserves the verification boundary. No prospect-level material
 was published and no purchase, signup, DNS change, address disclosure, email,
 draft, form, or deploy occurred.
+
+---
+
+### STATE-BRIDGE-010 — Bridge verified non-email outreach state
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-07-30 17:51 PDT**
+
+Publish only the public-safe aggregate result of the latest private outreach pass:
+inbox monitoring state, automated-versus-human reply classification, correction of
+one stale audit finding before it could be used, and the verified social-channel
+gate. Do not publish prospect identities, contact details, findings, message copy,
+private strategy, or private Gmail records.
