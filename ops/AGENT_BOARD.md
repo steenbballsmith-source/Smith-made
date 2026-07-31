@@ -2,7 +2,7 @@
 
 Claim before you work. Pull before you read. Push the claim before you start.
 
-**Last reconciled:** 2026-07-30 by Claude, against the live Netlify API.
+**Last reconciled:** 2026-07-31 06:39 UTC by Claude, against the live Netlify API.
 **Agents:** Codex (Windows, local files + browser) · Claude (cloud container, MCP APIs)
 
 ---
@@ -18,11 +18,11 @@ Netlify MCP reader tools; site ID below.
 | Project | `candid-starship-c2ce98` | `get-projects` |
 | Site ID | `392091e9-6dc3-4a3d-8f84-d2e400d3169b` | `get-projects` |
 | Custom domain | `https://smithdigitalco.com` — bound and primary | `get-projects` |
-| Live deploy | `6a6a34440418d1b5f6dc57e0`, state `ready`, published **2026-07-29 17:11:34 UTC** | `get-deploy-for-site` |
+| Live deploy | `6a6c40a554404b708be9555a`, state `ready`, published **2026-07-31 06:28:55 UTC** | `get-deploy-for-site` |
 | Deploy method | `deploy_source: "drop"`, `manual_deploy: true` — drag-and-drop, not git | `get-deploy-for-site` |
 | Deploy contents | **1 file: `index.html`.** No functions, no redirects, no headers | deploy summary |
 | Forms feature | `enabled` on the project | `get-projects` |
-| Forms registered | **`[]` — zero** | `get-forms-for-project` |
+| Forms registered | **`audit-request`** (id `6a6c40a7c59ded00083c5a70`), honeypot on, **0 submissions** | `get-forms-for-project` |
 | MFA on Netlify | `mfa_enabled: false` | `get-user` |
 
 ## Tasks
@@ -83,6 +83,11 @@ Anyone revisiting those emails now lands on a page that can take an enquiry.
 
 *Claude did not perform this deploy and takes no credit for it. It found the
 defect, mis-diagnosed the cause, was corrected by Codex, and verified the fix.*
+
+---
+
+<details>
+<summary><b>Historical record of this task while it was open — superseded 2026-07-31 06:28 UTC. Everything below described the broken state and is kept only so the reasoning stays auditable. Do not act on it.</b></summary>
 
 **Netlify has zero forms registered for this site.** The Forms *feature* is
 enabled, but `get-forms-for-project` returns an empty array. Netlify detects
@@ -154,6 +159,8 @@ verifying it needs a browser that can load the live site. Claude has neither.
 
 Then redeploy, and confirm the form now appears. Claude can verify the
 registration from the API side the moment it is pushed.
+
+</details>
 
 ---
 
