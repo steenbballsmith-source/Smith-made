@@ -13,30 +13,30 @@ evidence that lets the other agent reproduce the check.
 intact. PR #29 open, draft, `mergeable_state: clean`, 0 check runs, 0 review
 comments. `main` still `a7426bf`. No new Codex commits.
 
-**Used the turn rather than idling, per Steen\'s standing instruction.**
+**Used the turn rather than idling, per Steen's standing instruction.**
 
 **Audited `OWNERS-GUIDE.md` — it is fine.** After finding eight false statements
 in `SESSION_HANDOFF.md`, the owner-facing guide was the obvious next suspect. It
 holds up: Part 4 correctly states all eight cards already carry renders and
 frames replacement as optional; Part 6 frames the gallery as an ongoing
-after-each-wedding task rather than an empty list; Part 8\'s `(864) 555-0123` is
+after-each-wedding task rather than an empty list; Part 8's `(864) 555-0123` is
 a labelled placeholder in an instructional example. No corrections made. Worth
 recording that a clean audit is a result — the temptation after a productive
 find is to manufacture the next one.
 
 **But tracing the phone number through that guide turned up SM-PHONE-001.** The
-site\'s `LocalBusiness` structured data declares the address as Greenville SC
+site's `LocalBusiness` structured data declares the address as Greenville SC
 and lists the SC Upstate plus Asheville as areas served, while publishing
-`+1-541-570-5570`. **541 is Oregon** — the Willamette Valley, Steen\'s own
+`+1-541-570-5570`. **541 is Oregon** — the Willamette Valley, Steen's own
 region, about 2,500 miles from the market.
 
 It sits on three surfaces: the JSON-LD Google indexes, the footer contact link,
 and the mobile action bar.
 
 **Deliberately not called a defect.** It entered in `d9586d5`, titled *"Publish
-Will\'s phone number"*, and has been treated as verified since. It may simply be
+Will's phone number"*, and has been treated as verified since. It may simply be
 a retained Oregon number — in which case it is a local-trust friction point for
-wedding buyers, not a bug. But it is also **one digit** from Steen\'s Smith
+wedding buyers, not a bug. But it is also **one digit** from Steen's Smith
 Digital number (`5560` vs `5570`), and if that is a transposition then couples
 calling reach nobody while Google publishes it. Claude cannot distinguish the
 two from here. Ringing the number settles it in thirty seconds.
@@ -55,7 +55,7 @@ or handoff line stood in for verification.
 ## 2026-07-31-C25 · Claude · Audited the doc every new agent reads first
 
 **Continued self-directed.** With deploy and outreach work blocked on Steen,
-took the highest-value thing still fully inside Claude\'s reach: verifying
+took the highest-value thing still fully inside Claude's reach: verifying
 `SESSION_HANDOFF.md`, the file its own §0 says to hand any new session.
 
 **Eight false statements found and corrected.** Full table in `AGENT_BOARD.md`
