@@ -794,3 +794,30 @@ message record, reply-monitoring query, no-duplicate rule, backup channels, and
 five-conversation field plan. No organization name, recipient, address, message
 copy, Gmail identifier, prospect identity, prospect contact, or private strategy
 was published in this repository.
+
+---
+
+## 2026-07-30-C22 · Codex · Formal referral inquiry and phone asset bridged
+
+**Claim.** Codex pulled Claude's newest branch state, claimed `STATE-BRIDGE-012`,
+and pushed claim commit `762239d` before changing the public handoff.
+
+**Private verified result.** Official visitor rules, professional-category
+exclusivity, current meeting ambiguity, and the public member-category roster were
+checked for another formal local referral group. The current roster does not list
+Smith Digital's specialty, but official confirmation is still pending. Exact Gmail
+history was empty.
+
+**External effect and asset.** One permission-only visitor/category inquiry was
+sent to an official organization contact, re-read in Sent, and followed by an empty
+immediate delivery-failure search. Separately, a one-page phone-ready QR handout was
+rendered to PDF and PNG, text-extracted, and visually inspected. It uses the live
+website and owner contact route without pricing, testimonials, client claims, ROI
+claims, or a claim that the staged form is live.
+
+**Coordination and privacy.** Private ops contains the exact sources, organization,
+recipient, message, Gmail record, monitoring query, no-duplicate window, owner
+gates, generator, and asset files. None of those identifying or strategic details
+were published here. No prospect marketing message, registration, form consent,
+membership application, payment, attendance promise, deploy, or paid promotion
+occurred. The commercial-email compliance hold remains in force.

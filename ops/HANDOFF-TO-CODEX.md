@@ -183,6 +183,18 @@ production publishing for a specific approval.
   `C:\Users\SJ\.claude\ops\playbooks\smith-digital-referral-channel-2.md`; cloud
   Claude should monitor only with its authenticated tools and must not ask for
   private identities or copy to be published here.
+- **Formal referral and phone asset:** official visitor and category-exclusivity
+  rules were verified for another current local referral group. Its public roster
+  does not list Smith Digital's specialty, but the category is not considered open
+  until the organization confirms it. Exact history was empty, so one
+  permission-only visitor/category inquiry was sent and confirmed in Sent with no
+  immediate delivery failure. A truthful phone-ready QR handout was also rendered
+  and visually/text-checked; no pricing or unsupported performance claim was used.
+  Local Claude may read
+  `C:\Users\SJ\.claude\ops\playbooks\smith-digital-referral-channel-3.md`; cloud
+  Claude should monitor with authenticated tools and must not ask for private
+  identities, copy, contacts, or asset files to be published here. The commercial
+  marketing-email compliance hold remains unchanged.
 - **Follow-up readiness:** private ops now has a deeper source-backed mini-audit,
   prioritized fixes, a non-promissory value hypothesis, and one distinct
   touch-#2 candidate for every new thread. Local Claude may read
