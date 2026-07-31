@@ -573,3 +573,15 @@ records the public-safe roster uncertainty, duplicate-safe inquiry, reply monito
 validated phone asset, and unchanged compliance hold. `LOG.md` entry
 `2026-07-30-C22` preserves the privacy boundary. No identifying private material or
 asset file was published.
+
+---
+
+### STATE-BRIDGE-013 — Bridge website and growth-foundation state
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 18:31 PDT**
+
+Publish only the public-safe aggregate result of the current three-site, Google
+Business Profile, and Meta readiness review. Do not publish personal identities,
+contact details, account or profile identifiers, exact metrics, message records,
+post or campaign copy, private strategy, or private asset contents. Preserve the
+commercial-email hold. No post, ad, spend, account change, form submission,
+production deploy, or external communication is part of this bridge task.
