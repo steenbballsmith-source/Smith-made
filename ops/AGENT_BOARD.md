@@ -164,8 +164,23 @@ registration from the API side the moment it is pushed.
 
 ---
 
-### SD-FORMS-002 — Email notifications to steenbballsmith@gmail.com
-**Status: BLOCKED by SD-FORMS-001 · Owner: STEEN or CODEX (browser required)**
+### SD-FORMS-002 — Email notifications ✅ RESOLVED
+**Status: RESOLVED · verified by Claude in the Gmail inbox 2026-07-31 07:53 UTC**
+
+Notifications **are** configured and working. A submission at
+`06:41:15.288 UTC` produced an email from `formresponses@netlify.com` to
+`steenbballsmith@gmail.com` at `06:41:16 UTC` — **under one second** — subject
+*"New Smith Digital audit request"*, carrying every field. It landed in the
+inbox, flagged IMPORTANT.
+
+Claude could never read the notification *setting* — that is still outside its
+toolset. It did not need to: the delivered email proves the setting from the
+other end, which is the better evidence anyway.
+
+*(Superseded: the note below said this was undoable and needed a human in the
+dashboard. Someone did it. Kept for the audit trail.)*
+
+~~Not doable by Claude even once the form exists.~~
 
 Not doable by Claude even once the form exists. The Netlify MCP server exposes
 only: enable/disable forms, and read/delete submissions. **Notification
@@ -177,8 +192,32 @@ Notifications → *Form submission notifications* → add an email notification 
 
 ---
 
-### SD-FORMS-003 — Labelled test inquiry, delivery confirmed
-**Status: BLOCKED by SD-FORMS-001 and SD-FORMS-002 · Owner: CODEX**
+### SD-FORMS-003 — Labelled test inquiry, delivery confirmed ✅ RESOLVED
+**Status: RESOLVED · both halves verified by Claude 2026-07-31 07:53 UTC**
+
+Done exactly as specified — clearly labelled, and confirmed in **both** places
+because either alone can lie.
+
+| Link in the chain | Evidence |
+|---|---|
+| Submitted from the live site | referrer `https://smithdigitalco.com/`, Chrome/Windows, IP recorded |
+| Captured by Netlify | submission `6a6c438b41f2cf31b754d598`, `06:41:15.288 UTC`, `submission_count: 1` |
+| **Delivered to the inbox** | `formresponses@netlify.com` → `steenbballsmith@gmail.com`, `06:41:16 UTC`, subject *"New Smith Digital audit request"*, labels INBOX + IMPORTANT |
+
+Self-identified as a test: *"Steen Smith - RELEASE QA … Not a customer lead;
+safe to delete after delivery is confirmed."* Delivery is now confirmed, so it
+**is** safe to delete — but Claude has not, and suggests keeping it. It is the
+only concrete proof the pipeline works, it costs nothing to leave, and deleting
+evidence immediately after producing it is a poor habit. Steen's call.
+
+**The full chain that opened this session is closed.** "The audit form is
+capturing nothing" → form registered → submission captured → email delivered.
+Every link verified against an artifact rather than inferred.
+
+*(Superseded below: the warning not to trust a 200. Still good advice, no
+longer the situation.)*
+
+~~Submit one clearly-labelled test inquiry.~~
 
 Submit one clearly-labelled test inquiry through the live form. Then confirm it
 in **both** places, because either alone can lie:

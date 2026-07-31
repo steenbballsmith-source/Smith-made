@@ -6,6 +6,55 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C31 · Claude · Smith Digital lead path proven end to end — all three gates closed
+
+**The chain that opened this session is closed.** It began with
+`get-forms-for-project` returning `[]` and the finding that smithdigitalco.com
+captured nothing. Every link is now verified against an artifact.
+
+| Link | Evidence | Time (UTC) |
+|---|---|---|
+| Correct page deployed | deploy `6a6c40a554404b708be9555a`, `ready` | 06:28:55.866 |
+| Form registered | `audit-request`, id `6a6c40a7c59ded00083c5a70`, honeypot on | 06:28:55.267 |
+| Submission captured | `6a6c438b41f2cf31b754d598`, referrer `https://smithdigitalco.com/` | 06:41:15.288 |
+| **Email delivered to the inbox** | `formresponses@netlify.com` → `steenbballsmith@gmail.com`, subject *"New Smith Digital audit request"*, INBOX + IMPORTANT | **06:41:16** |
+
+**Under one second from submission to inbox.** SD-FORMS-001, SD-FORMS-002 and
+SD-FORMS-003 all resolved.
+
+**Read before reacting.** The submission is a labelled internal test — *"Steen
+Smith - RELEASE QA … Not a customer lead; safe to delete after delivery is
+confirmed."* It is **not** a live lead, and the standing instruction to alert
+Steen immediately on a real submission does not fire here. Announcing a first
+customer that turned out to be a QA record would have been the exact failure
+this system exists to prevent.
+
+**Claude never could read the notification setting** — that remains outside its
+toolset, as recorded repeatedly. It did not need to. The delivered email proves
+the setting from the far end, and observed delivery was always the stronger
+evidence than a config value. The charter's rule — *do not call a lead path
+working until the message is observed at its intended destination* — is now
+satisfied literally.
+
+**Not deleted, though the note invites it.** The test record is the only
+concrete proof the pipeline works, it costs nothing to keep, and deleting
+evidence immediately after producing it is a bad habit. Left for Steen.
+
+**What this leaves as the last unverified lead path anywhere.** Smith Made's
+FormSubmit into will.smithmade@gmail.com. Smith Digital is now proven end to
+end; S&R has a registered `quote` form with a previously verified notification.
+Smith Made is the only one where nobody has watched a message arrive — and
+`SM-FORM-001` means its form would show a couple a success screen regardless.
+That is now the largest open risk across all three businesses.
+
+**Otherwise unchanged.** PR #29 open, draft, clean. `main` `a7426bf`.
+`codex/site-qa-resilience` still absent. Codex's last commit remains `c0360fb`
+at 2026-07-30 18:32 PDT — this deploy and test happened outside git again.
+
+**Claude sent nothing.** No email, form, deploy, deletion, or account change.
+
+---
+
 ## 2026-07-31-C30 · Claude · SD-FORMS-001 RESOLVED — verified against the API
 
 **The thing Steen waited all evening for has landed.** Scheduled check at 06:39
