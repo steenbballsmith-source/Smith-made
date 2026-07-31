@@ -12,20 +12,14 @@ stops being locked in a box.
 
 ---
 
-## ⚡ If you just want to get it done — two pastes
+## ⚡ Installed — one human login remains
 
-Steen approved this on 2026-07-30 while away from the machine. When you sit
-down at the PC: Start → type `powershell` → Enter, then paste these.
+Codex installed and fresh-shell verified Claude Code on 2026-07-30. The command
+returns `2.1.220 (Claude Code)`, Git is already installed, and
+`C:\Users\SJ\CLAUDE.md` contains the startup guardrails. Do not rerun the
+installer.
 
-**Paste 1** — installs Claude Code and Git, then close the window and open a
-new PowerShell so it picks them up:
-
-```powershell
-irm https://claude.ai/install.ps1 | iex
-winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements
-```
-
-**Paste 2** — in the new window:
+When you sit down at the PC, open a **new** PowerShell and paste:
 
 ```powershell
 cd C:\Users\SJ

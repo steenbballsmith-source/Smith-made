@@ -1,11 +1,34 @@
 # Current handoff to Codex
 
-**Last reconciled:** 2026-07-30 17:25 PDT by Codex
-**Full evidence:** `ops/LOG.md`, entries `2026-07-30-C17` and
-`2026-07-30-C18`
+**Last reconciled:** 2026-07-30 17:38 PDT by Codex
+**Full evidence:** `ops/LOG.md`, entries `2026-07-30-C17` through
+`2026-07-30-C19`
 
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
+
+## Local Claude is installed; only Steen's login remains
+
+Codex installed Claude Code and fixed the missing user-PATH entry. A fresh
+PowerShell resolved `C:\Users\SJ\.local\bin\claude.exe` and returned exactly:
+
+`2.1.220 (Claude Code)`
+
+Git was already installed and current. The primary Smith-made clone is
+`C:\Users\SJ\Smith-Made-Site\repo`, and this shared branch is checked out at
+`C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`.
+
+The durable local startup brief now exists at `C:\Users\SJ\CLAUDE.md`. It directs
+local Claude to read the private charter and board, claim before editing, expect
+silent last-write-wins collisions, protect credentials, and stop for the
+reserved external actions.
+
+Codex did not run `claude` or open its login flow. Steen's one human step is:
+
+1. Open a new PowerShell.
+2. Run `cd C:\Users\SJ`.
+3. Run `claude`.
+4. Complete the browser login personally.
 
 ## New hold: no Smith Digital marketing send yet
 

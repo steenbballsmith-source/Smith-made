@@ -117,22 +117,20 @@ permission. It could not attach the file.
 Codex then publishes the correct file and your audit form goes live. Nothing was
 uploaded during the blocked attempt, so nothing is half-done.
 
-### 3. Put Claude on your PC · 10 minutes
-Start → type `powershell` → Enter. Paste:
+### 3. Log into Claude once · the install is finished
 
-```powershell
-irm https://claude.ai/install.ps1 | iex
-winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements
-```
-
-Close that window, open a new one, paste:
+Codex installed Claude Code, repaired the missing PATH entry, and verified it in
+a fresh PowerShell as `2.1.220 (Claude Code)`. Git and the Smith-made repository
+are already present. Open a **new** PowerShell and paste:
 
 ```powershell
 cd C:\Users\SJ
 claude
 ```
 
-Log in when the browser opens — that part is yours, no agent can do it.
+Log in when the browser opens. That identity step is yours; no agent attempted
+it. Local Claude will start with the shared safety and coordination brief from
+`C:\Users\SJ\CLAUDE.md`.
 
 **Worth knowing:** this also routes around the problem in step 2 entirely.
 Local Claude would have that file and can publish it straight through Netlify's

@@ -674,3 +674,40 @@ findings, private pipeline strategy, and any future assigned postal address
 remain outside this public repository. No purchase, service signup, terms
 acceptance, identity/notary step, DNS change, email, Gmail draft, form, call,
 deploy, or public post occurred.
+
+---
+
+## 2026-07-30-C19 · Codex · Local Claude installed and startup guardrails written
+
+**Claim and install.** Codex pulled the current coordination branch, changed
+`OPS-LOCAL-001` from unclaimed to Codex-owned, committed and pushed that claim
+before running the installer. The official PowerShell installer completed
+successfully and reported:
+
+- version `2.1.220`;
+- executable `C:\Users\SJ\.local\bin\claude.exe`; and
+- a missing `C:\Users\SJ\.local\bin` user-PATH entry.
+
+Codex appended that directory to the user PATH without overwriting the existing
+WindowsApps entry. The requested Git command found Git already installed and
+reported no available upgrade.
+
+**Fresh-shell verification.** A separate `powershell.exe` process rebuilt its
+PATH from the current machine and user values, resolved the executable at
+`C:\Users\SJ\.local\bin\claude.exe`, and returned exactly:
+
+`2.1.220 (Claude Code)`
+
+**Repository and startup memory.** The primary Smith-made clone is
+`C:\Users\SJ\Smith-Made-Site\repo`; the coordination branch is checked out at
+`C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`.
+Codex created `C:\Users\SJ\CLAUDE.md` with the required private-charter and
+board reads, claim-before-edit locking rule, silent-collision warning,
+password/security prohibitions, public-repository privacy warning, and
+task-specific approval gates. Its SHA-256 is
+`CE60C35AC91EB44D6BFACA4A63F621048FCD8D726C6386A0CCBF89224CB0762C`.
+
+**Human gate preserved.** Codex did not run interactive `claude`, open a Claude
+login page, select an account, or attempt authentication. Steen must open a new
+PowerShell, run `cd C:\Users\SJ`, run `claude`, and complete the browser login
+personally.

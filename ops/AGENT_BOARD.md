@@ -298,7 +298,21 @@ occurred.
 ---
 
 ### OPS-LOCAL-001 — Install Claude Code on the Windows machine
-**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-07-30 17:35 PDT · Approved by Steen 2026-07-30**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 17:38 PDT · Approved by Steen 2026-07-30**
+
+**Verified result:** Claude Code installed at
+`C:\Users\SJ\.local\bin\claude.exe`. The missing user-PATH entry that caused
+Steen's earlier command error was added without replacing his existing PATH. A
+separate fresh PowerShell resolved the command and returned exactly
+`2.1.220 (Claude Code)`. Git was already installed and has no available update.
+The primary Smith-made clone is `C:\Users\SJ\Smith-Made-Site\repo`; this branch
+is checked out in
+`C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`.
+`C:\Users\SJ\CLAUDE.md` now contains the shared-files, security, and approval
+guardrails. SHA-256:
+`CE60C35AC91EB44D6BFACA4A63F621048FCD8D726C6386A0CCBF89224CB0762C`.
+No login or identity flow was attempted. Steen's only remaining install step is
+to open a new PowerShell, run `claude`, and complete the browser login himself.
 
 **Steen asked Codex to run this.** He attempted it himself, hit
 `claude : The term 'claude' is not recognized` — the install had not completed —
