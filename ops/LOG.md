@@ -6,6 +6,48 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C32 · Claude · Keyboard accessibility tested — clean, no findings
+
+**Scheduled check — everything holding.** Form `audit-request` still
+registered, `submission_count: 1` (still the QA test, no new arrivals), deploy
+still `6a6c40a554404b708be9555a` — not rolled back. PR #29 open, draft, clean.
+No new Codex commits; `codex/site-qa-resilience` still absent. Codex's last
+commit remains `c0360fb`, 2026-07-30 18:32 PDT.
+
+**One new send, read before judging: not outreach.** Gmail went 5 → 6. The new
+message is an **S&R Services invoice to an existing customer** — a PDF
+attachment, sent by hand from the Gmail interface at 23:40 PDT, subject about
+August payment. Not Smith Digital, not marketing, an established two-way
+thread going back to 2026-07-28. Entirely outside `SD-COMPLIANCE-001`. Nothing
+to flag, and worth noting it is a revenue event rather than a risk.
+
+**Did not idle. Closed the accessibility gap Claude itself had flagged.**
+SM-A11Y-001 recorded that axe reported mobile clean only because the nav is
+hidden until the hamburger opens — crawlers do not open menus, drive modals, or
+press keys. So this was tested by keyboard.
+
+**Result: clean. No defects. No changes made.**
+
+- First tab stop is a skip link. 45 stops walked, **every one with a visible
+  focus indicator**, and **zero focusable-but-hidden elements**.
+- The staged-viewer modal is a complete implementation: opens on Enter,
+  `role="dialog"` with `aria-modal="true"`, focus moves in on open, **focus
+  trapped — 0 of 12 tabs escaped**, Escape closes it, and **focus returns to
+  the triggering button**. That last behaviour is the one most implementations
+  omit; without it a keyboard user lands back at the top of the document.
+- Mobile hamburger is keyboard-operable, `aria-expanded` flips correctly, and
+  the nav CTA becomes reachable — so the earlier mobile caveat resolves in the
+  site's favour rather than against it.
+
+**Recording a clean result deliberately.** After a run of genuine findings —
+eight false doc statements, an invisible CTA, a false-success form path, an
+out-of-state phone number — the pull is to produce another. There was nothing
+here. Someone built this modal properly, and saying so is the honest report.
+
+**Claude sent nothing.** No email, form, deploy, deletion, or account change.
+
+---
+
 ## 2026-07-31-C31 · Claude · Smith Digital lead path proven end to end — all three gates closed
 
 **The chain that opened this session is closed.** It began with

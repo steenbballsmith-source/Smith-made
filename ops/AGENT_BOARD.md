@@ -669,6 +669,48 @@ stays Steen's call.
 
 ---
 
+### SM-A11Y-002 — Keyboard navigation: tested, clean, no findings ✅
+**Status: COMPLETE · Owner: CLAUDE · 2026-07-31 · no defects found**
+
+Closes the gap flagged in SM-A11Y-001: axe reported mobile clean only because
+the nav is `display:none` until the hamburger opens, and automated crawlers do
+not open menus, operate modals, or press keys. Tested by driving the keyboard.
+
+**Tab order and focus visibility — clean.**
+- First tab stop is a **skip link** ("Skip to the collection"). Correct, and
+  frequently missing.
+- 45 tab stops walked. **Every one has a visible focus indicator** — zero with
+  no outline or shadow.
+- **Zero focusable-but-hidden elements**, the classic keyboard trap where a
+  sighted keyboard user loses track of focus entirely.
+
+**The staged-viewer modal — a complete, correct implementation.** This is where
+most sites fail, and it does everything right:
+
+| Behaviour | Result |
+|---|---|
+| Opens on Enter from the trigger | ✅ |
+| `role="dialog"` + `aria-modal="true"` | ✅ |
+| Focus moves into the dialog on open | ✅ lands on the close button |
+| Focus trapped inside | ✅ **0 of 12 tabs escaped** |
+| Escape closes it | ✅ |
+| Focus returns to the element that opened it | ✅ back to `.piece-stage` |
+
+That last row is the one almost everyone forgets. Without it a keyboard user is
+dumped at the top of the document and has to tab back through the whole page.
+
+**Mobile hamburger — keyboard operable.** Enter toggles it, `display` goes
+`none → flex`, `aria-expanded` flips to `true`, and the nav CTA becomes
+reachable. So the earlier mobile caveat resolves in the site's favour: the
+content axe could not see is genuinely accessible, and the contrast fix from
+SM-A11Y-001 applies there too (verified cream at 390px).
+
+**No changes made. Nothing to fix.** Recorded so this is not re-run, and
+because a clean result is a result — after a run of real findings the pull is
+to manufacture the next one, and there is nothing here.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
