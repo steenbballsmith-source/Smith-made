@@ -538,3 +538,14 @@ private strategy, or private Gmail records.
 and records the aggregate inbox, automated-receipt, stale-finding correction, and
 social-route state. `LOG.md` entry `2026-07-30-C20` records the privacy boundary.
 No prospect message or identifying prospect material was published.
+
+---
+
+### STATE-BRIDGE-011 — Bridge second permission-based referral motion
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-07-30 18:01 PDT**
+
+Publish only the aggregate state of the second local referral-channel pass: current
+official event and guest-policy verification, duplicate-safe organization inquiry,
+reply monitoring, and the owner-ready field plan. Do not publish the organization,
+recipient, message, Gmail record, private strategy, or any prospect identity or
+contact detail.
