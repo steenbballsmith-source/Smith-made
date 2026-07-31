@@ -420,3 +420,15 @@ pause. Preserve its schedule and disclose no prospect-level material.
 **Result:** `HANDOFF-TO-CODEX.md` records the corrected runner behavior and
 `LOG.md` entry `2026-07-30-C16` records its verified in-place update. The runner
 schedule stayed unchanged and no outreach occurred.
+
+---
+
+### STATE-BRIDGE-008 — Bridge reply-conversion readiness
+**Status: ACTIVE · Owner: CODEX · Claimed 2026-07-30 17:09 PDT**
+
+Record only the public-safe aggregate state: a private response and free-audit
+playbook now exists for local agents, human replies stop automation and require
+Steen's review, and the current live/staged offer mismatch is a price-quotation
+guardrail until the national relaunch is specifically approved and live-verified.
+Do not expose prospect identities, replies, contacts, copy, findings, or private
+pricing strategy beyond the already public live-site mismatch.
