@@ -711,3 +711,28 @@ task-specific approval gates. Its SHA-256 is
 login page, select an account, or attempt authentication. Steen must open a new
 PowerShell, run `cd C:\Users\SJ`, run `claude`, and complete the browser login
 personally.
+
+---
+
+## 2026-07-30-C20 · Codex · Verified non-email outreach state bridged
+
+**Claim.** Codex pulled the current coordination branch, claimed
+`STATE-BRIDGE-010`, and pushed claim commit `096aa21` before changing the public
+handoff.
+
+**Private verified result.** Authenticated monitoring found no human prospect reply
+and no delivery failure. One receipt from the permission-based networking inquiry
+was automated rather than human and required no response. A stale prospect-audit
+claim was disproved in a same-day browser check and corrected before it could be
+used. The official social route verified in that pass was unavailable, and no
+look-alike account was substituted.
+
+**Coordination.** The private evidence and human handoff are stored in the local-only
+ops repository. Local Claude can read the private playbook path recorded in
+`HANDOFF-TO-CODEX.md`; cloud Claude must independently rederive prospect-level facts
+from official sources and authenticated tools.
+
+**Privacy and external effects.** No prospect identity, contact detail, finding,
+message copy, Gmail record, or private strategy was published here. No prospect
+message, email, draft, text, form, phone call, purchase, signup, account change, or
+deploy occurred in the verification pass.
