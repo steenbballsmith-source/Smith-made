@@ -39,27 +39,41 @@ Names and addresses are deliberately omitted — this repo is public,
 |---|---|---|
 | **2026-08-13** | Registrar contact verification or the domain suspends — `OPS-DOMAIN-001` | Steen only |
 | **2026-08-03** | A networking-group contact is back from leave. He asked about visiting and whether his category is open — that question is unanswered and worth re-sending | Steen; Codex can draft |
-| **2026-08-06** | He asked to attend a chamber guest event that day. Still **no confirmation** — needs a yes before he shows up | Steen |
-| **2026-08-07, 08:30–09:15** | A second local chamber has **said yes** (see below). Recurring Friday mornings, **different venue each week** — the location must be looked up on their calendar beforehand | Steen |
+| **Thu 2026-08-06, doors 08:00 · programme 08:25 · ends 09:15** | Chamber guest event — **CONFIRMED yes**, he is expected | Steen |
+| **Fri 2026-08-07, 08:30–09:15** | Second chamber — **CONFIRMED yes**. **Different venue each week**; the location must be looked up on their calendar beforehand | Steen |
 | *no date* | Card issuer call — `OPS-BILLING-001` | Steen only |
 
-**Landed 2026-07-31 17:48 UTC — the second chamber replied, and it is a yes.**
-He is welcome to attend "a couple of times" as a non-member. Meetings run
-**Friday mornings 08:30–09:15, at a different business each week.** Two
-consequences worth holding on to:
+**Both chamber asks came back yes, within a day of each other (2026-07-31
+17:48 and 18:42 UTC).** He now has two in-person events on consecutive
+mornings next week. Different days, so no clash. What matters operationally:
 
-1. **The venue changes weekly**, so "turn up at the chamber" is wrong — the
-   location has to be read off their calendar each time. That is the single
-   easiest way for this to fail.
-2. **This week's meeting had already finished when the reply arrived.** It was
-   sent 10:48 local on a Friday; the meeting ends 09:15. So the first one he
-   can attend is **Friday 2026-08-07**, and it lands the day after the Aug 6
-   guest event — a strong week if both hold, and worth not double-booking.
+- **Aug 6 has a real start time and he should arrive for doors, not the
+  programme** — doors 08:00, programme 08:25, finished 09:15. Turning up at
+  08:25 means walking in as it starts, which wastes the only part that is
+  actually useful to him: the unstructured half-hour beforehand.
+- **Aug 7's location is not fixed** and is the single likeliest thing to go
+  wrong all week. It has to be read off that chamber's calendar the night
+  before.
 
-*Not escalated to Steen when it landed: it is a week out, the mail is sitting
-in his inbox flagged important, and he had an unanswered urgent item
-(`OPS-DOMAIN-001`) that needed to stay the only thing in front of him. Fold it
-into the next message that is warranted on its own.*
+Detail on the Friday chamber: he is welcome "a couple of times" as a
+non-member. Its meeting **this** week had already finished when the reply
+arrived — sent 10:48 local on a Friday, meeting ends 09:15 — which is why the
+first one he can attend is Aug 7 rather than today.
+
+**Neither acceptance was escalated to Steen as it landed.** Both are a week
+out, both mails are in his inbox flagged important, and `OPS-DOMAIN-001` is
+still unanswered and needs to stay the only thing in front of him. Fold them
+into the next message warranted on its own — do not send one just to deliver
+them.
+
+**Related, and it changes where call logging should go:** he completed the
+GoHighLevel signup on 2026-07-31 at ~19:51 UTC, after abandoning it the night
+before. That is a CRM. The call sheet delivered to him recommended logging
+every call — who, when, outcome — so that a second wave does not re-contact
+people who already said no, and so an opt-out request sticks across phone and
+email both. **That log now has an obvious home.** Worth pointing out to him
+once he has actually used the tool, not before — he has signed up for several
+platforms this week and has not committed to one.
 
 *Rule for both agents: none of these get actioned on Steen's behalf — they are
 external communications, which `AUTHORIZATION.md` §2 puts outside the grant for
