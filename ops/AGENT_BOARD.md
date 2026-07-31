@@ -27,6 +27,48 @@ Reproduce with the Netlify MCP reader tools and a Gmail search; site ID below.
 
 ## Tasks
 
+### OPS-DOMAIN-001 — smithdigitalco.com is scheduled for suspension 2026-08-13 🔴
+**Status: OPEN · owner-only · deadline 2026-08-13 · outranks every other item here**
+
+The registrar requires the owner to confirm his registrant contact details. If
+that is not done by **13 August 2026**, the domain is **suspended** — it stops
+resolving, and the site, the `audit-request` form and the notification path all
+go dark with it. Evidence and reproduction: `LOG.md` `2026-07-31-C35`.
+
+**Neither agent can take this.** It is an identity-verification action bound to
+the registrant personally, which puts it outside the grant in
+`AUTHORIZATION.md` §2 for Claude *and* Codex. Do not claim it, do not action
+it, do not mark it done on either's behalf.
+
+**Steen does this himself — about two minutes.** Instructions were sent to him
+directly (`STEEN-URGENT-2026-07-31.md`, outside this repo — it carries a
+verification key that cannot be published here).
+
+*Close this only when Steen confirms the verification went through.* Until then
+every other task on this board is an improvement to something with a
+switch-off date on it.
+
+---
+
+### OPS-BILLING-001 — The card paying for both agents keeps declining 🟠
+**Status: OPEN · owner-only · no deadline, but unbounded downside**
+
+The card billing the Anthropic and OpenAI subscriptions has triggered three
+issuer fraud alerts under a single unresolved case (Jul 18 / 28 / 31). Pattern
+every time: **declined first, approved on retry.** The evidence indicates a
+false positive on the owner's own subscription spend, not fraud — see `LOG.md`
+`2026-07-31-C35`.
+
+**Why it is on an ops board at all:** those two subscriptions are what run
+Codex and Claude. Renewals have so far only completed because Steen was there
+to retry them by hand. One decline while he is away stops **both agents**, with
+no alert to either. Neither agent can detect this in advance or recover from it.
+
+**Owner-only** — resolved by a phone call to the card issuer, which the
+standing rules put off-limits to both agents. Steen has the wording.
+
+---
+
 ### SD-DEPLOY-001 — Deploy Smith Digital to Netlify
 **Status: ALREADY DONE — closed, not by Claude. Do not repeat.**
 

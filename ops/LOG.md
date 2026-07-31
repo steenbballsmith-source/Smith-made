@@ -6,6 +6,68 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C35 · Claude · smithdigitalco.com is scheduled for suspension on Aug 13
+
+**This is the highest-severity finding of the engagement, and it has nothing to
+do with code.** A scheduled watch cycle turned up a registrar notice, dated
+2026-07-29, requiring the domain owner to confirm his registrant contact
+details. Its terms are explicit: if the verification is not completed by
+**2026-08-13**, `smithdigitalco.com` is **suspended**.
+
+**Why it outranks everything else on this board.** Suspension takes the domain
+out of DNS. The deploy verified in `C31`, the `audit-request` form, and the
+notification path proven to fire in under a second all sit on that hostname.
+None of them survive it. Every other open item on this board is an improvement
+to a system that this one notice switches off.
+
+**Reproduce it:** authenticated Gmail, query
+`from:namecheap subject:"verify your contact information"`, message dated
+2026-07-29. The deadline is stated in the message body.
+
+**Status: owner-only.** This is an identity-verification action bound to the
+registrant. Claude did not open the link and will not — that is Steen's to
+click, and clicking it on his behalf would be an identity action outside the
+grant in `AUTHORIZATION.md` §2. Codex cannot take it either, for the same
+reason. It is logged here so that neither agent treats it as assignable, and
+so that it is impossible to miss.
+
+**Second finding, same cycle — the billing rail under both agents is unstable.**
+The card that pays for the Anthropic and OpenAI subscriptions has now triggered
+**three** issuer fraud alerts (Jul 18, Jul 28, Jul 31), all carrying the *same*
+case reference — meaning the case has never been closed and simply re-fires.
+The observed pattern in every instance is *declined on first attempt, approved
+on retry*. The evidence points to a false positive on the owner's own
+subscription spend rather than actual fraud: a same-window postal charge in a
+neighbouring town matches his known shipping activity, and the flagged amounts
+reconcile against subscription receipts already in the same mailbox.
+
+**The operational consequence, which is the reason it is logged at all:** those
+two subscriptions are what run Codex and Claude. Every renewal so far has only
+completed because the owner was present to retry it manually. A decline that
+happens while he is not watching stops **both** agents with no notification.
+That is a single point of failure sitting underneath this entire operation, and
+neither agent can see it coming or fix it.
+
+**Also owner-only** — it is resolved by a phone call to the card issuer, and
+the standing rules bar both agents from identity and credential paths.
+
+**Privacy.** Card digits, the issuer case reference, transaction amounts, and
+the registrar verification key are deliberately **absent from this entry and
+from every committed file**. This repository is public; `CHARTER.md` §9. The
+full detail went to Steen directly, outside the repo, as
+`STEEN-URGENT-2026-07-31.md`.
+
+**Routine watch results, same cycle, all unchanged:** form `audit-request`
+`submission_count: 1`, `last_submission_at 2026-07-31T10:30:04.432` — identical
+to the C34 reading, so **SD-FORMS-004 has not recurred**. Current deploy still
+`6a6c40a554404b708be9555a`. No new Codex commits; `origin/main` remains
+`a7426bf`, quiet ~26h. `codex/site-qa-resilience` still absent.
+
+**No action was taken on any of it.** Nothing clicked, nothing replied to,
+nothing sent.
+
+---
+
 ## 2026-07-31-C34 · Claude · A submission at 10:30 that produced no email
 
 **Caught by comparing two fields that disagreed.** `last_submission_at` had
