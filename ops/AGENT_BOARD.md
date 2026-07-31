@@ -735,6 +735,67 @@ the prospect packet.
 ---
 
 ### OPS-PRIVACY-001 — Strategy documents are public 🟠
+**Status: OPEN · Owner: STEEN (commercial decision) · Inventory completed by Claude 2026-07-31**
+
+Steen has only had a one-line summary of this. Here are the actual facts, so
+the decision is made on evidence. **No sensitive content is reproduced below** —
+locations and categories only, per `CHARTER.md` §9.
+
+#### What is actually exposed, precisely
+
+Five markdown files sit on `main` in a public repository:
+`MARKETING_PLAYBOOK.md` (233 lines), `OWNERS-GUIDE.md` (306),
+`SESSION_HANDOFF.md` (77), `SOCIAL_KIT.md` (98), `README.md` (30).
+
+| Exposure | Where | Why it matters |
+|---|---|---|
+| **Venue + planner target list with an "Angle" column** | `MARKETING_PLAYBOOK.md` §3, tables from ~line 120, **25 entity rows** | The *names* are public businesses and not sensitive. The **Angle column is** — it records which venues to approach and the reason each is a good target ("wants preferred vendors", positioning notes). That is go-to-market intelligence, not a directory. |
+| **Pricing floor** | `SESSION_HANDOFF.md` §4 — *"Never quote below ~50–55% gross margin."* | The single most damaging line. Any venue, planner or couple who reads it knows exactly how much room Steen has before he walks. It converts every negotiation into a one-sided one. |
+| **Founder discount** | `MARKETING_PLAYBOOK.md` §3, `SESSION_HANDOFF.md`, `SOCIAL_KIT.md` — a 20%-off offer, three files | A customer who knows the discount exists can ask for it. Lower impact than the margin line, but it removes the choice of when to offer it. |
+| **Premium-pricing trigger** | `SESSION_HANDOFF.md` §4 — raise prices at 15–20 reviews | Minor, but it telegraphs the pricing roadmap. |
+
+**Third-party contact details: effectively none.** One email/phone-shaped match
+in the whole playbook. This is *not* a customer-data leak — no client records,
+no credentials, no personal information. That distinction matters for how
+urgently to treat it.
+
+#### The technical trap Steen needs to know before choosing
+
+**Deleting these files does not remove them.** Git keeps every prior version;
+anyone who clones the repository can read the deleted content out of history in
+one command. Genuinely erasing it means rewriting published history, which
+breaks existing clones and the deploy. So "just delete the sensitive bits" is
+the option that *looks* cheapest and is actually the trap.
+
+**Whatever is chosen, what is already published stays published.** Every option
+below stops *future* exposure. None of them un-publish the past.
+
+#### The options, with real costs
+
+1. **Move the strategy docs to a private repo** — *free*, and the cheapest
+   correct answer. The site repo stays public and clean; the playbook, handoff
+   and social kit move somewhere private. Also the natural home for the private
+   ops brain that currently lives only on the Windows machine.
+2. **Make this repository private** — GitHub Pages on a custom domain requires a
+   paid plan for private repos (~$4/month). Nothing else breaks; the deploy
+   workflow is unaffected. Simplest to reason about.
+3. **Do nothing** — a defensible choice. The repo is obscure, nobody is likely
+   to find it, and the content is a plan rather than a secret. The cost is that
+   the margin floor stays readable by anyone who does look.
+
+**Claude's recommendation: option 1**, and specifically move
+`SESSION_HANDOFF.md` first — it carries the margin floor, which is the only
+line here with real negotiating cost.
+
+**Not acted on, deliberately.** What a business publishes about itself is a
+commercial decision, not an agent's. This is the inventory; the call is Steen's.
+
+---
+
+<details>
+<summary>Original summary entry, superseded by the inventory above</summary>
+
+#### OPS-PRIVACY-001 — Strategy documents are public 🟠
 **Status: OPEN · Owner: STEEN (his call) · Raised by Claude 2026-07-30**
 
 `steenbballsmith-source/Smith-made` is a public repo, and already-merged files
@@ -751,6 +812,8 @@ Claude has not changed this. Deciding what a business publishes is Steen's, not
 an agent's. Two options when he wants it: move the strategy docs to a private
 `smith-ops` repo, or make this repo private (GitHub Pages on a custom domain
 still works on a private repo, but it needs a paid plan).
+
+</details>
 
 ---
 

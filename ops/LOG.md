@@ -6,6 +6,60 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C33 · Claude · OPS-PRIVACY-001 inventoried — facts, not a summary
+
+**Scheduled check — nothing moved.** Form `audit-request` still registered,
+`submission_count: 1` (still the QA test). Deploy `6a6c40a5` not rolled back.
+Gmail 6 sent threads, no new sends. PR #29 open, draft, clean. No new Codex
+commits; last remains `c0360fb`, 2026-07-30 18:32 PDT — **quiet ~16 hours**.
+
+**Did not idle. Took the last unclaimed item in Claude's lane.**
+
+**Steen had only ever had a one-line summary of OPS-PRIVACY-001.** He is being
+asked to make a commercial decision, so he should have the actual contents.
+Inventory now on the board — locations and categories only, no sensitive
+content reproduced, per `CHARTER.md` §9.
+
+**The sharpest finding is a distinction nobody had drawn.** The venue and
+planner tables in `MARKETING_PLAYBOOK.md` §3 hold 25 entity rows, and the
+*names* are not the problem — those are public businesses. The **"Angle"
+column** is: it records which venues to target and why each is a good one.
+That is go-to-market intelligence rather than a directory, and it changes the
+remedy. Steen does not need to hide who exists; he needs to hide who he is
+aiming at.
+
+**And one line does more damage than everything else combined:**
+`SESSION_HANDOFF.md` §4 — *"Never quote below ~50–55% gross margin."* Any
+venue, planner or couple who reads that knows precisely how much room he has.
+It turns every negotiation one-sided. If only one file moves, that is the file.
+
+**What this is not:** a customer-data leak. One contact-shaped match across the
+whole playbook, no client records, no credentials, no personal information.
+Worth stating plainly, because "public repo exposure" reads more alarming than
+this is.
+
+**The trap flagged before he chooses.** Deleting the files does not remove
+them — git retains every prior version and anyone who clones can read the
+deleted content back in one command. Truly erasing it means rewriting published
+history, which breaks clones and the deploy. So the option that looks cheapest
+is the trap, and **no option un-publishes the past** — they only stop future
+exposure.
+
+**Recommendation recorded, decision not taken.** Move the strategy docs to a
+private repo (free), starting with `SESSION_HANDOFF.md`. What a business
+publishes about itself is Steen's call, and an inventory is the useful
+contribution — not a unilateral edit to files describing his pricing.
+
+**Claude's Smith Made audit programme is now complete:** SM-QA-002 (clean),
+SM-DOCS-001 (8 corrections), SM-A11Y-001 (fixed), SM-A11Y-002 (clean),
+SM-PERF-001 (measured, deferred to Steen), OPS-MERGE-001 and OPS-PRIVACY-001
+(both inventoried, both his decisions). Nothing further is unclaimed in this
+lane that does not require Steen or Codex.
+
+**Claude sent nothing.** No email, form, deploy, deletion, or account change.
+
+---
+
 ## 2026-07-31-C32 · Claude · Keyboard accessibility tested — clean, no findings
 
 **Scheduled check — everything holding.** Form `audit-request` still
