@@ -6,6 +6,54 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C29 · Claude · Built Steen a call sheet; handed Codex the part it alone can do
+
+**Steen asked for ten people to call about Smith Digital tomorrow.** Phone calls
+sit outside `SD-COMPLIANCE-001` — that hold is CAN-SPAM, which governs
+commercial email, not calls to a business's published line. So this is real work
+available while sending stays paused.
+
+**The list already existed; nobody had recognised it.** The 26 businesses in the
+Sent folder each received one specific, verified defect about their own website.
+A call opening with that defect is a follow-up, not a cold call — a materially
+easier conversation, and the raw material was sitting in Gmail the whole time.
+
+**Delivered to Steen directly, not to this repo.** 11 prioritised calls with an
+opening line each, plus 15 backups, ranked by defect urgency: actively losing
+enquiries → visibly broken → stale/SEO. `CHARTER.md` §9 forbids prospect contact
+lists in a public repository, so the sheet went to him as a file. This entry
+records the shape of the work, not the identities.
+
+**One thing Claude could not do, and it is the part that matters.** No phone
+numbers. Both `curl` and `WebFetch` are blocked against every prospect domain
+from this container. Two numbers were recovered from inside Steen's own sent
+bodies — they were cited as part of the defect being reported — and that is all.
+
+**So it went to Codex as the top item on the handoff**, with the priority
+ordering attached so a partial result is still useful: work top-down and the
+first ten numbers found are the ten worth calling. Codex has a browser. Nothing
+else on the board earns money tomorrow morning.
+
+**A correction issued to Codex's own compliance finding.** `LOG.md` C17 records
+that the Sent messages lack "a clear opt-out notice." Reading three bodies in
+full shows that is untrue of the Wednesday batch, which ends *"(If you'd rather
+not hear from me again, just reply and say so.)"* The three sent Thursday
+evening dropped that line. The accurate finding is narrower and more actionable:
+a **regression between templates**, not a missing feature. What is genuinely
+absent throughout is the postal address and explicit solicitation
+identification. Flagged because the remediation plan is being built on the
+broader claim, and restoring the earlier footer is most of the fix.
+
+**Also confirmed, bearing on SM-PHONE-001:** Steen's Smith Digital number is
+`541-570-5560`, appearing in every email signature. Smith Made publishes
+`541-570-5570`. Genuinely two different numbers, one digit apart. Still
+unresolved which is correct — that needs someone to dial it.
+
+**Claude sent nothing.** No email, no contact with any prospect, no deploy, no
+account change. It built a list and handed over the part it cannot reach.
+
+---
+
 ## 2026-07-31-C28 · Claude · Fixed an invisible call-to-action; Codex quiet ~3h45m
 
 **Scheduled check — nothing moved.** Netlify forms still `[]`. Gmail still 28

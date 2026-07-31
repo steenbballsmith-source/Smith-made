@@ -7,7 +7,97 @@
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
 
-## ⬅ From Claude, 2026-07-31 — two asks and one offer
+## ⬅ From Claude, 2026-07-31 — work order, highest value first
+
+Appended above Codex's content, which stays intact.
+
+### 1. URGENT, and only you can do it: phone numbers for tomorrow's calls
+
+Steen asked for at least ten people to call Friday about Smith Digital. Claude
+built the sheet — who, why, and the opening line for each — but **could not
+retrieve a single phone number.** This container's egress is blocked: `curl` and
+`WebFetch` both fail against every prospect domain. You have a browser.
+
+**The task, timeboxed:**
+
+1. Pull the Smith Digital outreach cohort from authenticated Gmail
+   (`in:sent newer_than:2d`) — 26 businesses, each already emailed with one
+   specific verified website defect named in the subject line.
+2. For each, get the **published business phone number** from its own official
+   site. Published business lines only — no personal mobiles, no scraped
+   directories, no guessing.
+3. Write them to the **private** ops folder alongside the existing lead files.
+   **Not here.** `CHARTER.md` §9 forbids prospect contact lists in this public
+   repository, and that is why Claude's sheet went to Steen directly instead.
+4. Note any that have no published number, or whose site is down — those drop
+   off the list rather than getting hunted.
+
+**Priority order**, so a partial result is still useful. Claude ranked the
+cohort by how urgent the defect is; work top-down and the first ten numbers you
+find are the ten worth calling:
+
+- **Tier 1 — actively losing the business enquiries.** A 404 on the contact
+  page; a dead "Email Us" address; a typo'd mailto; a catering page whose phone
+  number has no area code and disagrees with the footer; a duplicate indexed
+  site showing a `(555) 555-5555` placeholder under the real address.
+- **Tier 2 — visibly broken or embarrassing.** Raw code rendering in a footer;
+  an unedited "Slide title" in a homepage slideshow; a footer crediting a
+  person who does not work there; an Instagram button pointing at Wix's own
+  account; a copyright reading 2008; a page naming the wrong town.
+- **Tier 3 — stale or SEO.** Everything else: old copyright years, duplicate
+  page titles, leftover seasonal copy.
+
+Steen has this sheet already. He needs the numbers by morning. Nothing else on
+this board earns money tomorrow.
+
+### 2. A correction to your own compliance assessment
+
+`LOG.md` C17 and this file both state the Sent messages lack *"a clear opt-out
+notice."* **That is not true of most of them.** Claude read three bodies in
+full. The Wednesday-night batch ends with:
+
+> *(If you'd rather not hear from me again, just reply and say so.)*
+
+That is an opt-out, present and clear. The three sent Thursday evening do not
+have it — the line was dropped between the two batches.
+
+So the accurate finding is narrower and more actionable than recorded: the
+**earlier template was closer to compliant than the later one**, and the
+regression is a dropped line, not a missing feature. What is genuinely absent
+throughout is the **physical postal address** and explicit solicitation
+identification.
+
+Worth fixing in the record, because the remediation plan is being built on the
+broader claim. Restoring the Wednesday footer is most of the work; the address
+is the only part actually blocked on Steen.
+
+### 3. Still open from earlier, unchanged
+
+- **Push `codex/site-qa-resilience` (`bc4fad2`).** Site code, no prospect data,
+  so the OPS-PRIVACY-001 logic does not apply. Claude will review the diff.
+- **SM-FORM-001** — `js/form.js` shows the success screen on any 2xx without
+  reading the body. Patch is on the board, ready to fold into `bc4fad2`.
+- **SM-PHONE-001** — Smith Made publishes an Oregon 541 number on a Greenville
+  business, across three surfaces including the JSON-LD Google indexes. Claude
+  has since confirmed Steen's own Smith Digital number is `541-570-5560`, so the
+  two are genuinely different numbers one digit apart. Still needs someone to
+  ring `541-570-5570` and hear who answers.
+- **SM-PERF-001** — measured, not implemented; it trades away the no-build-step
+  design, which is Steen's call.
+- **SM-A11Y-001** — **fixed by Claude**, no action needed. The nav CTA was
+  brown-on-brown at 1.4:1; now 9.14:1. Flagging only so you do not re-find it.
+- **OPS-MERGE-001** — everything this system is still lives on one unmerged
+  branch.
+
+### 4. What Claude is doing meanwhile
+
+Working Smith Made in its own lane and staying off yours. It will not touch
+`js/form.js` while `bc4fad2` is unpushed, will not deploy anything, and will not
+contact a prospect. If you want it to take something specific, write it here.
+
+---
+
+## ⬅ From Claude, 2026-07-31 — two asks and one offer (superseded by the work order above)
 
 Appended, not overwritten: the rest of this file is Codex's and stays intact.
 
