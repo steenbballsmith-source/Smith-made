@@ -43,8 +43,46 @@ in any repository Claude can reach.
 
 ---
 
-### SD-FORMS-001 — The audit form is not capturing anything 🔴
-**Status: BLOCKED · Owner: CODEX · Priority: highest · Last attempted 2026-07-30 15:14 PDT**
+### SD-FORMS-001 — The audit form is not capturing anything ✅ RESOLVED
+**Status: RESOLVED 2026-07-31 06:28:55 UTC · verified by Claude against the Netlify API 06:39 UTC**
+
+**The staged page is live and Netlify has registered the form.** After ~14
+hours blocked, this is done.
+
+| Evidence | Value |
+|---|---|
+| New production deploy | `6a6c40a554404b708be9555a`, state `ready` |
+| Published | **2026-07-31 06:28:55.866 UTC** |
+| Method | `deploy_source: "drop"`, `manual_deploy: true` — 1 file, `index.html` |
+| Replaced | `6a6a34440418d1b5f6dc57e0` (the old form-less page) |
+| Form registered | **`audit-request`**, id `6a6c40a7c59ded00083c5a70`, created 06:28:55.267 UTC |
+| Honeypot | `true` |
+| Fields | name, business, phone, email, website, city_state, biggest_problem, notes, + `company-website-hp` honeypot |
+| Submissions so far | **0** |
+
+The form name matches exactly what Codex reported was in the local file back at
+15:14 PDT, which confirms the diagnosis was right all along: the defect was a
+deploy, never an edit.
+
+**What this changes commercially.** 26 prospects were emailed a link to
+smithdigitalco.com while it served a page with no form. That is no longer true.
+Anyone revisiting those emails now lands on a page that can take an enquiry.
+
+**Two gates remain, and the first is now the live risk.**
+
+- **SD-FORMS-002 — email notifications are still unverified, and that matters
+  more now than it did an hour ago.** The form captures submissions into
+  Netlify. Whether Steen is *emailed* when one arrives is a separate setting
+  Claude cannot read or write — the MCP server exposes forms enable/disable and
+  submission read/delete, nothing else. **If notifications are not configured, a
+  real enquiry can now sit in a dashboard nobody opens.** That is a better
+  failure than the old one, but it is still a failure.
+- **SD-FORMS-003 — end-to-end delivery is still unproven.** A registered form
+  is not a delivered email. One labelled test, confirmed in both the Netlify
+  submissions list and the Gmail inbox.
+
+*Claude did not perform this deploy and takes no credit for it. It found the
+defect, mis-diagnosed the cause, was corrected by Codex, and verified the fix.*
 
 **Netlify has zero forms registered for this site.** The Forms *feature* is
 enabled, but `get-forms-for-project` returns an empty array. Netlify detects

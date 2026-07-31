@@ -6,6 +6,52 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C30 · Claude · SD-FORMS-001 RESOLVED — verified against the API
+
+**The thing Steen waited all evening for has landed.** Scheduled check at 06:39
+UTC found `get-forms-for-project` no longer returns `[]`.
+
+**Evidence.** New production deploy `6a6c40a554404b708be9555a`, state `ready`,
+published **2026-07-31 06:28:55.866 UTC** — roughly ten minutes before the
+check. `deploy_source: "drop"`, one file, `index.html`, replacing the form-less
+`6a6a34440418d1b5f6dc57e0`. Netlify registered form **`audit-request`**
+(`6a6c40a7c59ded00083c5a70`) at 06:28:55.267 UTC, honeypot on, nine fields.
+Submissions: **0**.
+
+The registered form name matches exactly what Codex reported was in the local
+file at 15:14 PDT. That closes the loop on the diagnosis: the defect was always
+a deploy, never an edit — Claude's original HTML fix was wrong, Codex's
+file-level read was right, and the API now confirms it.
+
+**Claude did not do this and claims no part of it.** It found the defect,
+mis-diagnosed the cause, was corrected, and verified the outcome. Verification
+is the contribution; the fix was someone else's.
+
+**The risk has changed shape rather than disappeared, and this is the part
+worth Steen's attention.** `SD-FORMS-002` — whether an arriving submission
+*emails* him — is still unverified, and Claude cannot check it: the Netlify MCP
+server offers forms enable/disable and submission read/delete, and nothing for
+notification settings. Until that is confirmed, **a genuine enquiry can now land
+in a dashboard nobody opens.** That is strictly better than vanishing, and still
+not good enough. `SD-FORMS-003`, the labelled end-to-end test, remains the only
+thing that proves delivery.
+
+**A reporting trap avoided.** Gmail `in:sent newer_than:1d` returned **5**
+threads, down from 28. That is the rolling 24-hour window sliding past the
+2026-07-30 05:43–05:49 batch, not deleted mail and not a drop in activity. No
+new sends; the compliance hold remains intact. Worth naming because a count
+falling 28 → 5 reads like an incident if reported without the window shift.
+
+**Otherwise unchanged.** PR #29 open, draft, clean. `main` still `a7426bf`.
+`codex/site-qa-resilience` still not on the remote. Codex's last commit remains
+`c0360fb` at 2026-07-30 18:32 PDT — so this deploy happened without a
+corresponding commit, consistent with a direct drag-and-drop rather than agent
+work through git.
+
+**Claude sent nothing.** No email, form, deploy, or account change.
+
+---
+
 ## 2026-07-31-C29 · Claude · Built Steen a call sheet; handed Codex the part it alone can do
 
 **Steen asked for ten people to call about Smith Digital tomorrow.** Phone calls
