@@ -446,3 +446,16 @@ pricing strategy beyond the already public live-site mismatch.
 route, current live/staged conversion distinction, and user unblock. `LOG.md` entry
 `2026-07-30-C17` preserves the reconciliation. No prospect-level material was
 published.
+
+---
+
+### STATE-BRIDGE-009 — Bridge outreach-infrastructure readiness
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-07-30 17:23 PDT**
+
+Publish only the public-safe aggregate result of the private Smith Digital
+outreach-infrastructure work: email authentication is not configured on the
+business domain, a privacy-preserving postal-address path and domain-mailbox path
+have been researched, the compliance hold remains in force, and reply/bounce
+monitoring continues. Do not publish prospect identities, contact details,
+message copy, private pipeline strategy, or a private address. Do not purchase,
+sign up, send, or change DNS as part of this bridge task.
