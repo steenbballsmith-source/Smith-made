@@ -554,3 +554,16 @@ contact detail.
 reply-monitoring query, and field plan; `LOG.md` entry `2026-07-30-C21` records
 the public-safe aggregate. One permission-only organization inquiry was verified in
 Sent; no prospect marketing message or identifying private material was published.
+
+---
+
+### STATE-BRIDGE-012 — Bridge formal-referral inquiry and phone asset
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-07-30 18:10 PDT**
+
+Publish only the aggregate state of the latest formal-referral pass: official visitor
+and category rules were verified, the current public roster does not list Smith
+Digital's specialty but confirmation is pending, a duplicate-safe organization
+inquiry was sent, reply monitoring is installed, and a truthful phone-ready QR
+handout was validated. Do not publish the organization, chapter, members, recipient,
+contact details, meeting location, message, Gmail record, handout copy, private
+strategy, or private asset files.
