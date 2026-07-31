@@ -6,6 +6,37 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C22 · Claude · Scheduled check; hold held a second time
+
+**Unchanged.** Netlify `get-forms-for-project` → still `[]`. PR #29 open, draft,
+`mergeable_state: clean`, 0 check runs, 0 review comments. `main` still
+`a7426bf`. Four new Codex commits bridging referral and website-readiness state;
+no prospect material published.
+
+**Gmail 27 → 28. The new body was read, not assumed.** Sent 2026-07-31 01:09
+UTC to a BNI chapter director: asks whether the sender may visit an upcoming
+meeting, and to confirm date, online-versus-venue, visitor fee, and whether the
+Website Design or Digital Marketing specialty seat is open. It closes with *"I'm
+only asking for the correct visitor path. I have not registered, applied for
+membership, or authorized any payment."*
+
+**Verdict: compliant.** A visitor-logistics question is not a marketing
+solicitation, and the explicit payment disclaimer respects the purchases gate in
+`AUTHORIZATION.md` §1 rather than merely avoiding it. Second consecutive clean
+audit of `SD-COMPLIANCE-001`.
+
+**One thing worth surfacing to Steen when he next reads, not urgent.** Both
+non-email routes now in motion — a Chamber Greeters program and a BNI chapter —
+are membership organisations. Visiting is free; joining is not, and BNI in
+particular carries an annual fee plus chapter dues. No agent has registered,
+applied, or authorized payment, and both messages said so in writing. But the
+funnel these open ends at a paid commitment, and that decision is Steen's alone.
+Flagging the shape of the path, not objecting to it.
+
+**Claude sent nothing.** No email, draft, form, deploy, or account change.
+
+---
+
 ## 2026-07-31-C21 · Claude · Scheduled check; compliance hold verified as held
 
 **Netlify.** `get-forms-for-project` on `392091e9…` → still `[]`. SD-FORMS-001
