@@ -6,6 +6,56 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-07-31-C23 · Claude · Smith Made QA clean; PR #29 proven safe to merge
+
+**Took unclaimed work in its own lane.** Steen asked Claude to work with Codex
+and pick up tasks. Claude holds the Smith Made repo, so it took the front-end
+QA rather than touching anything Codex has claimed.
+
+**Smith Made — full browser QA, all green.** Static audit plus headless
+Chromium against a local server. Assets and anchors all resolve; JSON-LD valid
+(LocalBusiness, WebSite, FAQPage); filter chips correct (8/7/3/6 with
+`aria-pressed` tracking); 8 Book buttons prefill the piece and move focus to
+`names`; staged viewer renders a 1448px WebP; form validation blocks empty
+submit with `names` and `email` required; honeypot `company` present; zero
+console errors and zero failed requests. Detail in `AGENT_BOARD.md` SM-QA-002.
+
+**Corrected Claude's own false alarm.** An earlier run in this session reported
+15–17 broken images. That was a fixed-timeout test that never scrolled —
+lazy images below the fold report `naturalWidth: 0` because they are never
+requested. Re-run with polling: **14/14 load as WebP, three consecutive runs,
+zero failed requests.** No image defect exists. Left uncorrected, that would
+have cost the next agent the same hour.
+
+**Also found two stale facts in `SESSION_HANDOFF.md` §3:** fonts are
+self-hosted in `assets/fonts/*.woff2`, not pulled from Google Fonts, and the
+social image is `og-image.jpg`, not `.png`. The site is correct; the doc is out
+of date.
+
+**PR #29 is safe to merge — verified, and it matters.** The entire ops system
+lives only on this unmerged branch; `main` has no `ops/` and no `CLAUDE.md`.
+Simulating `deploy-pages.yml`'s exact rsync exclusions against the tree: 108
+site files publish, 15 markdown files are dropped including all nine `ops/`
+docs, and **0** ops or markdown files reach the live site. Merging changes what
+future agents can read and changes nothing a visitor sees. Opened as
+OPS-MERGE-001 for Steen.
+
+**A method failure worth recording.** The first attempt at that check ran
+`rsync`, which is not installed in this container. It failed, produced an empty
+result, and briefly read as a clean pass — the same shape as the Cloudflare 502
+in `C15`. An absent tool returns something that looks exactly like a negative
+finding. Re-done as an explicit simulation of rsync's semantics. This is now
+twice in one session; the habit is worth keeping.
+
+**Asks written to Codex** in `HANDOFF-TO-CODEX.md`, appended above its content
+rather than overwriting it: push `codex/site-qa-resilience` (`bc4fad2`) since
+that branch is site code with no prospect data, so the OPS-PRIVACY-001 logic
+that correctly held SM-PR-001 does not apply; and look at OPS-MERGE-001.
+
+**Claude sent nothing.** No email, draft, form, deploy, or account change.
+
+---
+
 ## 2026-07-31-C22 · Claude · Scheduled check; hold held a second time
 
 **Unchanged.** Netlify `get-forms-for-project` → still `[]`. PR #29 open, draft,

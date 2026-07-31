@@ -210,6 +210,77 @@ out exactly against the Netlify API.
 
 ---
 
+### SM-QA-002 — Smith Made front end: full browser QA, clean ✅
+**Status: COMPLETE · Owner: CLAUDE · 2026-07-31**
+
+Claude owns this because it holds the Smith Made repo. Read-only audit plus a
+real headless-Chromium run against a local server. Everything passed:
+
+| Check | Result |
+|---|---|
+| Local assets referenced vs on disk | all resolve |
+| Internal `#anchor` links vs `id=` targets | all resolve |
+| Meta-tag URLs (`og:image` etc.) vs disk | resolve — `og-image.jpg` exists |
+| JSON-LD | 3 blocks, all valid: LocalBusiness, WebSite, FAQPage |
+| Filter chips | work — all 8, rental 7, keepsake 3, statement 6; `aria-pressed` tracks |
+| Book buttons | 8; prefill works (checks the piece, moves focus to `names`) |
+| Staged viewer | opens and renders a 1448px WebP |
+| Lookbook gallery | **14/14 load, WebP**, across 3 consecutive runs |
+| Form validation | correctly blocks empty submit; required `names`, `email` |
+| Honeypot | present (`company`) |
+| Console errors / failed requests | 0 / 0 |
+
+**Two corrections to earlier notes, both from checking rather than assuming.**
+
+1. An earlier run reported 15–17 "broken images." That was Claude's own test
+   using a fixed timeout and not scrolling — lazy-loaded images below the fold
+   report `naturalWidth: 0` because they were never requested. Re-run with
+   polling instead of a fixed wait: 14/14 load, three times running, zero failed
+   requests. **No image defect exists.** Recorded because a false alarm left
+   uncorrected costs the next agent the same hour.
+2. `SESSION_HANDOFF.md` §3 says fonts come from Google Fonts and that
+   `og-image` is a `.png`. Both are stale — fonts are self-hosted in
+   `assets/fonts/*.woff2`, and the file is `og-image.jpg`. The site is right;
+   the doc is out of date.
+
+**Not covered:** whether a submitted inquiry actually reaches Will's inbox.
+That is FormSubmit activation, needs eyes on will.smithmade@gmail.com, and
+remains the biggest open unknown on this property. A clean front end does not
+mean a working lead path.
+
+---
+
+### OPS-MERGE-001 — PR #29 is safe to merge, and merging it matters
+**Status: OPEN · Owner: STEEN (decision) · Verified by Claude 2026-07-31**
+
+**The whole ops system currently exists only on an unmerged branch.** `main`
+has no `ops/` folder and no `CLAUDE.md`. If this branch is deleted or the PR
+closed, the charter, board, log, and authorization record all disappear from the
+repo — and a fresh Claude session cloning `main` starts blind, exactly where
+this began.
+
+**The obvious worry — that merging docs could disturb the live site — is
+false, and now verified rather than assumed.** `deploy-pages.yml` stages the
+site with `rsync --exclude='.git' --exclude='.github' --exclude='*.md'`.
+Simulating those exact exclusions against the current tree:
+
+- **108 files** would publish (html, css, js, fonts, images, CNAME, robots,
+  sitemap)
+- **15 files** excluded — every `.md`, including all nine `ops/` documents and
+  `CLAUDE.md`
+- **0** ops or markdown files reach the live site
+
+So merging changes what future agents can read and changes nothing a visitor
+sees.
+
+*Method note:* the first attempt at this ran `rsync` locally, which is not
+installed in the cloud container. It failed and produced an empty result that
+briefly looked like a clean pass. Re-done as an explicit simulation of rsync's
+exclude semantics. Flagging it because a tool that is absent returns something
+that reads exactly like a negative finding.
+
+---
+
 ### SM-PR-001 — Smith Made venue outreach
 **Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
 
