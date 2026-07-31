@@ -9,8 +9,8 @@ Claim before you work. Pull before you read. Push the claim before you start.
 
 ## Verified state — Smith Digital
 
-Checked 2026-07-30 by Claude against the Netlify API. Reproduce with the
-Netlify MCP reader tools; site ID below.
+Checked 2026-07-31 07:53 UTC by Claude against the Netlify API and Gmail.
+Reproduce with the Netlify MCP reader tools and a Gmail search; site ID below.
 
 | Fact | Value | How it was verified |
 |---|---|---|
@@ -22,7 +22,7 @@ Netlify MCP reader tools; site ID below.
 | Deploy method | `deploy_source: "drop"`, `manual_deploy: true` — drag-and-drop, not git | `get-deploy-for-site` |
 | Deploy contents | **1 file: `index.html`.** No functions, no redirects, no headers | deploy summary |
 | Forms feature | `enabled` on the project | `get-projects` |
-| Forms registered | **`audit-request`** (id `6a6c40a7c59ded00083c5a70`), honeypot on, **0 submissions** | `get-forms-for-project` |
+| Forms registered | **`audit-request`** (id `6a6c40a7c59ded00083c5a70`), honeypot on, **1 submission**, delivery to inbox verified | `get-forms-for-project` + Gmail |
 | MFA on Netlify | `mfa_enabled: false` | `get-user` |
 
 ## Tasks
@@ -58,7 +58,7 @@ hours blocked, this is done.
 | Form registered | **`audit-request`**, id `6a6c40a7c59ded00083c5a70`, created 06:28:55.267 UTC |
 | Honeypot | `true` |
 | Fields | name, business, phone, email, website, city_state, biggest_problem, notes, + `company-website-hp` honeypot |
-| Submissions so far | **0** |
+| Submissions since | **1** — a labelled internal QA test, delivered to the inbox (see SD-FORMS-003) |
 
 The form name matches exactly what Codex reported was in the local file back at
 15:14 PDT, which confirms the diagnosis was right all along: the defect was a
@@ -68,18 +68,13 @@ deploy, never an edit.
 smithdigitalco.com while it served a page with no form. That is no longer true.
 Anyone revisiting those emails now lands on a page that can take an enquiry.
 
-**Two gates remain, and the first is now the live risk.**
+**Both remaining gates have since closed** — see SD-FORMS-002 and
+SD-FORMS-003. Notifications are configured and working, and a labelled test
+submitted at 06:41:15 UTC reached the inbox at 06:41:16 UTC. The Smith Digital
+lead path is proven end to end.
 
-- **SD-FORMS-002 — email notifications are still unverified, and that matters
-  more now than it did an hour ago.** The form captures submissions into
-  Netlify. Whether Steen is *emailed* when one arrives is a separate setting
-  Claude cannot read or write — the MCP server exposes forms enable/disable and
-  submission read/delete, nothing else. **If notifications are not configured, a
-  real enquiry can now sit in a dashboard nobody opens.** That is a better
-  failure than the old one, but it is still a failure.
-- **SD-FORMS-003 — end-to-end delivery is still unproven.** A registered form
-  is not a delivered email. One labelled test, confirmed in both the Netlify
-  submissions list and the Gmail inbox.
+*(This section warned that a real enquiry could sit in a dashboard nobody
+opens. That was true for thirteen minutes.)*
 
 *Claude did not perform this deploy and takes no credit for it. It found the
 defect, mis-diagnosed the cause, was corrected by Codex, and verified the fix.*
