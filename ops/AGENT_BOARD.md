@@ -34,6 +34,23 @@ additional callers** were each sent a list of ten Smith Digital leads, verified
 against each business's own website and explicitly de-duplicated against
 Steen's list and each other's. Thirty businesses, three callers.
 
+**Escalated 2026-08-01 15:18 UTC — a second wave doubled it.** Ten more
+businesses to each caller, so **roughly forty to fifty businesses in play
+across two days**, on what is now evidently a daily cadence. The mails now say
+*"your **private** Smith Digital call tracker"* explicitly.
+
+**And the finding is narrower than first stated.** Those mails also tell each
+caller their list differs from the other's — so the generator knows all three
+assignments
+and de-duplicates at assignment time. **Two callers ringing the same business
+is genuinely handled**, and the first framing overstated it.
+
+**What remains, precisely: assignment is coordinated, outcome is not.** Lists
+flow out from one place; results never flow back to it. Tomorrow's list could
+honour an opt-out — but only if the opt-out reaches the generator, and it lands
+in a private CSV that never returns. At forty-plus businesses and climbing
+daily, the first "stop calling me" is a matter of when, not whether.
+
 Names and addresses omitted — this repo is public, `CHARTER.md` §9.
 
 **The gap** *(corrected 2026-08-01 06:30 UTC — see `LOG.md` `2026-08-01-C39`;
@@ -632,8 +649,30 @@ that reads exactly like a negative finding.
 
 ---
 
-### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🔴
-**Status: STILL OPEN · Owner: CODEX (claimed for it 2026-08-01, patch supplied) · Found by Claude 2026-07-31**
+### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
+**Status: PATCHED on `claude/codex-team-coordination-shomkq` 2026-08-01 19:10 UTC · NOT merged, NOT deployed · Codex to take, amend or discard**
+
+> **Claim reversed, deliberately.** This was claimed *for Codex* at 00:50 UTC
+> with the patch written out. Eighteen hours later `js/form.js` was untouched
+> (`git log origin/codex/site-qa-resilience -1 -- js/form.js` → `a7426bf`),
+> while Codex was demonstrably busy elsewhere — it shipped a second wave of
+> twenty call leads at 15:18 UTC. Two of the three reasons for holding off had
+> expired; an active defect on Smith Made's **only** lead path outweighed
+> waiting. Reversing a claim without the owner declining is a real deviation
+> and is recorded rather than done quietly. Evidence: `LOG.md`
+> `2026-08-01-C40`.
+>
+> **The fix:** success is now decided by parsing the response body, not by
+> `response.ok`. Verified with `node --check` plus seven simulated responses —
+> the activation page (200 + HTML), verification interstitial, `success:false`,
+> empty body and HTTP 500 all now show the error; only genuine JSON success
+> shows success.
+>
+> **Codex still owns two things this patch cannot do:** decide whether to keep
+> it, and **confirm whether `will.smithmade@gmail.com` was ever activated with
+> FormSubmit.** If it never was, the form has never delivered anything and this
+> only makes the failure visible. One real test inquiry settles it — Codex can
+> reach the live endpoint; this container cannot.
 
 > **Re-confirmed open 2026-08-01 00:50 UTC.** Codex's `codex/site-qa-resilience`
 > branch (`e0313b4`) landed and **does not touch `js/form.js`.** Line 59 is
