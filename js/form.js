@@ -57,6 +57,23 @@
     })
       .then(function (response) {
         if (!response.ok) throw new Error("HTTP " + response.status);
+        /* A 200 is NOT proof of delivery. FormSubmit answers 200 with an HTML
+           page for its "please activate this form" step on a first-ever send to
+           an address, and for its verification interstitials. Trusting the
+           status alone is what let this form tell a couple "Sent!" while
+           nothing reached the inbox — the worst failure available to us,
+           because nobody finds out.
+           We send Accept: application/json, so a genuine success is JSON.
+           Parsing is what separates it from those HTML pages. */
+        return response.json().catch(function () {
+          throw new Error("Non-JSON response — activation or verification page");
+        });
+      })
+      .then(function (payload) {
+        /* FormSubmit returns success as the STRING "true". Accept the boolean
+           too, in case that ever changes. */
+        var delivered = payload && (payload.success === true || payload.success === "true");
+        if (!delivered) throw new Error("Endpoint reported failure");
         /* Analytics: the inquiry happened + which channel produced it.
            Deliberately NO names, emails, phones, or message text. */
         if (window.smTrack) {

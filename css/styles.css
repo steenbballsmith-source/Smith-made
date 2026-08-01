@@ -298,6 +298,12 @@ summary:focus-visible {
 .btn.ghost:hover { background: rgba(90, 63, 40, 0.06); }
 .btn.small { padding: 0.7em 1.5em; font-size: 0.75rem; }
 .nav-cta { padding: 0.7em 1.6em; }
+/* `.nav-links a` (0,1,1) out-specifies `.btn` (0,1,0), so the nav CTA was
+   inheriting --ink-soft over the walnut fill: brown on brown, 1.4:1 contrast
+   against the 4.5:1 WCAG AA minimum. Two classes (0,2,0) wins it back.
+   Don't remove — the button becomes near-invisible. */
+.nav-links .nav-cta { color: #fff8ec; }
+.nav-links .nav-cta:hover { color: #fff8ec; }
 
 /* ---------- shared section bones ---------- */
 section { position: relative; padding: 0 clamp(20px, 6vw, 72px); }
