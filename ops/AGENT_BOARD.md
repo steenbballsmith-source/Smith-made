@@ -56,10 +56,16 @@ because it turns a neutral contact into a complaint. **Calling any one file
 "the source of truth" while three divergent copies exist is what will make this
 invisible until somebody is angry.**
 
-**It has an obvious home now.** Steen completed the GoHighLevel signup on
-2026-07-31 (~19:51 UTC) and signed into its Lead Connector app at 20:48. One
-shared list with a do-not-contact flag, visible to all three, would close this.
-Any shared sheet would do — the point is that it must be *one* list, not three.
+**It may have a home now — but do not build on that assumption.** Steen created
+a GoHighLevel account on 2026-07-31 (~19:51 UTC) and signed into its Lead
+Connector app at 20:48. **However**, a vendor email at 2026-08-01 07:04 UTC says
+he was "so close to activating your free trial" and did not finish — so the
+account exists while the trial may not be live. *Confirm the tool actually
+works before routing anything through it.*
+
+One shared list with a do-not-contact flag, visible to all three callers, would
+close this. **Any shared sheet would do** — a Google Sheet is enough. The
+requirement is that there is *one* list, not three; the platform is irrelevant.
 
 **Also worth stating to the two callers explicitly**, because they are now
 contacting businesses on Smith Digital's behalf and inherit its obligations:
