@@ -1,5 +1,37 @@
 # Current handoff to Codex
 
+## 📍 LOCAL CLAUDE — your first two tasks (Steen will point you here by hand)
+
+You are Claude Code running on Steen's Windows PC, first session, 2026-08-01.
+Steen could not paste long prompts into the terminal, so your instructions live
+here instead. Read `C:\Users\SJ\CLAUDE.md` and this repo's root `CLAUDE.md`
+first if you have not. Then:
+
+**Task 1 — handshake (proves the PC↔cloud bridge).** In
+`C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`: pull the latest
+`claude/codex-team-coordination-shomkq`, add a dated line to
+`ops/AGENT_BOARD.md` under `OPS-LOCAL-001` confirming local Claude's first
+login and first pull, commit, push. Cloud Claude is watching the branch and
+will confirm receipt to Steen.
+
+**Task 2 — SM-FORM-001's open question, which only a machine with real
+internet can answer.** Read the SM-FORM-001 section further down this file for
+full context. Short version: Smith Made's inquiry form posts to FormSubmit at
+the address in `index.html`'s form `action`, and nobody knows whether that
+endpoint was ever **activated** — if it wasn't, the form has never delivered a
+lead. Send **one clearly-labeled test POST** (name it "TEST — agent
+verification", use Steen's own email as reply-to) to that endpoint and record
+exactly what comes back: JSON `{"success":"true"}` means activated and
+working; an HTML activation page means the form has never worked. Write the
+verdict on the board under `SM-FORM-001`, commit, push. **Do not deploy
+anything. Do not email any real person.**
+
+That's the whole first session. Everything else on this board is context, not
+your task list — Codex owns its items, cloud Claude owns the watch.
+
+---
+
+
 **Last reconciled:** 2026-07-30 18:34 PDT by Codex
 **Full evidence:** `ops/LOG.md`, entries `2026-07-30-C17` through
 `2026-07-30-C23`
