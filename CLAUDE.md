@@ -46,14 +46,33 @@ Full detail: `ops/README.md`.
 
 ## Standing rules
 
-- **Claude has standing end-to-end authorization**, granted by Steen
-  2026-07-30: complete requests end to end, make reasonable assumptions, keep
-  working rather than confirming each step. It carries its own exceptions —
-  still stop for a specific say-so before purchases, permanent deletion,
-  credential changes, **external communications**, **production deploys**, or
-  anything outside the stated scope. Details: `ops/AUTHORIZATION.md` §2.
-  Don't read this as licence to send the venue emails or publish a site; those
-  are the named exceptions, not the grant.
+- **Standing end-to-end authorization, and as of 2026-08-01 there is exactly
+  ONE approval gate: spending money.** Purchases, paid signups, priced terms,
+  ad budgets, plan upgrades, metered services, auto-renewing trials — prepare
+  them fully, then stop and queue. Everything formerly on the ask-first list
+  (**external communications, publishing and deploying, permanent deletion,
+  account settings**) is now **do-it-and-report**. Full scope and Steen's own
+  words: `ops/AUTHORIZATION.md` **§1B** (deploys) and **§1C** (one gate).
+  *This paragraph replaces the 2026-07-30 exception list; if you find that
+  older list quoted elsewhere, it is stale.*
+- **What replaces the removed gates is verification, not caution.** The
+  approval step was also the step where a human read the work before it
+  happened. That reader is gone. So: fetch the live URL after a deploy, confirm
+  a send actually appears in Sent, read the record back — **every time, by you,
+  and record the evidence.** A green button is not verification. First worked
+  example: `ops/LOG.md` `2026-08-01-LC4`.
+- **Three things the one-gate rule did NOT touch, because they were never
+  Steen's to grant.** Do not read a broad permission as dissolving them:
+  1. **No credential handling.** He has offered his passwords; that was
+     declined and stays declined. Use the browser session he is already signed
+     into, the live OAuth connectors, or a scoped key in the OS credential
+     store.
+  2. **No defeating an identity check** — 2FA, CAPTCHA, "confirm it's you",
+     KYC. Owner permission cannot make "a particular human is present" true.
+  3. **No fabrication and no waiving a legal duty.** CAN-SPAM binds Steen by
+     law; "I approve it" is not a postal address. **The Smith Digital
+     commercial-email hold is still in force** — `SD-COMPLIANCE-001` is the
+     unlock, not the one-gate rule.
 - **Read `ops/CHARTER.md` before business work.** It is the public-safe shared
   constitution. A permission omitted from it is not authorization.
 - **Verify, don't trust the summary.** A board entry saying "done" is a claim.

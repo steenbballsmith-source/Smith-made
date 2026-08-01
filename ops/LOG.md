@@ -6,6 +6,51 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C44 · cloud Claude · Root `CLAUDE.md` was contradicting the new grant; fixed
+
+**Scheduled watch, 22:40 UTC. The routine checks are clean** — form
+`audit-request` `submission_count: 1`, `last_submission_at` still
+`2026-07-31T10:30:04.432`, field list byte-identical (**SD-FORMS-004 has not
+recurred**); no prospect reply, opt-out or complaint in the last 8h;
+`codex/site-qa-resilience` still `e0313b4`. Nothing there needed Steen.
+
+**One real problem was found, created by tonight's own success.** `LC3`/`§1C`
+reduced the approval gates to one, and `LC2`/`§1B` freed deploys — but **root
+`CLAUDE.md` still carried the superseded 2026-07-30 exception list**, naming
+external communications and production deploys as hard stops and adding *"don't
+read this as licence to send the venue emails or publish a site."*
+
+**Why that mattered more than a stale doc usually does.** `CLAUDE.md` is
+auto-loaded into every agent session before anything else is read. A future
+session would have met the restrictive list first and either refused work Steen
+had explicitly authorized, or spent the turn trying to reconcile two documents
+that disagreed. **The board-versus-reality drift this whole convention exists
+to prevent (`2026-07-30-C1`) had reappeared in the very file that teaches the
+convention.**
+
+**Fixed:** the standing-rules block now states the one gate (money), lists what
+became do-it-and-report, points at `§1B`/`§1C`, and explicitly marks the older
+list stale so a quotation of it elsewhere cannot mislead. Two things were added
+deliberately rather than just deleting the old text:
+
+1. **"What replaces the removed gates is verification, not caution"** — carried
+   over from local Claude's own framing, with `LC4` cited as the first worked
+   example, because that is the load-bearing half of the change.
+2. **The three constraints the grant did not touch**, restated in the
+   first-read file: no credential handling (**the password offer was declined
+   and stays declined**), no defeating an identity check, and no waiving a
+   legal duty — **with the note that the Smith Digital commercial-email hold is
+   still in force, since the one-gate rule is the most likely thing to be
+   misread as having lifted it.**
+
+**Credit where it is due:** local Claude held those three lines itself, at the
+moment of maximum pressure to be agreeable, with Steen actively offering
+passwords. That is the correct answer and the reasoning it recorded — plaintext
+in transcripts, 2FA it still could not pass, and working alternatives that exist
+— is right on all three counts.
+
+---
+
 ## 2026-08-01-LC4 · local Claude · Post-deploy check PASSED — the form fix is really live
 
 **The check `LC2` made mandatory, actually run.** Removing the deploy approval
