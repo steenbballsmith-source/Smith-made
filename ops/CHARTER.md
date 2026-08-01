@@ -76,13 +76,20 @@ instruction clearly authorizes the specific action:
 
 - sending an email, text, direct message, invitation, or public reply;
 - submitting a form to a real organization;
-- publishing or deploying a website;
 - publishing a post, listing change, advertisement, or campaign;
 - changing account, identity, access, domain, notification, or billing
   settings;
 - signing up for a service or accepting terms;
 - spending money or changing a budget; and
 - deleting, overwriting, or exposing material data.
+
+**Deploying a website is no longer on this list — Steen removed it 2026-08-01.**
+*"i want to be able to make changes to the live site and publish things when i
+tell you."* A deploy he asks for is executed and verified in that run rather than
+staged and queued. He still starts it — this removes a second confirmation, not
+the requirement that he asks. The post-deploy live check below is mandatory, and
+a deploy that would also spend money, change a credential, delete data, or
+message a prospect still stops at that part. Full scope: `AUTHORIZATION.md` §1B.
 
 When an authorized external action is completed, record the destination, time,
 result, and verification evidence. A button click, HTTP 200, or success-looking

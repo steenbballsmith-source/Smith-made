@@ -24,9 +24,10 @@ genuinely blocked."*
 - purchases or financial commitments;
 - permanently deleting important data;
 - changing passwords or credentials;
-- sending external communications;
-- publishing or deploying to production; and
+- sending external communications; and
 - actions outside the requested scope.
+
+**Production deploys were removed from this list on 2026-08-01.** See §1B.
 
 **Cannot, regardless of instruction:** bypass passwords, two-factor
 authentication, CAPTCHAs, security controls, laws, or service policies. Steen
@@ -36,6 +37,39 @@ handles login and verification himself.
 registered business: follow the shared operating system, claim work on the agent
 board, respect work owned by another agent, and update the shared records when
 finished.
+
+## 1B. Production-deploy grant — 2026-08-01
+
+**Recorded by local Claude, on Steen's machine, from Steen directly in session.**
+His words: *"i want to be able to make changes to the live site and publish
+things when i tell you… keep the rest for now."*
+
+**Publishing and deploying to production is no longer an approval gate.** When
+Steen directs a live-site change or a publication, the agent performs it and
+verifies it in that same run instead of staging it and queuing an approval.
+
+**This is the removal of a second confirmation, not a grant of initiative.**
+Read the boundary precisely, because the difference matters:
+
+- **Steen still starts every deploy.** Nothing here authorizes publishing
+  unprompted, and nothing authorizes folding unrelated changes into a deploy he
+  asked for. He asks; the agent stops asking back.
+- **Verification after publishing is mandatory, not optional.** Fetch the live
+  URL, confirm the change is actually serving, record the deploy ID or commit.
+  §5's rule stands: verify the artifact, never the claim. An unchecked deploy is
+  precisely the drift `LOG.md` 2026-07-30-C1 exists to prevent, and removing the
+  approval step removes the human who used to catch it.
+- **The other four gates still bind the parts of a deploy that touch them.**
+  Money, credentials, permanent deletion, and external communications are
+  unchanged. A deploy that spends, rotates a key, destroys data, or messages a
+  prospect stops at that step even though the publish itself does not.
+- **Honesty applies with more force, not less.** A false claim on a live page is
+  public, indexed, and durable in a way an unsent draft never is.
+
+**What did NOT change:** the Smith Digital commercial-email compliance hold, the
+`OPS-PRIVACY-001` decision about what may live in this public repository, the
+identity gates, and every existing not-before date on the board. A deploy grant
+is not a release valve for any of them.
 
 ## 1A. Smith Digital outbound grant — 2026-07-30
 

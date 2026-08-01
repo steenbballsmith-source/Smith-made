@@ -37,6 +37,66 @@ arrived (the last inch of the good news) → Steen approves the merge of PR #29,
 which is the act that puts the patched `js/form.js` on the live site. That
 approval is his alone — it is a production deploy, the named exception in
 `AUTHORIZATION.md` §2. Both asks delivered to him in chat tonight.
+---
+
+## 2026-08-01-LC2 · local Claude · Steen removed the production-deploy gate
+
+**Owner decision, taken directly in session on his own machine**, after he was
+told plainly which gates would survive turning permission prompts off. His
+words, verbatim:
+
+> *"i want the live site thing gone i want you to be able to make changes to the
+> live site and publish things when i tell you but keep the rest for now"*
+
+**What changed.** Publishing or deploying to production is no longer an approval
+gate for either agent. When Steen directs a live-site change, it is performed and
+verified in that run instead of being staged and queued in `APPROVALS.md`.
+
+**What deliberately did not change**, because he said "keep the rest for now":
+purchases and financial commitments, credential/account/billing changes,
+permanent deletion, and external communications to real people. The Smith
+Digital commercial-email compliance hold, `OPS-PRIVACY-001`, every identity
+gate, and every not-before date on the board are untouched. **A deploy grant is
+not a release valve for any of those** — and a deploy that would also spend,
+rotate a key, destroy data, or message a prospect still stops at that step.
+
+**The boundary that matters, stated so nobody widens it later.** This removes a
+*second* confirmation. It does not create initiative. Steen still starts every
+deploy; no agent publishes unprompted, and no agent folds an unrelated change
+into a deploy he asked for.
+
+**And the risk this introduces, named rather than glossed.** The approval step
+was also the step where a human looked at what was about to go live. Removing it
+removes that reader. So **post-deploy verification is now mandatory, not good
+practice**: fetch the live URL, confirm the change is actually serving, record
+the deploy ID or commit. This is exactly the drift `2026-07-30-C1` was written
+about, and the safeguard against it is now entirely on the agents.
+
+**Files updated so the records cannot disagree with each other:**
+
+- private `ops/CHARTER.md` §3 — standing authorization list and the AMBER ladder
+  entry, which now points at the grant instead of saying "stage and queue"
+- `C:\Users\SJ\CLAUDE.md` — the local startup rules Codex wrote for local Claude
+- public `ops/CHARTER.md` §4
+- public `ops/AUTHORIZATION.md` — new §1B with the full scope
+- private board: `OPS-DEPLOY-AUTH-001`
+
+**Separately, at his instruction:** `permissions.defaultMode` is now
+`bypassPermissions` in `C:\Users\SJ\.claude\settings.json` (valid JSON, no
+managed policy overriding it, `skipDangerousModePermissionPrompt` already true).
+That governs the *tool-approval popups in the client*, which is a different
+thing from the business gates above — worth keeping distinct in the record,
+since one is a UI setting and the other is his operating constitution.
+
+**No deploy was performed under the new authority in this unit.**
+
+**Direct consequence for `SM-FORM-001`, noted while resolving this entry against
+cloud Claude's `C42` above:** it states the merge of **PR #29** — the act that
+puts the patched `js/form.js` in front of real visitors — is blocked as a
+production deploy under `AUTHORIZATION.md` §2. **That block is gone as of this
+entry.** The merge now waits only on Steen saying to do it, not on an approval
+round-trip. Recording the link explicitly so the two entries are not read as
+contradicting each other: `C42` was written before this grant existed.
 
 ---
 
