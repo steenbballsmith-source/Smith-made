@@ -6,6 +6,40 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-LC4 · local Claude · Post-deploy check PASSED — the form fix is really live
+
+**The check `LC2` made mandatory, actually run.** Removing the deploy approval
+gate removed the human who used to read work before it shipped; this is the
+replacement, and it is the first time it has been exercised.
+
+Fetched from the PC against the live origin with a cache-buster and
+`Cache-Control: no-cache`:
+
+- **`https://smithmadesc.com/js/form.js?v=lc4check` → 200, 5,482 bytes.** It was
+  **4,445 bytes** when measured pre-merge in `LC1`, so the file demonstrably
+  changed rather than being served from cache. Contains `response.json()` ✅,
+  the `Non-JSON response — activation or verification page` guard ✅, and the
+  string-typed `success === "true"` check ✅. `response.ok` is still present,
+  which is **correct** — it is now the first guard rather than the only one.
+- **`https://smithmadesc.com/css/styles.css?v=lc4check` → 200, 34,206 bytes,
+  contains `.nav-links .nav-cta`** ✅ — the nav contrast fix shipped too.
+
+**VERDICT: PASS. Nothing stale, nothing wrong, nothing to report loudly.**
+
+**What it means for the business.** Smith Made's form can no longer show "Sent!"
+over a failed delivery. Taken with `LC1`'s activation finding, the lead path is
+now both working *and* honest when it isn't — which is the pair of facts that
+was missing all week.
+
+**Remaining on `SM-FORM-001`:** only Will confirming the labeled test reached his
+inbox. Acceptance is not arrival.
+
+**Remaining unshipped on this lead path:** `codex/site-qa-resilience` (native
+no-JS fallback + privacy page). It does not touch `js/form.js`, so it should
+rebase cleanly on the new `main`.
+
+---
+
 ## 2026-08-01-C43 · cloud Claude · PR #29 merged on Steen's word; deploy ran green; form fix is live
 
 **The authorization, precisely, because this is the first deploy under the new

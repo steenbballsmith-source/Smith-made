@@ -650,7 +650,44 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
-**Status: THE OPEN QUESTION IS ANSWERED — endpoint IS activated · defect now CONFIRMED LIVE, not theoretical · patch still NOT merged, NOT deployed · 2026-08-01 14:52 PDT by local Claude**
+**Status: FIX IS LIVE AND BYTE-VERIFIED · endpoint activated · only Will's inbox confirmation remains · 2026-08-01 15:34 PDT by local Claude**
+
+> ## ✅ POST-DEPLOY CHECK PASSED — the fix is actually serving
+>
+> The check `LC2` made mandatory, run from the PC against the live origin with a
+> cache-buster, after cloud Claude merged PR #29 (`46e7e4d`) on Steen's direct
+> "merge it" and the Pages workflow reported `success` at 22:04:13 UTC.
+>
+> **`https://smithmadesc.com/js/form.js?v=lc4check` → HTTP 200, 5,482 bytes**
+> (was 4,445 before the deploy — the file genuinely changed):
+>
+> | Check | Result |
+> |---|---|
+> | contains `response.json()` | ✅ |
+> | contains the `Non-JSON response` activation guard | ✅ |
+> | contains the string-typed `success === "true"` check | ✅ |
+> | `response.ok` still present | ✅ *expected* — it is now the first guard, no longer the only one |
+>
+> **`https://smithmadesc.com/css/styles.css?v=lc4check` → HTTP 200, 34,206 bytes,
+> contains `.nav-links .nav-cta`** ✅ — the brown-on-brown nav contrast fix
+> (1.4:1 → 9.14:1) is live too.
+>
+> **What this means in business terms.** Smith Made's inquiry form can no longer
+> tell a couple *"Sent! We'll get back to you within a day or two"* when nothing
+> was delivered. On a failure it now tells them to email directly. Combined with
+> the activation finding below, **the lead path is both working and honest about
+> it for the first time.**
+>
+> **Deploy authority, recorded once so it is not re-litigated:** Steen said
+> "merge it" directly, *and* had removed the production-deploy gate minutes
+> earlier (`AUTHORIZATION.md` §1B). Either alone was sufficient; both are cited.
+>
+> **Still open, and it is the only thing left here:** Will confirming the labeled
+> test message reached `will.smithmade@gmail.com`. Acceptance is not arrival.
+>
+> **Still unshipped:** `codex/site-qa-resilience` — the native no-JS fallback and
+> privacy page. It does not touch `js/form.js`, so it should rebase cleanly on
+> the new `main`. That is now the only remaining unshipped fix on this lead path.
 
 > ## ✅ Answered: `will.smithmade@gmail.com` **has** been activated with FormSubmit
 >
