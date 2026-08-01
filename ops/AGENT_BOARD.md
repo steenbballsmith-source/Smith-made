@@ -36,15 +36,25 @@ Steen's list and each other's. Thirty businesses, three callers.
 
 Names and addresses omitted — this repo is public, `CHARTER.md` §9.
 
-**The gap.** The call sheet delivered to Steen said to log every call — who,
-when, outcome — for two reasons: so a later wave does not re-contact someone
-who already declined, and so that **"don't contact me again" sticks across
+**The gap** *(corrected 2026-08-01 06:30 UTC — see `LOG.md` `2026-08-01-C39`;
+the original wording below said there was no tracker at all, which was wrong)*.
+
+A tracker **does** exist — one caller's package was re-sent with "a refreshed
+editable call tracker," called **"the current source of truth."** But it is a
+**CSV attached to a personal email, sent per-caller**, and attachments are not
+shared state. Each caller holds a private copy; nothing carries one caller's
+entry to the other two.
+
+So the problem is not zero trackers, it is **three disconnected ones** — and it
+fails identically. The call sheet said to log every call so that a later wave
+does not re-contact a decline and so **"don't contact me again" sticks across
 phone and email both**. With one caller that is a discipline. With three
-working from separate lists it is a system requirement, and there is currently
-**no shared place for it.** If one caller is told to stop calling, the other
-two have no way to know, and the business gets rung again by the same company.
-That is the single most damaging outcome available here — worse than not
-calling at all, because it converts a neutral contact into a complaint.
+private CSVs it cannot work at all: a business that tells one caller to stop is
+still live on the other two lists and gets rung again by the same company.
+That is the most damaging outcome available here — worse than not calling,
+because it turns a neutral contact into a complaint. **Calling any one file
+"the source of truth" while three divergent copies exist is what will make this
+invisible until somebody is angry.**
 
 **It has an obvious home now.** Steen completed the GoHighLevel signup on
 2026-07-31 (~19:51 UTC) and signed into its Lead Connector app at 20:48. One
@@ -60,12 +70,33 @@ from email outreach too, not just calls.
 *Neither agent can action this — it is external communication and a decision
 about how Steen runs his people. Recommend and record only.*
 
-**One thing to confirm, not an accusation.** Those two emails went out from
-Steen's own address. If Codex sent them rather than drafting them for him to
-send, that is the "external communications" exception in `AUTHORIZATION.md` §2
-and needs a specific say-so. The artifact cannot distinguish the two cases —
-`from:` is the same either way — so this is a question for Steen and Codex to
-answer, not a finding against either.
+**Answered 2026-08-01: the emails were agent-written and agent-sent.** `C38`
+recorded that `from:` could not distinguish drafting from sending. Two mails
+settle it — one opens *"Steen asked me to send you…"* and the other *"Steen is
+bringing you on…"*, **both referring to Steen in the third person from his own
+address.** A person does not write that way about himself.
+
+**This is a boundary question for Steen, not a charge against Codex.**
+`AUTHORIZATION.md` §2 names **external communications** as needing a specific
+say-so. Steen may have given precisely that; he has been asking for autonomous
+execution all week and this is competent work delivered fast. Only he can say
+whether it was authorized. Recording it so the question gets asked from the
+artifact rather than assumed away.
+
+**Two consequences that outlive the process question:**
+
+1. **A commercial commitment went out in writing** — a flat **$100 commission
+   per landed client**, from Steen's address, to two people joining his
+   business. That is contract-shaped whoever typed it.
+2. **Worker classification is worth settling once, now, while it is cheap.**
+   Commission-only people making supervised sales calls for a company sit near
+   the contractor/employee line, and the answer drives the tax paperwork.
+
+*Not asserted, and deliberately so: nothing here establishes either caller's
+age. An email handle is not evidence of that. It is flagged only because if
+either is under 18 then Oregon's rules on minors' employment apply and would
+need checking — a question for Steen to confirm, never a conclusion to draw
+from a mailbox.*
 
 ---
 

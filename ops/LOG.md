@@ -6,6 +6,70 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C39 · Claude · Correction to C38 — a tracker exists; and the question it raised is answered
+
+**Correction, first.** `C38` and `OPS-CALLERS-001` said there was "no shared
+place" to record a do-not-contact. **That was wrong.** A call tracker does
+exist: the second caller's package was re-sent at 19:01 UTC with "a refreshed
+editable call tracker," described in the mail as **"the current source of
+truth."**
+
+**The finding survives the correction, in a different shape.** That tracker is
+a **CSV attached to a personal email, sent per-caller.** Attachments are not
+shared state. Each caller holds their own copy on their own machine, and there
+is no path by which one caller's entry reaches the other two. So it is not
+*zero* trackers, it is **three disconnected ones** — which fails in exactly the
+way described in `C38`: a business that tells one caller to stop is still on
+the other two lists, and gets rung again by the same company. Calling any file
+"the source of truth" when three divergent copies exist is the specific thing
+that makes this hard to notice later.
+
+**Second: the question raised in `C38` is now answered by the artifact, and it
+is worth stating precisely.** That entry asked whether Codex sent the caller
+emails or merely drafted them, and recorded that `from:` could not distinguish
+the two. Two mails settle it. The 18:30 UTC package to one caller opens
+*"Steen asked me to send you a complete Smith Digital sales-agent package"*,
+and the 17:10 UTC package to the other opens *"Steen is bringing you on…"* —
+**both refer to Steen in the third person while being sent from his own
+address.** A person does not write that way about himself. These were composed
+and sent by an agent.
+
+**This is recorded as a boundary question for Steen, not a charge against
+Codex.** `AUTHORIZATION.md` §2 names **external communications** as requiring a
+specific say-so. Steen may well have given exactly that — he has been asking
+for autonomous execution all week, and this is competent work delivered fast.
+What the log can establish is only that the mails were agent-written and
+agent-sent under his name; whether that was authorized is a fact only Steen
+holds. **Reproduce:** Gmail, `in:sent newer_than:1d`, subjects *"Smith Digital
+sales agent package…"*.
+
+**Third, and the reason this matters beyond process:** those emails carry a
+**commercial commitment** — a flat **$100 commission per landed client**,
+offered in writing, from Steen's address, to two people being brought into his
+business. That is a contract-shaped promise regardless of who typed it. It also
+raises a worker-classification question worth answering once, early and
+cheaply: commission-only people making supervised sales calls on a company's
+behalf sit near the contractor/employee line, and the answer affects tax
+paperwork.
+
+**One thing deliberately not asserted.** One caller's address contains a
+four-digit string that could be read as a birth year implying they are a minor,
+and both appear in the owner's personal social circle. **An email handle is not
+evidence of anybody's age**, and no inference is drawn here. It is noted only
+because *if* either is under 18, Oregon rules on minors' employment apply and
+would need checking — a question for Steen to confirm, never something to
+conclude from a mailbox. Caller identities remain out of this repo per
+`CHARTER.md` §9.
+
+**Routine watch, same cycle — all unchanged.** Form `audit-request`
+`submission_count: 1`, `last_submission_at` still `2026-07-31T10:30:04.432`,
+field list byte-identical — **SD-FORMS-004 has not recurred**, no new deploy
+fingerprint. `origin/main` `a7426bf`. `origin/codex/site-qa-resilience` still
+`e0313b4`, **`js/form.js` still untouched**, so `SM-FORM-001` remains open —
+expected, it is late Friday night Pacific.
+
+---
+
 ## 2026-08-01-C38 · Claude · The call sheet shipped to three callers; opt-outs have nowhere to land
 
 **The blocker cleared.** Two additional callers were each sent ten Smith
