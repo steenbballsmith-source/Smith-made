@@ -6,6 +6,69 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C37 · Claude · Codex's QA branch reviewed — good work, and SM-FORM-001 survives it
+
+`origin/codex/site-qa-resilience` appeared at **2026-07-31 23:33 UTC**, ending
+the wait noted in every check-in since yesterday. Two commits: `bc4fad2`
+(2026-07-30) and `e0313b4` (2026-07-31). Reviewed at `e0313b4` against
+`origin/main`. Four files, +140/−12: `index.html`, `css/styles.css`,
+`privacy.html` (new, 107 lines), `sitemap.xml`.
+
+**Verified good — checked in the diff, not taken on the branch name:**
+
+| Change | Why it matters |
+|---|---|
+| `action` + `method` on the inquiry form; `novalidate` removed | Closes **SM-QA-001**. Without JS the form now posts, and the browser validates |
+| Liability-insurance claim removed from FAQ prose **and** JSON-LD | An unverifiable promise of a certificate of insurance to a wedding venue. The JSON-LD copy is the one that gets missed, and Google surfaces it |
+| $50 date hold reworded | Was *"your date comes off the calendar today"*; now *"a temporary seven-day hold… not a confirmed booking"*. That gap is where chargebacks live |
+| `privacy.html` + footer link + sitemap + in-form disclosure | The form posts to a third party (FormSubmit); saying so is correct. Policy reviewed in full — accurate, plain-language, names its processors, and does not overclaim |
+| `min-height: 44px` on `.form-checks` | WCAG 2.5.8 target size |
+| Meta description ~232 → ~150 chars | Was being truncated in results |
+
+**The finding: `js/form.js` is not in the diff, so SM-FORM-001 is unfixed.**
+Line 59 still reads `if (!response.ok) throw new Error(...)`. Success is
+decided by HTTP status; **the response body is never parsed.**
+
+**Why that is specifically wrong against this endpoint.** FormSubmit returns
+**HTTP 200** for its first-send activation page and for verification
+interstitials. `response.ok` is `true` for all of them. The JS path — what
+essentially every visitor runs — therefore calls `showSuccess()` and displays
+*"Sent! We'll get back to you within a day or two"* while nothing reaches
+will.smithmade@gmail.com.
+
+**The inversion this branch introduces, which is the part worth recording.**
+After the change the **no-JS path fails visibly** (the visitor lands on
+FormSubmit's own page and can see it) while the **JS path fails silently**. The
+rarely-used route is now the honest one. A native fallback on a form whose
+primary path lies about success does not make the form resilient; it makes the
+lie harder to notice, because "we added a fallback" reads as "the form problem
+is handled."
+
+**Handed to Codex rather than fixed here, with the patch written out** in
+`HANDOFF-TO-CODEX.md`. Three reasons, in order of weight: Codex can test
+against the live FormSubmit endpoint and this container cannot (egress
+blocked); Codex held unpushed work in that exact file until an hour before the
+review; and the working agreement forbids duplicating the other agent's edit.
+
+**Still unverified, and still the largest single risk in the operation:**
+whether `will.smithmade@gmail.com` was ever **activated** with FormSubmit. If
+it never was, Smith Made's only lead path has never worked, and this patch
+would begin reporting that honestly rather than repairing it. Asked of Codex
+explicitly — one real test inquiry, confirmed arriving.
+
+**Not merged, not deployed.** Production deploys are outside the grant
+(`AUTHORIZATION.md` §2). No PR is open on the branch; this repo runs CI only on
+push to `main`, so a PR showing no checks is normal here.
+
+**Routine watch, same cycle:** Smith Digital deploy still
+`6a6d0fad8672bf42b0b9bf3e` — no new deploy since 21:12 UTC. Form
+`audit-request` count `1`, `last_submission_at` still
+`2026-07-31T10:30:04.432`, field list unchanged including the five `utm_*`
+hidden fields — **SD-FORMS-004 has not recurred.** `origin/main` still
+`a7426bf`.
+
+---
+
 ## 2026-07-31-C36 · Claude · Codex was never quiet — the watch was looking down the wrong channel
 
 **Correction to C35 and to four scheduled check-ins before it.** Those entries

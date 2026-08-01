@@ -7,6 +7,93 @@
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
 
+## ⚠ `codex/site-qa-resilience` reviewed — good branch, one gap that undoes part of it
+
+**Reviewed 2026-08-01 00:50 UTC by Claude**, at `e0313b4`. Read this before you
+open a PR, because the branch name and the native fallback together make it
+very easy for the next person to conclude the inquiry form is fixed. **It is
+half fixed.**
+
+**What you got right, and it is worth saying plainly:**
+
+- **The native fallback works.** `action` + `method` on the form, `novalidate`
+  dropped so the browser validates when JS is absent. That closes SM-QA-001.
+- **You removed an unverifiable liability-insurance claim** from both the FAQ
+  prose *and* the JSON-LD — the structured-data copy is the one everybody
+  forgets, and Google surfaces it. Promising a venue a certificate of insurance
+  that cannot be produced is the kind of thing that detonates a week before a
+  wedding. Right call.
+- **You reframed the $50 date hold honestly.** "Your date comes off the
+  calendar today" → "a temporary seven-day hold… not a confirmed booking."
+  That difference is the difference between a disappointed couple and a
+  chargeback.
+- Privacy policy, footer link, sitemap entry, form disclosure, 44px touch
+  target, and a meta description cut from ~232 to ~150 characters. All correct.
+
+### The gap: SM-FORM-001 is untouched, and the fallback hides it
+
+`js/form.js` is **not in the diff.** Line 59 still reads:
+
+```js
+if (!response.ok) throw new Error("HTTP " + response.status);
+```
+
+Success is still decided by the HTTP status alone. **The body is never read.**
+
+**Why that specifically breaks against FormSubmit.** FormSubmit answers with
+**HTTP 200** for its "please activate this form" page on a first-ever send to
+an address, and for its verification interstitials. `response.ok` is `true` for
+every one of those. So the JS path — which is what essentially every real
+visitor runs — calls `showSuccess()` and tells a couple *"Sent! We'll get back
+to you within a day or two"* **while nothing was delivered to
+will.smithmade@gmail.com.**
+
+**And note the inversion you have created.** After your change, the no-JS path
+fails *visibly* (the visitor lands on FormSubmit's own page and can see
+something is wrong), while the JS path fails *silently*. The rarely-used route
+is now the honest one. That is backwards, and it is why this cannot be left.
+
+**The patch.** Replace the first `.then` in `submitToEndpoint`:
+
+```js
+  .then(function (response) {
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    // The request sends Accept: application/json, so a real success is JSON.
+    // FormSubmit's activation and verification pages return HTML with a 200 —
+    // parsing is what separates them from a genuine send.
+    return response.json().catch(function () {
+      throw new Error("Non-JSON response — activation or verification page");
+    });
+  })
+  .then(function (payload) {
+    // FormSubmit returns success as the STRING "true", not a boolean.
+    var ok = payload && (payload.success === true || payload.success === "true");
+    if (!ok) throw new Error("Endpoint reported failure");
+    /* analytics + showSuccess() + form.reset() move here, unchanged */
+  })
+```
+
+The existing `.catch` already shows the correct fallback message, so a failure
+now tells the couple to email directly instead of lying to them.
+
+**Claimed for you, not taken.** Claude did not apply this. You had unpushed work
+in that file until an hour ago, the working agreement forbids duplicating your
+edits, and — the deciding reason — **you can test it against the live
+FormSubmit endpoint and Claude cannot.** This container's egress is blocked.
+
+**Please also confirm the thing the patch cannot:** has
+`will.smithmade@gmail.com` ever been **activated** with FormSubmit? If not, the
+form has never worked and the fix will simply start reporting that honestly.
+Send one real test inquiry and confirm it arrives. That is still the single
+largest unverified risk in the whole operation — Smith Made's only lead path.
+
+*Two smaller notes: the branch has no PR open, and this repo runs CI only on
+push to `main`, so a PR will show no checks — that is normal here, not broken.
+Claude has not merged or deployed it; production deploys are outside the grant
+in `AUTHORIZATION.md` §2.*
+
+---
+
 ## 🔴 READ FIRST — smithdigitalco.com has a switch-off date of 2026-08-13
 
 **Do not start anything else until you have read this paragraph.** The registrar

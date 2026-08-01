@@ -553,7 +553,30 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🔴
-**Status: OPEN · Owner: unclaimed — see conflict warning · Found by Claude 2026-07-31**
+**Status: STILL OPEN · Owner: CODEX (claimed for it 2026-08-01, patch supplied) · Found by Claude 2026-07-31**
+
+> **Re-confirmed open 2026-08-01 00:50 UTC.** Codex's `codex/site-qa-resilience`
+> branch (`e0313b4`) landed and **does not touch `js/form.js`.** Line 59 is
+> unchanged. The conflict warning below is now stale — Codex has pushed, so the
+> file is no longer held.
+>
+> **Do not read that branch as having fixed this.** It adds a *native fallback*
+> (SM-QA-001, genuinely closed), which produces a dangerous inversion: the
+> **no-JS path now fails visibly**, while the **JS path — what nearly every
+> visitor runs — still fails silently.** "We added a fallback" reads as "the
+> form is handled." It is not.
+>
+> FormSubmit returns **HTTP 200** for its first-send activation page and its
+> verification interstitials, so `response.ok` is `true` for all of them and a
+> couple sees *"Sent!"* while nothing arrives.
+>
+> **The exact patch is written out in `HANDOFF-TO-CODEX.md`.** Claude did not
+> apply it: Codex can test against the live endpoint and this container cannot
+> (egress blocked). Evidence: `LOG.md` `2026-08-01-C37`.
+>
+> **Blocking question underneath it all:** has `will.smithmade@gmail.com` ever
+> been *activated* with FormSubmit? If not, this lead path has never worked and
+> the patch only makes the failure honest. One real test inquiry settles it.
 
 **This is the same class of bug as SD-FORMS-001, on the other business.**
 
@@ -1178,12 +1201,29 @@ enable Codex to choose the local package.
 
 ---
 
-### SM-QA-001 — Publish Smith Made's native form fallback as a draft PR
-**Status: BLOCKED · Owner: CODEX**
+### SM-QA-001 — Publish Smith Made's native form fallback ✅
+**Status: PUSHED and reviewed 2026-08-01 · Owner: CODEX · no PR open yet**
 
-Local branch `codex/site-qa-resilience` has tested commit `bc4fad2`. It has not
-been pushed. Steen must specifically approve the public-safe draft PR. This
-does not replace Will's separate real-inbox delivery test.
+`codex/site-qa-resilience` was pushed **2026-07-31 23:33 UTC** at `e0313b4`
+(on top of `bc4fad2`). Reviewed by Claude against `origin/main` — **the
+fallback itself is correct**: `action` + `method` on the form and `novalidate`
+removed, so without JS the form posts and the browser validates.
+
+The branch carries four more things, all verified good in the diff rather than
+taken on trust — an unverifiable liability-insurance claim removed from the FAQ
+*and* the JSON-LD, the $50 date hold reworded from "your date comes off the
+calendar today" to a seven-day hold that is explicitly not a booking, a new
+`privacy.html` with footer link and sitemap entry, and a 44px touch target.
+Detail: `LOG.md` `2026-08-01-C37`.
+
+**This closes SM-QA-001 only. It does not close `SM-FORM-001`** — see the
+warning on that task; the two are easy to conflate and the branch name invites
+it.
+
+*Steen still owes a specific approval before any PR is opened, and Claude has
+not merged or deployed it — production deploys are outside the grant. Note this
+repo runs CI only on push to `main`, so a PR with no checks is normal here.
+None of this replaces the separate real-inbox delivery test.*
 
 ---
 
