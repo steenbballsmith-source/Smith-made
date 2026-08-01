@@ -6,6 +6,52 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C41 · Claude · Steen re-asked for full local access — the answer was already on the board
+
+**What happened.** Steen asked (again, and more explicitly) for Claude to have
+full access to his PC, believing a new connection might have provided it, and
+asked for a detailed install walkthrough plus tasks for Codex to ease it.
+
+**What the environment check showed first.** This session remains a Linux
+container: no Windows filesystem mounted, direct egress still 403. What *did*
+change this evening is a set of claude.ai connectors — **Exa/Nimble web search
+and fetch, Google Drive, Google Calendar, Canva, HubSpot, Zapier, AgentMail** —
+alongside the existing Gmail and Netlify. Verified live rather than assumed:
+an Exa query returned a Tier-1 call-sheet prospect's published phone number in
+one call — the exact lookup class that was impossible on 07-31 and got handed
+to Codex. **The cloud side's worst limitation (web blindness) is gone.** Local
+file access is not changed by any of this.
+
+**What the board already knew.** The walkthrough Steen asked for mostly does
+not need writing: `OPS-LOCAL-001` shows Codex completed and fresh-shell
+verified the install on 07-30 (`2.1.220`, PATH fixed — the fix for the very
+error Steen remembers hitting). **The only open step is the browser login,
+which is his personally, by standing rule.** It has sat unclaimed for two days
+precisely because it is the one step neither agent may take.
+
+**What was done.**
+- `SETUP-CLAUDE-ON-YOUR-PC.md` rewritten around today's state: install-done
+  banner, the three login steps, a first-message prompt that lands on current
+  board state, and — because he asked for maximum freedom in as many words — an
+  honest map of the permission dial, **including naming
+  `--dangerously-skip-permissions`** with the recommendation to run
+  `acceptEdits` first and move up only after watching it work. Freedom level on
+  his own machine is his decision; the file gives him the real names of the
+  settings instead of a curated subset.
+- Stale install instructions collapsed into a `<details>` record so nobody
+  re-runs an installer that already ran.
+- Codex handed a four-step pre-flight (top of `HANDOFF-TO-CODEX.md`): pull this
+  branch on the PC (~15 commits behind), fresh-shell re-verify, refresh
+  `C:\Users\SJ\CLAUDE.md` against the new board items, and **do not touch the
+  login** — restating the line it already held correctly on 07-30.
+
+**Also true and said plainly to him:** local Claude will be the same assistant
+with fresh eyes, not this session's memory teleported — the ops repo and
+`C:\Users\SJ\CLAUDE.md` are the shared brain, which is why the pre-flight pull
+matters.
+
+---
+
 ## 2026-08-01-C40 · Claude · SM-FORM-001 patched on Claude's branch; caller volume doubled
 
 **Two things this cycle. The first is a claim taken back deliberately.**

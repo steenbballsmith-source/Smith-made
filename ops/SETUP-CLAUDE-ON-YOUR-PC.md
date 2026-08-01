@@ -1,42 +1,79 @@
 # Putting Claude on your computer
 
-For Steen. Written 2026-07-30. Roughly 15 minutes, most of it waiting.
+For Steen. Written 2026-07-30, updated **2026-08-01** after you asked again.
 
-**Short answer to your question: yes.** The thing you've been talking to in a
-browser also runs directly on your Windows PC, the same way Codex does. It's
-called **Claude Code**. Same assistant, but with your actual files in front of
-it instead of a copy of one GitHub repo.
-
-You are not downloading a second, different Claude. It's the same one — it just
-stops being locked in a box.
+**Short answer: yes, and you are two minutes away.** The thing you've been
+talking to in a browser also runs directly on your Windows PC, the same way
+Codex does. It's called **Claude Code**. Same assistant, but with your actual
+files in front of it instead of a copy of one GitHub repo.
 
 ---
 
-## ⚡ Installed — one human login remains
+## ⚡ READ THIS FIRST — the install is ALREADY DONE. One step left, and it's yours.
 
-Codex installed and fresh-shell verified Claude Code on 2026-07-30. The command
-returns `2.1.220 (Claude Code)`, Git is already installed, and
-`C:\Users\SJ\CLAUDE.md` contains the startup guardrails. Do not rerun the
-installer.
+**There is nothing to download and nothing for Codex to do.** Codex installed
+Claude Code on Thursday July 30 and verified it works: the command answers
+`2.1.220 (Claude Code)` from a fresh window. The "not recognized" error you hit
+was from *before* that install — it's fixed. The board entry is `OPS-LOCAL-001`
+if you want the proof.
 
-When you sit down at the PC, open a **new** PowerShell and paste:
+The one remaining step is the login, and it stalled for two days only because
+it needs **you at the PC** — no agent is allowed to log in as you, anywhere,
+ever. That's not a setting; it's the line that keeps an agent from being able
+to impersonate you.
 
-```powershell
-cd C:\Users\SJ
-claude
-```
+**The whole thing, at the computer:**
 
-It opens your browser. Log in with the Claude account you already pay for.
-That login is yours to do — no agent can do it for you, here or anywhere.
+1. Click **Start**, type `powershell`, press **Enter**. Blue window opens.
+   (Must be a *new* window — an old one that was open since before Thursday
+   won't know the command exists.)
+2. Paste this and press Enter:
 
-Then type this as your first message, which proves the whole thing works:
+   ```powershell
+   cd C:\Users\SJ
+   claude
+   ```
 
-```
-read C:\Users\SJ\.claude\ops and tell me what Codex has set up
-```
+3. Your **browser opens**. Log in with the same Claude account you already pay
+   for — the one you're reading this with. Approve it. Done. It remembers
+   forever; you never do this again.
 
-If it reads those files back, you're done. Everything below is the longer
-explanation if you want it.
+4. Back in the blue window, type this as your first message:
+
+   ```
+   Read C:\Users\SJ\CLAUDE.md and C:\Users\SJ\.claude\ops\, then pull the
+   claude/codex-team-coordination-shomkq branch of the Smith-made repo and
+   read ops/AGENT_BOARD.md and ops/HANDOFF-TO-CODEX.md. Tell me the three
+   most useful things you can do from this machine that cloud Claude can't.
+   ```
+
+If it answers with real specifics — the ops files Codex wrote, the open board
+tasks — then you have what you asked for: Claude with your actual computer.
+
+---
+
+## What "as much freedom as possible" looks like — honestly
+
+You've said it plainly, so here is the honest map of the dial, from cautious
+to maximum:
+
+1. **Default:** it asks before every file change. Safe, chatty.
+2. **`acceptEdits`** *(press **Shift+Tab** inside Claude to switch)*: it stops
+   asking about file edits, still asks before commands. **This is the setting I
+   recommend for you.** You can also tell it *"set up permissions so you stop
+   asking about git commands"* and it will pre-approve the routine stuff.
+3. **Maximum:** there is a full-bypass switch — start it as
+   `claude --dangerously-skip-permissions` and it never asks about anything.
+   You asked for maximum freedom, so I'm telling you it exists rather than
+   hiding it. **I'd wait a few days before using it.** The name is honest: on
+   your machine there is no draft-PR safety net between a mistake and your live
+   business. Watch it work on setting 2 first; move to 3 when you've seen
+   enough to trust it. It's your machine and your call.
+
+**What stays true on every setting:** it won't use your passwords, won't get
+past 2FA or CAPTCHAs, and stops for your say-so before money, deletions,
+sending things to real people, and publishing to production. Those aren't
+dials.
 
 ---
 
@@ -63,51 +100,18 @@ And Claude and Codex would finally share a filesystem. They still can't talk —
 that stays true — but the ops folder becomes instant instead of needing a push
 to GitHub and a pull back down.
 
-## Before you start
+## Installing it — SKIP. Already done.
 
-You need a **Claude Pro or Max subscription** — the same login you already use.
-If you're paying for Claude now, you're set.
+<details>
+<summary>Kept only for the record — Codex ran all of this on 2026-07-30.
+Running the installer again is harmless but pointless. Git was already
+installed too.</summary>
 
-## Installing it
+The installer was `irm https://claude.ai/install.ps1 | iex`, verified with
+`claude --version` returning `2.1.220 (Claude Code)` from a fresh shell, with
+the PATH entry `C:\Users\SJ\.local\bin` added. Log: `2026-07-30-C19`.
 
-1. Click Start, type `powershell`, press Enter. A blue window opens.
-2. Paste this and press Enter:
-
-   ```powershell
-   irm https://claude.ai/install.ps1 | iex
-   ```
-
-3. Wait for it to finish. Then check it worked:
-
-   ```powershell
-   claude --version
-   ```
-
-   You should see a number and the words `(Claude Code)`.
-
-**Also install Git for Windows** — https://git-scm.com/downloads/win. Click
-through with the defaults. Without it Claude falls back to PowerShell and can do
-less. It's a two-minute install and worth doing.
-
-## First run
-
-In the same window:
-
-```powershell
-cd C:\Users\SJ
-claude
-```
-
-It opens your browser to log in. Do that once and it remembers.
-
-Then just type. Try this first, since it proves the whole point:
-
-```
-read C:\Users\SJ\.claude\ops and tell me what Codex has set up
-```
-
-If it reads those files back to you, it's working, and it now knows things I
-never could.
+</details>
 
 ## If you'd rather not use a terminal
 

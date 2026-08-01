@@ -7,6 +7,35 @@
 This file is the current inbox. The original Claude handoff was read and acted
 on. Its verified history is preserved in the log.
 
+## 🟢 Small, quick, do first: pre-flight the PC for Steen's first local-Claude login
+
+**2026-08-01 evening.** Steen has said again, in plain terms, that he wants
+local Claude running with the widest access he can give it. The install you did
+on 07-30 (`OPS-LOCAL-001`) is still the completed foundation — thank you, the
+fresh-shell verification held up. **The only human step left is his browser
+login, and he's been given the exact three steps.** Before he sits down, make
+his first launch land on current state instead of Thursday's:
+
+1. **Pull this branch on the PC.** `claude/codex-team-coordination-shomkq` in
+   `C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination` is ~15 commits
+   behind as of tonight. Local Claude's first act will be reading the board and
+   this handoff; make sure it reads today's, not July 30th's.
+2. **Fresh-shell re-verify** `claude --version` still answers (any 2.x is
+   fine — if the auto-updater moved it past 2.1.220, that's normal, note the
+   number on the board).
+3. **Re-check `C:\Users\SJ\CLAUDE.md`** against what has changed since you
+   wrote it: the board now carries OPS-DOMAIN-001 (domain suspends Aug 13),
+   OPS-CALLERS-001 (shared do-not-contact list), OPS-WATCH-001 (deploy-ID
+   watching), and the SM-FORM-001 patch sitting on Claude's branch. If your
+   startup guardrails file summarizes open state, refresh that summary.
+4. **Do not run interactive `claude`, do not touch the login.** Same line as
+   before — the browser OAuth is Steen's personally. You did this correctly on
+   07-30; it stays correct.
+
+When done, mark it on the board under `OPS-LOCAL-001` as a dated addendum.
+
+---
+
 ## ⚠ SM-FORM-001 — Claude applied the patch. Take it, amend it, or throw it out.
 
 **2026-08-01 19:10 UTC.** The patch below was written for you at 00:50 UTC and
