@@ -650,7 +650,69 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
-**Status: PATCHED on `claude/codex-team-coordination-shomkq` 2026-08-01 19:10 UTC · NOT merged, NOT deployed · Codex to take, amend or discard**
+**Status: THE OPEN QUESTION IS ANSWERED — endpoint IS activated · defect now CONFIRMED LIVE, not theoretical · patch still NOT merged, NOT deployed · 2026-08-01 14:52 PDT by local Claude**
+
+> ## ✅ Answered: `will.smithmade@gmail.com` **has** been activated with FormSubmit
+>
+> Tested from Steen's Windows machine — the thing the cloud container could not
+> do. One clearly-labeled test POST to
+> `https://formsubmit.co/ajax/will.smithmade@gmail.com`, sent with the same
+> `Origin`/`Referer` a real visitor's browser sends:
+>
+> ```
+> HTTP 200 · Content-Type: text/html; charset=UTF-8
+> {"success":"true","message":"The form was submitted successfully."}
+> ```
+>
+> No activation page. No verification interstitial. A clean acceptance.
+>
+> **In business terms: the Smith Made inquiry form is not a black hole.** The
+> single largest unverified assumption on the property — open since 07-31, and
+> correctly called the biggest risk in the operation — resolves in the good
+> direction. Inquiries that reached this endpoint from the live site were
+> accepted for delivery.
+>
+> **Will still owns the last inch.** "Submitted successfully" is *acceptance*,
+> not *arrival*. A message titled **`TEST - agent verification - FormSubmit
+> activation check`** should now be sitting in `will.smithmade@gmail.com` —
+> **check spam too.** Reply-to was set to Steen's own address, so nothing routes
+> to a stranger. **This item does not close until Will says he can see it.**
+>
+> ## 🔴 And the defect below is no longer a code-reading inference
+>
+> A first POST, sent without `Referer`/`Origin`, returned:
+>
+> ```
+> HTTP 200 · {"success":"false","message":"Make sure you open this page through a web server..."}
+> ```
+>
+> **A real 200 carrying a real failure body, from this exact endpoint.** The live
+> site runs **unpatched** `js/form.js` — verified by fetching
+> `https://smithmadesc.com/js/form.js`: 4,445 bytes, still
+> `if (!response.ok) throw new Error(...)`, no `response.json()` anywhere. So on
+> that response the live page calls `showSuccess()` and tells a couple *"Sent!
+> We'll get back to you within a day or two"* **while FormSubmit has just said it
+> did not send.** Reproducible on demand.
+>
+> **The patch on this branch fixes exactly that, and it is not live.**
+>
+> ## ⚠ Two facts that will waste someone's afternoon if not recorded
+>
+> 1. **The endpoint is not in `index.html`.** The handoff instruction said to
+>    read the form's `action` attribute — **there isn't one**, here or on the
+>    live site. Line 703 is a bare
+>    `<form class="form" data-inquiry-form novalidate data-reveal>`. Codex's
+>    native fallback lives on `codex/site-qa-resilience`, **never merged, never
+>    deployed**. The real address is `js/manifest.js` line 89. Which also means
+>    **SM-QA-001's fallback is not protecting live visitors either** — it is
+>    still sitting on an unmerged branch.
+> 2. **FormSubmit returns `Content-Type: text/html` even when the body is JSON.**
+>    `fetch`'s `.json()` ignores content-type, so the patch is fine — but any
+>    future check that sniffs the header instead of parsing the body will be
+>    wrong 100% of the time.
+>
+> **Evidence:** `LOG.md` `2026-08-01-LC1`, with the exact reproduction command.
+> No merge, no deploy, no real customer contacted, no account or billing change.
 
 > **Claim reversed, deliberately.** This was claimed *for Codex* at 00:50 UTC
 > with the patch written out. Eighteen hours later `js/form.js` was untouched
@@ -1197,6 +1259,36 @@ occurred.
 
 ### OPS-LOCAL-001 — Install Claude Code on the Windows machine
 **Status: COMPLETE · Owner: CODEX · Completed 2026-07-30 17:38 PDT · Approved by Steen 2026-07-30**
+
+> **✅ ADDENDUM 2026-08-01 14:45 PDT — local Claude is live. The bridge works.**
+> Written from the Windows PC by local Claude itself, in its first session.
+>
+> **Login: done, by Steen, personally.** The one human step left on 07-30 has
+> been completed — he ran `claude` and finished the browser OAuth himself. No
+> agent touched the identity flow, and none ever will.
+>
+> **Version, from this machine:** `C:\Users\SJ\.local\bin\claude.exe --version`
+> returns exactly `2.1.220 (Claude Code)` — unchanged from Codex's 07-30
+> install, so the auto-updater has not moved it.
+>
+> **First pull: done.** In `C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`,
+> `git pull --ff-only` on `claude/codex-team-coordination-shomkq` fast-forwarded
+> `299e126` → `a537973` — 13 commits, 5 files, +1576/−89, including this board,
+> `ops/HANDOFF-TO-CODEX.md`, `ops/LOG.md`, `ops/SETUP-CLAUDE-ON-YOUR-PC.md` and
+> the `js/form.js` patch. **So the concern in the handoff is answered: local
+> Claude read today's state, not July 30th's.** Clean fast-forward, no merge, no
+> conflict, nothing rebased.
+>
+> **Startup sequence honoured.** `C:\Users\SJ\CLAUDE.md`, the private charter and
+> the private board were read first; the fail-closed coordination preflight
+> returned `LocalSafety: PASS`, 10/10 checks, 0 failures, both before the claim
+> and after it. This work is claimed privately as `OPS-LOCAL-HANDSHAKE-001` and
+> overlaps no artifact Codex owns — its three open claims were left untouched.
+>
+> **What this proves for Steen, in plain terms:** the PC and the cloud are now
+> reading the same file. Something written on this machine reaches cloud Claude
+> and Codex through this branch, and their work reaches the PC the same way.
+> Before today that link was one-directional and depended on Codex relaying it.
 
 **Verified result:** Claude Code installed at
 `C:\Users\SJ\.local\bin\claude.exe`. The missing user-PATH entry that caused

@@ -1,33 +1,64 @@
 # Current handoff to Codex
 
-## 📍 LOCAL CLAUDE — your first two tasks (Steen will point you here by hand)
+## ✅ LOCAL CLAUDE'S FIRST SESSION IS DONE — both tasks executed 2026-08-01 14:52 PDT
 
-You are Claude Code running on Steen's Windows PC, first session, 2026-08-01.
-Steen could not paste long prompts into the terminal, so your instructions live
-here instead. Read `C:\Users\SJ\CLAUDE.md` and this repo's root `CLAUDE.md`
-first if you have not. Then:
+Written from the Windows PC by local Claude. Steen's login is complete (his own
+browser OAuth), `claude --version` is `2.1.220`, and the branch was pulled
+`299e126` → `a537973`. **The PC↔cloud bridge is proven and two-directional** —
+this paragraph is the proof. Full evidence: `LOG.md` `2026-08-01-LC1`,
+addendum under `OPS-LOCAL-001`.
 
-**Task 1 — handshake (proves the PC↔cloud bridge).** In
-`C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`: pull the latest
-`claude/codex-team-coordination-shomkq`, add a dated line to
-`ops/AGENT_BOARD.md` under `OPS-LOCAL-001` confirming local Claude's first
-login and first pull, commit, push. Cloud Claude is watching the branch and
-will confirm receipt to Steen.
+### The FormSubmit answer: ACTIVATED. The form is not a black hole.
 
-**Task 2 — SM-FORM-001's open question, which only a machine with real
-internet can answer.** Read the SM-FORM-001 section further down this file for
-full context. Short version: Smith Made's inquiry form posts to FormSubmit at
-the address in `index.html`'s form `action`, and nobody knows whether that
-endpoint was ever **activated** — if it wasn't, the form has never delivered a
-lead. Send **one clearly-labeled test POST** (name it "TEST — agent
-verification", use Steen's own email as reply-to) to that endpoint and record
-exactly what comes back: JSON `{"success":"true"}` means activated and
-working; an HTML activation page means the form has never worked. Write the
-verdict on the board under `SM-FORM-001`, commit, push. **Do not deploy
-anything. Do not email any real person.**
+One labeled test POST to
+`https://formsubmit.co/ajax/will.smithmade@gmail.com`, with the `Origin` and
+`Referer` a real browser sends, returned:
 
-That's the whole first session. Everything else on this board is context, not
-your task list — Codex owns its items, cloud Claude owns the watch.
+```
+HTTP 200 · {"success":"true","message":"The form was submitted successfully."}
+```
+
+**The biggest unverified risk in the operation, open since 07-31, is resolved
+in the good direction.** Inquiries reaching that endpoint from the live site are
+accepted for delivery.
+
+### 🔴 But three things got worse, not better, and they need you
+
+**1. The defect is now confirmed live, not theorised.** A first POST sent
+without `Referer`/`Origin` returned **HTTP 200** carrying
+`{"success":"false"}`. The live site runs **unpatched** `js/form.js` — fetched
+and checked: 4,445 bytes, still `if (!response.ok) throw new Error(...)`, no
+`response.json()`. On that exact response a real couple sees *"Sent! We'll get
+back to you within a day or two"* while FormSubmit has just said it did not
+send. Reproducible on demand.
+
+**2. `index.html` has no `action` attribute on the live site.** Which means
+**SM-QA-001's native fallback is not protecting anyone.** It closed on the
+board, but it is sitting on `codex/site-qa-resilience`, unmerged and undeployed.
+Line 703 live is still a bare `<form class="form" data-inquiry-form novalidate
+data-reveal>`. Two fixes for Smith Made's only lead path are now finished, on
+two different branches, and **neither is in front of a visitor.**
+
+**3. FormSubmit sends `Content-Type: text/html` even when the body is JSON.**
+`.json()` ignores content-type so the patch is safe, but anything sniffing the
+header will be wrong every time.
+
+### What each of you owns now
+
+- **Will —** a message titled **`TEST - agent verification - FormSubmit
+  activation check`** is in `will.smithmade@gmail.com`. **Check spam.** Say
+  whether you can see it. `SM-FORM-001` cannot close until you do — acceptance
+  is not arrival, and that last inch is yours.
+- **Codex —** take, amend or discard the `js/form.js` patch on
+  `claude/codex-team-coordination-shomkq`, and decide how the two branches get
+  in front of visitors. **The deploy itself is Steen's approval, not yours or
+  mine.**
+- **Steen —** the question you have been carrying about the Smith Made form is
+  answered: it works. The remaining piece is Will checking his inbox, and your
+  say-so on putting the two finished fixes live.
+
+Everything below is prior context. Codex owns its items; cloud Claude owns the
+watch.
 
 ---
 

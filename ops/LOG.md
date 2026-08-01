@@ -6,6 +6,126 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-LC1 · local Claude · First session on the PC — the bridge is live and two-directional
+
+**Who is writing this.** Claude Code, running on Steen's Windows machine, first
+session. Not cloud Claude. Steen pointed this session at the LOCAL CLAUDE block
+at the top of `HANDOFF-TO-CODEX.md` by hand, exactly as that block anticipated.
+
+**Startup, in order, before touching anything shared.** `C:\Users\SJ\CLAUDE.md`
+→ private `ops/CHARTER.md` → private `ops/AGENT_BOARD.md` → the fail-closed
+coordination preflight `tools/verify-agent-board-coordination.ps1 -AsJson`,
+which returned `LocalSafety: PASS`, exit `0`, 10 PASS / 0 FAIL, 3 active claims,
+17 claim anchors. Re-run after claiming: same, 10/0, now 4 claims. Work claimed
+privately as `OPS-LOCAL-HANDSHAKE-001` with anchors that overlap none of
+Codex's three open claims (`SD-COMPLIANCE-001`, `SM-WILL-SIMPLIFY-001`,
+`GHL-E2E-QA-001`) — the guard verifies that mechanically, it is not an eyeball
+check.
+
+**Task 1 — handshake. Done.**
+
+- **Login is complete and it was Steen's own.** He ran `claude` and finished the
+  browser OAuth personally. No agent went near the identity flow.
+- `C:\Users\SJ\.local\bin\claude.exe --version` → `2.1.220 (Claude Code)`,
+  exactly Codex's 07-30 figure, so the auto-updater has not moved it.
+- `git pull --ff-only` in `C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination`
+  on `claude/codex-team-coordination-shomkq`: `299e126` → `a537973`
+  (remote `9967c47..a537973`), 13 commits, 5 files, +1576/−89 across
+  `js/form.js`, `ops/AGENT_BOARD.md`, `ops/HANDOFF-TO-CODEX.md`, `ops/LOG.md`,
+  `ops/SETUP-CLAUDE-ON-YOUR-PC.md`. Clean fast-forward — no merge commit, no
+  conflict, nothing rebased.
+- Addendum written under `OPS-LOCAL-001` on this board.
+
+**Reproduce it:** `git -C C:\Users\SJ\Smith-Made-Site\claude-codex-team-coordination log -1 --format=%H` → `a53797335f562ae3a01a4e0df53d911a1c05efcc`.
+
+**What that actually buys the business.** Before today the PC↔cloud link ran one
+way through Codex relaying it. Now a file written on this machine reaches cloud
+Claude and Codex through this branch, and theirs reaches the PC. That is the
+whole point of `OPS-LOCAL-001` and it is now demonstrated rather than assumed.
+
+**Task 2 — FormSubmit activation. ANSWERED. The endpoint is activated and it
+accepted a live submission.** Authorized by Steen in-session, in as many words,
+when he confirmed standing permission to act without per-step confirmation.
+
+**Where the endpoint actually lives — the handoff's wording is wrong here.** It
+says "the address in `index.html`'s form `action`". There is no `action`
+attribute. `index.html` line 703 is a bare
+`<form class="form" data-inquiry-form novalidate data-reveal>` on this branch
+*and on the live site* — Codex's native fallback is on
+`codex/site-qa-resilience` and was never merged or deployed. The real address is
+`js/manifest.js` line 89: `https://formsubmit.co/ajax/will.smithmade@gmail.com`.
+Anyone following the handoff literally finds nothing.
+
+**Two POSTs were sent. Both mattered.**
+
+*Attempt 1 — no `Referer`/`Origin` header (a bare scripted POST):*
+
+```
+HTTP 200 · Content-Type: text/html; charset=UTF-8
+{"success":"false","message":"Make sure you open this page through a web server, FormSubmit will not work in pages browsed as HTML files."}
+```
+
+*Attempt 2 — same payload, with `Referer: https://smithmadesc.com/` and
+`Origin: https://smithmadesc.com`, i.e. what a real visitor's browser sends:*
+
+```
+HTTP 200 · Content-Type: text/html; charset=UTF-8
+{"success":"true","message":"The form was submitted successfully."}
+```
+
+**Verdict: `will.smithmade@gmail.com` HAS been activated with FormSubmit.** No
+activation page, no verification interstitial — a clean acceptance. **The single
+largest unverified assumption on Smith Made is resolved in the good direction:
+the lead path is not, and probably never was, a black hole.** Inquiries that
+reached this endpoint from the live site were accepted for delivery.
+
+**The one thing this does not prove, and Will still owns it.** FormSubmit saying
+"submitted successfully" is acceptance, not arrival. The labeled message
+`TEST - agent verification - FormSubmit activation check` should now be in
+`will.smithmade@gmail.com`, possibly in spam. `SM-FORM-001` cannot close until
+Will confirms he can see it. Steen's address was set as reply-to, so a reply
+comes back to him, not to a stranger.
+
+**And attempt 1 accidentally produced the exact proof the board has wanted since
+2026-07-31.** The failure mode was theorised from reading the code; it is now an
+observed response. `{"success":"false"}` came back **with HTTP 200**. On the live
+site — which is running **unpatched** `js/form.js`, confirmed by fetching
+`https://smithmadesc.com/js/form.js` (4,445 bytes, still
+`if (!response.ok) throw new Error(...)`, no `response.json()` anywhere) —
+`response.ok` is `true` for that body, so `showSuccess()` fires and a couple is
+told *"Sent! We'll get back to you within a day or two"* **while FormSubmit
+explicitly said it did not send.** That is no longer a code-reading inference.
+It reproduces on demand.
+
+**Secondary finding worth not re-discovering:** FormSubmit returns
+`Content-Type: text/html` even when the body is JSON. `fetch`'s `.json()`
+ignores the content-type header, so the patch on this branch is unaffected — but
+any future check that sniffs the content-type instead of parsing the body will
+be wrong every time.
+
+**Net effect on `SM-FORM-001`:** the "has it ever worked" question is answered
+YES; the "does it lie when it fails" defect is now **confirmed live, not
+theoretical**, and the fix for it is sitting unmerged and undeployed on this
+branch.
+
+**Reproduce it:**
+
+```powershell
+Invoke-WebRequest -Uri 'https://formsubmit.co/ajax/will.smithmade@gmail.com' `
+  -Method POST -UseBasicParsing `
+  -Headers @{ Accept='application/json'; Referer='https://smithmadesc.com/'; Origin='https://smithmadesc.com' } `
+  -Body @{ names='TEST - agent verification'; email='steenbballsmith@gmail.com'; message='TEST' }
+```
+
+Drop the `Referer`/`Origin` pair to reproduce the 200-with-failure-body instead.
+
+**No side effects beyond this branch and those two labeled test posts.** No
+merge, no deploy, no prospect contact, no real customer emailed, no account
+change, no billing action, no spend, and no private-ops content copied into this
+public repository.
+
+---
+
 ## 2026-08-01-C41 · Claude · Steen re-asked for full local access — the answer was already on the board
 
 **What happened.** Steen asked (again, and more explicitly) for Claude to have
