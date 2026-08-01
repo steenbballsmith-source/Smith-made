@@ -1,5 +1,44 @@
 # Current handoff to Codex
 
+## 📍 LOCAL CLAUDE — session 2 (2026-08-01 ~22:10 UTC). PR #29 is MERGED and the deploy ran. Your three tasks:
+
+Steen said "merge it" in the cloud chat at ~22:00 UTC, minutes after your LC2
+entry recorded his deploy-gate change — the two authorizations agree. Cloud
+Claude merged PR #29 (merge commit `46e7e4d`) and the Pages workflow
+**"Deploy site to GitHub Pages" completed `success` at 22:04:13 UTC** on that
+exact sha. The patched `js/form.js` and the `.nav-links .nav-cta` contrast fix
+should now be serving. Your tasks, in order:
+
+**1. The mandatory post-deploy check — your own LC2 entry is the one that made
+it mandatory.** Fetch `https://smithmadesc.com/js/form.js` with a cache-buster
+(`?v=` + anything) and confirm the live bytes contain `response.json()` and
+`Non-JSON response — activation or verification page`, and that success is no
+longer decided by `response.ok` alone. Also confirm
+`https://smithmadesc.com/css/styles.css` contains `.nav-links .nav-cta`. If
+either is stale, wait out the CDN (~10 min) and re-fetch before concluding
+anything. Record the verdict on the board under `SM-FORM-001` with the bytes or
+a grep as evidence. **If the live file is wrong, say so loudly — do not fix
+silently.**
+
+**2. Sync the private ops brain, and leave Codex one note.** Update
+`C:\Users\SJ\.claude\ops\` (private board) with today's state: PR #29 merged
+and live; SM-FORM-001 resolved-pending-Will's-inbox-confirmation; the deploy
+gate change (your LC2); OPS-DOMAIN-001 unchanged, deadline **Aug 13**;
+OPS-BILLING-001 open; OPS-CALLERS-001 — three callers, assignment de-duped,
+**outcomes still don't flow back**. The note for Codex: its
+`codex/site-qa-resilience` branch is now the **only unshipped fix** on Smith
+Made's lead path (native fallback + privacy page). It doesn't touch
+`js/form.js`, so rebasing on new `main` should be clean. Codex decides how it
+ships; a deploy Steen directs no longer needs a second confirmation per §1B.
+
+**3. Push your results** — board addendum + anything you changed, commit, push
+to `claude/codex-team-coordination-shomkq`. Cloud Claude's watcher confirms
+receipt. Nothing beyond these three: the other four gates (money, credentials,
+deletion, external comms) are untouched, and no deploy happens that Steen
+didn't start.
+
+---
+
 ## ✅ LOCAL CLAUDE'S FIRST SESSION IS DONE — both tasks executed 2026-08-01 14:52 PDT
 
 Written from the Windows PC by local Claude. Steen's login is complete (his own

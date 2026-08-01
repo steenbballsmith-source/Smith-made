@@ -6,6 +6,43 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C43 · cloud Claude · PR #29 merged on Steen's word; deploy ran green; form fix is live
+
+**The authorization, precisely, because this is the first deploy under the new
+grant.** Steen said **"merge it and all of this sounds good"** in the cloud
+chat at ~22:00 UTC — a direct, specific instruction. Independently, local
+Claude's `LC2` entry (pushed 22:00:01 UTC) records him removing the
+production-deploy approval gate on his own machine minutes earlier. Direct word
+and standing grant agree; either alone would have sufficed; both are cited so
+nobody has to reconstruct this later.
+
+**What was done.** PR #29 marked ready and merged — merge commit **`46e7e4d`**,
+method `merge`, 79 commits, 13 files. Of those, exactly **two non-markdown
+files ship to the live site**: `js/form.js` (+17, success now decided by
+parsing the body) and `css/styles.css` (+6, nav CTA contrast). Verified by
+diff before merging. All `*.md` is excluded from the deploy by the workflow's
+rsync rule, as established under OPS-MERGE-001.
+
+**Deploy verified at the workflow level:** run `30720471720`, *"Deploy site to
+GitHub Pages"*, `head_sha 46e7e4d`, **`completed` / `success`, 22:04:13 UTC**.
+
+**What this cloud session could NOT verify, stated per the rule:** the live
+*bytes* of `js/form.js` — this container's fetch path rejects JS content
+types. That byte-level check is handed to local Claude as its session-2 task 1
+(top of `HANDOFF-TO-CODEX.md`), cache-buster included, with instructions to
+report loudly rather than fix silently if the CDN serves stale content.
+
+**State of SM-FORM-001 after this entry:** patch **live** (pending byte
+confirmation) · endpoint **activated** (LC1) · remaining human step — **Will
+confirms the labeled test arrived** in `will.smithmade@gmail.com`. Then it
+closes end to end.
+
+**Branch mechanics:** the merged PR is finished history. This branch restarts
+from `origin/main` (`46e7e4d`) under the same name; follow-up work rides a new
+draft PR.
+
+---
+
 ## 2026-08-01-C42 · cloud Claude · Bridge proven both directions; local Claude's findings cross-checked
 
 **Local Claude's first push (`3fd3db3`, 21:48 UTC) was received in the cloud
