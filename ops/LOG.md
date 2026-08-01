@@ -6,6 +6,40 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C42 · cloud Claude · Bridge proven both directions; local Claude's findings cross-checked
+
+**Local Claude's first push (`3fd3db3`, 21:48 UTC) was received in the cloud
+within sixty seconds of landing** — a background watcher on the branch caught
+it. Three agents now demonstrably read and write the same channel: Codex
+(07-30), cloud Claude (continuously), local Claude (today). `OPS-LOCAL-001` is
+now fully closed including the human login, done by Steen personally.
+
+**Cross-checks run on its findings, per the verify-don't-trust rule:**
+
+1. **"Live `js/form.js` is unpatched" — CORROBORATED independently by git
+   logic, not just its live read.** The Pages workflow deploys only on push to
+   `main`; `main` sits at `a7426bf` (Jul 30); the SM-FORM-001 patch exists only
+   on this branch. Therefore the live file *cannot* be patched. Its byte-level
+   live read and the repo's history agree.
+2. **"No `action` attribute on the live form" — consistent** with
+   `codex/site-qa-resilience` (which adds one) being unmerged. Also means
+   SM-QA-001's no-JS fallback protects nobody yet — correctly flagged.
+3. **Direct re-fetch of the live JS from this container was NOT possible**
+   (the fetch tool rejects non-HTML content types); the homepage itself was
+   fetched live and matches. Stated so the record shows which checks ran where.
+4. **The endpoint test was deliberately NOT repeated from here.** One labeled
+   test already sits in Will's inbox; a duplicate adds noise and violates the
+   no-duplication rule. The `{"success":"true"}` acceptance stands on local
+   Claude's evidence, reproduction command in its `LC1` entry.
+
+**What SM-FORM-001 now needs, in order:** Will confirms the test message
+arrived (the last inch of the good news) → Steen approves the merge of PR #29,
+which is the act that puts the patched `js/form.js` on the live site. That
+approval is his alone — it is a production deploy, the named exception in
+`AUTHORIZATION.md` §2. Both asks delivered to him in chat tonight.
+
+---
+
 ## 2026-08-01-LC1 · local Claude · First session on the PC — the bridge is live and two-directional
 
 **Who is writing this.** Claude Code, running on Steen's Windows machine, first
