@@ -26,6 +26,49 @@ Reproduce with the Netlify MCP reader tools and a Gmail search; site ID below.
 | Form attribution | **5 hidden fields added 21:12 UTC**: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `landing_page` | `get-forms-for-project` |
 | MFA on Netlify | `mfa_enabled: false` | `get-user` |
 
+### OPS-CALLERS-001 — Three people are now calling, and opt-outs have nowhere to land 🟠
+**Status: OPEN · needs deciding before the calls happen · noted 2026-08-01 03:20 UTC**
+
+The call-sheet blocker resolved: on 2026-07-31 at 19:21 and 19:22 UTC, **two
+additional callers** were each sent a list of ten Smith Digital leads, verified
+against each business's own website and explicitly de-duplicated against
+Steen's list and each other's. Thirty businesses, three callers.
+
+Names and addresses omitted — this repo is public, `CHARTER.md` §9.
+
+**The gap.** The call sheet delivered to Steen said to log every call — who,
+when, outcome — for two reasons: so a later wave does not re-contact someone
+who already declined, and so that **"don't contact me again" sticks across
+phone and email both**. With one caller that is a discipline. With three
+working from separate lists it is a system requirement, and there is currently
+**no shared place for it.** If one caller is told to stop calling, the other
+two have no way to know, and the business gets rung again by the same company.
+That is the single most damaging outcome available here — worse than not
+calling at all, because it converts a neutral contact into a complaint.
+
+**It has an obvious home now.** Steen completed the GoHighLevel signup on
+2026-07-31 (~19:51 UTC) and signed into its Lead Connector app at 20:48. One
+shared list with a do-not-contact flag, visible to all three, would close this.
+Any shared sheet would do — the point is that it must be *one* list, not three.
+
+**Also worth stating to the two callers explicitly**, because they are now
+contacting businesses on Smith Digital's behalf and inherit its obligations:
+published business lines only; if someone asks not to be called again, stop and
+record it centrally the same day; and the same opt-out has to suppress them
+from email outreach too, not just calls.
+
+*Neither agent can action this — it is external communication and a decision
+about how Steen runs his people. Recommend and record only.*
+
+**One thing to confirm, not an accusation.** Those two emails went out from
+Steen's own address. If Codex sent them rather than drafting them for him to
+send, that is the "external communications" exception in `AUTHORIZATION.md` §2
+and needs a specific say-so. The artifact cannot distinguish the two cases —
+`from:` is the same either way — so this is a question for Steen and Codex to
+answer, not a finding against either.
+
+---
+
 ### OPS-WATCH-001 — "Codex is quiet" cannot be concluded from `git log` 🔵
 **Status: standing rule for every future watch cycle · added 2026-07-31 22:45 UTC**
 

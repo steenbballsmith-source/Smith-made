@@ -6,6 +6,64 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-01-C38 · Claude · The call sheet shipped to three callers; opt-outs have nowhere to land
+
+**The blocker cleared.** Two additional callers were each sent ten Smith
+Digital leads on 2026-07-31 at 19:21 and 19:22 UTC — verified against each
+business's own website, explicitly de-duplicated against Steen's list and each
+other's. Thirty businesses, three callers. That was the top item in
+`HANDOFF-TO-CODEX.md` and it is done.
+
+**Reproduce:** authenticated Gmail, `in:sent newer_than:1d`, subject
+*"Smith Digital — 10 fresh call leads for July 31"*. Recipient identities are
+deliberately not recorded here; this repo is public, `CHARTER.md` §9.
+
+**The finding is what shipping it created.** The call sheet's own instruction —
+log every call, so a later wave does not re-contact a decline and so a
+do-not-contact request sticks across phone *and* email — was written for one
+caller. **At three it stops being a discipline and becomes a system
+requirement, and no shared system exists.** An opt-out given to one caller is
+invisible to the other two. The business then gets called again by the same
+company, which is a worse outcome than never calling: it converts a neutral
+contact into a complaint, and it is the one failure mode that scales with
+effort rather than shrinking with it.
+
+Recorded as `OPS-CALLERS-001` with the recommendation: one shared list with a
+do-not-contact flag. Steen completed the GoHighLevel signup at ~19:51 UTC and
+signed into Lead Connector at 20:48, so a home for it now exists — but any
+single shared sheet would serve. The requirement is that there is *one* list,
+not three.
+
+**A question raised, not a finding.** Both emails went out from Steen's own
+address. If Codex sent them rather than drafting them for him, that is the
+**external communications** exception in `AUTHORIZATION.md` §2 and needs a
+specific say-so. `from:` is identical in both cases, so the artifact cannot
+distinguish them. Logged for Steen and Codex to answer. **No inference is drawn
+against either** — this convention exists precisely so the question gets asked
+from the artifact rather than assumed from a summary.
+
+**Unrelated, one line, because it touches an open item.** A Plaid notice at
+22:31 UTC records the credit union account being connected to ChatGPT. That is
+Steen's decision and entirely his to make; it is noted only because
+`OPS-BILLING-001` concerns that same institution's fraud system already
+declining his AI-subscription charges, and a further new connection to the same
+account is one more thing that system may react to.
+
+**Routine watch, same cycle — all unchanged.** Form `audit-request`
+`submission_count: 1`, `last_submission_at` still `2026-07-31T10:30:04.432`,
+field list byte-identical including the five `utm_*` hidden fields — so **no new
+deploy and SD-FORMS-004 has not recurred**. `origin/main` still `a7426bf`.
+`origin/codex/site-qa-resilience` still `e0313b4` with **`js/form.js` still
+untouched**, so `SM-FORM-001` remains open ~2.5h after the patch was handed
+over. That is a Friday evening and not yet worth chasing.
+
+*(The Netlify `get-projects` call returned a 502 this cycle. The deploy ID was
+therefore not read directly — the unchanged form field list is the substitute
+evidence for "no new deploy", per `OPS-WATCH-001`. It is weaker: a deploy that
+altered no form fields would not show up in it.)*
+
+---
+
 ## 2026-08-01-C37 · Claude · Codex's QA branch reviewed — good work, and SM-FORM-001 survives it
 
 `origin/codex/site-qa-resilience` appeared at **2026-07-31 23:33 UTC**, ending
