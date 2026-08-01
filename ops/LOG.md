@@ -40,6 +40,70 @@ closes end to end.
 **Branch mechanics:** the merged PR is finished history. This branch restarts
 from `origin/main` (`46e7e4d`) under the same name; follow-up work rides a new
 draft PR.
+---
+
+## 2026-08-01-LC3 · local Claude · Gates reduced to one; the password offer declined
+
+**Owner decision, verbatim:** *"I want to be able to give you assignments and
+have the only thing you can't do without my permission is spend money i want to
+be able to give you access to my accounts and you can log in with my passwords
+and do everything but spend my money without my permission."*
+
+**Done: money is now the only standing approval gate.** External communications,
+publishing/deploying, permanent deletion, free signups, and account settings are
+do-it-and-report on assignment. Gated: purchases, paid signups, priced terms, ad
+budgets, plan upgrades, metered services, auto-renewing trials. Ads stop because
+they *spend*, not because they publish.
+
+**Not done, and it is the one part of this entry that matters most: the password
+offer was declined, and that does not change on a later re-ask.**
+
+Two independent reasons, both concrete:
+
+1. **A password given to an agent does not stay in the conversation.** It is
+   written into session transcripts, tool logs, and context files on this disk —
+   several copies, in a tree with Git history. It would outlive the task by
+   months in places nobody thinks to clear.
+2. **It would not even work.** The account then presents a 2FA prompt or an
+   identity check, which no agent may complete. Steen would have handed over the
+   most sensitive thing he owns and still be doing the login himself.
+
+**The goal behind the offer is legitimate and is solved by other means**, which
+is why this is a redirect and not a refusal to help:
+
+- **Drive the Chrome session he is already signed into.** The login already
+  happened; the agent operates the account and never sees a credential. This is
+  the closest match to what he actually asked for.
+- **OAuth connectors, several already live** — Gmail, Drive, Calendar, Netlify,
+  HubSpot, Canva, Zapier. One consent screen, revocable individually, no secret
+  in agent hands, no password change needed to cut access.
+- **Scoped API keys** in the OS credential manager — never in `ops/`, never in
+  chat, never committed.
+
+**Also unchanged, and recorded separately so the one-gate rule is not misread as
+having dissolved them:** no passing an identity/2FA/CAPTCHA check; no card, bank,
+SSN, or ID entry; no fabrication; and no waiving a legal duty — CAN-SPAM binds
+Steen by law and `SD-COMPLIANCE-001` is still the unlock, because "I approve it"
+is not a physical postal address.
+
+**The trade being accepted, stated honestly.** The approval step was also the
+step where a human read the work before it went out. That reader is now gone by
+his choice. What replaces it is post-hoc verification — fetch the live URL,
+confirm the message in Sent, read the record back — done by the agent, every
+time, with the failures reported as plainly as the successes. One gate only works
+if the record after the fact is complete.
+
+**Files updated together:** private `CHARTER.md` §3 (ladder rewritten, GREEN /
+AMBER / RED all revised, new account-access section), `C:\Users\SJ\CLAUDE.md`,
+public `ops/CHARTER.md` §4, new public `ops/AUTHORIZATION.md` §1C.
+
+**Reconciliation note.** `C43` above landed while this was being written. It
+records the first deploy under the new grant and cites both Steen's direct
+"merge it" and the `LC2` grant. The two entries agree and neither was
+overwritten. One correction to `C43`'s closing framing: it lists "the other four
+gates (money, credentials, deletion, external comms)" as untouched. **As of this
+entry only money remains a gate.** Credentials are not a gate at all — they are
+in the never-regardless set, which is a stronger constraint, not a weaker one.
 
 ---
 

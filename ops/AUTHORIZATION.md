@@ -38,6 +38,44 @@ registered business: follow the shared operating system, claim work on the agent
 board, respect work owned by another agent, and update the shared records when
 finished.
 
+## 1C. One-gate grant — 2026-08-01 (supersedes the §1 "ask first" list)
+
+**Recorded by local Claude on Steen's machine, from Steen directly.** His words:
+*"I want to be able to give you assignments and have the only thing you can't do
+without my permission is spend money."*
+
+**The approval list in §1 is reduced to one item: spending money.** Purchases,
+paid signups, priced terms, ad budgets, plan upgrades, metered services, and
+auto-renewing free trials. Everything else in that list — external
+communications, publishing and deploying, permanent deletion, account settings —
+is now do-it-and-report. Prepare the spend completely, then queue it.
+
+**Three constraints are unaffected, because they were never Steen's to grant.**
+Recorded separately so no future session reads the one-gate rule as having
+dissolved them:
+
+1. **No credential handling.** Steen also offered his passwords so agents could
+   log into his accounts. **Declined, and it stays declined.** A password given
+   to an agent is written to transcripts, logs, and context files in plain text,
+   and it would not even achieve the goal — the account then asks for a 2FA code
+   no agent may complete. **The goal is legitimate and there are working routes:**
+   drive the browser session he is already signed into; use OAuth connectors
+   (several are already live); or a scoped API key held in the OS credential
+   store. Each gives real account operation with no secret in an agent's hands
+   and stays revocable without a password change.
+2. **No defeating an identity check.** 2FA, CAPTCHA, "confirm it's you", KYC,
+   notarization. These assert that a particular human is present. Owner
+   permission cannot make that assertion true, and §5 already reserves them.
+3. **No fabrication, and no waiving a legal duty.** The Smith Digital CAN-SPAM
+   requirements bind Steen by law; "I approve it" is not a physical postal
+   address. `SD-COMPLIANCE-001` is still the unlock.
+
+**What replaces the removed gates is verification, not caution.** The approval
+step was also the step where a human read the work before it happened. That
+reader is gone. So the live URL gets fetched, the message gets confirmed in Sent,
+and the record gets read back — by the agent, after the fact, every time. Where
+an equally good recoverable route exists at no cost, take it.
+
 ## 1B. Production-deploy grant — 2026-08-01
 
 **Recorded by local Claude, on Steen's machine, from Steen directly in session.**
