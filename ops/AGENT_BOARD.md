@@ -144,6 +144,72 @@ would have missed it — the same blind spot that hid SD-FORMS-004.*
 
 ---
 
+### OPS-META-RESTRICT-001 — Meta restricted Smith Digital's business account **for automation** 🔴
+**Status: OPEN · owner-only in practice · found 2026-08-02 12:15 UTC · the first concrete harm from agent activity**
+
+Meta emailed **2026-08-02 08:58 UTC**: *"We restricted your business — Smith
+Digital."* Business ID withheld here (public repo, `CHARTER.md` §9); it is in
+the mail.
+
+**Restricted:** cannot create or run ads · cannot use or share audiences.
+
+**Meta's stated reason, verbatim, and it is the whole point of this entry:**
+
+> *"It looks like this account was created or used with an **automation** that
+> doesn't follow our rules. This goes against our Advertising Standards on
+> Account Integrity."*
+
+**The timeline makes agent activity the leading explanation.** All same morning:
+
+| UTC | Event |
+|---|---|
+| 07:58:54 | An account was **removed** from the Accounts Center |
+| 08:01:40 | An account was **added** (a Smith Digital handle among them) |
+| **08:58:08** | **Business account restricted for automation** |
+| 08:59:00 | Login with a code, via Steen's Smith Digital number |
+| 08:59:20 | Login "near Albany on a new device," Chrome |
+
+Rapid programmatic-looking restructuring, then a restriction citing automation,
+inside an hour. **Not proven — Meta does not publish what tripped it, and the
+account was also being driven by hand around the same time.** But it is the
+explanation that fits, and pretending otherwise would waste the lesson.
+
+**The lesson, which is bigger than this account.** Every gate Steen removed was
+about *his* approval. **None of them govern what a third-party platform's
+automated defences will tolerate.** Meta, Google, Instagram and Facebook all
+run bot-detection that reacts to speed and pattern, not intent — and they act
+first and ask later. **An agent operating a platform account at machine speed
+can get that account restricted no matter how legitimate the work is.** That
+risk is not covered anywhere in `AUTHORIZATION.md`, and this is the first time
+it has actually cost something.
+
+**Recommended standing rule, for Steen to accept or reject:** on
+platform accounts with automated enforcement — Meta Business, Google Business
+Profile, ad accounts — agents work at **human pace**, one change at a time,
+and **never batch account-structure changes**. Slower than we can go, but the
+downside is losing the account, not losing an hour.
+
+**Why no agent should file the appeal, even though the one-gate rule now
+permits it.** There is a **"Request review"** button and it is Steen's to press:
+
+1. If automation caused this, **another automated action on the same account is
+   the worst possible next move.**
+2. An appeal is a **statement about how the account is used.** Only Steen knows
+   what he authorized, and only he can truthfully attest to it.
+3. Meta appeals commonly escalate to **identity verification** — a hard line no
+   permission can cross.
+
+**What Steen does:** open the Meta email, press **Request review**, and say
+plainly that it is a real local business he operates himself. **Do not run more
+automated activity on that account until the review resolves** — repeat
+triggers are what turn a restriction into a permanent ban.
+
+**Not urgent in the sense of a deadline, but do it before touching Meta
+again.** Ads are not currently running, so nothing is bleeding money; the risk
+is escalation, not loss.
+
+---
+
 ### OPS-NETLIFY-CREDITS-001 — Smith Digital's host is burning credits ~6× faster than the allowance 🟠
 **Status: OPEN · owner decision (it ends in a spend) · found 2026-08-02 06:10 UTC**
 

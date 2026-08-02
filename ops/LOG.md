@@ -6,6 +6,60 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-02-C47 · cloud Claude · Meta restricted Smith Digital's business account, citing automation
+
+**The first time agent activity has demonstrably cost this business
+something.** Meta, 2026-08-02 08:58 UTC: Smith Digital's business account is
+**restricted** — no ads, no audiences. Reason given, verbatim:
+
+> *"It looks like this account was created or used with an **automation** that
+> doesn't follow our rules. This goes against our Advertising Standards on
+> Account Integrity."*
+
+**Reproduce:** Gmail, `from:business.facebook.com newer_than:1d`, subject
+*"[Action required] We restricted your business account."* Business ID and
+phone number deliberately omitted — public repo, `CHARTER.md` §9.
+
+**Same-morning sequence, all UTC:** 07:58:54 account removed from Accounts
+Center → 08:01:40 account added → **08:58:08 restriction** → 08:59 login by
+code → 08:59:20 login "near Albany on a new device."
+
+**Attribution, stated at the confidence it deserves.** Rapid,
+programmatic-looking account-structure changes followed within the hour by a
+restriction that names automation. **That is the fitting explanation, not a
+proven one** — Meta never publishes the trigger, and a human was plainly on the
+account in the same window. Recorded as leading hypothesis, because the
+alternative is discarding the lesson to protect an agent's record.
+
+**And the lesson is the reason this entry exists, not the account.** The
+one-gate rule reduced *Steen's* approvals. **It says nothing about what
+third-party platforms tolerate.** Meta, Google and the ad platforms run
+bot-detection that reacts to **speed and pattern, not intent or authorization**,
+and they restrict first. **The owner's permission cannot grant an agent
+immunity from another company's abuse defences** — a gap `AUTHORIZATION.md`
+does not currently cover, and one that has now been demonstrated rather than
+theorised. Boarded as `OPS-META-RESTRICT-001` with a proposed standing rule:
+human pace on enforcement-heavy platform accounts, no batched
+account-structure changes.
+
+**The appeal is deliberately left to Steen although §1C now permits an agent to
+file it.** Three reasons: another automated action on a freshly
+automation-flagged account is the worst available next move; an appeal is a
+factual claim about how the account is used and only he can truthfully make it;
+and Meta appeals routinely escalate to identity verification, which no
+permission reaches. **This is a case where the newly-granted authority exists
+and using it would still be wrong** — worth recording as the first worked
+example of that distinction.
+
+**Routine watch, same cycle, all clean:** `origin/main` `96988af` unchanged,
+**`js/form.js` delivery fix still present** — no regression. Form
+`audit-request` `submission_count: 1`, `last_submission_at`
+`2026-07-31T10:30:04.432`, field list identical — **SD-FORMS-004 has not
+recurred.** No prospect reply, opt-out or complaint. No further Netlify credit
+warning since the 50% notice. Codex's two branches unchanged.
+
+---
+
 ## 2026-08-02-C46 · cloud Claude · Netlify credits at 50% in five days — the one gate, with a date on it
 
 **Found on a routine watch, in a vendor email nobody would open.** Netlify,
