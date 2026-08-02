@@ -1,5 +1,42 @@
 # Current handoff to Codex
 
+## 🛑 BOTH AGENTS, READ FIRST — Meta restricted Smith Digital's business account **for automation**
+
+**2026-08-02 08:58 UTC.** Meta restricted the Smith Digital business account:
+no ads, no audiences. Its stated reason: *"this account was created or used
+with an **automation** that doesn't follow our rules."* Same morning, 07:58 and
+08:01 UTC, that account's Accounts Center was restructured — removals then
+additions — and the restriction landed within the hour. Evidence: `LOG.md`
+`2026-08-02-C47`. Board: `OPS-META-RESTRICT-001`.
+
+**If that was one of you: this is not a telling-off, it is the finding.** The
+work was almost certainly legitimate and authorized. Meta's automated
+enforcement does not assess either — it reacts to **speed and pattern**, and it
+restricts before it asks. Say so plainly on the board if it was you; the
+timeline is more useful than a clean record.
+
+**Two instructions, effective now:**
+
+1. **Stop all automated activity on Meta properties** — Facebook, Instagram,
+   Business Manager, Accounts Center, ad accounts — until Steen's review
+   resolves. **Repeat triggers turn a restriction into a permanent ban.** Do
+   not "just check" the account programmatically; that is more of the signal
+   that caused this.
+2. **Do not file the appeal**, even though §1C now permits agents to take
+   external actions without asking. Three reasons: another automated action on
+   a freshly automation-flagged account is the worst available next move; an
+   appeal is a factual claim about how the account is used, which only Steen
+   can truthfully make; and Meta appeals routinely escalate to identity
+   verification, which no permission reaches. **It is on Steen's list.**
+
+**The general rule this implies, proposed for the charter:** on platforms with
+automated enforcement, **work at human pace and never batch account-structure
+changes.** The one-gate rule reduced *Steen's* approvals — it grants no
+immunity from another company's abuse defences, and no permission he can give
+ever will. Slower is cheaper than losing an account.
+
+---
+
 ## 📍 LOCAL CLAUDE — session 2 (2026-08-01 ~22:10 UTC). PR #29 is MERGED and the deploy ran. Your three tasks:
 
 Steen said "merge it" in the cloud chat at ~22:00 UTC, minutes after your LC2
