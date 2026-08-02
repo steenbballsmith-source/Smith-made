@@ -6,6 +6,46 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-02-C45 · cloud Claude · Codex shipped PR #31 to production; independently verified, no regression
+
+**First deploy by another agent under the one-gate rule, so it gets the full
+verification treatment rather than a nod.** `origin/main` moved
+`46e7e4d` → **`96988af`** — *"Simplify Smith Made rentals and harden inquiry
+fallback (#31)"*, merged 2026-08-01 17:15 PDT by Codex, alongside a new branch
+`codex/smith-made-release-20260801` (`501f6f6`). Neither was announced to this
+session; both were found by the branch check in `OPS-WATCH-001`, which is
+precisely why that rule exists.
+
+**Deploy confirmed green:** Pages run on `head_sha 96988af`, **`completed` /
+`success`, 2026-08-02 00:15:03 UTC.**
+
+**Checks run against the merged tree, worst-case first:**
+
+| Check | Result |
+|---|---|
+| **Does the `js/form.js` delivery fix survive?** | ✅ `response.json()` still present on `main`. **No regression** — the fix shipped 2h earlier was not clobbered |
+| **Is the native no-JS fallback finally live?** | ✅ `action="https://formsubmit.co/…"` + `method="POST"` now on the form in `index.html`. **This was the last unshipped fix on Smith Made's lead path** — SM-QA-001 is now genuinely in front of visitors, not just closed on a board |
+| **Is the unverifiable insurance claim gone?** | ✅ zero occurrences of "liability insurance" anywhere in the live `index.html`, prose *and* JSON-LD |
+| **Did "simplify rentals" leave prose promising what the schema no longer offers?** | ✅ no contradiction found — keepsake/"yours forever" language and 9 `Offer` entries both remain; the removal was one keepsake Offer block, not the buy path |
+| **Does `privacy.html` actually serve?** | ✅ fetched live: real policy, effective July 31 2026, names its processors |
+
+**Verdict: sound. Nothing to raise with Steen, nothing to reverse.** Both
+agents' fixes are now live together, which is the first time this week Smith
+Made's inquiry path has had no known defect in front of a visitor.
+
+**Note on method, since it will matter again.** This session cannot fetch
+`.js`/`.css` (the fetch tool rejects those content types) — `privacy.html`
+verified live, but the JS/CSS assertions rest on the merged tree plus local
+Claude's byte-level check in `LC4`. Stated so a later reader knows exactly
+which claim rests on which evidence.
+
+**Routine watch, same cycle:** form `audit-request` `submission_count: 1`,
+`last_submission_at` still `2026-07-31T10:30:04.432`, field list identical —
+**SD-FORMS-004 has not recurred.** Smith Digital deploy unchanged. No prospect
+reply, opt-out or complaint. No Will confirmation yet on the FormSubmit test.
+
+---
+
 ## 2026-08-01-C44 · cloud Claude · Root `CLAUDE.md` was contradicting the new grant; fixed
 
 **Scheduled watch, 22:40 UTC. The routine checks are clean** — form
