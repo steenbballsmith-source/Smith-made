@@ -10,7 +10,7 @@
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Ask the scene (if it booted) to re-measure section anchors after
-     anything that changes page height — filters, gallery, photo swaps. */
+     anything that changes page height — gallery updates or photo swaps. */
   function refreshScene() {
     if (typeof window.__smRefresh === "function") window.__smRefresh();
   }
@@ -186,27 +186,6 @@
       scrollToEl(document.getElementById("inquire"));
       var names = inquiryForm.querySelector("#f-names");
       if (names) names.focus({ preventScroll: true });
-    });
-  });
-
-  /* ---- Catalog filter chips ---------------------------------------------- */
-
-  var chips = document.querySelectorAll(".chip[data-filter]");
-  var catalogPieces = document.querySelectorAll(".piece[data-cats]");
-
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var filter = chip.getAttribute("data-filter");
-      chips.forEach(function (c) {
-        var active = c === chip;
-        c.classList.toggle("is-active", active);
-        c.setAttribute("aria-pressed", String(active));
-      });
-      catalogPieces.forEach(function (piece) {
-        piece.hidden = filter !== "all" &&
-          piece.getAttribute("data-cats").split(" ").indexOf(filter) === -1;
-      });
-      refreshScene();
     });
   });
 
