@@ -625,6 +625,53 @@ visit the site afterwards.
 
 ---
 
+> ## 🔴 RECURRED 2026-08-02 — and once is a fluke, twice is a mechanism
+>
+> **Second occurrence, caught 2026-08-02 23:30 UTC, eleven minutes after it
+> happened.** `last_submission_at` moved **`2026-07-31T10:30:04.432` →
+> `2026-08-02T23:19:04.396`** while `submission_count` stayed at **1**.
+>
+> **Verified, not assumed:** Gmail holds **no** notification for it — the only
+> Netlify mail in the last day is the credit warning. So this submission
+> produced no count, no list entry, and **no email.** Steen has no idea it
+> happened.
+>
+> **Claude still cannot read it.** The Netlify MCP toolset exposes
+> `get-project`, `get-projects`, `get-forms-for-project`, deploy/team/user/
+> extension readers — **and no submission-reading operation at all.** The
+> content is visible only in the dashboard's **Spam** tab. This is a hard
+> capability limit, not an oversight.
+>
+> **What the second occurrence changes.** One spam-queued submission is a bot
+> and unremarkable. **Two, three days apart, on a one-page site with no traffic
+> to speak of, is a pattern** — and it promotes the autofill hypothesis above
+> from "worth renaming when the file is next touched" to **the leading
+> explanation and an urgent fix.**
+>
+> **The mechanism, stated plainly:** the honeypot is named
+> `company-website-hp`. Browsers and password managers autofill on name
+> matching, and that string contains **two** tokens they actively look for —
+> `company` and `website`. **A real person with autofill enabled can have that
+> hidden field filled for them, trip the honeypot, and be silently classified
+> as spam.** They see a success message. Steen gets nothing. That is precisely
+> the class of silent failure this whole engagement has been about, and it
+> would be invisible from every angle except this timestamp comparison.
+>
+> **Timing note:** 23:19 UTC is **16:19 Sunday Pacific — before the Monday
+> calling starts.** So this came from the email cohort, organic search, or a
+> bot; it cannot be attributed to the calls.
+>
+> **Two actions, one each:**
+> - **Steen:** open the Spam tab and look. If it is a person, it is a live
+>   lead losing hours.
+> - **Codex / local Claude:** **rename the honeypot** to something autofill
+>   ignores (`hp-x9`, `zc-field`) in the Smith Digital `index.html` and
+>   redeploy. This was already queued as a low-priority tidy-up; the second
+>   occurrence makes it the fix. **Renaming does not recover past submissions**
+>   — only the Spam tab has those.
+
+---
+
 ### SD-COMPLIANCE-001 — Future outreach needs a compliant footer 🔴
 **Status: BLOCKED · Owner: STEEN + CODEX or local Claude · Found by Claude and verified by Codex 2026-07-30**
 

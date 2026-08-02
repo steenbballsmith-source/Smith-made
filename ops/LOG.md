@@ -6,6 +6,61 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-02-C48 · cloud Claude · SD-FORMS-004 recurred — a second silent submission, and now a mechanism
+
+**Caught eleven minutes after it happened, by the one check designed to catch
+it.** `last_submission_at` on form `audit-request` moved
+**`2026-07-31T10:30:04.432` → `2026-08-02T23:19:04.396`** while
+`submission_count` stayed at **1**.
+
+**This is the entire reason that comparison is in every wake prompt.** A count
+alone shows `1` and looks healthy. Two fields disagreeing is the only signal
+this failure emits.
+
+**Verified rather than assumed:** Gmail contains **no notification** for it —
+the sole Netlify mail in the past day is the 50%-credit warning. So the
+submission produced no count, no list entry, and no email. **Steen was told
+nothing by any system.**
+
+**Hard capability limit, stated so nobody re-attempts it.** The Netlify MCP
+toolset offers `get-project`, `get-projects`, `get-forms-for-project`, plus
+deploy, team, user and extension readers — **and no submission-reading
+operation whatsoever.** The content exists only in the dashboard's **Spam** tab.
+No agent can read it; only Steen can.
+
+**What the second occurrence actually changes, and this is the finding.** `C34`
+called the first one "most likely a bot, and probably good news," which was the
+right read of a single event. **Two, three days apart, on a one-page site with
+negligible traffic, is a pattern rather than a coincidence** — and it promotes
+the autofill hypothesis from a note about renaming a field "when the file is
+next touched" into **the leading explanation of a live defect.**
+
+**The mechanism.** The honeypot field is named **`company-website-hp`**.
+Browsers and password managers autofill by matching field names, and that
+string carries **two** tokens they actively target — `company` and `website`. A
+real visitor with autofill on can have the hidden field populated *for* them,
+trip the honeypot, and be silently filed as spam. **They see the success
+message. Steen receives nothing.** That is exactly the failure class this
+engagement has spent a week eliminating from `js/form.js`, reappearing one
+layer down in the spam classifier — and invisible from every angle except this
+timestamp comparison.
+
+**Attribution boundary:** 23:19 UTC is **16:19 Sunday Pacific, before Monday's
+calling begins.** This came from the email cohort, organic traffic, or a bot.
+It cannot be credited to the calls.
+
+**Two actions assigned:** Steen opens the Spam tab (only he can); Codex or
+local Claude renames the honeypot to a string autofill ignores and redeploys.
+**Renaming recovers nothing already queued** — that distinction matters, and is
+recorded so a later reader does not treat the rename as a recovery.
+
+**Routine watch, same cycle:** `origin/main` `96988af` unchanged with the
+`js/form.js` fix present — no regression. Branches unchanged. No further Meta
+enforcement mail, no further Netlify credit warning, no prospect reply or
+opt-out.
+
+---
+
 ## 2026-08-02-C47 · cloud Claude · Meta restricted Smith Digital's business account, citing automation
 
 **The first time agent activity has demonstrably cost this business

@@ -1,5 +1,41 @@
 # Current handoff to Codex
 
+## 🔴 DO THIS FIRST — rename the Smith Digital honeypot; it is probably eating real leads
+
+**2026-08-02 23:30 UTC.** `SD-FORMS-004` **recurred**: a second submission
+advanced `last_submission_at` (`2026-07-31T10:30:04.432` →
+`2026-08-02T23:19:04.396`) without incrementing `submission_count`, and with
+**no notification email**. Evidence: `LOG.md` `2026-08-02-C48`.
+
+**Twice in three days on a site with negligible traffic is a mechanism, not
+coincidence — and the mechanism is a field name.** The honeypot is
+**`company-website-hp`**. Browsers and password managers autofill by matching
+names, and that string contains **two** tokens they target: `company` and
+`website`. **A real visitor with autofill enabled gets the hidden field filled
+for them, trips the honeypot, and is silently classified as spam.** They see
+"success". Steen gets nothing.
+
+**The task, in the Smith Digital `index.html` on the Windows machine:**
+
+1. Rename the honeypot to something autofill has no reason to touch — `hp-x9`,
+   `zc-field`, anything meaningless. **Change it in both places**: the `name`
+   attribute on the input *and* the `netlify-honeypot="..."` attribute on the
+   `<form>`. They must match or the honeypot silently stops working entirely,
+   which is a worse failure than the one being fixed.
+2. Redeploy. Deploys no longer need a second confirmation (`AUTHORIZATION.md`
+   §1B) — **but the post-deploy verification in §1C is mandatory**: fetch the
+   live page, confirm the new field name is serving, and log the evidence.
+3. Note on the board that Netlify **re-registers form fields on deploy**, so
+   the field list will change — that is expected here, not a new deploy
+   fingerprint to investigate.
+
+**What this does NOT do: recover anything already queued.** Past silent
+submissions exist only in the dashboard's **Spam** tab, and only Steen can read
+them — the Netlify MCP toolset has **no submission-reading operation at all**.
+Do not tell him the rename recovers them.
+
+---
+
 ## 🛑 BOTH AGENTS, READ FIRST — Meta restricted Smith Digital's business account **for automation**
 
 **2026-08-02 08:58 UTC.** Meta restricted the Smith Digital business account:
