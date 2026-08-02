@@ -6,6 +6,57 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-02-C46 · cloud Claude · Netlify credits at 50% in five days — the one gate, with a date on it
+
+**Found on a routine watch, in a vendor email nobody would open.** Netlify,
+2026-08-02 01:38 UTC: **150 of 300 credits used** on the **Free** plan, cycle
+**July 28 → Aug 27**. Confirmed against the API: `type_name: "Free"`, team
+`6a4093e76cc1023010d88231`.
+
+**Five days into thirty, half gone — ~30 credits/day against a budget of 10.**
+Straight-line exhaustion lands about **Aug 7**, with roughly twenty days of the
+cycle left to run.
+
+**Two reasons it was worth interrupting a quiet Sunday watch for.**
+
+1. **It is the one thing still gated.** The remedy Netlify offers is a paid
+   upgrade, and spending is the sole surviving approval gate under §1C. So this
+   is prepared and handed over, never actioned.
+2. **`audit-request` is a Netlify Form, and form submissions are a credited
+   service.** Exhaustion could stop the Smith Digital lead path capturing
+   inquiries — **silently**, which is precisely the failure class `SD-FORMS-004`
+   and `SM-FORM-001` were about. Fixing a form all week and then letting the
+   host quietly switch it off would be a poor way to end.
+
+**The disproportion is the real finding, and no cause is asserted.** That
+deploy is **one file**, no functions, no redirects, one form submission all
+week. A site that shape should cost almost nothing. 150 credits in five days
+does not match it, so something unidentified is consuming them — bot traffic
+against the domain and misconfiguration are both worth ruling out. **The
+management API does not expose the credit breakdown**; only
+`app.netlify.com/teams/steenbballsmith/billing/general` does. Guessing was
+declined; the question was handed to the one person who can see the answer.
+
+**Self-check, recorded rather than assumed away.** This session has polled that
+project every 2–4 hours for two days. Netlify credits builds, bandwidth,
+functions and form submissions — management-API reads are not normally
+credited, so the watch is unlikely to be the cause. **Watch cadence reduced
+anyway**, since nothing is lost by being careful about someone else's bill.
+
+**Routine watch, same cycle, all clean:** `origin/main` `96988af` unchanged and
+**the `js/form.js` delivery fix still present** — no regression from PR #31.
+Form `audit-request` `submission_count: 1`, `last_submission_at`
+`2026-07-31T10:30:04.432`, field list identical — **SD-FORMS-004 has not
+recurred.** No prospect reply, opt-out or complaint. Codex's two branches
+unchanged.
+
+**Noted, not raised:** Steen emailed Will at 00:32 UTC about the live site
+update. **It does not appear to ask Will to check for the FormSubmit test
+message**, so `SM-FORM-001`'s last step is still open and still worth one
+reminder Monday.
+
+---
+
 ## 2026-08-02-C45 · cloud Claude · Codex shipped PR #31 to production; independently verified, no regression
 
 **First deploy by another agent under the one-gate rule, so it gets the full

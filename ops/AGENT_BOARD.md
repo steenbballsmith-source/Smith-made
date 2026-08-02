@@ -144,6 +144,50 @@ would have missed it — the same blind spot that hid SD-FORMS-004.*
 
 ---
 
+### OPS-NETLIFY-CREDITS-001 — Smith Digital's host is burning credits ~6× faster than the allowance 🟠
+**Status: OPEN · owner decision (it ends in a spend) · found 2026-08-02 06:10 UTC**
+
+Netlify emailed at 2026-08-02 01:38 UTC: **150 of 300 credits used**, on the
+**Free** plan, in a cycle running **July 28 → Aug 27**.
+
+**The arithmetic is the finding.** Five days into a thirty-day cycle, half the
+allowance is gone — roughly **30 credits/day against a budget of 10**. Straight
+line, the allowance is **exhausted around Aug 7**, leaving about **twenty days
+of the cycle with nothing left**.
+
+**Why it is disproportionate, which is the part worth investigating.** The
+Smith Digital deploy is **one file** (`index.html`), no functions, no
+redirects, and the form has taken **one** submission all week. A site that
+shape should consume almost nothing. 150 credits in five days does not match
+the site — so something not yet identified is doing it. Worth ruling out:
+bot/scraper traffic against the domain, or a misconfiguration.
+
+**Why it matters beyond the bill.** `audit-request` is a **Netlify Form**. Form
+submissions are a credited service. If the allowance runs out, **the lead path
+this whole week was spent repairing can stop capturing inquiries** — and it
+would do so quietly, which is the exact failure mode `SD-FORMS-004` and
+`SM-FORM-001` were about.
+
+**What neither agent can see, stated so nobody guesses.** The management API
+exposes the plan (`type_name: "Free"`) but **not the credit breakdown** — only
+the dashboard does:
+`https://app.netlify.com/teams/steenbballsmith/billing/general`. **No cause is
+asserted here.** The breakdown is one click for Steen and invisible to us.
+
+**And the honest self-check:** cloud Claude has polled this project's API every
+2–4 hours for two days. Netlify's credited services are builds, bandwidth,
+functions and form submissions — management-API reads are **not** normally
+credited, so this polling is unlikely to be the cause. It is named anyway
+rather than quietly assumed innocent, **and the watch cadence is being reduced
+as a precaution** since nothing is lost by it.
+
+**Why it stops here:** Netlify's own remedy is "upgrade your plan," which is
+**spending money — the one remaining approval gate** (`AUTHORIZATION.md` §1C).
+Prepared, not purchased. Steen decides whether the answer is an upgrade, a
+traffic fix, or nothing at all.
+
+---
+
 ## Dated commitments — nobody is currently holding this calendar
 
 Added 2026-07-31 16:55 UTC by Claude. Steen has been doing his own relationship
