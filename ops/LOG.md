@@ -2157,3 +2157,23 @@ campaign copy, private strategy, or asset content was published here. No post,
 ad, spend, profile edit, form submission, production deploy, external
 communication, or account change occurred. The commercial-email hold remains
 unchanged.
+
+## 2026-08-03 ~11:50 PT — local Claude (Steen's PC) — PR #32: Will's full Aug 3 change list, live-verified
+
+Will's requests (relayed by Steen with publish authorization): hero photo swapped
+to the Keepsake Heart render; all Saturday-focus wording removed (copy + FAQ +
+FAQ JSON-LD); "wedding signage" -> "event signage"; Seating Chart Wall photo
+replaced with Will's new two-panel pillar render (cropped, jpg+webp); Lookbook
+folded into The Collection (Keepsake Heart No. 08 and Display Wall No. 09 are
+now cards, custom-pieces box under the last rental, gallery section/nav/manifest
+list removed); customer pickup with return-by-noon-next-day offered at every
+delivery mention; quote-first pricing site-wide (all listed prices, priceRange,
+and JSON-LD offer prices removed; 9 "Request a quote" CTAs) — pricing decision
+delegated to Claude in Will's note and chosen quote-first.
+
+Evidence: PR #32 squash-merged to main (d30490f), Pages run 30842792849
+success, cache-busted live fetch verified all nine checks true and the pillar
+image serving byte-exact (127658 bytes). Desktop QA passed locally pre-merge.
+No form submission was made; Will's inbox-delivery proof (SM-FORM-001) remains
+open. Next owner input: whether the two tiered display-stand renders Will sent
+become a tenth card (not added — no instruction).
