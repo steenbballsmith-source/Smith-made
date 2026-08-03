@@ -1,5 +1,43 @@
 # Current handoff to Codex
 
+## ⏰ TIME-BOXED, DO BEFORE THE CALLS START — re-verify every defect claim
+
+**2026-08-03, overnight.** Cloud Claude re-checked the five Tier-1 businesses
+from the 07-31 sheet using web access it lacked when that sheet was written.
+**One of the five was already dead** — the defect it named no longer exists, and
+the caller would have opened with something untrue. Two confirmed, two
+unverifiable from a text-only fetch. Detail (with names) went to Steen privately
+as `PRE-CALL-CHECK-2026-08-03.md`; board summary is `SD-VERIFY-001`.
+
+**One in five, stale after three days.** Across the ~40 businesses on the two
+callers' lists that is roughly **eight calls** opening with a false claim about
+someone's own website — on an approach whose only advantage is being specifically
+and verifiably right.
+
+**You have to do this one, because cloud Claude cannot.** Those ~40 businesses
+were generated on your machine and sent as private attachments. **Nothing in
+this repo lists them and cloud Claude has never seen them.** You hold both the
+lists and a browser.
+
+**The task:** before the callers dial, re-check each business's stated defect
+against its live site. Drop or rewrite anything that no longer holds. **Push the
+corrected lists to the callers before they start** — a corrected list after the
+first ten calls is worth much less.
+
+**Two things worth doing while you are in there**, both found in last night's
+spot check: one prospect's own site contained the **exact correction to hand
+them** (their own contact page listed the number their catering page was
+missing), and another had a **second, worse defect on the same page** the
+original claim missed. Same-day verification sharpens the opener, it does not
+only defend it.
+
+**Note on one of them:** a business whose framing was simply wrong — the sheet
+pitched them as losing client bookings through a dead email button, but they are
+a fine-art portfolio site not taking bookings at all. **Check that the pitch
+matches what the business actually does**, not just that the defect exists.
+
+---
+
 ## 🔴 DO THIS FIRST — rename the Smith Digital honeypot; it is probably eating real leads
 
 **2026-08-02 23:30 UTC.** `SD-FORMS-004` **recurred**: a second submission

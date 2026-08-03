@@ -6,6 +6,62 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-03-C49 · cloud Claude · Re-verified the call sheet before anyone dialled — 1 in 5 was already dead
+
+**Done overnight at Steen's invitation, chosen because it expires at sunrise.**
+Three people begin calling ~50 businesses today, each opening with a specific
+claim about that business's own website. Those claims were written 07-31, **when
+this session had no web access at all** and could only quote Steen's sent mail.
+Web access arrived 08-01. This was the first chance to check them, and the last
+useful moment to do it.
+
+**Method:** live fetch and search against each business's own site, five Tier-1
+entries from the sheet Claude itself wrote. **Prospect names, numbers and
+findings are deliberately absent from this repo** (`CHARTER.md` §9) — they went
+to Steen as `PRE-CALL-CHECK-2026-08-03.md`.
+
+| Outcome | Count |
+|---|---|
+| Confirmed still broken — safe to call | **2** |
+| **Defect GONE — opener would have failed live** | **1** |
+| Unverifiable from a text-only fetch | **2** |
+
+**The one that mattered.** A prospect's claimed defect — a stray placeholder
+site indexed by Google — **no longer appears in search at all**, and their real
+site is now clean, current and correctly contactable. A caller leading with that
+line would have been contradicted in the first sentence. **That call was going
+to be made this morning.**
+
+**Why this became a standing task (`SD-VERIFY-001`) rather than a one-off
+check.** The outreach works *because* it tells an owner something true and
+specific about their own property. That is also exactly what makes it fragile:
+**a stale claim does not merely fail to land — it destroys the credibility the
+entire method depends on.** One in five dead after three days, extrapolated
+across ~40 businesses, is about eight calls opening with something untrue.
+
+**Verification also improved two claims, which was not the expectation.** One
+prospect's own contact page carried **the exact correction to hand them** (the
+number their catering page omits), turning "here is a problem" into "here is the
+answer" — a materially better call. Another had a **second, worse defect on the
+same page** the original claim had missed.
+
+**And one claim was wrong at a level verification alone would not catch:** the
+business was pitched as losing client enquiries through a dead email button, but
+it is a **fine-art portfolio site not taking bookings**. The defect may well be
+real; the *pitch* misreads the business. Recorded because "is the defect still
+true" and "does the pitch fit this business" are two different checks, and only
+the first was in the process.
+
+**Handed to Codex, and only Codex can do it.** The ~40 businesses on the two
+callers' lists were generated on the Windows machine and sent as private
+attachments — **nothing in this repo names them and cloud Claude has never seen
+one.** Codex holds the lists and a browser. Asked to re-verify before the
+callers dial and push corrected lists *before* they start.
+
+**No prospect was contacted.** Reads only.
+
+---
+
 ## 2026-08-02-C48 · cloud Claude · SD-FORMS-004 recurred — a second silent submission, and now a mechanism
 
 **Caught eleven minutes after it happened, by the one check designed to catch

@@ -144,6 +144,42 @@ would have missed it — the same blind spot that hid SD-FORMS-004.*
 
 ---
 
+### SD-VERIFY-001 — Defect claims go stale; verify same-day before every call 🟠
+**Status: OPEN standing practice · 1 in 5 spot-checked claims was already dead · 2026-08-03**
+
+Cloud Claude re-checked the **five Tier-1 businesses** from the 07-31 call
+sheet, using web access it did not have when that sheet was written. Prospect
+names and findings are **not recorded here** — public repo, `CHARTER.md` §9 —
+they went to Steen directly as `PRE-CALL-CHECK-2026-08-03.md`.
+
+**Result: 2 confirmed still broken · 1 GONE (opener would have failed on the
+call) · 2 unverifiable from here.**
+
+**Why this is a standing task and not a one-off.** The entire outreach approach
+rests on telling an owner something **true and specific about their own site.**
+That is also its fragility: **a stale claim doesn't merely fail, it destroys
+the credibility the whole method runs on.** Opening with "your contact page is
+broken" about a page that works loses the prospect in one sentence, and there
+is no second first sentence.
+
+**The rate matters.** One in five was already dead after **three days**. Across
+~40 businesses on the two callers' lists, that is roughly **eight** calls
+opening with something untrue.
+
+**The assignment — Codex.** The ~40 businesses on the two callers' lists were
+generated on the Windows machine and sent as private attachments; **cloud
+Claude has never seen them and cannot check them.** Codex has both the lists
+and a browser. **Re-verify each business's stated defect the morning of the
+call**, and drop or rewrite any that no longer holds. A three-day-old check is
+not a check.
+
+**Also found while verifying: two claims were *improvable*, not just
+verifiable** — one prospect's own site contained the exact correction to hand
+them, and another had a second, worse defect on the same page. Same-day
+verification is not only defensive; it sharpens the opener.
+
+---
+
 ### OPS-META-RESTRICT-001 — Meta restricted Smith Digital's business account **for automation** 🔴
 **Status: OPEN · owner-only in practice · found 2026-08-02 12:15 UTC · the first concrete harm from agent activity**
 
