@@ -1,5 +1,155 @@
 # Current handoff to Codex
 
+## ⏰ TIME-BOXED, DO BEFORE THE CALLS START — re-verify every defect claim
+
+**2026-08-03, overnight.** Cloud Claude re-checked the five Tier-1 businesses
+from the 07-31 sheet using web access it lacked when that sheet was written.
+**One of the five was already dead** — the defect it named no longer exists, and
+the caller would have opened with something untrue. Two confirmed, two
+unverifiable from a text-only fetch. Detail (with names) went to Steen privately
+as `PRE-CALL-CHECK-2026-08-03.md`; board summary is `SD-VERIFY-001`.
+
+**One in five, stale after three days.** Across the ~40 businesses on the two
+callers' lists that is roughly **eight calls** opening with a false claim about
+someone's own website — on an approach whose only advantage is being specifically
+and verifiably right.
+
+**You have to do this one, because cloud Claude cannot.** Those ~40 businesses
+were generated on your machine and sent as private attachments. **Nothing in
+this repo lists them and cloud Claude has never seen them.** You hold both the
+lists and a browser.
+
+**The task:** before the callers dial, re-check each business's stated defect
+against its live site. Drop or rewrite anything that no longer holds. **Push the
+corrected lists to the callers before they start** — a corrected list after the
+first ten calls is worth much less.
+
+**Two things worth doing while you are in there**, both found in last night's
+spot check: one prospect's own site contained the **exact correction to hand
+them** (their own contact page listed the number their catering page was
+missing), and another had a **second, worse defect on the same page** the
+original claim missed. Same-day verification sharpens the opener, it does not
+only defend it.
+
+**Note on one of them:** a business whose framing was simply wrong — the sheet
+pitched them as losing client bookings through a dead email button, but they are
+a fine-art portfolio site not taking bookings at all. **Check that the pitch
+matches what the business actually does**, not just that the defect exists.
+
+---
+
+## 🔴 DO THIS FIRST — rename the Smith Digital honeypot; it is probably eating real leads
+
+**2026-08-02 23:30 UTC.** `SD-FORMS-004` **recurred**: a second submission
+advanced `last_submission_at` (`2026-07-31T10:30:04.432` →
+`2026-08-02T23:19:04.396`) without incrementing `submission_count`, and with
+**no notification email**. Evidence: `LOG.md` `2026-08-02-C48`.
+
+**Twice in three days on a site with negligible traffic is a mechanism, not
+coincidence — and the mechanism is a field name.** The honeypot is
+**`company-website-hp`**. Browsers and password managers autofill by matching
+names, and that string contains **two** tokens they target: `company` and
+`website`. **A real visitor with autofill enabled gets the hidden field filled
+for them, trips the honeypot, and is silently classified as spam.** They see
+"success". Steen gets nothing.
+
+**The task, in the Smith Digital `index.html` on the Windows machine:**
+
+1. Rename the honeypot to something autofill has no reason to touch — `hp-x9`,
+   `zc-field`, anything meaningless. **Change it in both places**: the `name`
+   attribute on the input *and* the `netlify-honeypot="..."` attribute on the
+   `<form>`. They must match or the honeypot silently stops working entirely,
+   which is a worse failure than the one being fixed.
+2. Redeploy. Deploys no longer need a second confirmation (`AUTHORIZATION.md`
+   §1B) — **but the post-deploy verification in §1C is mandatory**: fetch the
+   live page, confirm the new field name is serving, and log the evidence.
+3. Note on the board that Netlify **re-registers form fields on deploy**, so
+   the field list will change — that is expected here, not a new deploy
+   fingerprint to investigate.
+
+**What this does NOT do: recover anything already queued.** Past silent
+submissions exist only in the dashboard's **Spam** tab, and only Steen can read
+them — the Netlify MCP toolset has **no submission-reading operation at all**.
+Do not tell him the rename recovers them.
+
+---
+
+## 🛑 BOTH AGENTS, READ FIRST — Meta restricted Smith Digital's business account **for automation**
+
+**2026-08-02 08:58 UTC.** Meta restricted the Smith Digital business account:
+no ads, no audiences. Its stated reason: *"this account was created or used
+with an **automation** that doesn't follow our rules."* Same morning, 07:58 and
+08:01 UTC, that account's Accounts Center was restructured — removals then
+additions — and the restriction landed within the hour. Evidence: `LOG.md`
+`2026-08-02-C47`. Board: `OPS-META-RESTRICT-001`.
+
+**If that was one of you: this is not a telling-off, it is the finding.** The
+work was almost certainly legitimate and authorized. Meta's automated
+enforcement does not assess either — it reacts to **speed and pattern**, and it
+restricts before it asks. Say so plainly on the board if it was you; the
+timeline is more useful than a clean record.
+
+**Two instructions, effective now:**
+
+1. **Stop all automated activity on Meta properties** — Facebook, Instagram,
+   Business Manager, Accounts Center, ad accounts — until Steen's review
+   resolves. **Repeat triggers turn a restriction into a permanent ban.** Do
+   not "just check" the account programmatically; that is more of the signal
+   that caused this.
+2. **Do not file the appeal**, even though §1C now permits agents to take
+   external actions without asking. Three reasons: another automated action on
+   a freshly automation-flagged account is the worst available next move; an
+   appeal is a factual claim about how the account is used, which only Steen
+   can truthfully make; and Meta appeals routinely escalate to identity
+   verification, which no permission reaches. **It is on Steen's list.**
+
+**The general rule this implies, proposed for the charter:** on platforms with
+automated enforcement, **work at human pace and never batch account-structure
+changes.** The one-gate rule reduced *Steen's* approvals — it grants no
+immunity from another company's abuse defences, and no permission he can give
+ever will. Slower is cheaper than losing an account.
+
+---
+
+## 📍 LOCAL CLAUDE — session 2 (2026-08-01 ~22:10 UTC). PR #29 is MERGED and the deploy ran. Your three tasks:
+
+Steen said "merge it" in the cloud chat at ~22:00 UTC, minutes after your LC2
+entry recorded his deploy-gate change — the two authorizations agree. Cloud
+Claude merged PR #29 (merge commit `46e7e4d`) and the Pages workflow
+**"Deploy site to GitHub Pages" completed `success` at 22:04:13 UTC** on that
+exact sha. The patched `js/form.js` and the `.nav-links .nav-cta` contrast fix
+should now be serving. Your tasks, in order:
+
+**1. The mandatory post-deploy check — your own LC2 entry is the one that made
+it mandatory.** Fetch `https://smithmadesc.com/js/form.js` with a cache-buster
+(`?v=` + anything) and confirm the live bytes contain `response.json()` and
+`Non-JSON response — activation or verification page`, and that success is no
+longer decided by `response.ok` alone. Also confirm
+`https://smithmadesc.com/css/styles.css` contains `.nav-links .nav-cta`. If
+either is stale, wait out the CDN (~10 min) and re-fetch before concluding
+anything. Record the verdict on the board under `SM-FORM-001` with the bytes or
+a grep as evidence. **If the live file is wrong, say so loudly — do not fix
+silently.**
+
+**2. Sync the private ops brain, and leave Codex one note.** Update
+`C:\Users\SJ\.claude\ops\` (private board) with today's state: PR #29 merged
+and live; SM-FORM-001 resolved-pending-Will's-inbox-confirmation; the deploy
+gate change (your LC2); OPS-DOMAIN-001 unchanged, deadline **Aug 13**;
+OPS-BILLING-001 open; OPS-CALLERS-001 — three callers, assignment de-duped,
+**outcomes still don't flow back**. The note for Codex: its
+`codex/site-qa-resilience` branch is now the **only unshipped fix** on Smith
+Made's lead path (native fallback + privacy page). It doesn't touch
+`js/form.js`, so rebasing on new `main` should be clean. Codex decides how it
+ships; a deploy Steen directs no longer needs a second confirmation per §1B.
+
+**3. Push your results** — board addendum + anything you changed, commit, push
+to `claude/codex-team-coordination-shomkq`. Cloud Claude's watcher confirms
+receipt. Nothing beyond these three: the other four gates (money, credentials,
+deletion, external comms) are untouched, and no deploy happens that Steen
+didn't start.
+
+---
+
 ## ✅ LOCAL CLAUDE'S FIRST SESSION IS DONE — both tasks executed 2026-08-01 14:52 PDT
 
 Written from the Windows PC by local Claude. Steen's login is complete (his own

@@ -6,6 +6,442 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-08-03-C49 · cloud Claude · Re-verified the call sheet before anyone dialled — 1 in 5 was already dead
+
+**Done overnight at Steen's invitation, chosen because it expires at sunrise.**
+Three people begin calling ~50 businesses today, each opening with a specific
+claim about that business's own website. Those claims were written 07-31, **when
+this session had no web access at all** and could only quote Steen's sent mail.
+Web access arrived 08-01. This was the first chance to check them, and the last
+useful moment to do it.
+
+**Method:** live fetch and search against each business's own site, five Tier-1
+entries from the sheet Claude itself wrote. **Prospect names, numbers and
+findings are deliberately absent from this repo** (`CHARTER.md` §9) — they went
+to Steen as `PRE-CALL-CHECK-2026-08-03.md`.
+
+| Outcome | Count |
+|---|---|
+| Confirmed still broken — safe to call | **2** |
+| **Defect GONE — opener would have failed live** | **1** |
+| Unverifiable from a text-only fetch | **2** |
+
+**The one that mattered.** A prospect's claimed defect — a stray placeholder
+site indexed by Google — **no longer appears in search at all**, and their real
+site is now clean, current and correctly contactable. A caller leading with that
+line would have been contradicted in the first sentence. **That call was going
+to be made this morning.**
+
+**Why this became a standing task (`SD-VERIFY-001`) rather than a one-off
+check.** The outreach works *because* it tells an owner something true and
+specific about their own property. That is also exactly what makes it fragile:
+**a stale claim does not merely fail to land — it destroys the credibility the
+entire method depends on.** One in five dead after three days, extrapolated
+across ~40 businesses, is about eight calls opening with something untrue.
+
+**Verification also improved two claims, which was not the expectation.** One
+prospect's own contact page carried **the exact correction to hand them** (the
+number their catering page omits), turning "here is a problem" into "here is the
+answer" — a materially better call. Another had a **second, worse defect on the
+same page** the original claim had missed.
+
+**And one claim was wrong at a level verification alone would not catch:** the
+business was pitched as losing client enquiries through a dead email button, but
+it is a **fine-art portfolio site not taking bookings**. The defect may well be
+real; the *pitch* misreads the business. Recorded because "is the defect still
+true" and "does the pitch fit this business" are two different checks, and only
+the first was in the process.
+
+**Handed to Codex, and only Codex can do it.** The ~40 businesses on the two
+callers' lists were generated on the Windows machine and sent as private
+attachments — **nothing in this repo names them and cloud Claude has never seen
+one.** Codex holds the lists and a browser. Asked to re-verify before the
+callers dial and push corrected lists *before* they start.
+
+**No prospect was contacted.** Reads only.
+
+---
+
+## 2026-08-02-C48 · cloud Claude · SD-FORMS-004 recurred — a second silent submission, and now a mechanism
+
+**Caught eleven minutes after it happened, by the one check designed to catch
+it.** `last_submission_at` on form `audit-request` moved
+**`2026-07-31T10:30:04.432` → `2026-08-02T23:19:04.396`** while
+`submission_count` stayed at **1**.
+
+**This is the entire reason that comparison is in every wake prompt.** A count
+alone shows `1` and looks healthy. Two fields disagreeing is the only signal
+this failure emits.
+
+**Verified rather than assumed:** Gmail contains **no notification** for it —
+the sole Netlify mail in the past day is the 50%-credit warning. So the
+submission produced no count, no list entry, and no email. **Steen was told
+nothing by any system.**
+
+**Hard capability limit, stated so nobody re-attempts it.** The Netlify MCP
+toolset offers `get-project`, `get-projects`, `get-forms-for-project`, plus
+deploy, team, user and extension readers — **and no submission-reading
+operation whatsoever.** The content exists only in the dashboard's **Spam** tab.
+No agent can read it; only Steen can.
+
+**What the second occurrence actually changes, and this is the finding.** `C34`
+called the first one "most likely a bot, and probably good news," which was the
+right read of a single event. **Two, three days apart, on a one-page site with
+negligible traffic, is a pattern rather than a coincidence** — and it promotes
+the autofill hypothesis from a note about renaming a field "when the file is
+next touched" into **the leading explanation of a live defect.**
+
+**The mechanism.** The honeypot field is named **`company-website-hp`**.
+Browsers and password managers autofill by matching field names, and that
+string carries **two** tokens they actively target — `company` and `website`. A
+real visitor with autofill on can have the hidden field populated *for* them,
+trip the honeypot, and be silently filed as spam. **They see the success
+message. Steen receives nothing.** That is exactly the failure class this
+engagement has spent a week eliminating from `js/form.js`, reappearing one
+layer down in the spam classifier — and invisible from every angle except this
+timestamp comparison.
+
+**Attribution boundary:** 23:19 UTC is **16:19 Sunday Pacific, before Monday's
+calling begins.** This came from the email cohort, organic traffic, or a bot.
+It cannot be credited to the calls.
+
+**Two actions assigned:** Steen opens the Spam tab (only he can); Codex or
+local Claude renames the honeypot to a string autofill ignores and redeploys.
+**Renaming recovers nothing already queued** — that distinction matters, and is
+recorded so a later reader does not treat the rename as a recovery.
+
+**Routine watch, same cycle:** `origin/main` `96988af` unchanged with the
+`js/form.js` fix present — no regression. Branches unchanged. No further Meta
+enforcement mail, no further Netlify credit warning, no prospect reply or
+opt-out.
+
+---
+
+## 2026-08-02-C47 · cloud Claude · Meta restricted Smith Digital's business account, citing automation
+
+**The first time agent activity has demonstrably cost this business
+something.** Meta, 2026-08-02 08:58 UTC: Smith Digital's business account is
+**restricted** — no ads, no audiences. Reason given, verbatim:
+
+> *"It looks like this account was created or used with an **automation** that
+> doesn't follow our rules. This goes against our Advertising Standards on
+> Account Integrity."*
+
+**Reproduce:** Gmail, `from:business.facebook.com newer_than:1d`, subject
+*"[Action required] We restricted your business account."* Business ID and
+phone number deliberately omitted — public repo, `CHARTER.md` §9.
+
+**Same-morning sequence, all UTC:** 07:58:54 account removed from Accounts
+Center → 08:01:40 account added → **08:58:08 restriction** → 08:59 login by
+code → 08:59:20 login "near Albany on a new device."
+
+**Attribution, stated at the confidence it deserves.** Rapid,
+programmatic-looking account-structure changes followed within the hour by a
+restriction that names automation. **That is the fitting explanation, not a
+proven one** — Meta never publishes the trigger, and a human was plainly on the
+account in the same window. Recorded as leading hypothesis, because the
+alternative is discarding the lesson to protect an agent's record.
+
+**And the lesson is the reason this entry exists, not the account.** The
+one-gate rule reduced *Steen's* approvals. **It says nothing about what
+third-party platforms tolerate.** Meta, Google and the ad platforms run
+bot-detection that reacts to **speed and pattern, not intent or authorization**,
+and they restrict first. **The owner's permission cannot grant an agent
+immunity from another company's abuse defences** — a gap `AUTHORIZATION.md`
+does not currently cover, and one that has now been demonstrated rather than
+theorised. Boarded as `OPS-META-RESTRICT-001` with a proposed standing rule:
+human pace on enforcement-heavy platform accounts, no batched
+account-structure changes.
+
+**The appeal is deliberately left to Steen although §1C now permits an agent to
+file it.** Three reasons: another automated action on a freshly
+automation-flagged account is the worst available next move; an appeal is a
+factual claim about how the account is used and only he can truthfully make it;
+and Meta appeals routinely escalate to identity verification, which no
+permission reaches. **This is a case where the newly-granted authority exists
+and using it would still be wrong** — worth recording as the first worked
+example of that distinction.
+
+**Routine watch, same cycle, all clean:** `origin/main` `96988af` unchanged,
+**`js/form.js` delivery fix still present** — no regression. Form
+`audit-request` `submission_count: 1`, `last_submission_at`
+`2026-07-31T10:30:04.432`, field list identical — **SD-FORMS-004 has not
+recurred.** No prospect reply, opt-out or complaint. No further Netlify credit
+warning since the 50% notice. Codex's two branches unchanged.
+
+---
+
+## 2026-08-02-C46 · cloud Claude · Netlify credits at 50% in five days — the one gate, with a date on it
+
+**Found on a routine watch, in a vendor email nobody would open.** Netlify,
+2026-08-02 01:38 UTC: **150 of 300 credits used** on the **Free** plan, cycle
+**July 28 → Aug 27**. Confirmed against the API: `type_name: "Free"`, team
+`6a4093e76cc1023010d88231`.
+
+**Five days into thirty, half gone — ~30 credits/day against a budget of 10.**
+Straight-line exhaustion lands about **Aug 7**, with roughly twenty days of the
+cycle left to run.
+
+**Two reasons it was worth interrupting a quiet Sunday watch for.**
+
+1. **It is the one thing still gated.** The remedy Netlify offers is a paid
+   upgrade, and spending is the sole surviving approval gate under §1C. So this
+   is prepared and handed over, never actioned.
+2. **`audit-request` is a Netlify Form, and form submissions are a credited
+   service.** Exhaustion could stop the Smith Digital lead path capturing
+   inquiries — **silently**, which is precisely the failure class `SD-FORMS-004`
+   and `SM-FORM-001` were about. Fixing a form all week and then letting the
+   host quietly switch it off would be a poor way to end.
+
+**The disproportion is the real finding, and no cause is asserted.** That
+deploy is **one file**, no functions, no redirects, one form submission all
+week. A site that shape should cost almost nothing. 150 credits in five days
+does not match it, so something unidentified is consuming them — bot traffic
+against the domain and misconfiguration are both worth ruling out. **The
+management API does not expose the credit breakdown**; only
+`app.netlify.com/teams/steenbballsmith/billing/general` does. Guessing was
+declined; the question was handed to the one person who can see the answer.
+
+**Self-check, recorded rather than assumed away.** This session has polled that
+project every 2–4 hours for two days. Netlify credits builds, bandwidth,
+functions and form submissions — management-API reads are not normally
+credited, so the watch is unlikely to be the cause. **Watch cadence reduced
+anyway**, since nothing is lost by being careful about someone else's bill.
+
+**Routine watch, same cycle, all clean:** `origin/main` `96988af` unchanged and
+**the `js/form.js` delivery fix still present** — no regression from PR #31.
+Form `audit-request` `submission_count: 1`, `last_submission_at`
+`2026-07-31T10:30:04.432`, field list identical — **SD-FORMS-004 has not
+recurred.** No prospect reply, opt-out or complaint. Codex's two branches
+unchanged.
+
+**Noted, not raised:** Steen emailed Will at 00:32 UTC about the live site
+update. **It does not appear to ask Will to check for the FormSubmit test
+message**, so `SM-FORM-001`'s last step is still open and still worth one
+reminder Monday.
+
+---
+
+## 2026-08-02-C45 · cloud Claude · Codex shipped PR #31 to production; independently verified, no regression
+
+**First deploy by another agent under the one-gate rule, so it gets the full
+verification treatment rather than a nod.** `origin/main` moved
+`46e7e4d` → **`96988af`** — *"Simplify Smith Made rentals and harden inquiry
+fallback (#31)"*, merged 2026-08-01 17:15 PDT by Codex, alongside a new branch
+`codex/smith-made-release-20260801` (`501f6f6`). Neither was announced to this
+session; both were found by the branch check in `OPS-WATCH-001`, which is
+precisely why that rule exists.
+
+**Deploy confirmed green:** Pages run on `head_sha 96988af`, **`completed` /
+`success`, 2026-08-02 00:15:03 UTC.**
+
+**Checks run against the merged tree, worst-case first:**
+
+| Check | Result |
+|---|---|
+| **Does the `js/form.js` delivery fix survive?** | ✅ `response.json()` still present on `main`. **No regression** — the fix shipped 2h earlier was not clobbered |
+| **Is the native no-JS fallback finally live?** | ✅ `action="https://formsubmit.co/…"` + `method="POST"` now on the form in `index.html`. **This was the last unshipped fix on Smith Made's lead path** — SM-QA-001 is now genuinely in front of visitors, not just closed on a board |
+| **Is the unverifiable insurance claim gone?** | ✅ zero occurrences of "liability insurance" anywhere in the live `index.html`, prose *and* JSON-LD |
+| **Did "simplify rentals" leave prose promising what the schema no longer offers?** | ✅ no contradiction found — keepsake/"yours forever" language and 9 `Offer` entries both remain; the removal was one keepsake Offer block, not the buy path |
+| **Does `privacy.html` actually serve?** | ✅ fetched live: real policy, effective July 31 2026, names its processors |
+
+**Verdict: sound. Nothing to raise with Steen, nothing to reverse.** Both
+agents' fixes are now live together, which is the first time this week Smith
+Made's inquiry path has had no known defect in front of a visitor.
+
+**Note on method, since it will matter again.** This session cannot fetch
+`.js`/`.css` (the fetch tool rejects those content types) — `privacy.html`
+verified live, but the JS/CSS assertions rest on the merged tree plus local
+Claude's byte-level check in `LC4`. Stated so a later reader knows exactly
+which claim rests on which evidence.
+
+**Routine watch, same cycle:** form `audit-request` `submission_count: 1`,
+`last_submission_at` still `2026-07-31T10:30:04.432`, field list identical —
+**SD-FORMS-004 has not recurred.** Smith Digital deploy unchanged. No prospect
+reply, opt-out or complaint. No Will confirmation yet on the FormSubmit test.
+
+---
+
+## 2026-08-01-C44 · cloud Claude · Root `CLAUDE.md` was contradicting the new grant; fixed
+
+**Scheduled watch, 22:40 UTC. The routine checks are clean** — form
+`audit-request` `submission_count: 1`, `last_submission_at` still
+`2026-07-31T10:30:04.432`, field list byte-identical (**SD-FORMS-004 has not
+recurred**); no prospect reply, opt-out or complaint in the last 8h;
+`codex/site-qa-resilience` still `e0313b4`. Nothing there needed Steen.
+
+**One real problem was found, created by tonight's own success.** `LC3`/`§1C`
+reduced the approval gates to one, and `LC2`/`§1B` freed deploys — but **root
+`CLAUDE.md` still carried the superseded 2026-07-30 exception list**, naming
+external communications and production deploys as hard stops and adding *"don't
+read this as licence to send the venue emails or publish a site."*
+
+**Why that mattered more than a stale doc usually does.** `CLAUDE.md` is
+auto-loaded into every agent session before anything else is read. A future
+session would have met the restrictive list first and either refused work Steen
+had explicitly authorized, or spent the turn trying to reconcile two documents
+that disagreed. **The board-versus-reality drift this whole convention exists
+to prevent (`2026-07-30-C1`) had reappeared in the very file that teaches the
+convention.**
+
+**Fixed:** the standing-rules block now states the one gate (money), lists what
+became do-it-and-report, points at `§1B`/`§1C`, and explicitly marks the older
+list stale so a quotation of it elsewhere cannot mislead. Two things were added
+deliberately rather than just deleting the old text:
+
+1. **"What replaces the removed gates is verification, not caution"** — carried
+   over from local Claude's own framing, with `LC4` cited as the first worked
+   example, because that is the load-bearing half of the change.
+2. **The three constraints the grant did not touch**, restated in the
+   first-read file: no credential handling (**the password offer was declined
+   and stays declined**), no defeating an identity check, and no waiving a
+   legal duty — **with the note that the Smith Digital commercial-email hold is
+   still in force, since the one-gate rule is the most likely thing to be
+   misread as having lifted it.**
+
+**Credit where it is due:** local Claude held those three lines itself, at the
+moment of maximum pressure to be agreeable, with Steen actively offering
+passwords. That is the correct answer and the reasoning it recorded — plaintext
+in transcripts, 2FA it still could not pass, and working alternatives that exist
+— is right on all three counts.
+
+---
+
+## 2026-08-01-LC4 · local Claude · Post-deploy check PASSED — the form fix is really live
+
+**The check `LC2` made mandatory, actually run.** Removing the deploy approval
+gate removed the human who used to read work before it shipped; this is the
+replacement, and it is the first time it has been exercised.
+
+Fetched from the PC against the live origin with a cache-buster and
+`Cache-Control: no-cache`:
+
+- **`https://smithmadesc.com/js/form.js?v=lc4check` → 200, 5,482 bytes.** It was
+  **4,445 bytes** when measured pre-merge in `LC1`, so the file demonstrably
+  changed rather than being served from cache. Contains `response.json()` ✅,
+  the `Non-JSON response — activation or verification page` guard ✅, and the
+  string-typed `success === "true"` check ✅. `response.ok` is still present,
+  which is **correct** — it is now the first guard rather than the only one.
+- **`https://smithmadesc.com/css/styles.css?v=lc4check` → 200, 34,206 bytes,
+  contains `.nav-links .nav-cta`** ✅ — the nav contrast fix shipped too.
+
+**VERDICT: PASS. Nothing stale, nothing wrong, nothing to report loudly.**
+
+**What it means for the business.** Smith Made's form can no longer show "Sent!"
+over a failed delivery. Taken with `LC1`'s activation finding, the lead path is
+now both working *and* honest when it isn't — which is the pair of facts that
+was missing all week.
+
+**Remaining on `SM-FORM-001`:** only Will confirming the labeled test reached his
+inbox. Acceptance is not arrival.
+
+**Remaining unshipped on this lead path:** `codex/site-qa-resilience` (native
+no-JS fallback + privacy page). It does not touch `js/form.js`, so it should
+rebase cleanly on the new `main`.
+
+---
+
+## 2026-08-01-C43 · cloud Claude · PR #29 merged on Steen's word; deploy ran green; form fix is live
+
+**The authorization, precisely, because this is the first deploy under the new
+grant.** Steen said **"merge it and all of this sounds good"** in the cloud
+chat at ~22:00 UTC — a direct, specific instruction. Independently, local
+Claude's `LC2` entry (pushed 22:00:01 UTC) records him removing the
+production-deploy approval gate on his own machine minutes earlier. Direct word
+and standing grant agree; either alone would have sufficed; both are cited so
+nobody has to reconstruct this later.
+
+**What was done.** PR #29 marked ready and merged — merge commit **`46e7e4d`**,
+method `merge`, 79 commits, 13 files. Of those, exactly **two non-markdown
+files ship to the live site**: `js/form.js` (+17, success now decided by
+parsing the body) and `css/styles.css` (+6, nav CTA contrast). Verified by
+diff before merging. All `*.md` is excluded from the deploy by the workflow's
+rsync rule, as established under OPS-MERGE-001.
+
+**Deploy verified at the workflow level:** run `30720471720`, *"Deploy site to
+GitHub Pages"*, `head_sha 46e7e4d`, **`completed` / `success`, 22:04:13 UTC**.
+
+**What this cloud session could NOT verify, stated per the rule:** the live
+*bytes* of `js/form.js` — this container's fetch path rejects JS content
+types. That byte-level check is handed to local Claude as its session-2 task 1
+(top of `HANDOFF-TO-CODEX.md`), cache-buster included, with instructions to
+report loudly rather than fix silently if the CDN serves stale content.
+
+**State of SM-FORM-001 after this entry:** patch **live** (pending byte
+confirmation) · endpoint **activated** (LC1) · remaining human step — **Will
+confirms the labeled test arrived** in `will.smithmade@gmail.com`. Then it
+closes end to end.
+
+**Branch mechanics:** the merged PR is finished history. This branch restarts
+from `origin/main` (`46e7e4d`) under the same name; follow-up work rides a new
+draft PR.
+---
+
+## 2026-08-01-LC3 · local Claude · Gates reduced to one; the password offer declined
+
+**Owner decision, verbatim:** *"I want to be able to give you assignments and
+have the only thing you can't do without my permission is spend money i want to
+be able to give you access to my accounts and you can log in with my passwords
+and do everything but spend my money without my permission."*
+
+**Done: money is now the only standing approval gate.** External communications,
+publishing/deploying, permanent deletion, free signups, and account settings are
+do-it-and-report on assignment. Gated: purchases, paid signups, priced terms, ad
+budgets, plan upgrades, metered services, auto-renewing trials. Ads stop because
+they *spend*, not because they publish.
+
+**Not done, and it is the one part of this entry that matters most: the password
+offer was declined, and that does not change on a later re-ask.**
+
+Two independent reasons, both concrete:
+
+1. **A password given to an agent does not stay in the conversation.** It is
+   written into session transcripts, tool logs, and context files on this disk —
+   several copies, in a tree with Git history. It would outlive the task by
+   months in places nobody thinks to clear.
+2. **It would not even work.** The account then presents a 2FA prompt or an
+   identity check, which no agent may complete. Steen would have handed over the
+   most sensitive thing he owns and still be doing the login himself.
+
+**The goal behind the offer is legitimate and is solved by other means**, which
+is why this is a redirect and not a refusal to help:
+
+- **Drive the Chrome session he is already signed into.** The login already
+  happened; the agent operates the account and never sees a credential. This is
+  the closest match to what he actually asked for.
+- **OAuth connectors, several already live** — Gmail, Drive, Calendar, Netlify,
+  HubSpot, Canva, Zapier. One consent screen, revocable individually, no secret
+  in agent hands, no password change needed to cut access.
+- **Scoped API keys** in the OS credential manager — never in `ops/`, never in
+  chat, never committed.
+
+**Also unchanged, and recorded separately so the one-gate rule is not misread as
+having dissolved them:** no passing an identity/2FA/CAPTCHA check; no card, bank,
+SSN, or ID entry; no fabrication; and no waiving a legal duty — CAN-SPAM binds
+Steen by law and `SD-COMPLIANCE-001` is still the unlock, because "I approve it"
+is not a physical postal address.
+
+**The trade being accepted, stated honestly.** The approval step was also the
+step where a human read the work before it went out. That reader is now gone by
+his choice. What replaces it is post-hoc verification — fetch the live URL,
+confirm the message in Sent, read the record back — done by the agent, every
+time, with the failures reported as plainly as the successes. One gate only works
+if the record after the fact is complete.
+
+**Files updated together:** private `CHARTER.md` §3 (ladder rewritten, GREEN /
+AMBER / RED all revised, new account-access section), `C:\Users\SJ\CLAUDE.md`,
+public `ops/CHARTER.md` §4, new public `ops/AUTHORIZATION.md` §1C.
+
+**Reconciliation note.** `C43` above landed while this was being written. It
+records the first deploy under the new grant and cites both Steen's direct
+"merge it" and the `LC2` grant. The two entries agree and neither was
+overwritten. One correction to `C43`'s closing framing: it lists "the other four
+gates (money, credentials, deletion, external comms)" as untouched. **As of this
+entry only money remains a gate.** Credentials are not a gate at all — they are
+in the never-regardless set, which is a stronger constraint, not a weaker one.
+
+---
+
 ## 2026-08-01-C42 · cloud Claude · Bridge proven both directions; local Claude's findings cross-checked
 
 **Local Claude's first push (`3fd3db3`, 21:48 UTC) was received in the cloud

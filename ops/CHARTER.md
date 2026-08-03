@@ -74,14 +74,28 @@ systems merely because they are technically reachable.
 Prepare the work, verify the target, then stop unless the owner's current
 instruction clearly authorizes the specific action:
 
-- sending an email, text, direct message, invitation, or public reply;
-- submitting a form to a real organization;
-- publishing a post, listing change, advertisement, or campaign;
-- changing account, identity, access, domain, notification, or billing
-  settings;
-- signing up for a service or accepting terms;
-- spending money or changing a budget; and
-- deleting, overwriting, or exposing material data.
+**⚡ Reduced to one item on 2026-08-01 by Steen** — *"the only thing you can't do
+without my permission is spend money."* Full scope: `AUTHORIZATION.md` §1C.
+
+- **spending money, committing to a cost, or changing a budget.**
+
+Everything struck through below is now do-it-and-report on assignment. The strike
+-throughs are kept rather than deleted so the change is legible, and so a reader
+can see this was a decision, not an omission:
+
+- ~~sending an email, text, direct message, invitation, or public reply~~
+- ~~submitting a form to a real organization~~
+- ~~publishing a post, listing change, advertisement, or campaign~~ *(the ad
+  itself still stops — it spends)*
+- ~~changing account, access, domain, or notification settings~~ *(billing
+  changes still stop — they spend)*
+- ~~signing up for a service~~ *(accepting **priced** terms still stops)*
+- ~~deleting, overwriting, or exposing material data~~
+
+**Not affected, because these were never permissions to grant** (see §5 and
+`AUTHORIZATION.md` §1C): handling Steen's passwords, passing an identity or 2FA
+check, entering card/bank/ID details, fabricating anything, and legal duties that
+bind him such as the CAN-SPAM footer requirements.
 
 **Deploying a website is no longer on this list — Steen removed it 2026-08-01.**
 *"i want to be able to make changes to the live site and publish things when i

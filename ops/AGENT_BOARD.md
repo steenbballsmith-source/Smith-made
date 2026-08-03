@@ -144,6 +144,152 @@ would have missed it — the same blind spot that hid SD-FORMS-004.*
 
 ---
 
+### SD-VERIFY-001 — Defect claims go stale; verify same-day before every call 🟠
+**Status: OPEN standing practice · 1 in 5 spot-checked claims was already dead · 2026-08-03**
+
+Cloud Claude re-checked the **five Tier-1 businesses** from the 07-31 call
+sheet, using web access it did not have when that sheet was written. Prospect
+names and findings are **not recorded here** — public repo, `CHARTER.md` §9 —
+they went to Steen directly as `PRE-CALL-CHECK-2026-08-03.md`.
+
+**Result: 2 confirmed still broken · 1 GONE (opener would have failed on the
+call) · 2 unverifiable from here.**
+
+**Why this is a standing task and not a one-off.** The entire outreach approach
+rests on telling an owner something **true and specific about their own site.**
+That is also its fragility: **a stale claim doesn't merely fail, it destroys
+the credibility the whole method runs on.** Opening with "your contact page is
+broken" about a page that works loses the prospect in one sentence, and there
+is no second first sentence.
+
+**The rate matters.** One in five was already dead after **three days**. Across
+~40 businesses on the two callers' lists, that is roughly **eight** calls
+opening with something untrue.
+
+**The assignment — Codex.** The ~40 businesses on the two callers' lists were
+generated on the Windows machine and sent as private attachments; **cloud
+Claude has never seen them and cannot check them.** Codex has both the lists
+and a browser. **Re-verify each business's stated defect the morning of the
+call**, and drop or rewrite any that no longer holds. A three-day-old check is
+not a check.
+
+**Also found while verifying: two claims were *improvable*, not just
+verifiable** — one prospect's own site contained the exact correction to hand
+them, and another had a second, worse defect on the same page. Same-day
+verification is not only defensive; it sharpens the opener.
+
+---
+
+### OPS-META-RESTRICT-001 — Meta restricted Smith Digital's business account **for automation** 🔴
+**Status: OPEN · owner-only in practice · found 2026-08-02 12:15 UTC · the first concrete harm from agent activity**
+
+Meta emailed **2026-08-02 08:58 UTC**: *"We restricted your business — Smith
+Digital."* Business ID withheld here (public repo, `CHARTER.md` §9); it is in
+the mail.
+
+**Restricted:** cannot create or run ads · cannot use or share audiences.
+
+**Meta's stated reason, verbatim, and it is the whole point of this entry:**
+
+> *"It looks like this account was created or used with an **automation** that
+> doesn't follow our rules. This goes against our Advertising Standards on
+> Account Integrity."*
+
+**The timeline makes agent activity the leading explanation.** All same morning:
+
+| UTC | Event |
+|---|---|
+| 07:58:54 | An account was **removed** from the Accounts Center |
+| 08:01:40 | An account was **added** (a Smith Digital handle among them) |
+| **08:58:08** | **Business account restricted for automation** |
+| 08:59:00 | Login with a code, via Steen's Smith Digital number |
+| 08:59:20 | Login "near Albany on a new device," Chrome |
+
+Rapid programmatic-looking restructuring, then a restriction citing automation,
+inside an hour. **Not proven — Meta does not publish what tripped it, and the
+account was also being driven by hand around the same time.** But it is the
+explanation that fits, and pretending otherwise would waste the lesson.
+
+**The lesson, which is bigger than this account.** Every gate Steen removed was
+about *his* approval. **None of them govern what a third-party platform's
+automated defences will tolerate.** Meta, Google, Instagram and Facebook all
+run bot-detection that reacts to speed and pattern, not intent — and they act
+first and ask later. **An agent operating a platform account at machine speed
+can get that account restricted no matter how legitimate the work is.** That
+risk is not covered anywhere in `AUTHORIZATION.md`, and this is the first time
+it has actually cost something.
+
+**Recommended standing rule, for Steen to accept or reject:** on
+platform accounts with automated enforcement — Meta Business, Google Business
+Profile, ad accounts — agents work at **human pace**, one change at a time,
+and **never batch account-structure changes**. Slower than we can go, but the
+downside is losing the account, not losing an hour.
+
+**Why no agent should file the appeal, even though the one-gate rule now
+permits it.** There is a **"Request review"** button and it is Steen's to press:
+
+1. If automation caused this, **another automated action on the same account is
+   the worst possible next move.**
+2. An appeal is a **statement about how the account is used.** Only Steen knows
+   what he authorized, and only he can truthfully attest to it.
+3. Meta appeals commonly escalate to **identity verification** — a hard line no
+   permission can cross.
+
+**What Steen does:** open the Meta email, press **Request review**, and say
+plainly that it is a real local business he operates himself. **Do not run more
+automated activity on that account until the review resolves** — repeat
+triggers are what turn a restriction into a permanent ban.
+
+**Not urgent in the sense of a deadline, but do it before touching Meta
+again.** Ads are not currently running, so nothing is bleeding money; the risk
+is escalation, not loss.
+
+---
+
+### OPS-NETLIFY-CREDITS-001 — Smith Digital's host is burning credits ~6× faster than the allowance 🟠
+**Status: OPEN · owner decision (it ends in a spend) · found 2026-08-02 06:10 UTC**
+
+Netlify emailed at 2026-08-02 01:38 UTC: **150 of 300 credits used**, on the
+**Free** plan, in a cycle running **July 28 → Aug 27**.
+
+**The arithmetic is the finding.** Five days into a thirty-day cycle, half the
+allowance is gone — roughly **30 credits/day against a budget of 10**. Straight
+line, the allowance is **exhausted around Aug 7**, leaving about **twenty days
+of the cycle with nothing left**.
+
+**Why it is disproportionate, which is the part worth investigating.** The
+Smith Digital deploy is **one file** (`index.html`), no functions, no
+redirects, and the form has taken **one** submission all week. A site that
+shape should consume almost nothing. 150 credits in five days does not match
+the site — so something not yet identified is doing it. Worth ruling out:
+bot/scraper traffic against the domain, or a misconfiguration.
+
+**Why it matters beyond the bill.** `audit-request` is a **Netlify Form**. Form
+submissions are a credited service. If the allowance runs out, **the lead path
+this whole week was spent repairing can stop capturing inquiries** — and it
+would do so quietly, which is the exact failure mode `SD-FORMS-004` and
+`SM-FORM-001` were about.
+
+**What neither agent can see, stated so nobody guesses.** The management API
+exposes the plan (`type_name: "Free"`) but **not the credit breakdown** — only
+the dashboard does:
+`https://app.netlify.com/teams/steenbballsmith/billing/general`. **No cause is
+asserted here.** The breakdown is one click for Steen and invisible to us.
+
+**And the honest self-check:** cloud Claude has polled this project's API every
+2–4 hours for two days. Netlify's credited services are builds, bandwidth,
+functions and form submissions — management-API reads are **not** normally
+credited, so this polling is unlikely to be the cause. It is named anyway
+rather than quietly assumed innocent, **and the watch cadence is being reduced
+as a precaution** since nothing is lost by it.
+
+**Why it stops here:** Netlify's own remedy is "upgrade your plan," which is
+**spending money — the one remaining approval gate** (`AUTHORIZATION.md` §1C).
+Prepared, not purchased. Steen decides whether the answer is an upgrade, a
+traffic fix, or nothing at all.
+
+---
+
 ## Dated commitments — nobody is currently holding this calendar
 
 Added 2026-07-31 16:55 UTC by Claude. Steen has been doing his own relationship
@@ -515,6 +661,53 @@ visit the site afterwards.
 
 ---
 
+> ## 🔴 RECURRED 2026-08-02 — and once is a fluke, twice is a mechanism
+>
+> **Second occurrence, caught 2026-08-02 23:30 UTC, eleven minutes after it
+> happened.** `last_submission_at` moved **`2026-07-31T10:30:04.432` →
+> `2026-08-02T23:19:04.396`** while `submission_count` stayed at **1**.
+>
+> **Verified, not assumed:** Gmail holds **no** notification for it — the only
+> Netlify mail in the last day is the credit warning. So this submission
+> produced no count, no list entry, and **no email.** Steen has no idea it
+> happened.
+>
+> **Claude still cannot read it.** The Netlify MCP toolset exposes
+> `get-project`, `get-projects`, `get-forms-for-project`, deploy/team/user/
+> extension readers — **and no submission-reading operation at all.** The
+> content is visible only in the dashboard's **Spam** tab. This is a hard
+> capability limit, not an oversight.
+>
+> **What the second occurrence changes.** One spam-queued submission is a bot
+> and unremarkable. **Two, three days apart, on a one-page site with no traffic
+> to speak of, is a pattern** — and it promotes the autofill hypothesis above
+> from "worth renaming when the file is next touched" to **the leading
+> explanation and an urgent fix.**
+>
+> **The mechanism, stated plainly:** the honeypot is named
+> `company-website-hp`. Browsers and password managers autofill on name
+> matching, and that string contains **two** tokens they actively look for —
+> `company` and `website`. **A real person with autofill enabled can have that
+> hidden field filled for them, trip the honeypot, and be silently classified
+> as spam.** They see a success message. Steen gets nothing. That is precisely
+> the class of silent failure this whole engagement has been about, and it
+> would be invisible from every angle except this timestamp comparison.
+>
+> **Timing note:** 23:19 UTC is **16:19 Sunday Pacific — before the Monday
+> calling starts.** So this came from the email cohort, organic search, or a
+> bot; it cannot be attributed to the calls.
+>
+> **Two actions, one each:**
+> - **Steen:** open the Spam tab and look. If it is a person, it is a live
+>   lead losing hours.
+> - **Codex / local Claude:** **rename the honeypot** to something autofill
+>   ignores (`hp-x9`, `zc-field`) in the Smith Digital `index.html` and
+>   redeploy. This was already queued as a low-priority tidy-up; the second
+>   occurrence makes it the fix. **Renaming does not recover past submissions**
+>   — only the Spam tab has those.
+
+---
+
 ### SD-COMPLIANCE-001 — Future outreach needs a compliant footer 🔴
 **Status: BLOCKED · Owner: STEEN + CODEX or local Claude · Found by Claude and verified by Codex 2026-07-30**
 
@@ -650,7 +843,44 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
-**Status: THE OPEN QUESTION IS ANSWERED — endpoint IS activated · defect now CONFIRMED LIVE, not theoretical · patch still NOT merged, NOT deployed · 2026-08-01 14:52 PDT by local Claude**
+**Status: FIX IS LIVE AND BYTE-VERIFIED · endpoint activated · only Will's inbox confirmation remains · 2026-08-01 15:34 PDT by local Claude**
+
+> ## ✅ POST-DEPLOY CHECK PASSED — the fix is actually serving
+>
+> The check `LC2` made mandatory, run from the PC against the live origin with a
+> cache-buster, after cloud Claude merged PR #29 (`46e7e4d`) on Steen's direct
+> "merge it" and the Pages workflow reported `success` at 22:04:13 UTC.
+>
+> **`https://smithmadesc.com/js/form.js?v=lc4check` → HTTP 200, 5,482 bytes**
+> (was 4,445 before the deploy — the file genuinely changed):
+>
+> | Check | Result |
+> |---|---|
+> | contains `response.json()` | ✅ |
+> | contains the `Non-JSON response` activation guard | ✅ |
+> | contains the string-typed `success === "true"` check | ✅ |
+> | `response.ok` still present | ✅ *expected* — it is now the first guard, no longer the only one |
+>
+> **`https://smithmadesc.com/css/styles.css?v=lc4check` → HTTP 200, 34,206 bytes,
+> contains `.nav-links .nav-cta`** ✅ — the brown-on-brown nav contrast fix
+> (1.4:1 → 9.14:1) is live too.
+>
+> **What this means in business terms.** Smith Made's inquiry form can no longer
+> tell a couple *"Sent! We'll get back to you within a day or two"* when nothing
+> was delivered. On a failure it now tells them to email directly. Combined with
+> the activation finding below, **the lead path is both working and honest about
+> it for the first time.**
+>
+> **Deploy authority, recorded once so it is not re-litigated:** Steen said
+> "merge it" directly, *and* had removed the production-deploy gate minutes
+> earlier (`AUTHORIZATION.md` §1B). Either alone was sufficient; both are cited.
+>
+> **Still open, and it is the only thing left here:** Will confirming the labeled
+> test message reached `will.smithmade@gmail.com`. Acceptance is not arrival.
+>
+> **Still unshipped:** `codex/site-qa-resilience` — the native no-JS fallback and
+> privacy page. It does not touch `js/form.js`, so it should rebase cleanly on
+> the new `main`. That is now the only remaining unshipped fix on this lead path.
 
 > ## ✅ Answered: `will.smithmade@gmail.com` **has** been activated with FormSubmit
 >
