@@ -25,7 +25,7 @@ window.SMITH_MADE = {
      A wide photo (landscape, roughly 1600x900) shown behind
      the headline — and shown while the video loads too.
      Drop it in assets/img/ and point to it here:            */
-  heroPoster: "assets/img/hero-staged.jpg",
+  heroPoster: "assets/img/gallery/staged-heart.jpg",
 
   /* ---- PRODUCT PHOTOS -------------------------------------
      Drop each product photo into assets/img/catalog/ and add
@@ -50,20 +50,11 @@ window.SMITH_MADE = {
      The second form prints that little caption under the photo.
      The gallery stays hidden until this list has one photo.  */
   gallery: [
-    { src: "assets/img/gallery/staged-arch-riser.jpg", finish: "The Arched Welcome · natural white oak" },
-    { src: "assets/img/gallery/staged-arch-opening.jpg", finish: "Grand Arch Welcome Wall · painted cream" },
-    { src: "assets/img/gallery/staged-bar-fluted.jpg", finish: "The Mobile Bar · fluted natural oak" },
-    { src: "assets/img/gallery/staged-slat-arch-black.jpg", finish: "Slat Monogram Backdrop · blackened frame, oak slats" },
-    { src: "assets/img/gallery/staged-champagne-wall.jpg", finish: "Champagne Wall · natural white oak" },
-    { src: "assets/img/gallery/staged-welcome-panel.jpg", finish: "Seating Chart Wall · painted panel, walnut base" },
-    { src: "assets/img/gallery/staged-cream-bar.jpg", finish: "The Mobile Bar · painted cream with an oak top" },
-    { src: "assets/img/gallery/staged-heart.jpg", finish: "Keepsake shapes · natural white oak" },
-    { src: "assets/img/gallery/staged-display-shelf.jpg", finish: "Display wall · painted cream" },
-    { src: "assets/img/gallery/staged-arch-trio.jpg", finish: "Ceremony Arch Set · natural birch" },
-    { src: "assets/img/gallery/staged-round-disc.jpg", finish: "The Family Round · natural white oak" },
-    { src: "assets/img/gallery/staged-wave-backdrop.jpg", finish: "Slat Monogram Backdrop · sculpted wave edge" },
-    { src: "assets/img/gallery/staged-bar-round.jpg", finish: "The Mobile Bar · round, natural oak" },
-    { src: "assets/img/gallery/staged-walkthrough.jpg", finish: "Grand Arch Welcome Wall · natural birch" },
+    /* The old Lookbook section was folded into the Rentals collection on
+       2026-08-03 (Will's request) — every design now lives on its own card
+       in The Collection, and its finish views open from "Tap to see it
+       staged". Real wedding photos can be added here later if the gallery
+       section is ever brought back. */
   ],
 
   /* ---- PAYMENTS: THE $50 DATE HOLD ------------------------
