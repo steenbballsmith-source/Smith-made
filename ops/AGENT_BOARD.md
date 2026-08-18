@@ -1108,12 +1108,26 @@ to manufacture the next one, and there is nothing here.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
+**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-08-17 13:20 UTC**
 
-Claude has sent no email, drafted nothing, and opened no venue thread. The three
-venues (Riverain Farm, The Barn at Sitton Hill Farm, The Hollow at Paris
-Mountain) remain entirely Codex's. Ownership transfers only by an explicit edit
-to this line.
+**Ownership changed, and the previous line below was wrong for over two weeks.**
+It read "Owner: CODEX" and "Claude has sent no email, drafted nothing, and
+opened no venue thread." The drafting half stopped being true on 2026-07-20.
+A scheduled weekly engine has been running this channel since, and Steen sent
+the first real emails himself on 2026-08-05 — including to two of the three
+venues this entry reserved for Codex. Nothing was duplicated, but only by luck:
+an agent trusting this line could have contacted the same venues twice.
+Corrected here per the verify-don't-trust rule; history in `ops/LOG.md`.
+
+**Verified against Gmail 2026-08-17**, not against this board: 6 targets
+contacted (all 2026-08-05), 0 human replies, 6 follow-ups drafted and waiting
+on Steen, 0 follow-ups sent. Every contacted target has now spent its one
+permitted follow-up — there is no third contact, ever.
+
+The engine never sends. It writes drafts; a person presses send. Run order,
+rules, and the four Gmail searches that rebuild all of this from scratch live
+in `ops/OUTREACH-ENGINE.md`. Ownership transfers only by an explicit edit to
+this line.
 
 One thing worth flagging to whoever sends them: the drafts live in
 steenbballsmith@gmail.com but are meant to go from will.smithmade@gmail.com, and
