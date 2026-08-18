@@ -1,7 +1,36 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-07-30, evening, after Codex reported back. This is your inbox: it
+Updated 2026-08-17, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
+
+---
+
+## 🟢 Six emails are written and waiting on you (5 minutes)
+
+Six venues and planners got a first email from you on August 5. Twelve days
+later, none of them has written back. That is completely normal — one email
+almost never lands. The second one is where replies come from.
+
+So I wrote the second email for each of them. Six follow-ups are sitting in
+your Gmail Drafts right now. Each one is two sentences, friendly, no pressure,
+and gives them an easy way to say no. **Open Drafts, read one, and press send
+on all six.** That's the whole job.
+
+They are the drafts whose subject starts with **Re:** — they sit inside the
+original conversation, so the venue sees what you first sent them right
+underneath.
+
+**Do not send the six titled `SUPERSEDED — DO NOT SEND`.** Those are broken
+copies I couldn't delete — I've pointed them at your own address so they can't
+reach a venue by accident. Delete them whenever you like.
+
+One thing worth knowing: after these six go out, **that's the end of it for
+those six businesses.** Two emails and then we stop. Chasing people a third
+time is how a small local outfit gets a reputation it can't shake, and
+Greenville's wedding world talks to itself.
+
+There are nine more venues with emails already written, ready whenever you
+want to widen the net.
 
 ---
 

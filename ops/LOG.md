@@ -2177,3 +2177,45 @@ image serving byte-exact (127658 bytes). Desktop QA passed locally pre-merge.
 No form submission was made; Will's inbox-delivery proof (SM-FORM-001) remains
 open. Next owner input: whether the two tiered display-stand renders Will sent
 become a tenth card (not added — no instruction).
+
+## 2026-08-17 ~13:20 UTC — cloud Claude — Weekly outreach run #4; engine memory moved into the repo
+
+**Run result.** No replies from any contacted target inside the eight-day
+window; the single auto-responder from the previous run asked for three to
+four business days and that window closed in silence. Six targets were
+contacted twelve days earlier and each conversation still holds exactly one
+message, which also proves the two follow-ups drafted last week were never
+sent and no new outreach went out. Six follow-up drafts now wait for Steen —
+four written this run, two carried over. Every contacted target has now spent
+its one permitted follow-up, so no target may be contacted a third time. Step
+three did not fire: nine further targets still hold unsent drafts, far above
+the threshold of three. Nothing was sent by an agent; the send button remains
+a person's.
+
+**Two defects found and fixed inside the run.** First, the follow-ups as
+first written carried no postal address, no business-solicitation line and no
+opt-out — the exact omission that put the sister business's outreach on hold.
+Steen's own originals carry all three. All six drafts were rewritten to match.
+Second, and worse: repairing a reply-draft through the mail tool silently
+destroys its threading. Each repaired draft came back on a brand-new
+conversation, meaning a venue would have received a two-line "floating this
+back up" with no original beneath it. Caught by comparing each draft's
+conversation id against the sent message's before reporting anything. All six
+were re-created from the original message ids and re-verified to sit on the
+correct conversations.
+
+**The six broken copies could not be deleted** — the delete was refused by the
+permission layer and no attempt was made to route around it. They were instead
+retitled `SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox,
+so a stray click reaches nobody. Steen can delete them himself; this is
+recorded so a later agent does not mistake them for real queued mail.
+
+**Why this entry exists at all.** The engine's working notes lived in a
+temporary container folder, and that folder was wiped between runs — three
+weeks of notes gone, discovered only because a line count came back at 38
+instead of 476. The notes were reconstructible solely because Gmail already
+held every fact. That lesson is now written down in `ops/OUTREACH-ENGINE.md`:
+the run order, the never-send rule, the one-follow-up-per-target-forever rule,
+the compliance footer requirement, the threading trap, and the four searches
+that rebuild the entire state from Gmail. Public-repo rules observed — the new
+file carries counts and procedure only, no addresses, names, or contact list.
