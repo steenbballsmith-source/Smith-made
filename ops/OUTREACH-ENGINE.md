@@ -74,20 +74,38 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-08-17
+## State as of 2026-08-24
 
 Counts only — the names live in Gmail.
 
-- **6** targets contacted, all on 2026-08-05, all written by Steen himself in
-  his own words. All six are compliant: postal address, business-inquiry line,
-  opt-out.
-- **0** human replies. One auto-responder asked for three to four business
-  days; that window closed on 2026-08-11 in silence.
-- **6** follow-ups drafted and waiting for Steen to send. Every contacted
-  target has now spent its one follow-up. **There is no third contact.**
-- **0** of those follow-ups sent so far.
-- **9** further targets have addresses and unsent drafts; more exist as
-  contact-form pastes. Step 3 stays dormant until those run out.
-- **~24** leftover drafts from July still carry three claims the site has
-  retired. They are superseded by one clean master draft in Gmail. Steen has
-  not yet said whether to clear them out.
+- **6** targets contacted (2026-08-05) and **all six followed up** (2026-08-18).
+  Steen sent every one himself. Each of those six is now **closed to further
+  contact** — two touches and we stop.
+- **0** replies, ever. Not one of the six has written back. The lone
+  auto-responder's own three-to-four-business-day window closed on 2026-08-11
+  in silence.
+- **9** fresh targets are drafted, accurate, and ready to send.
+- **13** drafts sit retitled `SUPERSEDED — DO NOT SEND` and re-addressed to
+  Steen's own mailbox, so a stray click reaches nobody. They are duplicates and
+  third-contact hazards, kept only because deleting them was refused by the
+  permission layer.
+
+### What the 2026-08-24 rewrite fixed
+
+The nine fresh drafts were written in July and had quietly rotted. Every one
+of them claimed the site let you spin each piece in 3D (that viewer was
+deleted), that we style pieces at the venue (we deliver; couples style them),
+and that couples can keep a piece forever (buy prices were deliberately raised
+to discourage sales). They said "wedding signage" after the site moved to
+"event signage". They introduced Steen as the carpenter — **Will is the one
+who builds.** They promised "two of the design plates from the catalog" above
+a blank line where images had been stripped out. And none carried a postal
+address or an opt-out, which is the exact omission that has the sister
+business's outreach on hold.
+
+All nine were rewritten on the template Steen wrote himself for the August 5
+send, which had every one of those things right.
+
+**The lesson worth keeping:** a draft is not inert. It ages against a site
+that keeps changing, and Steen sends what is in Drafts. Any run that changes
+the site's claims should re-read the queued drafts in the same pass.
