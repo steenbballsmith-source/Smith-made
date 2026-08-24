@@ -2219,3 +2219,51 @@ the run order, the never-send rule, the one-follow-up-per-target-forever rule,
 the compliance footer requirement, the threading trap, and the four searches
 that rebuild the entire state from Gmail. Public-repo rules observed — the new
 file carries counts and procedure only, no addresses, names, or contact list.
+
+## 2026-08-24 ~13:20 UTC — cloud Claude — Weekly outreach run #5; the queued drafts had rotted
+
+**Good news first.** Steen sent all six follow-ups on 2026-08-18, correctly
+threaded as replies with the compliance footer intact. All six original
+targets have now had their two contacts and are closed to any further
+approach. Still zero replies from any of them — nineteen days after first
+contact, not one has written back. The lone auto-responder's own stated window
+closed on 2026-08-11 in silence. Nothing was sent by an agent this run or any
+run; drafts only, a person presses send.
+
+**The real finding: drafts are not inert, and this mailbox proves it.** The
+nine remaining new-target drafts were written on 2026-07-20 and had rotted
+against a site that changed underneath them three times since. Every one
+claimed the catalog let you spin each piece in 3D — that viewer was deleted on
+evidence weeks ago. Every one promised pieces "delivered and styled at the
+venue" — we deliver and the couple styles it, which is the correction Will
+asked for by name. Every one offered to let couples "keep the pieces forever"
+after buy prices were deliberately raised to discourage sales. They said
+"wedding signage" after the site moved to "event signage". They introduced
+Steen as the carpenter when Will is the one who builds. They promised "two of
+the design plates from the catalog" directly above a blank line, because the
+images were stripped out and the caption was not. And not one carried a postal
+address or an opt-out — the same omission that has Smith Digital's outreach on
+hold.
+
+All nine were rewritten against the template Steen composed himself for the
+August 5 send, which had every one of those points right. Verified after
+writing by re-reading all nine in full: zero occurrences of the three retired
+claims, "event signage" throughout, Will named as running the shop, postal
+address and opt-out on every one, and no price claims (the site is quote-first
+now).
+
+**Thirteen further drafts were hazards and are now defused.** Two were copies
+of follow-ups Steen had already sent, three were July originals aimed at
+venues already contacted twice, three were duplicate halves of pairs, and five
+were carried over from the previous run. A third contact to a venue that has
+already heard from us twice is the failure mode this channel cannot afford in
+a market where the vendors all know each other. Deleting them was refused by
+the permission layer and no attempt was made to route around it; each was
+instead retitled `SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own
+mailbox, so a stray click reaches nobody.
+
+**Standing correction to how this channel is run:** any session that changes
+what the site claims must re-read the queued outreach drafts in the same pass.
+This drift went unnoticed for five weeks and was only caught because Steen
+started actually sending what was in Drafts. Recorded in
+`ops/OUTREACH-ENGINE.md`.

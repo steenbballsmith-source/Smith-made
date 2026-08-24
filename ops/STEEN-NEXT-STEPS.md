@@ -1,36 +1,53 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-08-17, after the weekly outreach run. This is your inbox: it
+Updated 2026-08-24, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## 🟢 Six emails are written and waiting on you (5 minutes)
+## 🟢 You sent the six. Here's where that stands, and what's next
 
-Six venues and planners got a first email from you on August 5. Twelve days
-later, none of them has written back. That is completely normal — one email
-almost never lands. The second one is where replies come from.
+You sent all six follow-ups on August 18 — they went out properly, threaded
+under the original emails so each venue could see what you first wrote. Good.
 
-So I wrote the second email for each of them. Six follow-ups are sitting in
-your Gmail Drafts right now. Each one is two sentences, friendly, no pressure,
-and gives them an easy way to say no. **Open Drafts, read one, and press send
-on all six.** That's the whole job.
+**Nobody has replied.** Nineteen days, six businesses, zero answers. That is
+not a sign anything is broken. Cold outreach to wedding venues runs like this,
+and two touches with no answer is a normal result, not a failed one.
 
-They are the drafts whose subject starts with **Re:** — they sit inside the
-original conversation, so the venue sees what you first sent them right
-underneath.
+Those six are now **finished**. Two emails and we stop. No third try, ever.
 
-**Do not send the six titled `SUPERSEDED — DO NOT SEND`.** Those are broken
-copies I couldn't delete — I've pointed them at your own address so they can't
-reach a venue by accident. Delete them whenever you like.
+### Nine new ones are written and ready
 
-One thing worth knowing: after these six go out, **that's the end of it for
-those six businesses.** Two emails and then we stop. Chasing people a third
-time is how a small local outfit gets a reputation it can't shake, and
-Greenville's wedding world talks to itself.
+Nine different venues, planners and photographers — nobody you've contacted
+before. Open Drafts and send them whenever you like. They're the ones **not**
+titled `SUPERSEDED`.
 
-There are nine more venues with emails already written, ready whenever you
-want to widen the net.
+Fair warning about why they took work this week: those nine were written back
+in July, and the website has changed three times since. Every one of them
+still told people they could spin each piece in 3D on the site (that feature
+is gone), that we set the pieces up at the venue (we don't — we deliver and
+the couple styles it, exactly like Will asked), and that they could keep a
+piece forever (we raised buy prices on purpose to stop that). They called it
+wedding signage after we moved to event signage. They introduced you as the
+carpenter, when **Will is the one who builds.** And they promised "two design
+plates" above an empty gap where pictures used to be.
+
+I rewrote all nine using the email **you** wrote on August 5 as the model —
+yours had every one of those things right.
+
+### Ignore anything titled `SUPERSEDED — DO NOT SEND`
+
+There are thirteen of them. Some are copies of emails you already sent; some
+would have been a third contact to a venue that's already heard from us twice.
+I couldn't delete them, so I pointed them all at your own inbox — they can't
+reach a venue even by accident. Delete them whenever you want.
+
+### The thing that would actually change these numbers
+
+Six emails, two rounds, no replies. The missing ingredient isn't more emails —
+it's **one finished piece and five real photographs of it.** Every draft in
+your outbox right now says "once our first display piece is ready." Venues
+hear that sentence from everyone. A photo of the real thing ends the argument.
 
 ---
 
