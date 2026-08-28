@@ -18,12 +18,20 @@ embers that keep showing the moving frame**, then the closing pitch lands.
 The creator built it with Emergent + a paid prompt + Claude. We are Claude,
 so `kit/scroll-film/` is that result with no Emergent and no prompt to buy:
 
-- `scrollfilm.js` + `scrollfilm.css` — drop-in engine, zero dependencies
+- `scrollfilm.js` + `scrollfilm.css` — drop-in engine, zero dependencies.
+  Since the first handoff it also does the reference's signature move: after
+  the dissolve the embers **re-gather and spell the client's name** (or form
+  their logo), and there are three scatter styles so each site moves
+  differently. `HOW-ITS-DONE.md` is the full tradecraft breakdown.
 - `demo.html` — see it move (serve the folder, don't file:// it)
 - **`yost-wood-design.html` — a full draft site for Jay already built on it**
+  (rising embers form "YOST WOOD DESIGN")
+- **`smith-digital-demo.html`** — the effect wearing smithdigitalco.com's
+  real homepage copy (strands form "SMITH DIGITAL") — this is the preview
+  Steen judges the splice by
 - `README.md` — how to apply it to each site, and the photo→AI-video recipe
-- `assets/demo-film.mp4` — placeholder footage (a generated pan over a wood
-  render) so everything works before Jay's real clip exists
+- `assets/` — placeholder footage for both looks so everything works before
+  real clips exist
 
 ### Do this, in order
 

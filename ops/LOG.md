@@ -2300,3 +2300,44 @@ the particle phase is pixel-verified here via the image path.
 Not done, deliberately: nothing deployed anywhere (Netlify untouched, Pages
 untouched); no contact with Jay (external comms are Steen's); Yost draft
 carries placeholder contact details and a noindex until real ones exist.
+
+## 2026-08-28 (third) · cloud Claude · Formations shipped: embers now spell the client's name; tradecraft doc; Smith Digital preview; phone-scrollable screening room
+
+Steen restated the goal: completely figure out how this genre of site is
+made, then implement it for Smith Digital and Jay. Delivered in four parts:
+
+1. **`kit/scroll-film/HOW-ITS-DONE.md`** — the complete tradecraft: every
+   example in the reference decomposes into three tricks (scrubbed footage /
+   a particle field wearing the picture / true realtime 3D), which sites use
+   which, and the honest boundary (only the katana/DNA class needs the 3D
+   skills we haven't packaged — the reference creator's own result doesn't
+   use them either).
+2. **Engine upgrade** — the reference's signature "particles become a
+   structured shape" move: after the dissolve the embers now gather and
+   spell configurable text or form a logo mask (`data-sf-form-text` /
+   `data-sf-form-image`), plus three scatter styles (`burst`/`strands`/
+   `rise`) so each client's film moves differently. Verified screenshots:
+   "YOST WOOD DESIGN" and "SMITH DIGITAL" legible in ember-textured
+   letters on desktop and phone.
+3. **Implementation previews** — `yost-wood-design.html` upgraded (rising
+   embers → the shop's name); new `smith-digital-demo.html` wearing the
+   live site's real homepage copy ("More calls. Less guessing.", the
+   Drone-Style Video service as the pitch), strands scatter, forms
+   "SMITH DIGITAL"; new generated abstract clip for it (794 KB, lavfi
+   gradients — the imageio-ffmpeg build supports lavfi).
+4. **Screening room artifact** (private to Steen's account) — both films
+   in one phone-scrollable page, engine + videos inlined:
+   https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
+
+The debugging that mattered, so nobody re-learns it: the first formation
+build rendered nothing — root cause found via gl.getProgramInfoLog was
+**"Precisions of uniform 'uForm' differ between VERTEX and FRAGMENT
+shaders"** (vertex default highp vs fragment mediump = link failure on this
+GL stack). One qualifier fixes it; comment left in the shader. Also
+softened late-scatter alpha so a faint starfield survives the beat between
+dissolve and formation. QA: 4 drives (demo desktop, yost desktop, SD
+desktop, SD mobile 390x844) all clean — 0 console errors, formation-vs-
+dissolve screenshot deltas 110k–876k, formed names eyeballed legible.
+
+Same standing caveats: video scrub timestamps verified, decoded-frame
+smoothness needs Codex's real-browser look; nothing deployed anywhere.

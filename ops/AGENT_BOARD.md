@@ -1648,3 +1648,12 @@ photo→AI-video recipe in the README) and proposes the Smith Digital splice;
 Steen supplies/approves footage and any deploy. Claude claims the kit files
 on branch `claude/tiktok-video-transformation-64e1ja` (PR #35) — don't fork
 a second copy; edit through that branch. Evidence: LOG 2026-08-28 (later).
+
+**SM-XP-002 addendum · 2026-08-28 (third session):** formations shipped —
+embers now re-gather into client text/logo (the reference's signature move),
+three scatter styles, `HOW-ITS-DONE.md` tradecraft doc, and
+`smith-digital-demo.html` preview wearing the live site's real copy. Root
+cause worth keeping: a vertex/fragment precision mismatch on a shared
+uniform is a link error on some GL stacks — fixed with one highp qualifier.
+Steen's phone-scrollable preview (private artifact):
+https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7

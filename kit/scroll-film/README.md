@@ -12,13 +12,15 @@ built on the same kit.
 
 | File | What it is |
 |---|---|
-| `scrollfilm.js` | The engine: scrub → particle dissolve → ember drift |
+| `scrollfilm.js` | The engine: scrub → particle dissolve → **reform into a name/logo** → drift |
 | `scrollfilm.css` | Structural styles only (pinning, canvases, caption timing) |
-| `demo.html` | Neutral demo + usage notes in view-source |
-| `yost-wood-design.html` | Draft site for Jay (placeholders marked) |
+| `demo.html` | Neutral demo + usage notes in view-source (embers form "SCROLL FILM") |
+| `yost-wood-design.html` | Draft site for Jay — rising embers form "YOST WOOD DESIGN" |
+| `smith-digital-demo.html` | The effect wearing smithdigitalco.com's real homepage copy — strands form "SMITH DIGITAL" |
+| `HOW-ITS-DONE.md` | The complete tradecraft: the three tricks behind every site in the genre |
 | `REFERENCE.md` | What the TikTok actually shows, effect by effect |
-| `assets/demo-film.mp4` | Placeholder clip (generated Ken Burns over a wood render, keyframe-dense) |
-| `assets/demo-poster.jpg` | Its first frame |
+| `assets/demo-film.mp4` / `demo-poster.jpg` | Placeholder wood clip (generated, keyframe-dense) |
+| `assets/digital-film.mp4` / `digital-poster.jpg` | Placeholder abstract clip for the Smith Digital preview |
 
 ## Dropping it into a page
 
@@ -45,8 +47,23 @@ built on the same kit.
 
 The kit styles nothing visible — captions inherit the host site's type and
 colors. Timing: each caption shows between `data-sf-at` and `data-sf-until`
-(progress 0..1). Phase boundaries are tunable via `data-sf-scrub-end`
-(default 0.58) and `data-sf-dissolve-end` (default 0.92).
+(progress 0..1).
+
+**Identity attributes** (this is where each site stops looking like the
+others):
+
+- `data-sf-scatter` — how the picture breaks apart: `burst` (everywhere,
+  default), `strands` (horizontal fiber streams — the reference site's face
+  look), `rise` (embers off a fire — right for a wood shop).
+- `data-sf-form-text="YOUR|NAME"` — after the dissolve, the embers gather
+  and **spell this** (multiline with `|`). `data-sf-form-image="logo.png"`
+  forms the logo's silhouette instead (alpha mask; wins over text).
+  `data-sf-form-color` sets the formed color, `data-sf-form-font` the face
+  used for rasterizing the text. Omit all of these and the film ends on the
+  drifting embers like before.
+- Phase boundaries: `data-sf-scrub-end` (default 0.5 with a formation,
+  0.58 without), `data-sf-dissolve-end` (0.78 / 0.92), `data-sf-form-end`
+  (0.94).
 
 Built-in degrade paths, nothing to configure: no video → Ken Burns on the
 image + the same dissolve · no WebGL → scrub only · reduced motion, no JS,
