@@ -17,6 +17,7 @@ built on the same kit.
 | `demo.html` | Neutral demo + usage notes in view-source (embers form "SCROLL FILM") |
 | `yost-wood-design.html` | Draft site for Jay — rising embers form "YOST WOOD DESIGN" |
 | `smith-digital-demo.html` | The effect wearing smithdigitalco.com's real homepage copy — strands form "SMITH DIGITAL" |
+| `his-look.html` | The reference creator's exact art direction: light stage, solid blending, rotating fiber-ball finale |
 | `HOW-ITS-DONE.md` | The complete tradecraft: the three tricks behind every site in the genre |
 | `REFERENCE.md` | What the TikTok actually shows, effect by effect |
 | `assets/demo-film.mp4` / `demo-poster.jpg` | Placeholder wood clip (generated, keyframe-dense) |
@@ -63,9 +64,11 @@ others):
 - `data-sf-form-text="YOUR|NAME"` — after the dissolve, the embers gather
   and **spell this** (multiline with `|`). `data-sf-form-image="logo.png"`
   forms the logo's silhouette instead (alpha mask; wins over text).
-  `data-sf-form-color` sets the formed color, `data-sf-form-font` the face
-  used for rasterizing the text. Omit all of these and the film ends on the
-  drifting embers like before.
+  `data-sf-form-shape="orb"` forms the reference's dandelion finale
+  instead: a **rotating 3D fiber ball with radial spikes** (see
+  `his-look.html`). `data-sf-form-color` sets the formed color,
+  `data-sf-form-font` the face used for rasterizing text. Omit all of
+  these and the film ends on the drifting embers like before.
 - Phase boundaries: `data-sf-scrub-end` (default 0.5 with a formation,
   0.58 without), `data-sf-dissolve-end` (0.78 / 0.92), `data-sf-form-end`
   (0.94).

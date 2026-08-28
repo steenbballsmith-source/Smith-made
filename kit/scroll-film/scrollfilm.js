@@ -59,11 +59,13 @@
     "attribute vec2 aUV;",
     "attribute vec3 aSeed;",
     "attribute vec2 aTarget;",   /* clip-space slot in the formation */
+    "attribute float aTargetZ;", /* depth of the slot (orb formations) */
     "attribute float aTargetOn;",/* 1 = has a slot, 0 = fades out on reform */
     "attribute float aEnd;",     /* 0 = head, 1 = fiber tail */
     "uniform float uProgress;",  /* dissolve: 0 intact -> 1 scattered */
     "uniform float uForm;",      /* reform: 0 scattered -> 1 formed */
     "uniform float uMode;",      /* scatter style: 0 burst, 1 strands, 2 rise */
+    "uniform float uOrb;",       /* 1 = the formation is a rotating 3D orb */
     "uniform float uPass;",      /* 0 core, 1 fibers, 2 halo */
     "uniform float uTime;",
     "uniform vec2  uCover;",
@@ -72,6 +74,7 @@
     "varying float vT;",
     "varying float vForm;",
     "varying float vDepth;",
+    "varying float vPersp;",
     "float easeT(float p) {",
     "  float order = aSeed.x * 0.55 + (1.0 - aUV.y) * 0.25;",
     "  float t = clamp((p * 1.8 - order) / 1.0, 0.0, 1.0);",
@@ -96,8 +99,20 @@
     "             cos(sc.x * 2.6 - time * 0.5 + aSeed.y * 7.0)) * 0.02 * t;",
     /* pseudo-depth parallax: near points swing wider than far ones */
     "  sc.x += (aSeed.z - 0.5) * 0.12 * sin(p * 2.2 + time * 0.1) * t;",
-    /* reform: pull to the slot with a light shimmer so it stays alive */
-    "  vec2 slot = aTarget + vec2(sin(time * 0.9 + aSeed.x * 20.0), cos(time * 0.7 + aSeed.y * 20.0)) * 0.0035;",
+    /* reform: pull to the slot with a light shimmer so it stays alive.
+       An orb slot lives in 3D — spin it around Y and project, so the
+       formed ball genuinely rotates (the reference's dandelion finale). */
+    "  vec2 slotBase = aTarget;",
+    "  vPersp = 1.0;",
+    "  if (uOrb > 0.5) {",
+    "    float ca = cos(time * 0.22);",
+    "    float sa = sin(time * 0.22);",
+    "    float xr = aTarget.x * ca + aTargetZ * sa;",
+    "    float zr = -aTarget.x * sa + aTargetZ * ca;",
+    "    vPersp = 1.0 / (1.0 - zr * 0.42);",
+    "    slotBase = vec2(xr, aTarget.y) * vPersp;",
+    "  }",
+    "  vec2 slot = slotBase + vec2(sin(time * 0.9 + aSeed.x * 20.0), cos(time * 0.7 + aSeed.y * 20.0)) * 0.0035;",
     "  return mix(sc, slot, form * aTargetOn);",
     "}",
     "void main() {",
@@ -112,7 +127,8 @@
     "  gl_Position = vec4(fpos, 0.0, 1.0);",
     "  float sizeMul = uPass > 1.5 ? 3.4 : 1.0;",
     "  float depthMul = 0.7 + 0.6 * aSeed.z;",
-    "  gl_PointSize = uSize * sizeMul * depthMul * (1.0 - 0.5 * vT) * (1.0 + vForm * 0.5);",
+    "  float orbMul = 1.0 + (vPersp - 1.0) * vForm;", /* near side of the orb reads bigger */
+    "  gl_PointSize = uSize * sizeMul * depthMul * orbMul * (1.0 - 0.5 * vT) * (1.0 + vForm * 0.5);",
     "}",
   ].join("\n");
 
@@ -129,11 +145,14 @@
     "varying highp float vT;",
     "varying highp float vForm;",
     "varying highp float vDepth;",
+    "varying highp float vPersp;",
     "void main() {",
     "  vec4 c = texture2D(uTex, vec2(vUV.x, 1.0 - vUV.y));",
     /* scattered material warms toward the accent, like sparks off a fire */
     "  vec3 col = mix(c.rgb, uAccent, vT * (0.35 + 0.4 * vDepth));",
     "  col = mix(col, uFormColor, vForm);",
+    /* the orb's far side falls into shadow (vPersp is 1.0 off the orb) */
+    "  col *= mix(1.0, clamp(vPersp, 0.55, 1.3), vForm);",
     /* faint starfield survives the late scatter so the stage never dies */
     "  float life = (1.0 - smoothstep(0.5, 1.25, vT)) * (0.35 + 0.65 * (1.0 - vT));",
     "  float alpha;",
@@ -156,7 +175,7 @@
     "}",
   ].join("\n");
 
-  function makeParticles(canvas, accent, formColor, blendGlow) {
+  function makeParticles(canvas, accent, formColor, blendGlow, orb) {
     var gl = canvas.getContext("webgl", { alpha: true, antialias: false })
           || canvas.getContext("experimental-webgl", { alpha: true });
     if (!gl) return null;
@@ -216,6 +235,7 @@
       points: {
         aUV: [makeBuf(uvP), 2], aSeed: [makeBuf(seedP), 3],
         aTarget: [makeBuf(new Float32Array(count * 2), true), 2],
+        aTargetZ: [makeBuf(new Float32Array(count), true), 1],
         aTargetOn: [makeBuf(new Float32Array(count), true), 1],
         aEnd: [makeBuf(endP), 1],
         n: count, prim: gl.POINTS,
@@ -223,13 +243,14 @@
       lines: {
         aUV: [makeBuf(uvL), 2], aSeed: [makeBuf(seedL), 3],
         aTarget: [makeBuf(new Float32Array(count * 4), true), 2],
+        aTargetZ: [makeBuf(new Float32Array(count * 2), true), 1],
         aTargetOn: [makeBuf(new Float32Array(count * 2), true), 1],
         aEnd: [makeBuf(endL), 1],
         n: count * 2, prim: gl.LINES,
       },
     };
     var loc = {};
-    ["aUV", "aSeed", "aTarget", "aTargetOn", "aEnd"].forEach(function (name) {
+    ["aUV", "aSeed", "aTarget", "aTargetZ", "aTargetOn", "aEnd"].forEach(function (name) {
       loc[name] = gl.getAttribLocation(prog, name);
       gl.enableVertexAttribArray(loc[name]);
     });
@@ -250,9 +271,10 @@
       new Uint8Array([30, 24, 18, 255]));
 
     var U = {};
-    ["uProgress", "uForm", "uMode", "uPass", "uTime", "uCover", "uSize", "uAccent", "uFormColor", "uTex"]
+    ["uProgress", "uForm", "uMode", "uOrb", "uPass", "uTime", "uCover", "uSize", "uAccent", "uFormColor", "uTex"]
       .forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
     gl.uniform1i(U.uTex, 0);
+    gl.uniform1f(U.uOrb, orb ? 1 : 0);
     gl.uniform3fv(U.uAccent, new Float32Array(accent));
     gl.uniform3fv(U.uFormColor, new Float32Array(formColor || accent));
     gl.enable(gl.BLEND);
@@ -270,22 +292,31 @@
           return true;
         } catch (e) { return false; }
       },
-      setTargets: function (positions, onFlags) {
-        /* points get the slots directly; each fiber's head and tail share
-           the slot, so fibers shrink away into the letters */
+      setTargets: function (positions, onFlags, zVals, tailScale) {
+        /* points get the slots directly. Fiber tails: for text they share
+           the head's slot (fibers shrink away into the letters); for the
+           orb they sit radially outward — the dandelion's spikes. */
+        var ts = tailScale || 1;
         var posL = new Float32Array(positions.length * 2);
         var onL = new Float32Array(onFlags.length * 2);
+        var zP = zVals || new Float32Array(onFlags.length);
+        var zL = new Float32Array(onFlags.length * 2);
         for (var j = 0; j < onFlags.length; j++) {
           posL[j * 4] = positions[j * 2]; posL[j * 4 + 1] = positions[j * 2 + 1];
-          posL[j * 4 + 2] = positions[j * 2]; posL[j * 4 + 3] = positions[j * 2 + 1];
+          posL[j * 4 + 2] = positions[j * 2] * ts; posL[j * 4 + 3] = positions[j * 2 + 1] * ts;
           onL[j * 2] = onFlags[j]; onL[j * 2 + 1] = onFlags[j];
+          zL[j * 2] = zP[j]; zL[j * 2 + 1] = zP[j] * ts;
         }
         gl.bindBuffer(gl.ARRAY_BUFFER, bufs.points.aTarget[0]);
         gl.bufferData(gl.ARRAY_BUFFER, positions, gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufs.points.aTargetZ[0]);
+        gl.bufferData(gl.ARRAY_BUFFER, zP, gl.DYNAMIC_DRAW);
         gl.bindBuffer(gl.ARRAY_BUFFER, bufs.points.aTargetOn[0]);
         gl.bufferData(gl.ARRAY_BUFFER, onFlags, gl.DYNAMIC_DRAW);
         gl.bindBuffer(gl.ARRAY_BUFFER, bufs.lines.aTarget[0]);
         gl.bufferData(gl.ARRAY_BUFFER, posL, gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufs.lines.aTargetZ[0]);
+        gl.bufferData(gl.ARRAY_BUFFER, zL, gl.DYNAMIC_DRAW);
         gl.bindBuffer(gl.ARRAY_BUFFER, bufs.lines.aTargetOn[0]);
         gl.bufferData(gl.ARRAY_BUFFER, onL, gl.DYNAMIC_DRAW);
       },
@@ -310,7 +341,8 @@
           gl.drawArrays(set.prim, 0, set.n);
         }
         pass(1, bufs.lines, blendGlow);          /* fiber trails   */
-        pass(2, bufs.points, true);              /* soft halo glow */
+        if (blendGlow) pass(2, bufs.points, true); /* halo — glow stages only;
+                                                      additive washes out on light */
         pass(0, bufs.points, false);             /* sharp cores    */
       },
     };
@@ -360,7 +392,30 @@
           on[i] = 0;
         }
       }
-      particles.setTargets(pos, on);
+      particles.setTargets(pos, on, null, 1);
+    }
+
+    /* orb: a fibonacci sphere the shader spins and projects — the
+       reference's dandelion-ball finale, spikes included via fiber tails */
+    if (spec.shape === "orb") {
+      var M = 2800, R = 0.5;
+      var n2 = particles.count;
+      var pos2 = new Float32Array(n2 * 2);
+      var on2 = new Float32Array(n2);
+      var z2 = new Float32Array(n2);
+      var yK2 = viewW / viewH;
+      for (var k = 0; k < n2; k++) {
+        var sIdx = k % M;
+        var sy = 1 - 2 * (sIdx + 0.5) / M;
+        var sr = Math.sqrt(Math.max(0, 1 - sy * sy));
+        var sa = sIdx * 2.399963229728653; /* golden angle */
+        pos2[k * 2] = Math.cos(sa) * sr * R + (Math.random() - 0.5) * 0.008;
+        pos2[k * 2 + 1] = sy * R * yK2 + 0.06 + (Math.random() - 0.5) * 0.008;
+        z2[k] = Math.sin(sa) * sr * R;
+        on2[k] = 1;
+      }
+      particles.setTargets(pos2, on2, z2, 1.3);
+      return;
     }
 
     if (spec.image) {
@@ -415,13 +470,14 @@
       blendGlow: (section.getAttribute("data-sf-blend") || "glow") !== "solid",
       formText: section.getAttribute("data-sf-form-text") || "",
       formImage: section.getAttribute("data-sf-form-image") || "",
+      formShape: section.getAttribute("data-sf-form-shape") || "",
       formFont: section.getAttribute("data-sf-form-font") || "",
       formColor: hexToRgb(section.getAttribute("data-sf-form-color")) || accent,
       scrubEnd: parseFloat(section.getAttribute("data-sf-scrub-end") || "0.5"),
       dissolveEnd: parseFloat(section.getAttribute("data-sf-dissolve-end") || "0.78"),
       formEnd: parseFloat(section.getAttribute("data-sf-form-end") || "0.94"),
     };
-    var hasForm = !!(cfg.formText || cfg.formImage);
+    var hasForm = !!(cfg.formText || cfg.formImage || cfg.formShape === "orb");
     /* with no formation the dissolve gets the reform's share of the scroll */
     if (!hasForm) { cfg.scrubEnd = parseFloat(section.getAttribute("data-sf-scrub-end") || "0.58"); cfg.dissolveEnd = parseFloat(section.getAttribute("data-sf-dissolve-end") || "0.92"); }
 
@@ -453,7 +509,7 @@
     var ctx = flat.getContext("2d");
     section.style.height = cfg.length + "vh";
 
-    var particles = makeParticles(glCanvas, cfg.accent, cfg.formColor, cfg.blendGlow);
+    var particles = makeParticles(glCanvas, cfg.accent, cfg.formColor, cfg.blendGlow, cfg.formShape === "orb");
 
     var img = null, imgReady = false;
     var srcImage = cfg.image || (poster ? poster.currentSrc || poster.src : "");
@@ -493,7 +549,7 @@
       glCanvas.width = Math.round(w * dpr);
       glCanvas.height = Math.round(h * dpr);
       if (particles && hasForm) {
-        buildTargets(particles, w, h, { text: cfg.formText, image: cfg.formImage, font: cfg.formFont });
+        buildTargets(particles, w, h, { text: cfg.formText, image: cfg.formImage, shape: cfg.formShape, font: cfg.formFont });
       }
     }
     size();

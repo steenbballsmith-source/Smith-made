@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ==================================================================
+       "HIS LOOK" — the reference creator's own art direction, one-to-one:
+       light warm-gray stage, quiet gray type, fine fiber strands with warm
+       tips (solid blending — no additive glow on light grounds), and the
+       rotating fiber-ball finale his demo site ends on.
+       Same engine, same three attributes — proof the kit covers his exact
+       look, not just a dark-stage cousin of it.
+       ================================================================== -->
+  <title>ScrollFilm — the reference look</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%F0%9F%8C%BE%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="scrollfilm.css">
+  <style>
+    :root { --stage: #e9e5df; --ink: #2b2620; --quiet: #8d857a; --tip: #c07a35; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--stage); color: var(--ink);
+      font: 400 16px/1.6 system-ui, 'Segoe UI', sans-serif; }
+    .kicker { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--tip); font-weight: 600; margin-bottom: 12px; }
+    .sf-caption h1, .sf-caption h2 { font-weight: 650; letter-spacing: -0.02em; line-height: 1.05; }
+    .sf-caption h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); }
+    .sf-caption h2 { font-size: clamp(1.7rem, 4.4vw, 3rem); }
+    .sf-caption p { color: var(--quiet); max-width: 430px; margin-top: 10px; }
+    .sf-bar { color: var(--tip); }
+    .sf-poster { filter: none; }
+    /* light stage: no dark scrim — his site keeps the ground clean */
+    .after { max-width: 720px; margin: 0 auto; padding: 100px 24px 130px; }
+    .after h2 { font-weight: 650; font-size: 1.7rem; margin-bottom: 14px; }
+    .after p { color: var(--quiet); margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+  <section data-scrollfilm
+           data-sf-video="assets/demo-film.mp4"
+           data-sf-image="assets/demo-poster.jpg"
+           data-sf-length="520"
+           data-sf-accent="#c07a35"
+           data-sf-scatter="strands"
+           data-sf-blend="solid"
+           data-sf-form-shape="orb">
+    <div class="sf-sticky">
+      <img class="sf-poster" src="assets/demo-poster.jpg"
+           alt="Walnut arch in a bright room — stand-in for the reference's portrait footage">
+
+      <div class="sf-caption" data-sf-at="0.02" data-sf-until="0.26">
+        <p class="kicker">The reference look · same engine</p>
+        <h1>Creating work<br>that connects.</h1>
+        <p>This page copies the reference site's own art direction — light
+          stage, quiet type, fine strands with warm tips.</p>
+      </div>
+
+      <div class="sf-caption" data-sf-at="0.32" data-sf-until="0.47">
+        <h2>Over one million<br>curious pixels.</h2>
+        <p>The picture is pulling into fiber streams now — his face site's
+          exact move, on our footage.</p>
+      </div>
+
+      <div class="sf-caption" data-sf-at="0.53" data-sf-until="0.74">
+        <h2>Strands, not sparks.</h2>
+        <p>Solid blending for light grounds; the warm tips carry the accent.</p>
+      </div>
+
+      <div class="sf-caption" data-sf-at="0.86" data-sf-until="1">
+        <p class="kicker">The dandelion finale</p>
+        <p>A rotating fiber ball with radial spikes — the shape his demo ends
+          on. Made by Smith Digital using Claude.</p>
+      </div>
+
+      <span class="sf-bar" data-sf-bar></span>
+    </div>
+  </section>
+
+  <section class="after">
+    <h2>What this page proves</h2>
+    <p>Same kit, three attributes changed: <code>data-sf-blend="solid"</code>,
+      <code>data-sf-scatter="strands"</code>,
+      <code>data-sf-form-shape="orb"</code>. With a real portrait clip in
+      place of the walnut footage, this is the reference site's hero,
+      one-to-one.</p>
+  </section>
+
+  <script src="scrollfilm.js"></script>
+</body>
+</html>
