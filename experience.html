@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scroll Through Your Wedding Day — The Smith Made Experience</title>
+  <meta name="description" content="An interactive scroll experience: watch a wedding day unfold through handbuilt wood signage — welcome arches, ceremony backdrops, champagne walls and keepsakes, staged scene by scene as you scroll.">
+  <meta name="theme-color" content="#3b2c1f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Smith Made">
+  <meta property="og:title" content="Scroll Through Your Wedding Day — The Smith Made Experience">
+  <meta property="og:description" content="A film you play with your scroll: one wedding day, told through handbuilt wood pieces from our Greenville, SC shop.">
+  <meta property="og:image" content="https://smithmadesc.com/assets/img/og-image.jpg">
+  <meta property="og:url" content="https://smithmadesc.com/experience.html">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scroll Through Your Wedding Day — The Smith Made Experience">
+  <meta name="twitter:description" content="A film you play with your scroll: one wedding day, told through handbuilt wood pieces from our Greenville, SC shop.">
+  <meta name="twitter:image" content="https://smithmadesc.com/assets/img/og-image.jpg">
+  <link rel="canonical" href="https://smithmadesc.com/experience.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/great-vibes-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/experience.css">
+</head>
+<body class="no-js">
+  <a class="skip-link" href="#film">Skip to the film</a>
+
+  <nav id="nav" aria-label="Main">
+    <a class="wordmark" href="index.html">Smith Made</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      Menu
+    </button>
+    <div class="nav-links" id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="#film" data-scroll>The Film</a>
+      <a href="#depth" data-scroll>The Craft</a>
+      <a href="#reel" data-scroll>The Reel</a>
+      <a href="index.html#collection">The Collection</a>
+      <a class="btn nav-cta" href="index.html#inquire">Check Your Date</a>
+    </div>
+  </nav>
+
+  <main class="content xp">
+
+    <!-- ================= HERO ================= -->
+    <section id="xp-hero" aria-label="The Smith Made experience">
+      <div class="xp-hero-word" data-xp-word aria-hidden="true">forever</div>
+      <div class="wrap">
+        <div class="copy">
+          <p class="kicker" data-reveal>The Smith Made Experience</p>
+          <h1 data-reveal>One wedding day,
+            <span class="script">told in wood</span>
+          </h1>
+          <p class="lede" data-reveal>This page moves when you do. Scroll, and a wedding day unfolds
+            piece by piece — every arch, wall, and keepsake below handbuilt in our Greenville shop
+            and staged the way it could look at your venue.</p>
+          <p class="xp-hint" data-reveal aria-hidden="true">Scroll slowly. You're driving.</p>
+        </div>
+        <figure class="xp-hero-figure" data-xp-figure data-reveal>
+          <div class="xp-hero-card" data-xp-tilt>
+            <picture>
+              <source srcset="assets/img/gallery/staged-heart.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-heart.jpg"
+                alt="Styled design render: a monumental wooden heart backdrop on a round dais, framed by white florals and candlelight"
+                width="1400" height="1050" fetchpriority="high">
+            </picture>
+          </div>
+        </figure>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><span class="line"></span></div>
+    </section>
+
+    <!-- ================= THE FILM (scroll-driven) ================= -->
+    <section id="film" aria-labelledby="film-title">
+      <div class="wrap xp-film-head">
+        <p class="kicker" data-reveal>The Film</p>
+        <h2 id="film-title" data-reveal>Played by <em class="script">your scroll</em></h2>
+        <p class="lede" data-reveal>This isn't a video that plays at you. Scroll forward and the day
+          moves forward; scroll back and it rewinds. Take it at your own pace — the pieces will wait.</p>
+      </div>
+
+      <div class="xp-stage" data-xp-stage>
+        <div class="xp-stage-inner" data-xp-pin>
+          <canvas class="xp-canvas" data-xp-canvas hidden aria-hidden="true"></canvas>
+
+          <figure class="xp-scene" data-scene>
+            <picture>
+              <source srcset="assets/img/gallery/staged-arch-riser.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-arch-riser.jpg"
+                alt="Styled design render: the Arched Welcome sign on a round riser, lit by candles and framed with white florals"
+                width="1400" height="1050">
+            </picture>
+            <figcaption class="xp-chapter">
+              <span class="xp-chapter-num" aria-hidden="true">01</span>
+              <span class="xp-chapter-script">Welcome your guests</span>
+              <strong>The Arched Welcome</strong>
+              <span class="xp-chapter-note">The first thing everyone sees — and the first photo
+                everyone takes. <a href="index.html#piece-arched-welcome">See this piece</a></span>
+            </figcaption>
+          </figure>
+
+          <figure class="xp-scene" data-scene>
+            <picture>
+              <source srcset="assets/img/gallery/staged-arch-trio.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-arch-trio.jpg"
+                alt="Styled design render: the Ceremony Arch Set, three arch panels of stepped heights standing side by side"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <figcaption class="xp-chapter">
+              <span class="xp-chapter-num" aria-hidden="true">02</span>
+              <span class="xp-chapter-script">Say &ldquo;I do&rdquo;</span>
+              <strong>Ceremony Arch Set</strong>
+              <span class="xp-chapter-note">Three arches, your florals, every vow photographed
+                against real wood. <a href="index.html#piece-ceremony-arch-set">See this piece</a></span>
+            </figcaption>
+          </figure>
+
+          <figure class="xp-scene" data-scene>
+            <picture>
+              <source srcset="assets/img/gallery/staged-champagne-wall.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-champagne-wall.jpg"
+                alt="Styled design render: an arched wood champagne wall with four serving shelves, candlelit"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <figcaption class="xp-chapter">
+              <span class="xp-chapter-num" aria-hidden="true">03</span>
+              <span class="xp-chapter-script">Raise a glass</span>
+              <strong>Champagne Wall</strong>
+              <span class="xp-chapter-note">Cocktail hour's centerpiece — glasses waiting in the
+                arch. <a href="index.html#piece-champagne-wall">See this piece</a></span>
+            </figcaption>
+          </figure>
+
+          <figure class="xp-scene" data-scene>
+            <picture>
+              <source srcset="assets/img/gallery/staged-slat-arch-black.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-slat-arch-black.jpg"
+                alt="Styled design render: a blackened arch frame filled with oak slats, candlelit and framed by florals"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <figcaption class="xp-chapter">
+              <span class="xp-chapter-num" aria-hidden="true">04</span>
+              <span class="xp-chapter-script">Dance all night</span>
+              <strong>Slat Monogram Backdrop</strong>
+              <span class="xp-chapter-note">Behind the sweetheart table or the band — the backdrop
+                to every reception photo. <a href="index.html#piece-slat-backdrop">See this piece</a></span>
+            </figcaption>
+          </figure>
+
+          <figure class="xp-scene" data-scene>
+            <picture>
+              <source srcset="assets/img/gallery/staged-heart.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-heart.jpg"
+                alt="Styled design render: a monumental wooden heart backdrop on a round dais with white florals and candlelight"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <figcaption class="xp-chapter">
+              <span class="xp-chapter-num" aria-hidden="true">05</span>
+              <span class="xp-chapter-script">Take the day home</span>
+              <strong>The Keepsake Heart</strong>
+              <span class="xp-chapter-note">Rent it for the weekend — or have one built to keep,
+                forever. <a href="index.html#piece-keepsake-heart">See this piece</a></span>
+            </figcaption>
+          </figure>
+
+          <div class="xp-progress" aria-hidden="true">
+            <span class="xp-progress-fill" data-xp-fill></span>
+            <span class="xp-tick" data-xp-tick>01</span>
+            <span class="xp-tick" data-xp-tick>02</span>
+            <span class="xp-tick" data-xp-tick>03</span>
+            <span class="xp-tick" data-xp-tick>04</span>
+            <span class="xp-tick" data-xp-tick>05</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DEPTH / CRAFT ================= -->
+    <section id="depth" aria-labelledby="depth-title">
+      <div class="xp-depth-word" data-depth="0.12" aria-hidden="true">handbuilt</div>
+      <div class="wrap xp-depth-grid">
+        <div class="copy">
+          <p class="kicker" data-reveal>The Craft</p>
+          <h2 id="depth-title" data-reveal>Carpenter&#8209;scale,
+            <em class="script">camera&#8209;ready</em></h2>
+          <p class="lede" data-reveal>Seven-foot arches. Seating charts that stand on their own.
+            Pieces a calligraphy studio can&rsquo;t make and a party-rental warehouse doesn&rsquo;t
+            carry — built in our shop, finished by hand, delivered to your venue.</p>
+          <p class="lede" data-reveal>Choose natural white oak, walnut stain, painted cream, or a
+            blackened frame — or name a color and we&rsquo;ll quote it for your day.</p>
+        </div>
+        <div class="xp-depth-stack" aria-hidden="false">
+          <figure class="xp-depth-card" data-depth="0.55">
+            <picture>
+              <source srcset="assets/img/gallery/render-arched-welcome__walnut.webp" type="image/webp">
+              <img src="assets/img/gallery/render-arched-welcome__walnut.jpg"
+                alt="Styled design render of the Arched Welcome in walnut stain, flanked by white florals and hurricane candles"
+                width="1000" height="750" loading="lazy">
+            </picture>
+            <figcaption>Walnut stain</figcaption>
+          </figure>
+          <figure class="xp-depth-card" data-depth="0.3">
+            <picture>
+              <source srcset="assets/img/gallery/render-arched-welcome__painted-cream.webp" type="image/webp">
+              <img src="assets/img/gallery/render-arched-welcome__painted-cream.jpg"
+                alt="Styled design render of the Arched Welcome in painted cream on a round riser with white florals"
+                width="1000" height="750" loading="lazy">
+            </picture>
+            <figcaption>Painted cream</figcaption>
+          </figure>
+          <figure class="xp-depth-card" data-depth="0.8">
+            <picture>
+              <source srcset="assets/img/gallery/staged-arch-riser.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-arch-riser.jpg"
+                alt="Styled design render of the Arched Welcome in natural white oak on a round riser"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <figcaption>Natural white oak</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE REEL (horizontal) ================= -->
+    <section id="reel" aria-labelledby="reel-title">
+      <div class="wrap xp-reel-head">
+        <p class="kicker" data-reveal>The Reel</p>
+        <h2 id="reel-title" data-reveal>The collection, <em class="script">in one pass</em></h2>
+        <p class="lede" data-reveal>Keep scrolling — the shelf slides sideways. Tap any piece to
+          see it in the collection.</p>
+      </div>
+      <div class="xp-reel" data-xp-reel>
+        <div class="xp-reel-track" data-xp-track>
+          <a class="xp-frame" href="index.html#piece-grand-arch-welcome-wall">
+            <picture>
+              <source srcset="assets/img/gallery/render-grand-arch-welcome-wall__walnut.webp" type="image/webp">
+              <img src="assets/img/gallery/render-grand-arch-welcome-wall__walnut.jpg"
+                alt="Styled design render: the Grand Arch Welcome Wall in walnut, a freestanding wall with a tall arched cutout"
+                width="1000" height="750" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>Grand Arch Welcome Wall</strong> Walnut</span>
+          </a>
+          <a class="xp-frame" href="index.html#piece-seating-chart-wall">
+            <picture>
+              <source srcset="assets/img/gallery/render-seating-chart-wall__natural-oak.webp" type="image/webp">
+              <img src="assets/img/gallery/render-seating-chart-wall__natural-oak.jpg"
+                alt="Styled design render: the Seating Chart Wall in natural oak, two tall panels of stepped heights"
+                width="1000" height="750" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>Seating Chart Wall</strong> Natural oak</span>
+          </a>
+          <a class="xp-frame" href="index.html#piece-mobile-bar">
+            <picture>
+              <source srcset="assets/img/gallery/staged-cream-bar.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-cream-bar.jpg"
+                alt="Styled design render: the Mobile Bar painted cream with an oak top, champagne on ice"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>The Mobile Bar</strong> Painted cream</span>
+          </a>
+          <a class="xp-frame" href="index.html#piece-display-wall">
+            <picture>
+              <source srcset="assets/img/gallery/staged-display-shelf.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-display-shelf.jpg"
+                alt="Styled design render: the Display Wall in painted cream, an arched shelf wall lit by candles"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>The Display Wall</strong> Painted cream</span>
+          </a>
+          <a class="xp-frame" href="index.html#piece-slat-backdrop">
+            <picture>
+              <source srcset="assets/img/gallery/staged-wave-backdrop.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-wave-backdrop.jpg"
+                alt="Styled design render: a wave-topped slat backdrop in natural birch, framed by florals"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>Wave Backdrop</strong> Natural birch</span>
+          </a>
+          <a class="xp-frame" href="index.html#piece-arched-welcome">
+            <picture>
+              <source srcset="assets/img/gallery/render-arched-welcome__painted-cream.webp" type="image/webp">
+              <img src="assets/img/gallery/render-arched-welcome__painted-cream.jpg"
+                alt="Styled design render: the Arched Welcome in painted cream, centered on a round riser"
+                width="1000" height="750" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>The Arched Welcome</strong> Painted cream</span>
+          </a>
+          <a class="xp-frame" href="index.html#piece-grand-arch-welcome-wall">
+            <picture>
+              <source srcset="assets/img/gallery/staged-walkthrough.webp" type="image/webp">
+              <img src="assets/img/gallery/staged-walkthrough.jpg"
+                alt="Styled design render: a freestanding arch wall guests walk through, in natural birch"
+                width="1400" height="1050" loading="lazy">
+            </picture>
+            <span class="xp-frame-caption"><strong>Grand Arch</strong> Natural birch</span>
+          </a>
+          <a class="xp-frame xp-frame-cta" href="index.html#inquire">
+            <span class="xp-frame-cta-inner">
+              <span class="script">Want something else?</span>
+              <strong>We build to order.</strong>
+              <span class="btn ghost small">Describe your piece</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINALE ================= -->
+    <section id="xp-finale" aria-labelledby="finale-title">
+      <div class="watermark watermark-low" aria-hidden="true">forever</div>
+      <div class="wrap xp-finale-wrap">
+        <p class="script-line" data-reveal>Your love story,</p>
+        <h2 id="finale-title" data-reveal>carved in wood.</h2>
+        <p class="lede center" data-reveal>Tell us your date and we&rsquo;ll confirm it&rsquo;s open
+          and send a simple quote — usually within a day or two. Delivered across the Upstate,
+          or pick up from our shop and save.</p>
+        <div class="hero-ctas xp-finale-ctas" data-reveal>
+          <a class="btn" href="index.html#inquire">Check Your Date</a>
+          <a class="btn ghost" href="index.html#collection">Browse the Collection</a>
+        </div>
+
+        <footer class="foot xp-foot">
+          <p class="foot-legal">&copy; <span data-year>2026</span> Smith Made &middot; Greenville, SC
+            &middot; <a href="index.html">smithmadesc.com</a> &middot;
+            <a href="mailto:will.smithmade@gmail.com" data-contact-email>will.smithmade@gmail.com</a> &middot;
+            <a href="/privacy.html">Privacy Policy</a></p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/manifest.js"></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="js/experience.js" defer></script>
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+</body>
+</html>

@@ -1598,3 +1598,27 @@ and Meta readiness state and routes local Claude to the private execution
 files. `LOG.md` entry `2026-07-30-C23` preserves the verification and privacy
 boundary. Paid traffic and the commercial-email hold remain in place; no
 external or production action occurred.
+
+### SM-XP-001 — The Experience: scroll-film page (the TikTok ask) 🟡
+**Status: BUILT + QA'D · on branch, NOT deployed · Owner: CLAUDE · 2026-08-28**
+
+Steen asked for a site like the TikTok he sent (@nomadatoast — scroll-driven
+"video transformation" / parallax pages). Built as an additive page:
+`experience.html` + `js/experience.js` + `css/experience.css`, two links added
+in `index.html`, one dormant owner key `experienceFilm` in `js/manifest.js`.
+Branch `claude/tiktok-video-transformation-64e1ja`, draft PR open.
+
+| Check | Result |
+|---|---|
+| Scroll film: pin + 5-scene crossfade + progress rail | works, desktop + mobile |
+| Horizontal reel drive | works (−30 → −1,400px) |
+| Reduced-motion / no-JS | static page, fully readable |
+| Console errors / failed requests | 0 / 0 (both pages) |
+| index.html regression | nav+footer links only, console clean |
+| Film mode (real video scrub) | arms + seeks correctly with a test clip; frame-accurate decode can't be observed in the container's headless Chromium — needs one human look in a real browser once a real clip exists |
+
+Open: Codex review on the PC (real browser), Steen's say-so to merge
+(merge to `main` = live deploy), and — for the full effect — a 10–20s
+phone clip from the shop saved as `assets/video/experience.mp4`.
+Evidence: `LOG.md` 2026-08-28 entry. Do not duplicate: the branch and PR
+are claimed by cloud Claude; edits to those three files go through that PR.

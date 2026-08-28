@@ -2177,3 +2177,60 @@ image serving byte-exact (127658 bytes). Desktop QA passed locally pre-merge.
 No form submission was made; Will's inbox-delivery proof (SM-FORM-001) remains
 open. Next owner input: whether the two tiered display-stand renders Will sent
 become a tenth card (not added — no instruction).
+
+## 2026-08-28 · cloud Claude · The Experience page: TikTok-style scroll film built, QA'd, on branch (not deployed)
+
+Steen sent a TikTok link and asked for "something just like it with the video
+transformation and all the stuff." Resolved the link first: video
+7632327346971790614 by @nomadatoast (Jo Mendes), caption "create 3D-like
+website animations from simple videos using Emergent and Claude skills,
+turning prompts into interactive parallax sites" (#aitools #emergent
+#webdesign #nocode). It showcases a *technique*, not one specific site:
+scroll-scrubbed video + parallax "3D-like" sections. Fetched via remote
+extraction (TikTok is egress-blocked from the container); resolved URL and
+caption are reproducible from the page's embedded JSON.
+
+Built on branch `claude/tiktok-video-transformation-64e1ja`:
+
+- **`experience.html`** — new page, linked from the home nav + footer. Five
+  full-screen "chapters" walk one wedding day through the collection
+  (Arched Welcome → Ceremony Arch Set → Champagne Wall → Slat Backdrop →
+  Keepsake Heart), crossfading and drifting as the visitor scrolls — forward
+  plays, backward rewinds. Plus a parallax "Craft" collage, a horizontal
+  reel of seven pieces (each linking to its card on the home page), and a
+  CTA finale into `index.html#inquire`.
+- **`js/experience.js` + `css/experience.css`** — engine and styles. Uses the
+  vendored GSAP/ScrollTrigger/Lenis already in the repo; no new dependencies,
+  no build step. Three states from one markup: full motion, static editorial
+  page for reduced-motion/no-GSAP, and a no-JS page that still reads.
+- **Film mode, wired but dormant:** `js/manifest.js` gained one owner-editable
+  key, `experienceFilm: ""`. When a real clip lands at
+  `assets/video/experience.mp4` and that line is filled in, the same scroll
+  drives the actual video frame-by-frame on a canvas (chapters ride on top).
+  Until then the page scrubs the staged renders and looks finished.
+- `sitemap.xml` gained the page; `index.html` changed by exactly two links.
+
+Evidence (reproduce: `python3 -m http.server` + Playwright on the container's
+Chromium, script preserved in the PR description):
+
+- Desktop 1440×900 and mobile 390×844: pin engages (5,400px scrub length),
+  scene opacities crossfade 1.00→0.00 in order, mid-crossfade blend observed
+  (0.20/0.80 at 78%), progress ticks 01–05 track, reel slides −30→−1,400px.
+  Console errors 0, failed requests 0, on both.
+- Reduced-motion emulation: `body.xp-static`, everything readable, no pin.
+- `index.html` smoke: nav link present, console clean.
+- Film mode, tested by injecting a generated test video: arms correctly,
+  canvas fills the stage, chapters overlay it, and scroll position maps to
+  the right timestamps (5%→0.29s, 50%→2.90s, 95%→5.50s of a 5.84s clip).
+  **Caveat, stated so nobody over-trusts this:** the container's headless
+  Chromium would not advance *decoded frames* on paused seeks for any video
+  (proven with a bare `<video>` control test — same first frame at 0.3s,
+  2.9s, 5.5s). Frame-accurate scrubbing is the textbook pattern and works in
+  real browsers, but it has NOT been seen with human eyes here. When a real
+  clip is added, one look in a normal browser is the remaining check.
+- Fixed during QA: MediaRecorder/screen-recorder files report
+  `duration = Infinity`; the engine now resolves duration via the standard
+  seek-to-end poke instead of silently staying in render mode.
+
+Not done, deliberately: no deploy (merge to `main` = deploy = Steen's named
+exception), no venue/social announcement, no changes to the form or catalog.
