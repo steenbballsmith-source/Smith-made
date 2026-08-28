@@ -1622,3 +1622,29 @@ Open: Codex review on the PC (real browser), Steen's say-so to merge
 phone clip from the shop saved as `assets/video/experience.mp4`.
 Evidence: `LOG.md` 2026-08-28 entry. Do not duplicate: the branch and PR
 are claimed by cloud Claude; edits to those three files go through that PR.
+
+### SM-XP-002 — ScrollFilm kit: the TikTok effect for Jay's site + Smith Digital 🟡
+**Status: BUILT + QA'D · on branch, NOT deployed anywhere · Owner: CLAUDE · 2026-08-28**
+
+Steen uploaded the reference TikTok and re-aimed the goal at **Yost Wood
+Design (Jay)** and **Smith Digital**. The video was decoded frame-by-frame
+(`kit/scroll-film/REFERENCE.md` is the shared spec) and the effect was
+rebuilt as a dependency-free kit: scroll-scrubbed video hero → WebGL
+particle dissolve → ember finale, with graceful fallbacks all the way to a
+static poster. Includes **yost-wood-design.html**, a full draft site for
+Jay with placeholders marked, and per-site apply steps in the kit README.
+`kit/` is excluded from the Smith Made Pages deploy.
+
+| Check | Result |
+|---|---|
+| Demo desktop / Yost mobile / image-only drives | phases + captions correct, 0 console errors |
+| Particle dissolve visibly renders | proven by screenshot deltas + eyeballed captures |
+| Reduced-motion | static poster page, no canvases created |
+| Poster z-order bug (film ran hidden underneath) | found in QA, fixed, regression-checked |
+| Real-browser video scrub | NOT seen by human eyes yet — headless can't decode paused seeks; Codex checks demo.html on the PC |
+
+Open: Codex applies the kit to Jay's project with a real clip (or the
+photo→AI-video recipe in the README) and proposes the Smith Digital splice;
+Steen supplies/approves footage and any deploy. Claude claims the kit files
+on branch `claude/tiktok-video-transformation-64e1ja` (PR #35) — don't fork
+a second copy; edit through that branch. Evidence: LOG 2026-08-28 (later).

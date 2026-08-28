@@ -1,95 +1,98 @@
 # Current handoff to Codex
 
-**Written 2026-08-28 by cloud Claude.** Previous inbox items from 08-01 are
-resolved or moved — see "Still open from before" at the bottom. This file is
-the inbox: what's open right now, nothing else.
+**Written 2026-08-28 (second session of the day) by cloud Claude.** Steen
+uploaded the original TikTok and re-aimed the goal: the effect goes on
+**Jay's site (Yost Wood Design)** and **Smith Digital** — Smith Made is not
+the focus right now. Everything you need is on branch
+`claude/tiktok-video-transformation-64e1ja` (PR #35, still a draft).
 
 ---
 
-## 🟡 NEW — SM-XP-001: "The Experience" page is built and waiting for your review
+## 🔴 NEW — SM-XP-002: the TikTok effect is built. Your job is to put it on Jay's site.
 
-Steen sent a TikTok (@nomadatoast — scroll-driven "video transformation"
-sites) and asked for the same thing for Smith Made. It's built, QA'd, and
-sitting on a draft PR. **Nothing is live.** The page:
+**First, read `kit/scroll-film/REFERENCE.md` on the branch.** It's the
+frame-by-frame decode of the TikTok — what the effect actually is, so we're
+all chasing the same target. Short version: the visitor's scroll plays a
+video, and as they keep scrolling the picture **shatters into thousands of
+embers that keep showing the moving frame**, then the closing pitch lands.
+The creator built it with Emergent + a paid prompt + Claude. We are Claude,
+so `kit/scroll-film/` is that result with no Emergent and no prompt to buy:
 
-- `experience.html` — scroll it and a wedding day plays like a film: five
-  full-screen chapters (Welcome arch → Ceremony arches → Champagne wall →
-  Slat backdrop → Keepsake heart) that crossfade under your scroll, then a
-  parallax collage, a sideways-sliding reel of the collection, and a
-  "Check Your Date" finale. Scroll back and it rewinds.
-- Two new links on the home page (nav + footer: "The Experience"). Nothing
-  else on the home page changed.
-- One new owner switch in `js/manifest.js`: `experienceFilm`. Empty today.
-  When a real shop video exists, one line turns the chapter backdrop into
-  the actual video scrubbed frame-by-frame by the visitor's scroll — the
-  exact trick from the TikTok.
+- `scrollfilm.js` + `scrollfilm.css` — drop-in engine, zero dependencies
+- `demo.html` — see it move (serve the folder, don't file:// it)
+- **`yost-wood-design.html` — a full draft site for Jay already built on it**
+- `README.md` — how to apply it to each site, and the photo→AI-video recipe
+- `assets/demo-film.mp4` — placeholder footage (a generated pan over a wood
+  render) so everything works before Jay's real clip exists
 
-### What Claude asks of you
+### Do this, in order
 
-1. **Pull the branch and look at it in a real browser.**
-   ```
-   git fetch origin claude/tiktok-video-transformation-64e1ja
-   git checkout claude/tiktok-video-transformation-64e1ja
-   python -m http.server 8000    (any static server works)
-   ```
-   Open `http://localhost:8000/experience.html`. Check: the film scrubs both
-   directions, chapters read on top of every image, the reel slides, phone
-   width behaves (DevTools device mode), and the home page still works.
-2. **The one check Claude could not do:** the container's headless browser
-   refuses to advance decoded video frames on paused seeks, for any video —
-   so film mode was verified down to "arms, draws the canvas, seeks the
-   right timestamps" but a human has never *seen* it scrub a real clip.
-   Drop any 10–20s landscape mp4 at `assets/video/experience.mp4`, set
-   `experienceFilm: "assets/video/experience.mp4"` in `js/manifest.js`
-   locally (don't commit your test clip), reload, and watch it. If frames
-   stutter, encode with denser keyframes
-   (`ffmpeg -i in.mp4 -g 12 -an out.mp4`) — note what worked in the log.
-3. **Comment on the PR / log what you find.** Take, amend, or reject —
-   review comments on the PR or a LOG.md entry both work.
-4. **Do not merge.** Merging to `main` deploys the live site; that say-so is
-   Steen's (AUTHORIZATION.md §2 named exception). When Steen says go, merge
-   the PR — the Pages workflow deploys in ~20s.
+1. **Pull the branch, serve the kit folder, open `demo.html` in a real
+   browser.** The one thing cloud QA physically cannot see is decoded video
+   frames advancing during scrub (headless limitation — details in the LOG).
+   Everything else is verified; this check is yours. Scroll slowly, both
+   directions. Then open `yost-wood-design.html`, desktop and phone width.
+2. **Report what you see on PR #35** — smooth, janky, wrong — before
+   building on it.
+3. **Apply it to Jay's project** (wherever his draft lives on the PC — cloud
+   Claude verified it is NOT in GitHub/Netlify/Lovable): copy the kit folder
+   in, start from `yost-wood-design.html`, fill every `[PLACEHOLDER]`
+   (phone, email, services wording, project photos), keep the film chapters
+   or rewrite them in Jay's voice.
+4. **Footage.** The film is only as good as the clip. Ask Steen for either:
+   a 10–20s phone clip from Jay (one slow steady move around a finished
+   piece), OR one good photo — then use the README's AI-video recipe
+   (photo → image-to-video tool → "cinematic transformation… START/END"
+   prompt → mp4). Encode whatever you get:
+   `ffmpeg -i clip.mp4 -g 12 -an -movflags +faststart out.mp4`
+5. **Smith Digital:** propose the splice, don't ship it. Best candidates
+   (README has details): the "Drone-Style Video" service page — the kit IS
+   that service demonstrating itself — or the homepage hero. You have the
+   real files on the PC; cloud Claude only saw the rendered site through a
+   remote extractor.
+6. **Deploys are Steen's say-so, every time** — Jay's site, smithdigitalco,
+   and the PR #35 merge alike (`ops/AUTHORIZATION.md` §2).
 
-Full evidence and the QA numbers: `ops/LOG.md`, entry 2026-08-28.
-Board: `SM-XP-001`.
+### Also still on PR #35 from the morning session
+
+The Smith Made `/experience.html` page (built before Steen re-aimed the
+goal). It's finished and QA'd; it just isn't today's priority. When Steen
+eventually says "merge," note the PR now also carries the kit (deploy-
+excluded) and a one-line workflow change that keeps `kit/` off
+smithmadesc.com.
 
 ---
 
 ## 👤 FOR STEEN — in plain words
 
-**What you got:** a new page on your site called **The Experience**. When
-someone scrolls it, a wedding day plays out through your pieces like a movie
-they control. It's the same trick as the TikTok you sent. It is NOT on your
-live site yet — it's waiting so you can say "go."
+**What the TikTok guy actually sells:** he feeds three things into an AI
+builder — a written prompt (he charges for it), **a plain video**, and an
+example link — and Claude builds a site where scrolling plays the video and
+then explodes it into sparks. I watched your saved video frame by frame;
+the full plain-English breakdown is in the branch at
+`kit/scroll-film/REFERENCE.md`.
 
-**Your three things, none technical:**
+**What you have now:** that same effect, built and tested, plus a ready
+draft of Jay's whole site using it. Nothing is live anywhere. Codex has
+step-by-step instructions above.
 
-1. **Film one clip, when you get a chance.** Phone sideways (landscape),
-   10–20 seconds, ONE slow steady move — walk slowly around a finished arch
-   in good light, or slowly toward a piece at a venue. No cuts, no talking
-   needed. Send it to Codex or put it in the site folder as
-   `assets/video/experience.mp4`. This turns the page's background into your
-   real work being "played" by people's scrolling — the coolest part of the
-   TikTok. **The page already works and looks finished without it**, so
-   there's no rush — it's an upgrade, not a blocker.
-2. **Say "go" (or "no").** After Codex has looked at it, tell either agent
-   "merge the experience page" and it goes live at
-   smithmadesc.com/experience.html a minute later. Until you say it, nothing
-   changes on your live site.
-3. **Nothing else.** No accounts, no passwords, no purchases involved.
+**Your three things:**
+1. **Get footage from Jay** — ONE slow, steady 10–20 second phone video
+   (held sideways) of his best finished piece, or even just one good photo
+   of it (I documented the TikTok's photo-to-video trick for Codex — that's
+   also literally the "Drone-Style Video" service Smith Digital already
+   sells, so this doubles as your own product demo).
+2. **Tell Codex to start:** the exact sentence is at the bottom.
+3. **Say "go" before anything goes live** — Jay's site, Smith Digital, or
+   the Smith Made page from this morning. Until then it's all drafts.
 
 ---
 
 ## Still open from before (pointers, not repeats)
 
-- **SM-FORM-001, the last inch:** the form code fixes shipped in PRs #29/#31
-  and are on `main`. What's still never been proven: **Will confirming a real
-  inquiry landed in will.smithmade@gmail.com's inbox** (check spam too). One
-  real test inquiry from the live site closes it. Board: `SM-FORM-001`.
-- **OPS-CALLERS-001** (Smith Digital callers / shared do-not-contact list):
-  decision is Steen's; agents recommend and record only. Board entry stands.
-- **OPS-PRIVACY-001:** this repo is public — keep customer details and real
-  contact lists out of committed files.
-- The 08-01 asks about `js/form.js` patching and `codex/site-qa-resilience`
-  are **done** — that code is merged into `main` (verified in the files, not
-  just the board). History: `ops/LOG.md` 2026-08-03 entry.
+- **SM-FORM-001 last inch:** Will confirming a real inquiry landed in
+  will.smithmade@gmail.com. Unchanged. Board: `SM-FORM-001`.
+- **OPS-CALLERS-001** (shared do-not-contact list): decision is Steen's;
+  agents recommend and record only.
+- **OPS-PRIVACY-001:** repo is public — Jay's real phone/email go into the
+  local project on the PC, never into this repo's committed files.

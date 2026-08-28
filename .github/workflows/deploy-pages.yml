@@ -28,7 +28,7 @@ jobs:
       - name: Stage site files (internal docs stay out of the deploy)
         run: |
           mkdir -p /tmp/site
-          rsync -a --exclude='.git' --exclude='.github' --exclude='*.md' ./ /tmp/site/
+          rsync -a --exclude='.git' --exclude='.github' --exclude='*.md' --exclude='kit' ./ /tmp/site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: /tmp/site

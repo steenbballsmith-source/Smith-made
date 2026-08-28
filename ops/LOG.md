@@ -2234,3 +2234,69 @@ Chromium, script preserved in the PR description):
 
 Not done, deliberately: no deploy (merge to `main` = deploy = Steen's named
 exception), no venue/social announcement, no changes to the form or catalog.
+
+## 2026-08-28 (later) · cloud Claude · The TikTok decoded frame-by-frame; ScrollFilm kit built for Jay's site + Smith Digital
+
+Steen uploaded the original video (36.3s, 576x1024 h264 .mov) and redirected
+the goal: not Smith Made — analyze the reference properly, then get the
+effect onto **Jay's site (Yost Wood Design)** and **Smith Digital**, because
+"Codex is having a hard time reaching the result."
+
+**The video, actually watched** (73 frames extracted at 2fps with ffmpeg;
+full breakdown now lives at `kit/scroll-film/REFERENCE.md`): the creator's
+pipeline is Emergent (AI builder, running Claude 4.7 Opus) + a prompt file
+("NT Scroll Video Hero Prompt.txt") + **the user's own video** + an
+inspiration link (peachworlds.com example). The result: a site whose hero is
+the video scrubbed by scroll, which **dissolves into thousands of particles**
+as you keep scrolling. His no-video variant: photograph anything (his
+fridge), run it through higgsfield.ai (Kling) with a "cinematic
+transformation, START/END" prompt, and use the generated clip. The first
+session's read of the caption ("scroll-scrubbed video + parallax") was
+directionally right but under-scoped: the signature effect is the
+**particle dissolve of the moving frame**, which the Smith Made experience
+page does not have.
+
+**Discovery for the two targets** (evidence inline):
+- Yost Wood Design: real Oregon business (Brownsville; public listings).
+  No repo (GitHub account has only Smith-made), no Netlify site (account
+  holds smithdigitalco.com + srservices.us.com), no Lovable projects (0).
+  Jay's draft, if any, lives on the PC with Codex — unverifiable from cloud.
+- smithdigitalco.com current state read via remote extraction (egress
+  blocks it directly): now a full multi-page site, and it already SELLS
+  "Drone-Style Video — a cinematic clip built from a photo you already own"
+  — the same photo→AI-video move the TikTok teaches. The kit is therefore
+  also a product demo for that service.
+
+**Built: `kit/scroll-film/`** — the TikTok effect without Emergent, no
+dependencies, no build step, drop-in for any site: scroll-scrubbed video →
+raw-WebGL particle dissolve (16–36k points that keep sampling the moving
+frame) → ember drift + closing pitch; scroll-timed captions; graceful
+degrade (no video → Ken Burns + dissolve of the poster image; no WebGL →
+scrub only; reduced-motion/no-JS/data-saver → static poster + readable
+text). Files: scrollfilm.js, scrollfilm.css, demo.html,
+**yost-wood-design.html** (a full draft site for Jay, placeholders marked),
+README.md (usage + per-site steps + the photo→AI-video recipe), REFERENCE.md,
+and a generated placeholder clip (assets/demo-film.mp4, 8s, keyframe-dense
+x264 from a repo render). `kit/` is **excluded from the Pages deploy**
+(one rsync exclude added to deploy-pages.yml), so merging the PR does not
+put the kit on smithmadesc.com.
+
+**QA (headless Chromium, evidence reproducible via the scripts in PR #35):**
+4 drives — demo desktop 1440x900, Yost mobile 390x844, reduced-motion,
+image-only (video attribute stripped). All clean: 0 console errors, 0 bad
+requests, phases sequence (flat scrub → dissolve → hold), captions window
+correctly, reduced-motion gets the static page with no canvases. Particle
+visibility proven by screenshot deltas at the same pin position
+(dissolve-vs-scrub 40k–70k differing samples; dissolve-vs-end 199k–902k)
+and confirmed by eye on the captures. **One real bug found by looking, not
+by the numbers:** the poster img originally painted OVER both canvases (DOM
+order), so the whole film ran invisibly underneath it — fixed with explicit
+z-indexes and an `.sf-live` poster hand-off, and that class is now asserted
+in QA. Standing caveat unchanged from the morning session: this container's
+headless build won't advance decoded video frames on paused seeks, so
+frame-accurate video scrub still needs one human look in a real browser;
+the particle phase is pixel-verified here via the image path.
+
+Not done, deliberately: nothing deployed anywhere (Netlify untouched, Pages
+untouched); no contact with Jay (external comms are Steen's); Yost draft
+carries placeholder contact details and a noindex until real ones exist.
