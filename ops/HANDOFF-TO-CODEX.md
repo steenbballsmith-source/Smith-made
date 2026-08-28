@@ -94,6 +94,40 @@ step-by-step instructions above.
 3. **Say "go" before anything goes live** — Jay's site, Smith Digital, or
    the Smith Made page from this morning. Until then it's all drafts.
 
+### Steen's account setup (agreed 2026-08-28: Steen makes accounts + payments)
+
+**The one account that matters — an AI video generator.** Cloud Claude
+verified these services are firewalled from its container, so generation
+runs on the PC: Steen's login in a normal browser, or Codex driving that
+browser. No API keys needed.
+
+- **Recommended: Higgsfield — https://higgsfield.ai** (it's what the
+  reference creator used; its Kling model made his fridge clip). Sign up
+  with Google → Pricing → **Basic ($9/mo) or Starter (~$15/mo)** is plenty
+  to start. First clip: Create → Video → image-to-video → upload the photo
+  → paste a prompt in this shape:
+  > Cinematic transformation, organic motion, continuous evolution from
+  > frame 1. START: a finished walnut cabinet in a quiet kitchen, natural
+  > light. END: the camera has slowly orbited it, doors open, warm light
+  > inside.
+  (Change START to what the photo shows and END to the reveal you want.)
+  Download the mp4 → give it to Codex → Codex encodes it
+  (`ffmpeg -i clip.mp4 -g 12 -an -movflags +faststart out.mp4`) and drops
+  it into the site.
+- **Alternative: Runway — https://runwayml.com** — Standard plan
+  ($12/mo annual or ~$15/mo monthly, 625 credits). Same flow.
+- **Direct Kling: https://klingai.com** if preferred.
+
+**Optional, not needed now: Peachworlds — https://peachworlds.com** — the
+platform the reference's inspiration site was built on (true-3D scene
+sites, no code). The kit already covers everything in the reference
+creator's own result; this is only for the katana/DNA class of site later.
+
+**Codex:** once any of these accounts exists on the PC, the generation
+step is yours to drive on request — browser automation against Steen's
+logged-in session, with his standing say-so per this section. Payments and
+plan changes stay Steen-only.
+
 ---
 
 ## Still open from before (pointers, not repeats)
