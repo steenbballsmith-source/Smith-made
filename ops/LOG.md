@@ -2341,3 +2341,45 @@ dissolve screenshot deltas 110k–876k, formed names eyeballed legible.
 
 Same standing caveats: video scrub timestamps verified, decoded-frame
 smoothness needs Codex's real-browser look; nothing deployed anywhere.
+
+## 2026-08-28 (fourth) · cloud Claude · Renderer matched to the reference; the creator's exact sites found and pulled
+
+Steen: the preview didn't look like the video — make it look like his, find
+his exact website, and check what skills/connections would help.
+
+**His exact sites, read off the video's own browser bar (full-res frame
+extraction):**
+- His demo ("BOOM" result, the face→fibers site):
+  `skeleton-rebuild.preview.emergentagent.com` — "Made with Emergent" badge,
+  nav "Jo Mendes / NOMADATOAST". Was live in the video (Apr 22); now times
+  out through the remote extractor twice — Emergent previews hibernate or
+  expire. We hold a complete visual record from the frames regardless.
+- The inspiration link he fed the AI: `https://fine-n7vljkp34f.peachworlds.com/`
+  — LIVE, verified by extraction. It's built on **Peachworlds**, a dedicated
+  3D-website platform (`pw-scene` canvases) — the genre has its own tooling.
+- The katana example: `string-tune.fiddle.digital` — the demo for
+  **StringTune**, Fiddle.Digital's scroll-animation library.
+- His bio site `nomadatoast.com` — DEAD (redirects to Adobe Portfolio's
+  missing page).
+
+**Renderer upgraded to his look** (the gap was real: he renders fibers with
+glowing tips; we rendered flat dots). scrollfilm.js now draws three passes
+per frame — fiber trails (a 2N-vertex line pass whose tails evaluate the
+motion a beat behind the heads), a soft additive halo, and sharp cores —
+plus flow turbulence and pseudo-depth parallax; `data-sf-blend=glow|solid`.
+Verified: mid-dissolve now reads as a dense fiber field with depth, and the
+formed names glow with radiating trails ("YOST WOOD DESIGN" / "SMITH
+DIGITAL" screenshots in the QA run). Both QA suites clean; deltas 343k-2.3M.
+Steen's preview republished at the same URL (version "fiber-glow-renderer"):
+https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
+
+**Skills/connections answer, checked not guessed:** no addable Claude
+skills exist for this (marketplace searched); Zapier has no Runway/Kling/
+Higgsfield integration (searched — only api.video, which is hosting, not
+generation). The levers that would genuinely level this up: (1) an AI video
+generator account — Higgsfield/Kling or Runway — the single biggest quality
+lever, needs its own signup; (2) a Peachworlds account if Steen wants the
+true-3D-scene class of site without code (it's what his inspiration link
+was built on); (3) free and already possible: vendoring three.js for
+trick-3 work, and StringTune (the katana site's library) if we ever want
+its scroll primitives — though our engine already covers that ground.

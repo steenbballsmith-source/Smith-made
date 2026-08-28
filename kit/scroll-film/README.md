@@ -55,6 +55,11 @@ others):
 - `data-sf-scatter` — how the picture breaks apart: `burst` (everywhere,
   default), `strands` (horizontal fiber streams — the reference site's face
   look), `rise` (embers off a fire — right for a wood shop).
+- `data-sf-blend` — `glow` (default: additive fibers + halo passes, the
+  reference's luminous look, made for dark stages) or `solid` (plain alpha,
+  for light backgrounds). The renderer draws three passes per frame: fiber
+  trails, a soft halo, and sharp cores, with flow turbulence and
+  pseudo-depth parallax.
 - `data-sf-form-text="YOUR|NAME"` — after the dissolve, the embers gather
   and **spell this** (multiline with `|`). `data-sf-form-image="logo.png"`
   forms the logo's silhouette instead (alpha mask; wins over text).

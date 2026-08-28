@@ -2,25 +2,28 @@
    The effect from the @nomadatoast TikTok, without Emergent, in one file:
 
      phase 1  SCRUB     the visitor's scroll plays a video forward/backward
-     phase 2  DISSOLVE  the picture shatters into thousands of WebGL points
-                        that keep sampling the moving video while they scatter
+     phase 2  DISSOLVE  the picture shatters into thousands of glowing fibers
+                        and embers that keep sampling the moving video
      phase 3  REFORM    (optional) the embers gather back into a shape — the
                         client's name or logo — the reference's signature move
      phase 4  HOLD      the points drift while the closing text sits
 
-   No dependencies. Pinning is CSS position:sticky, the particles are raw
-   WebGL1, the scrub is a lerped currentTime seek. Works with:
-     - a video  (data-sf-video)          -> full effect
-     - only an image (data-sf-image)     -> Ken Burns + particle dissolve
-     - no WebGL                          -> scrub/Ken Burns only
-     - reduced motion / no JS / saveData -> a static poster and readable text
+   Renderer (matched to the reference's look): three passes per frame —
+   fiber trails (lines), a soft additive halo, and sharp cores — with flow
+   turbulence and pseudo-depth parallax. No dependencies: CSS sticky
+   pinning, raw WebGL1, a lerped currentTime seek.
+
+   Degrades: no video -> Ken Burns + dissolve of the poster image · no
+   WebGL -> scrub only · reduced motion / no JS / data-saver -> a static
+   poster and readable text.
 
    Markup contract (see demo.html):
      <section data-scrollfilm data-sf-video="clip.mp4"
               data-sf-length="480" data-sf-accent="#d99a52"
               data-sf-scatter="burst|strands|rise"
-              data-sf-form-text="YOUR|NAME"      (multiline with |; optional)
-              data-sf-form-image="logo.png"      (alpha mask; wins over text)
+              data-sf-blend="glow|solid"        (glow = additive, default)
+              data-sf-form-text="YOUR|NAME"     (multiline with |; optional)
+              data-sf-form-image="logo.png"     (alpha mask; wins over text)
               data-sf-form-color="#f2e9d8">
        <div class="sf-sticky sf-scrim">
          <img class="sf-poster" src="p.jpg" alt="...">
@@ -50,30 +53,34 @@
 
   /* ---------------------------------------------------------------- WebGL */
 
+  /* One program serves all three passes; the position math lives in a GLSL
+     function so fiber tails can evaluate it a beat behind the heads. */
   var VERT = [
     "attribute vec2 aUV;",
     "attribute vec3 aSeed;",
     "attribute vec2 aTarget;",   /* clip-space slot in the formation */
     "attribute float aTargetOn;",/* 1 = has a slot, 0 = fades out on reform */
+    "attribute float aEnd;",     /* 0 = head, 1 = fiber tail */
     "uniform float uProgress;",  /* dissolve: 0 intact -> 1 scattered */
     "uniform float uForm;",      /* reform: 0 scattered -> 1 formed */
     "uniform float uMode;",      /* scatter style: 0 burst, 1 strands, 2 rise */
+    "uniform float uPass;",      /* 0 core, 1 fibers, 2 halo */
     "uniform float uTime;",
     "uniform vec2  uCover;",
     "uniform float uSize;",
     "varying vec2  vUV;",
     "varying float vT;",
     "varying float vForm;",
-    "void main() {",
-    "  vUV = aUV;",
+    "varying float vDepth;",
+    "float easeT(float p) {",
     "  float order = aSeed.x * 0.55 + (1.0 - aUV.y) * 0.25;",
-    "  float t = clamp((uProgress * 1.8 - order) / 1.0, 0.0, 1.0);",
-    "  t = t * t * (3.0 - 2.0 * t);",
-    "  vT = t;",
-    "  vForm = uForm * aTargetOn;",
+    "  float t = clamp((p * 1.8 - order) / 1.0, 0.0, 1.0);",
+    "  return t * t * (3.0 - 2.0 * t);",
+    "}",
+    "vec2 place(float p, float form, float time, float t) {",
     "  vec2 pos = (aUV * 2.0 - 1.0) * uCover;",
-    "  float a1 = aSeed.y * 6.28318 + uTime * 0.22;",
-    "  float a2 = aSeed.z * 6.28318 - uTime * 0.17;",
+    "  float a1 = aSeed.y * 6.28318 + time * 0.22;",
+    "  float a2 = aSeed.z * 6.28318 - time * 0.17;",
     "  vec2 dir;",
     "  if (uMode < 0.5) {",           /* burst: everywhere, drifting up */
     "    dir = vec2(sin(a1) + 0.35 * cos(a2), cos(a1) * 0.6 + 0.55 + 0.35 * sin(a2));",
@@ -83,13 +90,29 @@
     "  } else {",                     /* rise: embers off a fire */
     "    dir = vec2(sin(a1) * 0.3, 0.9 + aSeed.y * 0.8);",
     "  }",
-    "  vec2 scattered = pos + dir * t * t * (0.55 + aSeed.z * 0.75);",
-    "  scattered.x += sin(uTime * 0.4 + aSeed.x * 12.0) * 0.012 * t;",
-    /* reform: pull each ember to its slot; a light shimmer keeps it alive */
-    "  vec2 slot = aTarget + vec2(sin(uTime * 0.9 + aSeed.x * 20.0), cos(uTime * 0.7 + aSeed.y * 20.0)) * 0.004;",
-    "  vec2 fpos = mix(scattered, slot, vForm);",
+    "  vec2 sc = pos + dir * t * t * (0.55 + aSeed.z * 0.75);",
+    /* flow turbulence: the cloud swims instead of coasting on rails */
+    "  sc += vec2(sin(sc.y * 3.1 + time * 0.6 + aSeed.x * 9.0),",
+    "             cos(sc.x * 2.6 - time * 0.5 + aSeed.y * 7.0)) * 0.02 * t;",
+    /* pseudo-depth parallax: near points swing wider than far ones */
+    "  sc.x += (aSeed.z - 0.5) * 0.12 * sin(p * 2.2 + time * 0.1) * t;",
+    /* reform: pull to the slot with a light shimmer so it stays alive */
+    "  vec2 slot = aTarget + vec2(sin(time * 0.9 + aSeed.x * 20.0), cos(time * 0.7 + aSeed.y * 20.0)) * 0.0035;",
+    "  return mix(sc, slot, form * aTargetOn);",
+    "}",
+    "void main() {",
+    "  vUV = aUV;",
+    "  vDepth = aSeed.z;",
+    "  float lagP = aEnd * 0.055;",   /* fiber tails trail the heads */
+    "  float lagT = aEnd * 0.45;",
+    "  float t = easeT(uProgress - lagP);",
+    "  vT = easeT(uProgress);",
+    "  vForm = uForm * aTargetOn;",
+    "  vec2 fpos = place(uProgress - lagP, max(0.0, uForm - aEnd * 0.15), uTime - lagT, t);",
     "  gl_Position = vec4(fpos, 0.0, 1.0);",
-    "  gl_PointSize = uSize * (1.0 - 0.55 * t) * (1.0 + vForm * 0.45);",
+    "  float sizeMul = uPass > 1.5 ? 3.4 : 1.0;",
+    "  float depthMul = 0.7 + 0.6 * aSeed.z;",
+    "  gl_PointSize = uSize * sizeMul * depthMul * (1.0 - 0.5 * vT) * (1.0 + vForm * 0.5);",
     "}",
   ].join("\n");
 
@@ -101,26 +124,39 @@
     /* highp to match the vertex shader's default — a precision mismatch on a
        shared uniform is a LINK ERROR on some GL stacks (found the hard way) */
     "uniform highp float uForm;",
+    "uniform highp float uPass;",
     "varying vec2  vUV;",
-    "varying float vT;",
-    "varying float vForm;",
+    "varying highp float vT;",
+    "varying highp float vForm;",
+    "varying highp float vDepth;",
     "void main() {",
-    "  vec2 d = gl_PointCoord - 0.5;",
-    "  if (dot(d, d) > 0.25) discard;",
     "  vec4 c = texture2D(uTex, vec2(vUV.x, 1.0 - vUV.y));",
-    "  vec3 col = mix(c.rgb, uAccent, vT * 0.55);",
+    /* scattered material warms toward the accent, like sparks off a fire */
+    "  vec3 col = mix(c.rgb, uAccent, vT * (0.35 + 0.4 * vDepth));",
     "  col = mix(col, uFormColor, vForm);",
-    /* decay past 1.0 so a faint starfield survives the late scatter instead
-       of the stage going fully dark before the formation ignites */
-    "  float alpha = (1.0 - smoothstep(0.5, 1.25, vT)) * (0.35 + 0.65 * (1.0 - vT));",
-    /* formed embers glow back to solid; slotless ones bow out as the shape sets */
-    "  alpha = max(alpha, vForm * 0.92);",
+    /* faint starfield survives the late scatter so the stage never dies */
+    "  float life = (1.0 - smoothstep(0.5, 1.25, vT)) * (0.35 + 0.65 * (1.0 - vT));",
+    "  float alpha;",
+    "  if (uPass > 1.5) {",          /* halo: big, soft, additive */
+    "    vec2 d = gl_PointCoord - 0.5;",
+    "    float r = length(d) * 2.0;",
+    "    if (r > 1.0) discard;",
+    "    alpha = (1.0 - r) * (1.0 - r) * 0.16 * max(life, vForm);",
+    "    col = mix(col, uAccent, 0.55);",
+    "  } else if (uPass > 0.5) {",   /* fibers: thin trailing lines */
+    "    alpha = life * 0.42 * (0.4 + 0.6 * vDepth);",
+    "    alpha *= 1.0 - vForm * 0.85;", /* fibers retire as the shape sets */
+    "  } else {",                    /* cores: sharp round points */
+    "    vec2 d2 = gl_PointCoord - 0.5;",
+    "    if (dot(d2, d2) > 0.25) discard;",
+    "    alpha = max(life, vForm * 0.95);",
+    "  }",
     "  alpha *= 1.0 - (uForm * (1.0 - vForm) * 0.85);",
     "  gl_FragColor = vec4(col, alpha);",
     "}",
   ].join("\n");
 
-  function makeParticles(canvas, accent, formColor) {
+  function makeParticles(canvas, accent, formColor, blendGlow) {
     var gl = canvas.getContext("webgl", { alpha: true, antialias: false })
           || canvas.getContext("experimental-webgl", { alpha: true });
     if (!gl) return null;
@@ -142,36 +178,67 @@
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
     gl.useProgram(prog);
 
-    var target = Math.min(window.innerWidth, 900) < 640 ? 16000 : 36000;
+    var target = Math.min(window.innerWidth, 900) < 640 ? 15000 : 32000;
     var aspect = window.innerWidth / Math.max(1, window.innerHeight);
     var cols = Math.max(40, Math.round(Math.sqrt(target * aspect)));
     var rows = Math.max(40, Math.round(target / cols));
     var count = cols * rows;
-    var uv = new Float32Array(count * 2);
-    var seed = new Float32Array(count * 3);
-    var x, y, k = 0, s = 0;
+
+    /* point-pass arrays (N) and fiber-pass arrays (2N: head, tail) */
+    var uvP = new Float32Array(count * 2);
+    var seedP = new Float32Array(count * 3);
+    var endP = new Float32Array(count);
+    var uvL = new Float32Array(count * 4);
+    var seedL = new Float32Array(count * 6);
+    var endL = new Float32Array(count * 2);
+    var x, y, i = 0;
     for (y = 0; y < rows; y++) {
       for (x = 0; x < cols; x++) {
-        uv[k++] = (x + 0.5) / cols;
-        uv[k++] = (y + 0.5) / rows;
-        seed[s++] = Math.random();
-        seed[s++] = Math.random();
-        seed[s++] = Math.random();
+        var u = (x + 0.5) / cols, v = (y + 0.5) / rows;
+        var s1 = Math.random(), s2 = Math.random(), s3 = Math.random();
+        uvP[i * 2] = u; uvP[i * 2 + 1] = v;
+        seedP[i * 3] = s1; seedP[i * 3 + 1] = s2; seedP[i * 3 + 2] = s3;
+        uvL[i * 4] = u; uvL[i * 4 + 1] = v; uvL[i * 4 + 2] = u; uvL[i * 4 + 3] = v;
+        seedL[i * 6] = s1; seedL[i * 6 + 1] = s2; seedL[i * 6 + 2] = s3;
+        seedL[i * 6 + 3] = s1; seedL[i * 6 + 4] = s2; seedL[i * 6 + 5] = s3;
+        endL[i * 2] = 0; endL[i * 2 + 1] = 1;
+        i++;
       }
     }
-    function attrib(name, data, size, dynamic) {
+
+    function makeBuf(data, dynamic) {
       var buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
       gl.bufferData(gl.ARRAY_BUFFER, data, dynamic ? gl.DYNAMIC_DRAW : gl.STATIC_DRAW);
-      var loc = gl.getAttribLocation(prog, name);
-      gl.enableVertexAttribArray(loc);
-      gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
       return buf;
     }
-    attrib("aUV", uv, 2);
-    attrib("aSeed", seed, 3);
-    var targetBuf = attrib("aTarget", new Float32Array(count * 2), 2, true);
-    var targetOnBuf = attrib("aTargetOn", new Float32Array(count), 1, true);
+    var bufs = {
+      points: {
+        aUV: [makeBuf(uvP), 2], aSeed: [makeBuf(seedP), 3],
+        aTarget: [makeBuf(new Float32Array(count * 2), true), 2],
+        aTargetOn: [makeBuf(new Float32Array(count), true), 1],
+        aEnd: [makeBuf(endP), 1],
+        n: count, prim: gl.POINTS,
+      },
+      lines: {
+        aUV: [makeBuf(uvL), 2], aSeed: [makeBuf(seedL), 3],
+        aTarget: [makeBuf(new Float32Array(count * 4), true), 2],
+        aTargetOn: [makeBuf(new Float32Array(count * 2), true), 1],
+        aEnd: [makeBuf(endL), 1],
+        n: count * 2, prim: gl.LINES,
+      },
+    };
+    var loc = {};
+    ["aUV", "aSeed", "aTarget", "aTargetOn", "aEnd"].forEach(function (name) {
+      loc[name] = gl.getAttribLocation(prog, name);
+      gl.enableVertexAttribArray(loc[name]);
+    });
+    function bindSet(set) {
+      Object.keys(loc).forEach(function (name) {
+        gl.bindBuffer(gl.ARRAY_BUFFER, set[name][0]);
+        gl.vertexAttribPointer(loc[name], set[name][1], gl.FLOAT, false, 0, 0);
+      });
+    }
 
     var tex = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -182,22 +249,13 @@
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
       new Uint8Array([30, 24, 18, 255]));
 
-    var U = {
-      progress: gl.getUniformLocation(prog, "uProgress"),
-      form: gl.getUniformLocation(prog, "uForm"),
-      mode: gl.getUniformLocation(prog, "uMode"),
-      time: gl.getUniformLocation(prog, "uTime"),
-      cover: gl.getUniformLocation(prog, "uCover"),
-      size: gl.getUniformLocation(prog, "uSize"),
-      accent: gl.getUniformLocation(prog, "uAccent"),
-      formColor: gl.getUniformLocation(prog, "uFormColor"),
-      tex: gl.getUniformLocation(prog, "uTex"),
-    };
-    gl.uniform1i(U.tex, 0);
-    gl.uniform3fv(U.accent, new Float32Array(accent));
-    gl.uniform3fv(U.formColor, new Float32Array(formColor || accent));
+    var U = {};
+    ["uProgress", "uForm", "uMode", "uPass", "uTime", "uCover", "uSize", "uAccent", "uFormColor", "uTex"]
+      .forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+    gl.uniform1i(U.uTex, 0);
+    gl.uniform3fv(U.uAccent, new Float32Array(accent));
+    gl.uniform3fv(U.uFormColor, new Float32Array(formColor || accent));
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
 
     var texW = 0, texH = 0;
@@ -213,10 +271,23 @@
         } catch (e) { return false; }
       },
       setTargets: function (positions, onFlags) {
-        gl.bindBuffer(gl.ARRAY_BUFFER, targetBuf);
+        /* points get the slots directly; each fiber's head and tail share
+           the slot, so fibers shrink away into the letters */
+        var posL = new Float32Array(positions.length * 2);
+        var onL = new Float32Array(onFlags.length * 2);
+        for (var j = 0; j < onFlags.length; j++) {
+          posL[j * 4] = positions[j * 2]; posL[j * 4 + 1] = positions[j * 2 + 1];
+          posL[j * 4 + 2] = positions[j * 2]; posL[j * 4 + 3] = positions[j * 2 + 1];
+          onL[j * 2] = onFlags[j]; onL[j * 2 + 1] = onFlags[j];
+        }
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufs.points.aTarget[0]);
         gl.bufferData(gl.ARRAY_BUFFER, positions, gl.DYNAMIC_DRAW);
-        gl.bindBuffer(gl.ARRAY_BUFFER, targetOnBuf);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufs.points.aTargetOn[0]);
         gl.bufferData(gl.ARRAY_BUFFER, onFlags, gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufs.lines.aTarget[0]);
+        gl.bufferData(gl.ARRAY_BUFFER, posL, gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufs.lines.aTargetOn[0]);
+        gl.bufferData(gl.ARRAY_BUFFER, onL, gl.DYNAMIC_DRAW);
       },
       draw: function (progress, form, mode, time) {
         var W = canvas.width, H = canvas.height;
@@ -225,13 +296,22 @@
         if (!texW) return;
         var ca = W / H, ta = texW / texH;
         var cover = ta > ca ? [ta / ca, 1] : [1, ca / ta];
-        gl.uniform2fv(U.cover, new Float32Array(cover));
-        gl.uniform1f(U.progress, progress);
-        gl.uniform1f(U.form, form);
-        gl.uniform1f(U.mode, mode);
-        gl.uniform1f(U.time, time);
-        gl.uniform1f(U.size, Math.max(2.5, (W / cols) * 1.45));
-        gl.drawArrays(gl.POINTS, 0, count);
+        gl.uniform2fv(U.uCover, new Float32Array(cover));
+        gl.uniform1f(U.uProgress, progress);
+        gl.uniform1f(U.uForm, form);
+        gl.uniform1f(U.uMode, mode);
+        gl.uniform1f(U.uTime, time);
+        gl.uniform1f(U.uSize, Math.max(2.5, (W / cols) * 1.45));
+
+        function pass(id, set, additive) {
+          gl.uniform1f(U.uPass, id);
+          gl.blendFunc(gl.SRC_ALPHA, additive ? gl.ONE : gl.ONE_MINUS_SRC_ALPHA);
+          bindSet(set);
+          gl.drawArrays(set.prim, 0, set.n);
+        }
+        pass(1, bufs.lines, blendGlow);          /* fiber trails   */
+        pass(2, bufs.points, true);              /* soft halo glow */
+        pass(0, bufs.points, false);             /* sharp cores    */
       },
     };
   }
@@ -332,6 +412,7 @@
       length: parseInt(section.getAttribute("data-sf-length") || "480", 10),
       accent: accent,
       scatter: { burst: 0, strands: 1, rise: 2 }[section.getAttribute("data-sf-scatter")] || 0,
+      blendGlow: (section.getAttribute("data-sf-blend") || "glow") !== "solid",
       formText: section.getAttribute("data-sf-form-text") || "",
       formImage: section.getAttribute("data-sf-form-image") || "",
       formFont: section.getAttribute("data-sf-form-font") || "",
@@ -372,7 +453,7 @@
     var ctx = flat.getContext("2d");
     section.style.height = cfg.length + "vh";
 
-    var particles = makeParticles(glCanvas, cfg.accent, cfg.formColor);
+    var particles = makeParticles(glCanvas, cfg.accent, cfg.formColor, cfg.blendGlow);
 
     var img = null, imgReady = false;
     var srcImage = cfg.image || (poster ? poster.currentSrc || poster.src : "");
@@ -431,6 +512,7 @@
     var progress = 0, live = false;
 
     function goLive() {
+      /* the film painted a real frame — the poster hands over */
       if (live) return;
       live = true;
       sticky.classList.add("sf-live");
