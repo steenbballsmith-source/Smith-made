@@ -2177,3 +2177,318 @@ image serving byte-exact (127658 bytes). Desktop QA passed locally pre-merge.
 No form submission was made; Will's inbox-delivery proof (SM-FORM-001) remains
 open. Next owner input: whether the two tiered display-stand renders Will sent
 become a tenth card (not added — no instruction).
+
+## 2026-08-28 · cloud Claude · The Experience page: TikTok-style scroll film built, QA'd, on branch (not deployed)
+
+Steen sent a TikTok link and asked for "something just like it with the video
+transformation and all the stuff." Resolved the link first: video
+7632327346971790614 by @nomadatoast (Jo Mendes), caption "create 3D-like
+website animations from simple videos using Emergent and Claude skills,
+turning prompts into interactive parallax sites" (#aitools #emergent
+#webdesign #nocode). It showcases a *technique*, not one specific site:
+scroll-scrubbed video + parallax "3D-like" sections. Fetched via remote
+extraction (TikTok is egress-blocked from the container); resolved URL and
+caption are reproducible from the page's embedded JSON.
+
+Built on branch `claude/tiktok-video-transformation-64e1ja`:
+
+- **`experience.html`** — new page, linked from the home nav + footer. Five
+  full-screen "chapters" walk one wedding day through the collection
+  (Arched Welcome → Ceremony Arch Set → Champagne Wall → Slat Backdrop →
+  Keepsake Heart), crossfading and drifting as the visitor scrolls — forward
+  plays, backward rewinds. Plus a parallax "Craft" collage, a horizontal
+  reel of seven pieces (each linking to its card on the home page), and a
+  CTA finale into `index.html#inquire`.
+- **`js/experience.js` + `css/experience.css`** — engine and styles. Uses the
+  vendored GSAP/ScrollTrigger/Lenis already in the repo; no new dependencies,
+  no build step. Three states from one markup: full motion, static editorial
+  page for reduced-motion/no-GSAP, and a no-JS page that still reads.
+- **Film mode, wired but dormant:** `js/manifest.js` gained one owner-editable
+  key, `experienceFilm: ""`. When a real clip lands at
+  `assets/video/experience.mp4` and that line is filled in, the same scroll
+  drives the actual video frame-by-frame on a canvas (chapters ride on top).
+  Until then the page scrubs the staged renders and looks finished.
+- `sitemap.xml` gained the page; `index.html` changed by exactly two links.
+
+Evidence (reproduce: `python3 -m http.server` + Playwright on the container's
+Chromium, script preserved in the PR description):
+
+- Desktop 1440×900 and mobile 390×844: pin engages (5,400px scrub length),
+  scene opacities crossfade 1.00→0.00 in order, mid-crossfade blend observed
+  (0.20/0.80 at 78%), progress ticks 01–05 track, reel slides −30→−1,400px.
+  Console errors 0, failed requests 0, on both.
+- Reduced-motion emulation: `body.xp-static`, everything readable, no pin.
+- `index.html` smoke: nav link present, console clean.
+- Film mode, tested by injecting a generated test video: arms correctly,
+  canvas fills the stage, chapters overlay it, and scroll position maps to
+  the right timestamps (5%→0.29s, 50%→2.90s, 95%→5.50s of a 5.84s clip).
+  **Caveat, stated so nobody over-trusts this:** the container's headless
+  Chromium would not advance *decoded frames* on paused seeks for any video
+  (proven with a bare `<video>` control test — same first frame at 0.3s,
+  2.9s, 5.5s). Frame-accurate scrubbing is the textbook pattern and works in
+  real browsers, but it has NOT been seen with human eyes here. When a real
+  clip is added, one look in a normal browser is the remaining check.
+- Fixed during QA: MediaRecorder/screen-recorder files report
+  `duration = Infinity`; the engine now resolves duration via the standard
+  seek-to-end poke instead of silently staying in render mode.
+
+Not done, deliberately: no deploy (merge to `main` = deploy = Steen's named
+exception), no venue/social announcement, no changes to the form or catalog.
+
+## 2026-08-28 (later) · cloud Claude · The TikTok decoded frame-by-frame; ScrollFilm kit built for Jay's site + Smith Digital
+
+Steen uploaded the original video (36.3s, 576x1024 h264 .mov) and redirected
+the goal: not Smith Made — analyze the reference properly, then get the
+effect onto **Jay's site (Yost Wood Design)** and **Smith Digital**, because
+"Codex is having a hard time reaching the result."
+
+**The video, actually watched** (73 frames extracted at 2fps with ffmpeg;
+full breakdown now lives at `kit/scroll-film/REFERENCE.md`): the creator's
+pipeline is Emergent (AI builder, running Claude 4.7 Opus) + a prompt file
+("NT Scroll Video Hero Prompt.txt") + **the user's own video** + an
+inspiration link (peachworlds.com example). The result: a site whose hero is
+the video scrubbed by scroll, which **dissolves into thousands of particles**
+as you keep scrolling. His no-video variant: photograph anything (his
+fridge), run it through higgsfield.ai (Kling) with a "cinematic
+transformation, START/END" prompt, and use the generated clip. The first
+session's read of the caption ("scroll-scrubbed video + parallax") was
+directionally right but under-scoped: the signature effect is the
+**particle dissolve of the moving frame**, which the Smith Made experience
+page does not have.
+
+**Discovery for the two targets** (evidence inline):
+- Yost Wood Design: real Oregon business (Brownsville; public listings).
+  No repo (GitHub account has only Smith-made), no Netlify site (account
+  holds smithdigitalco.com + srservices.us.com), no Lovable projects (0).
+  Jay's draft, if any, lives on the PC with Codex — unverifiable from cloud.
+- smithdigitalco.com current state read via remote extraction (egress
+  blocks it directly): now a full multi-page site, and it already SELLS
+  "Drone-Style Video — a cinematic clip built from a photo you already own"
+  — the same photo→AI-video move the TikTok teaches. The kit is therefore
+  also a product demo for that service.
+
+**Built: `kit/scroll-film/`** — the TikTok effect without Emergent, no
+dependencies, no build step, drop-in for any site: scroll-scrubbed video →
+raw-WebGL particle dissolve (16–36k points that keep sampling the moving
+frame) → ember drift + closing pitch; scroll-timed captions; graceful
+degrade (no video → Ken Burns + dissolve of the poster image; no WebGL →
+scrub only; reduced-motion/no-JS/data-saver → static poster + readable
+text). Files: scrollfilm.js, scrollfilm.css, demo.html,
+**yost-wood-design.html** (a full draft site for Jay, placeholders marked),
+README.md (usage + per-site steps + the photo→AI-video recipe), REFERENCE.md,
+and a generated placeholder clip (assets/demo-film.mp4, 8s, keyframe-dense
+x264 from a repo render). `kit/` is **excluded from the Pages deploy**
+(one rsync exclude added to deploy-pages.yml), so merging the PR does not
+put the kit on smithmadesc.com.
+
+**QA (headless Chromium, evidence reproducible via the scripts in PR #35):**
+4 drives — demo desktop 1440x900, Yost mobile 390x844, reduced-motion,
+image-only (video attribute stripped). All clean: 0 console errors, 0 bad
+requests, phases sequence (flat scrub → dissolve → hold), captions window
+correctly, reduced-motion gets the static page with no canvases. Particle
+visibility proven by screenshot deltas at the same pin position
+(dissolve-vs-scrub 40k–70k differing samples; dissolve-vs-end 199k–902k)
+and confirmed by eye on the captures. **One real bug found by looking, not
+by the numbers:** the poster img originally painted OVER both canvases (DOM
+order), so the whole film ran invisibly underneath it — fixed with explicit
+z-indexes and an `.sf-live` poster hand-off, and that class is now asserted
+in QA. Standing caveat unchanged from the morning session: this container's
+headless build won't advance decoded video frames on paused seeks, so
+frame-accurate video scrub still needs one human look in a real browser;
+the particle phase is pixel-verified here via the image path.
+
+Not done, deliberately: nothing deployed anywhere (Netlify untouched, Pages
+untouched); no contact with Jay (external comms are Steen's); Yost draft
+carries placeholder contact details and a noindex until real ones exist.
+
+## 2026-08-28 (third) · cloud Claude · Formations shipped: embers now spell the client's name; tradecraft doc; Smith Digital preview; phone-scrollable screening room
+
+Steen restated the goal: completely figure out how this genre of site is
+made, then implement it for Smith Digital and Jay. Delivered in four parts:
+
+1. **`kit/scroll-film/HOW-ITS-DONE.md`** — the complete tradecraft: every
+   example in the reference decomposes into three tricks (scrubbed footage /
+   a particle field wearing the picture / true realtime 3D), which sites use
+   which, and the honest boundary (only the katana/DNA class needs the 3D
+   skills we haven't packaged — the reference creator's own result doesn't
+   use them either).
+2. **Engine upgrade** — the reference's signature "particles become a
+   structured shape" move: after the dissolve the embers now gather and
+   spell configurable text or form a logo mask (`data-sf-form-text` /
+   `data-sf-form-image`), plus three scatter styles (`burst`/`strands`/
+   `rise`) so each client's film moves differently. Verified screenshots:
+   "YOST WOOD DESIGN" and "SMITH DIGITAL" legible in ember-textured
+   letters on desktop and phone.
+3. **Implementation previews** — `yost-wood-design.html` upgraded (rising
+   embers → the shop's name); new `smith-digital-demo.html` wearing the
+   live site's real homepage copy ("More calls. Less guessing.", the
+   Drone-Style Video service as the pitch), strands scatter, forms
+   "SMITH DIGITAL"; new generated abstract clip for it (794 KB, lavfi
+   gradients — the imageio-ffmpeg build supports lavfi).
+4. **Screening room artifact** (private to Steen's account) — both films
+   in one phone-scrollable page, engine + videos inlined:
+   https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
+
+The debugging that mattered, so nobody re-learns it: the first formation
+build rendered nothing — root cause found via gl.getProgramInfoLog was
+**"Precisions of uniform 'uForm' differ between VERTEX and FRAGMENT
+shaders"** (vertex default highp vs fragment mediump = link failure on this
+GL stack). One qualifier fixes it; comment left in the shader. Also
+softened late-scatter alpha so a faint starfield survives the beat between
+dissolve and formation. QA: 4 drives (demo desktop, yost desktop, SD
+desktop, SD mobile 390x844) all clean — 0 console errors, formation-vs-
+dissolve screenshot deltas 110k–876k, formed names eyeballed legible.
+
+Same standing caveats: video scrub timestamps verified, decoded-frame
+smoothness needs Codex's real-browser look; nothing deployed anywhere.
+
+## 2026-08-28 (fourth) · cloud Claude · Renderer matched to the reference; the creator's exact sites found and pulled
+
+Steen: the preview didn't look like the video — make it look like his, find
+his exact website, and check what skills/connections would help.
+
+**His exact sites, read off the video's own browser bar (full-res frame
+extraction):**
+- His demo ("BOOM" result, the face→fibers site):
+  `skeleton-rebuild.preview.emergentagent.com` — "Made with Emergent" badge,
+  nav "Jo Mendes / NOMADATOAST". Was live in the video (Apr 22); now times
+  out through the remote extractor twice — Emergent previews hibernate or
+  expire. We hold a complete visual record from the frames regardless.
+- The inspiration link he fed the AI: `https://fine-n7vljkp34f.peachworlds.com/`
+  — LIVE, verified by extraction. It's built on **Peachworlds**, a dedicated
+  3D-website platform (`pw-scene` canvases) — the genre has its own tooling.
+- The katana example: `string-tune.fiddle.digital` — the demo for
+  **StringTune**, Fiddle.Digital's scroll-animation library.
+- His bio site `nomadatoast.com` — DEAD (redirects to Adobe Portfolio's
+  missing page).
+
+**Renderer upgraded to his look** (the gap was real: he renders fibers with
+glowing tips; we rendered flat dots). scrollfilm.js now draws three passes
+per frame — fiber trails (a 2N-vertex line pass whose tails evaluate the
+motion a beat behind the heads), a soft additive halo, and sharp cores —
+plus flow turbulence and pseudo-depth parallax; `data-sf-blend=glow|solid`.
+Verified: mid-dissolve now reads as a dense fiber field with depth, and the
+formed names glow with radiating trails ("YOST WOOD DESIGN" / "SMITH
+DIGITAL" screenshots in the QA run). Both QA suites clean; deltas 343k-2.3M.
+Steen's preview republished at the same URL (version "fiber-glow-renderer"):
+https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
+
+**Skills/connections answer, checked not guessed:** no addable Claude
+skills exist for this (marketplace searched); Zapier has no Runway/Kling/
+Higgsfield integration (searched — only api.video, which is hosting, not
+generation). The levers that would genuinely level this up: (1) an AI video
+generator account — Higgsfield/Kling or Runway — the single biggest quality
+lever, needs its own signup; (2) a Peachworlds account if Steen wants the
+true-3D-scene class of site without code (it's what his inspiration link
+was built on); (3) free and already possible: vendoring three.js for
+trick-3 work, and StringTune (the katana site's library) if we ever want
+its scroll primitives — though our engine already covers that ground.
+
+## 2026-08-29 · cloud Claude · Polish pass: the defects that made the films look "AI generated"
+
+Steen sent a second TikTok (@bengusberg, on-screen title **"Make your website
+look less AI generated"**, caption "These are quick fixes to a problem I see
+every day" #claude #ai) and asked to install the skills it names and act on
+it. **Honest limits recorded:** the video's spoken list could not be
+retrieved — the English subtitle track is served from a TikTok CDN that this
+container's egress blocks, and two fetch attempts through the remote
+extractor timed out. Only the title, caption and author were confirmed. A
+search of Steen's skill library AND the addable-skill marketplace for this
+topic returned **zero matches**, so there were no skills to install; nothing
+was installed and nothing was invented.
+
+What was done instead is the substance of that title, taken from evidence we
+own: the verification fleet run at the end of the previous session had
+already found this exact class of defect. 5 of 7 visual drives failed. Fixed:
+
+- **Blank frames.** Caption windows left gaps, so at ~0.8 of the scroll FOUR
+  of the drives showed zero captions — a dead, empty stage. Windows are now
+  sorted and gap-closed at mount, and the outer edges are held open past the
+  ends of the scroll. Verified by sweeping 41 scroll positions per page:
+  **0 blank frames** across 6 page/viewport combos (was 2+ each).
+- **Double-exposed text.** Adjacent captions crossfaded at the same screen
+  position, producing illegible interleaved mush (worst at ~0.5). The
+  handoff now moves the outgoing and incoming blocks in opposite directions
+  while they cross. Verified: **0 frames with two captions above 0.25**.
+- **Orb clipped off wide screens.** `R*aspect + lift` exceeded clip space
+  once perspective (≈1.27x) and the spike scale (1.3x) were applied. Radius
+  is now budgeted against both, and the ball is centred rather than carrying
+  a baked-in y lift that the perspective term amplified. Checked at 1920x820.
+- **Dandelion spikes were invisible.** The fragment shader's fiber-retire
+  term killed fiber alpha exactly when the orb formed, so the radial tail
+  offset did nothing. Fibers now survive an orb formation and still retire
+  on a text formation. The finale reads as a spiked ball on screen.
+- **Fibers read as confetti dots.** Tail lag was too short for the line to
+  have length; raised, and on light stages the round cores are held back and
+  the strand bodies darken so they show against a pale ground.
+- **Legibility.** Yost's nav was lost against the bright particle field (it
+  now carries its own ground); his-look gained a light-stage scrim so dark
+  headlines don't sit on dark footage; its caption copy no longer claims the
+  picture is breaking up before the dissolve starts.
+
+New shader uniform `uGlow` declared highp in BOTH stages — same precision
+rule that caused the earlier link failure; guarded by a link-failure probe
+in the QA harness now, not just by memory.
+
+Preview republished at the same URL (version "polish-pass"), now carrying
+all three films: https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
+Still nothing deployed anywhere; footage is still the open item.
+
+## 2026-08-29 (later) · cloud Claude · The five anti-slop skills installed; slop detector run on our own site: 85 → 61
+
+Steen re-sent the second TikTok as a saved file, which made it readable
+frame by frame (the link alone was not — its subtitle CDN is egress-blocked).
+Video: @bengusberg, "AI built your website in 10 minutes. So did your
+competitor's." His premise: the tells of a classic AI website are the beige
+background, the AI font, and the italicised word for emphasis. He names five
+fixes. All five are now handled:
+
+1. **Awesome DESIGN.md Collection** — getdesign.md — 550+ analyses of real
+   brands' design systems, usable as a reusable design brief for a coding
+   agent. Free/open part: github.com/VoltAgent/awesome-design-md. Nothing
+   pulled in yet: adopting another brand's system is a design decision for
+   Steen and Will, not a silent install.
+2. **Taste Skill** — `npx skills add Leonxlnx/taste-skill` — installed ✓
+3. **Impeccable** — `npx skills add pbakaus/impeccable` — installed ✓
+   (its own `npx impeccable install` failed here: HTTP 403, its asset CDN is
+   egress-blocked from the container. The GitHub route gives the same files.)
+4. **Emil Kowalski's design/animation skills** — `npx skills add
+   emilkowalski/skill` — installed ✓
+5. **Playwright** — already connected and in use all session; it is what
+   produces every screenshot QA run recorded in this log.
+
+26 skills installed. They are **gitignored, not committed**: 5.7 MB / 201
+files of third-party code, and the Pages workflow would have published all
+of it to smithmadesc.com. `skills-lock.json` pins every one by hash, so the
+PC reinstalls with the three commands now in the handoff, and the deploy
+workflow gained matching excludes as belt-and-braces.
+
+**The detector is the real prize.** `npx impeccable detect` is 59
+deterministic rules, and pointed at our own files it reported **85
+anti-patterns** — evidence, not opinion, and it independently confirmed the
+video's thesis on Steen's live site. Its first-listed rule is literally
+"italic serif display headline on an AI beige palette", which is the Smith
+Made hero.
+
+Fixed the objective ones — now **61**:
+- **All 18 WCAG contrast failures, gone.** `--caramel` (#b07d4f) was being
+  used as text on the cream gradient at **2.6:1**, far under the 4.5:1 floor
+  — on the script display words and the finale line. The palette already
+  had `--caramel-text` (#875430) for exactly this; the surface colour was
+  simply being used as ink. Same bug on the kit's light-stage page
+  (#8d857a at 2.9:1) — darkened.
+- **Side-tab stripe removed** (`.piece::before`, visible on card hover) —
+  the detector calls a coloured bar pinned to one side of a card the single
+  most recognisable generated-UI tell. Hover keeps its lift and shadow.
+- **`transition: padding` on the nav** — animating a layout property
+  thrashes layout every frame; dropped.
+- **Sub-11px functional text** on the kit's light page — raised.
+
+Deliberately NOT changed, and this matters: the cream palette, the script
+face, the tracked uppercase kickers and the hero eyebrow are all still
+flagged, and all four are *brand*, approved by Will, appropriate to a rustic
+wedding-signage business. Stripping them because a generic detector calls
+cream "AI beige" would be following a rule off a cliff. They are recorded in
+the handoff as a decision for Steen and Will, not a defect list.
+
+Nothing deployed; all of it sits on the branch behind PR #35.

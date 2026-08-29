@@ -1598,3 +1598,62 @@ and Meta readiness state and routes local Claude to the private execution
 files. `LOG.md` entry `2026-07-30-C23` preserves the verification and privacy
 boundary. Paid traffic and the commercial-email hold remain in place; no
 external or production action occurred.
+
+### SM-XP-001 — The Experience: scroll-film page (the TikTok ask) 🟡
+**Status: BUILT + QA'D · on branch, NOT deployed · Owner: CLAUDE · 2026-08-28**
+
+Steen asked for a site like the TikTok he sent (@nomadatoast — scroll-driven
+"video transformation" / parallax pages). Built as an additive page:
+`experience.html` + `js/experience.js` + `css/experience.css`, two links added
+in `index.html`, one dormant owner key `experienceFilm` in `js/manifest.js`.
+Branch `claude/tiktok-video-transformation-64e1ja`, draft PR open.
+
+| Check | Result |
+|---|---|
+| Scroll film: pin + 5-scene crossfade + progress rail | works, desktop + mobile |
+| Horizontal reel drive | works (−30 → −1,400px) |
+| Reduced-motion / no-JS | static page, fully readable |
+| Console errors / failed requests | 0 / 0 (both pages) |
+| index.html regression | nav+footer links only, console clean |
+| Film mode (real video scrub) | arms + seeks correctly with a test clip; frame-accurate decode can't be observed in the container's headless Chromium — needs one human look in a real browser once a real clip exists |
+
+Open: Codex review on the PC (real browser), Steen's say-so to merge
+(merge to `main` = live deploy), and — for the full effect — a 10–20s
+phone clip from the shop saved as `assets/video/experience.mp4`.
+Evidence: `LOG.md` 2026-08-28 entry. Do not duplicate: the branch and PR
+are claimed by cloud Claude; edits to those three files go through that PR.
+
+### SM-XP-002 — ScrollFilm kit: the TikTok effect for Jay's site + Smith Digital 🟡
+**Status: BUILT + QA'D · on branch, NOT deployed anywhere · Owner: CLAUDE · 2026-08-28**
+
+Steen uploaded the reference TikTok and re-aimed the goal at **Yost Wood
+Design (Jay)** and **Smith Digital**. The video was decoded frame-by-frame
+(`kit/scroll-film/REFERENCE.md` is the shared spec) and the effect was
+rebuilt as a dependency-free kit: scroll-scrubbed video hero → WebGL
+particle dissolve → ember finale, with graceful fallbacks all the way to a
+static poster. Includes **yost-wood-design.html**, a full draft site for
+Jay with placeholders marked, and per-site apply steps in the kit README.
+`kit/` is excluded from the Smith Made Pages deploy.
+
+| Check | Result |
+|---|---|
+| Demo desktop / Yost mobile / image-only drives | phases + captions correct, 0 console errors |
+| Particle dissolve visibly renders | proven by screenshot deltas + eyeballed captures |
+| Reduced-motion | static poster page, no canvases created |
+| Poster z-order bug (film ran hidden underneath) | found in QA, fixed, regression-checked |
+| Real-browser video scrub | NOT seen by human eyes yet — headless can't decode paused seeks; Codex checks demo.html on the PC |
+
+Open: Codex applies the kit to Jay's project with a real clip (or the
+photo→AI-video recipe in the README) and proposes the Smith Digital splice;
+Steen supplies/approves footage and any deploy. Claude claims the kit files
+on branch `claude/tiktok-video-transformation-64e1ja` (PR #35) — don't fork
+a second copy; edit through that branch. Evidence: LOG 2026-08-28 (later).
+
+**SM-XP-002 addendum · 2026-08-28 (third session):** formations shipped —
+embers now re-gather into client text/logo (the reference's signature move),
+three scatter styles, `HOW-ITS-DONE.md` tradecraft doc, and
+`smith-digital-demo.html` preview wearing the live site's real copy. Root
+cause worth keeping: a vertex/fragment precision mismatch on a shared
+uniform is a link error on some GL stacks — fixed with one highp qualifier.
+Steen's phone-scrollable preview (private artifact):
+https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7

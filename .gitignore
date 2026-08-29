@@ -1,0 +1,10 @@
+# Third-party AI design skills, installed with the commands in
+# ops/HANDOFF-TO-CODEX.md. They are pinned by hash in skills-lock.json, so
+# they are reinstalled rather than vendored: ~5.7 MB of somebody else's code
+# does not belong in a public repo whose whole job is a small static site —
+# and everything here would otherwise be published to the live site.
+.agents/
+.claude/skills/
+
+# npm scratch, if a tool ever leaves it behind
+node_modules/

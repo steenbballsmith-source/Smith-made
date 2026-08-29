@@ -27,6 +27,22 @@ window.SMITH_MADE = {
      Drop it in assets/img/ and point to it here:            */
   heroPoster: "assets/img/gallery/staged-heart.jpg",
 
+  /* ---- THE SCROLL FILM (experience.html) ------------------
+     The Experience page has a full-screen film the visitor
+     plays by SCROLLING — scroll forward and the film moves
+     forward, scroll back and it rewinds. Until you add a
+     video it scrubs through the staged renders instead, so
+     the page looks finished either way.
+
+     To turn on the real film: shoot ONE slow, steady clip,
+     10–20 seconds (a slow walk around a finished piece, or
+     a build coming together). Phone is fine — hold it
+     sideways (landscape) and move slowly. Save the file as
+     assets/video/experience.mp4, then change the line below
+     to:
+       experienceFilm: "assets/video/experience.mp4",       */
+  experienceFilm: "",
+
   /* ---- PRODUCT PHOTOS -------------------------------------
      Drop each product photo into assets/img/catalog/ and add
      one line here. The name on the left must match the list

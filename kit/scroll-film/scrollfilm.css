@@ -1,0 +1,128 @@
+/* ScrollFilm — structural styles. Theme (colors, type) belongs to the host
+   page; this file only makes the film mechanism work.
+
+   States, set by scrollfilm.js on the [data-scrollfilm] section:
+     (none)      before JS runs — poster + captions stacked and readable
+     .sf-on      the live film — sticky stage, canvases, scroll captions
+     .sf-static  reduced motion — same as no-JS, deliberately             */
+
+[data-scrollfilm] { position: relative; }
+
+.sf-sticky {
+  position: relative;
+  overflow: hidden;
+}
+
+/* the live film: one viewport, pinned by position:sticky while the section's
+   JS-set height (data-sf-length, in vh) provides the scrub distance */
+.sf-on .sf-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+}
+
+/* stacking, bottom to top: poster (0) -> flat video frame (1) -> particles
+   (2) -> scrim (3) -> captions (4) -> progress bar (5). The canvases are
+   injected next to the poster, so explicit z-indexes do the layering. */
+.sf-flat,
+.sf-gl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.sf-flat { z-index: 1; }
+.sf-gl { z-index: 2; opacity: 0; }
+
+/* the poster is the no-JS / reduced-motion / video-still-loading picture;
+   it bows out once the film has painted its first real frame (.sf-live) */
+.sf-poster {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sf-on .sf-poster {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+.sf-on .sf-live .sf-poster { opacity: 0; }
+
+/* captions: normal flowing text before JS; overlaid and scroll-driven after */
+.sf-caption { position: relative; padding: 22px; }
+.sf-on .sf-caption {
+  position: absolute;
+  left: clamp(20px, 6vw, 84px);
+  right: clamp(20px, 6vw, 84px);
+  bottom: clamp(28px, 8vh, 84px);
+  max-width: 620px;
+  padding: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.sf-on .sf-caption[data-sf-align="top"] {
+  top: clamp(90px, 16vh, 160px);
+  bottom: auto;
+}
+/* centered captions position with box offsets only — the JS animates
+   transform every frame, so transform can't be used for layout here */
+.sf-on .sf-caption[data-sf-align="center"] {
+  top: 36vh;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: min(88vw, 680px);
+  max-width: none;
+  text-align: center;
+}
+
+/* readability scrim behind overlaid captions — dark stages */
+.sf-on .sf-scrim::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to top, rgba(10, 8, 6, 0.72) 0%, rgba(10, 8, 6, 0.28) 26%, transparent 52%);
+  pointer-events: none;
+}
+/* light stages: the footage underneath is usually darker than the page, so
+   the scrim lifts toward the paper colour instead of sinking toward black */
+.sf-on .sf-scrim-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to top, rgba(240, 236, 228, 0.86) 0%, rgba(240, 236, 228, 0.5) 30%, rgba(240, 236, 228, 0.12) 60%);
+  pointer-events: none;
+}
+.sf-on .sf-caption { z-index: 4; }
+
+.sf-bar {
+  display: none;
+}
+.sf-on .sf-bar {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+/* belt and braces: an OS-level reduce-motion always gets the static page */
+@media (prefers-reduced-motion: reduce) {
+  .sf-on .sf-sticky { position: relative; height: auto; }
+  .sf-on .sf-flat, .sf-on .sf-gl { display: none; }
+  .sf-on .sf-poster { position: relative; height: auto; object-fit: unset; }
+  .sf-on .sf-caption { position: relative; inset: auto; opacity: 1 !important; transform: none !important; padding: 22px; }
+}

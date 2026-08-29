@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ==================================================================
+       SMITH DIGITAL — SCROLLFILM PREVIEW, NOT PUBLISHED
+       A preview of the effect wearing Smith Digital's real homepage copy,
+       so Steen can judge it before anything touches smithdigitalco.com.
+       The footage is a generated abstract placeholder — the real version
+       wants either real footage or a photo run through the image-to-video
+       recipe in README.md (which is literally the "Drone-Style Video"
+       service this page would be selling).
+       Codex does the real splice on the PC where the live files are.
+       ================================================================== -->
+  <title>Smith Digital — ScrollFilm hero preview</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%F0%9F%93%88%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="scrollfilm.css">
+  <style>
+    :root { --bg: #0b1220; --bg-2: #101a2e; --paper: #eef3fb; --dim: #93a5c4; --blue: #6ea8ff; --line: rgba(238, 243, 251, 0.14); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--paper); font: 400 17px/1.6 system-ui, 'Segoe UI', sans-serif; }
+    h1, h2, h3 { font-weight: 650; line-height: 1.08; letter-spacing: -0.015em; }
+    a { color: var(--blue); }
+    .kicker { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; font-weight: 500; }
+    .btn { display: inline-block; padding: 0.95em 2.1em; border-radius: 10px; text-decoration: none;
+           font-size: 0.88rem; font-weight: 600; }
+    .btn.solid { background: var(--blue); color: #071021; }
+    .btn.ghost { border: 1px solid var(--blue); color: var(--blue); }
+
+    .sf-caption h1 { font-size: clamp(2.5rem, 6.6vw, 5rem); }
+    .sf-caption h2 { font-size: clamp(1.9rem, 4.8vw, 3.3rem); }
+    .sf-caption p { color: var(--dim); max-width: 480px; margin-top: 12px; }
+    .sf-caption .btn { margin-top: 24px; }
+    .sf-bar { color: var(--blue); }
+
+    .after { max-width: 800px; margin: 0 auto; padding: 110px 24px 140px; }
+    .after h2 { font-size: 1.9rem; margin-bottom: 16px; }
+    .after p { color: var(--dim); margin-bottom: 14px; }
+  </style>
+</head>
+<body>
+
+  <!-- Real copy from the live smithdigitalco.com homepage, read 2026-08-28;
+       strands scatter = the fiber look from the reference site. -->
+  <section data-scrollfilm
+           data-sf-video="assets/digital-film.mp4"
+           data-sf-image="assets/digital-poster.jpg"
+           data-sf-length="520"
+           data-sf-accent="#6ea8ff"
+           data-sf-scatter="strands"
+           data-sf-form-text="SMITH|DIGITAL"
+           data-sf-form-color="#eef3fb">
+    <div class="sf-sticky sf-scrim">
+      <img class="sf-poster" src="assets/digital-poster.jpg"
+           alt="Abstract blue gradient — placeholder footage for the Smith Digital hero">
+
+      <div class="sf-caption" data-sf-at="0.02" data-sf-until="0.26">
+        <p class="kicker">For owner-operated businesses · Nationwide</p>
+        <h1>More calls.<br>Less guessing.</h1>
+        <p>I build and run the online system around your business — local
+          visibility, a website that makes the next step obvious, honest
+          follow-up, and reporting you can actually use.</p>
+      </div>
+
+      <div class="sf-caption" data-sf-at="0.32" data-sf-until="0.47">
+        <h2>This page is the pitch.</h2>
+        <p>The motion you're scrolling through right now is the "Drone-Style
+          Video" service — a cinematic clip built from a photo you already
+          own. No drone, no crew, no shoot day.</p>
+      </div>
+
+      <div class="sf-caption" data-sf-at="0.53" data-sf-until="0.74">
+        <h2>Your customers scroll.<br>Make it count.</h2>
+        <p>The same system works on any owner-operated business's site —
+          including yours.</p>
+      </div>
+
+      <div class="sf-caption" data-sf-at="0.86" data-sf-until="1">
+        <p class="kicker">No contracts · You own every asset</p>
+        <p>Fifteen minutes, no pitch deck. You keep the audit either way.</p>
+        <a class="btn solid" href="https://smithdigitalco.com/contact/">Get my free 15-minute audit</a>
+      </div>
+
+      <span class="sf-bar" data-sf-bar></span>
+    </div>
+  </section>
+
+  <section class="after">
+    <h2>What this preview is</h2>
+    <p>The ScrollFilm kit wearing Smith Digital's real homepage copy, so the
+      decision "do we want this on smithdigitalco.com?" can be made by
+      scrolling it, not by imagining it.</p>
+    <p>If the answer is yes: Codex splices the <code>&lt;section
+      data-scrollfilm&gt;</code> block plus the two kit files into the real
+      site on the PC — candidate spots and steps are in the kit README —
+      and the placeholder footage gets replaced with something real. Deploys
+      stay on Steen's say-so.</p>
+  </section>
+
+  <script src="scrollfilm.js"></script>
+</body>
+</html>
