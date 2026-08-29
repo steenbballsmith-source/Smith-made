@@ -66,6 +66,7 @@
     "uniform float uForm;",      /* reform: 0 scattered -> 1 formed */
     "uniform float uMode;",      /* scatter style: 0 burst, 1 strands, 2 rise */
     "uniform float uOrb;",       /* 1 = the formation is a rotating 3D orb */
+    "uniform highp float uGlow;",/* 1 = additive glow stage, 0 = solid/light */
     "uniform float uPass;",      /* 0 core, 1 fibers, 2 halo */
     "uniform float uTime;",
     "uniform vec2  uCover;",
@@ -118,14 +119,20 @@
     "void main() {",
     "  vUV = aUV;",
     "  vDepth = aSeed.z;",
-    "  float lagP = aEnd * 0.055;",   /* fiber tails trail the heads */
-    "  float lagT = aEnd * 0.45;",
+    /* Tails trail the heads far enough to draw a visible streak — at a
+       shorter lag the line collapses to its head and the field reads as
+       confetti dots rather than fibers. */
+    "  float lagP = aEnd * 0.15;",
+    "  float lagT = aEnd * 1.10;",
     "  float t = easeT(uProgress - lagP);",
     "  vT = easeT(uProgress);",
     "  vForm = uForm * aTargetOn;",
     "  vec2 fpos = place(uProgress - lagP, max(0.0, uForm - aEnd * 0.15), uTime - lagT, t);",
     "  gl_Position = vec4(fpos, 0.0, 1.0);",
-    "  float sizeMul = uPass > 1.5 ? 3.4 : 1.0;",
+    /* On a light stage there is no additive halo to bind the field together,
+       so the round cores are held back and the fibers carry the picture —
+       otherwise the whole thing reads as stipple instead of strands. */
+    "  float sizeMul = uPass > 1.5 ? 3.4 : mix(0.68, 1.0, uGlow);",
     "  float depthMul = 0.7 + 0.6 * aSeed.z;",
     "  float orbMul = 1.0 + (vPersp - 1.0) * vForm;", /* near side of the orb reads bigger */
     "  gl_PointSize = uSize * sizeMul * depthMul * orbMul * (1.0 - 0.5 * vT) * (1.0 + vForm * 0.5);",
@@ -141,6 +148,10 @@
        shared uniform is a LINK ERROR on some GL stacks (found the hard way) */
     "uniform highp float uForm;",
     "uniform highp float uPass;",
+    /* uOrb is also declared in the vertex shader — a shared uniform whose
+       precision differs between stages is a LINK ERROR, so both say highp. */
+    "uniform highp float uOrb;",
+    "uniform highp float uGlow;",
     "varying vec2  vUV;",
     "varying highp float vT;",
     "varying highp float vForm;",
@@ -163,8 +174,15 @@
     "    alpha = (1.0 - r) * (1.0 - r) * 0.16 * max(life, vForm);",
     "    col = mix(col, uAccent, 0.55);",
     "  } else if (uPass > 0.5) {",   /* fibers: thin trailing lines */
-    "    alpha = life * 0.42 * (0.4 + 0.6 * vDepth);",
-    "    alpha *= 1.0 - vForm * 0.85;", /* fibers retire as the shape sets */
+    /* On a text formation the fibers retire so the letters read cleanly.
+       On the orb they ARE the dandelion's spikes, so they survive it. */
+    "    float fbase = max(life, vForm * uOrb * 0.9);",
+    "    alpha = fbase * mix(0.42, 0.72, 1.0 - uGlow) * (0.4 + 0.6 * vDepth);",
+    "    alpha *= 1.0 - vForm * mix(0.85, 0.08, uOrb);",
+    /* A pale fiber on a pale stage is invisible, so on solid/light stages the
+       strand bodies darken and only their tips keep the accent — which is
+       what gives the reference its hair-fine look on a bright ground. */
+    "    col = mix(col * 0.42, col, uGlow);",
     "  } else {",                    /* cores: sharp round points */
     "    vec2 d2 = gl_PointCoord - 0.5;",
     "    if (dot(d2, d2) > 0.25) discard;",
@@ -271,10 +289,11 @@
       new Uint8Array([30, 24, 18, 255]));
 
     var U = {};
-    ["uProgress", "uForm", "uMode", "uOrb", "uPass", "uTime", "uCover", "uSize", "uAccent", "uFormColor", "uTex"]
+    ["uProgress", "uForm", "uMode", "uOrb", "uGlow", "uPass", "uTime", "uCover", "uSize", "uAccent", "uFormColor", "uTex"]
       .forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
     gl.uniform1i(U.uTex, 0);
     gl.uniform1f(U.uOrb, orb ? 1 : 0);
+    gl.uniform1f(U.uGlow, blendGlow ? 1 : 0);
     gl.uniform3fv(U.uAccent, new Float32Array(accent));
     gl.uniform3fv(U.uFormColor, new Float32Array(formColor || accent));
     gl.enable(gl.BLEND);
@@ -398,23 +417,29 @@
     /* orb: a fibonacci sphere the shader spins and projects — the
        reference's dandelion-ball finale, spikes included via fiber tails */
     if (spec.shape === "orb") {
-      var M = 2800, R = 0.5;
+      var TAIL = 1.3;                 /* how far the spikes reach past the ball */
       var n2 = particles.count;
+      var yK2 = viewW / viewH;        /* clip space is square — keep it round */
+      /* Budget the radius so the spikes still fit after the shader's
+         perspective term (up to ~1.27x on the near side) stretches them;
+         the ball stays centred, since a baked-in y offset would be scaled
+         by that same term and drift as the orb spins. */
+      var R = Math.min(0.5, 0.55 / Math.max(0.5, yK2));
+      var M = 2800;
       var pos2 = new Float32Array(n2 * 2);
       var on2 = new Float32Array(n2);
       var z2 = new Float32Array(n2);
-      var yK2 = viewW / viewH;
       for (var k = 0; k < n2; k++) {
         var sIdx = k % M;
         var sy = 1 - 2 * (sIdx + 0.5) / M;
         var sr = Math.sqrt(Math.max(0, 1 - sy * sy));
         var sa = sIdx * 2.399963229728653; /* golden angle */
         pos2[k * 2] = Math.cos(sa) * sr * R + (Math.random() - 0.5) * 0.008;
-        pos2[k * 2 + 1] = sy * R * yK2 + 0.06 + (Math.random() - 0.5) * 0.008;
+        pos2[k * 2 + 1] = sy * R * yK2 + (Math.random() - 0.5) * 0.008;
         z2[k] = Math.sin(sa) * sr * R;
         on2[k] = 1;
       }
-      particles.setTargets(pos2, on2, z2, 1.3);
+      particles.setTargets(pos2, on2, z2, TAIL);
       return;
     }
 
@@ -488,7 +513,20 @@
           at: parseFloat(el.getAttribute("data-sf-at") || "0"),
           until: parseFloat(el.getAttribute("data-sf-until") || "1"),
         };
-      });
+      })
+      .sort(function (a, b) { return a.at - b.at; });
+    /* Captions have to tile the scroll: a gap between one window and the
+       next is a stretch of film with no words on it at all, which reads as
+       the page having broken. Close any gap the author left. */
+    for (var ci = 0; ci < captions.length - 1; ci++) {
+      if (captions[ci].until < captions[ci + 1].at) captions[ci].until = captions[ci + 1].at;
+    }
+    /* Hold the outer edges open past the ends of the scroll, so the first
+       frame opens on finished text and the last one still has it. */
+    if (captions.length) {
+      captions[0].at = Math.min(captions[0].at, -0.02);
+      captions[captions.length - 1].until = Math.max(captions[captions.length - 1].until, 1.08);
+    }
     var bar = section.querySelector("[data-sf-bar]");
     var poster = section.querySelector(".sf-poster");
 
@@ -617,14 +655,18 @@
 
       for (var i = 0; i < captions.length; i++) {
         var cpt = captions[i];
-        var fade = 0.05;
-        var o = Math.min(
-          (progress - cpt.at + fade) / fade,
-          (cpt.until - progress + fade) / fade
-        );
-        o = smooth(o);
+        var span = Math.max(0.001, cpt.until - cpt.at);
+        var fade = Math.min(0.05, span * 0.45);
+        /* The incoming block starts lifting in slightly before the outgoing
+           one is gone, so the handoff never shows an empty stage — and the
+           two travel in opposite directions while they overlap, so they are
+           never printed on top of each other in the same pixels. */
+        var rise = smooth((progress - (cpt.at - fade * 0.6)) / fade);
+        var leave = smooth((cpt.until - progress) / fade);
+        var o = Math.min(rise, leave);
         cpt.el.style.opacity = String(o);
-        cpt.el.style.transform = "translate3d(0," + ((1 - o) * 26).toFixed(1) + "px,0)";
+        cpt.el.style.transform =
+          "translate3d(0," + ((1 - rise) * 30 - (1 - leave) * 24).toFixed(1) + "px,0)";
         cpt.el.style.pointerEvents = o > 0.5 ? "auto" : "none";
       }
       if (bar) bar.style.transform = "scaleX(" + progress + ")";

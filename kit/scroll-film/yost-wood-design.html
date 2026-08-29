@@ -37,9 +37,12 @@
     .btn.solid { background: var(--amber); color: #241708; }
     .btn.ghost { border: 1px solid var(--amber); color: var(--amber); }
 
+    /* the film behind the nav swings from near-black to a bright particle
+       field, so the bar carries its own dark ground rather than trusting it */
     nav { position: fixed; inset: 0 0 auto 0; z-index: 10; display: flex; align-items: center;
           justify-content: space-between; padding: 18px clamp(20px, 5vw, 60px);
-          background: linear-gradient(rgba(21, 16, 11, 0.85), transparent); }
+          background: linear-gradient(rgba(21, 16, 11, 0.94) 55%, rgba(21, 16, 11, 0.55) 85%, transparent);
+          backdrop-filter: blur(3px); }
     .wordmark { font-family: Georgia, serif; font-size: 1.25rem; letter-spacing: 0.04em; color: var(--paper); text-decoration: none; }
     nav .links a { color: var(--dim); text-decoration: none; margin-left: 26px; font-size: 0.85rem; letter-spacing: 0.08em; }
     nav .links a.cta { color: var(--amber); }

@@ -57,10 +57,19 @@ others):
   default), `strands` (horizontal fiber streams — the reference site's face
   look), `rise` (embers off a fire — right for a wood shop).
 - `data-sf-blend` — `glow` (default: additive fibers + halo passes, the
-  reference's luminous look, made for dark stages) or `solid` (plain alpha,
-  for light backgrounds). The renderer draws three passes per frame: fiber
-  trails, a soft halo, and sharp cores, with flow turbulence and
-  pseudo-depth parallax.
+  reference's luminous look, made for dark stages) or `solid` (for light
+  backgrounds: the halo is dropped, the round cores are held back, and the
+  strand bodies darken so they stay visible on a pale ground). The renderer
+  draws fiber trails, a soft halo, and sharp cores each frame, with flow
+  turbulence and pseudo-depth parallax.
+
+**Captions look after themselves.** Windows are sorted and any gap between
+one and the next is closed at mount — a stretch of film with no words on it
+reads as a broken page. The handoff overlaps just enough to never show an
+empty stage, and the outgoing and incoming blocks travel in opposite
+directions while they cross, so two of them are never printed on top of
+each other. Put a `sf-scrim` (dark stage) or `sf-scrim-light` (light stage)
+class on `.sf-sticky` to keep text legible over the footage.
 - `data-sf-form-text="YOUR|NAME"` — after the dissolve, the embers gather
   and **spell this** (multiline with `|`). `data-sf-form-image="logo.png"`
   forms the logo's silhouette instead (alpha mask; wins over text).

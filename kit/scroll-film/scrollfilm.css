@@ -81,13 +81,23 @@
   text-align: center;
 }
 
-/* readability scrim behind overlaid captions */
+/* readability scrim behind overlaid captions — dark stages */
 .sf-on .sf-scrim::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 3;
   background: linear-gradient(to top, rgba(10, 8, 6, 0.72) 0%, rgba(10, 8, 6, 0.28) 26%, transparent 52%);
+  pointer-events: none;
+}
+/* light stages: the footage underneath is usually darker than the page, so
+   the scrim lifts toward the paper colour instead of sinking toward black */
+.sf-on .sf-scrim-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to top, rgba(240, 236, 228, 0.86) 0%, rgba(240, 236, 228, 0.5) 30%, rgba(240, 236, 228, 0.12) 60%);
   pointer-events: none;
 }
 .sf-on .sf-caption { z-index: 4; }

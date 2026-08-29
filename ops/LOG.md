@@ -2383,3 +2383,53 @@ true-3D-scene class of site without code (it's what his inspiration link
 was built on); (3) free and already possible: vendoring three.js for
 trick-3 work, and StringTune (the katana site's library) if we ever want
 its scroll primitives — though our engine already covers that ground.
+
+## 2026-08-29 · cloud Claude · Polish pass: the defects that made the films look "AI generated"
+
+Steen sent a second TikTok (@bengusberg, on-screen title **"Make your website
+look less AI generated"**, caption "These are quick fixes to a problem I see
+every day" #claude #ai) and asked to install the skills it names and act on
+it. **Honest limits recorded:** the video's spoken list could not be
+retrieved — the English subtitle track is served from a TikTok CDN that this
+container's egress blocks, and two fetch attempts through the remote
+extractor timed out. Only the title, caption and author were confirmed. A
+search of Steen's skill library AND the addable-skill marketplace for this
+topic returned **zero matches**, so there were no skills to install; nothing
+was installed and nothing was invented.
+
+What was done instead is the substance of that title, taken from evidence we
+own: the verification fleet run at the end of the previous session had
+already found this exact class of defect. 5 of 7 visual drives failed. Fixed:
+
+- **Blank frames.** Caption windows left gaps, so at ~0.8 of the scroll FOUR
+  of the drives showed zero captions — a dead, empty stage. Windows are now
+  sorted and gap-closed at mount, and the outer edges are held open past the
+  ends of the scroll. Verified by sweeping 41 scroll positions per page:
+  **0 blank frames** across 6 page/viewport combos (was 2+ each).
+- **Double-exposed text.** Adjacent captions crossfaded at the same screen
+  position, producing illegible interleaved mush (worst at ~0.5). The
+  handoff now moves the outgoing and incoming blocks in opposite directions
+  while they cross. Verified: **0 frames with two captions above 0.25**.
+- **Orb clipped off wide screens.** `R*aspect + lift` exceeded clip space
+  once perspective (≈1.27x) and the spike scale (1.3x) were applied. Radius
+  is now budgeted against both, and the ball is centred rather than carrying
+  a baked-in y lift that the perspective term amplified. Checked at 1920x820.
+- **Dandelion spikes were invisible.** The fragment shader's fiber-retire
+  term killed fiber alpha exactly when the orb formed, so the radial tail
+  offset did nothing. Fibers now survive an orb formation and still retire
+  on a text formation. The finale reads as a spiked ball on screen.
+- **Fibers read as confetti dots.** Tail lag was too short for the line to
+  have length; raised, and on light stages the round cores are held back and
+  the strand bodies darken so they show against a pale ground.
+- **Legibility.** Yost's nav was lost against the bright particle field (it
+  now carries its own ground); his-look gained a light-stage scrim so dark
+  headlines don't sit on dark footage; its caption copy no longer claims the
+  picture is breaking up before the dissolve starts.
+
+New shader uniform `uGlow` declared highp in BOTH stages — same precision
+rule that caused the earlier link failure; guarded by a link-failure probe
+in the QA harness now, not just by memory.
+
+Preview republished at the same URL (version "polish-pass"), now carrying
+all three films: https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
+Still nothing deployed anywhere; footage is still the open item.
