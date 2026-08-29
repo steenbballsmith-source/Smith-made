@@ -2433,3 +2433,62 @@ in the QA harness now, not just by memory.
 Preview republished at the same URL (version "polish-pass"), now carrying
 all three films: https://claude.ai/code/artifact/e58c7b0c-4a74-4234-b562-6cc7e37cf4a7
 Still nothing deployed anywhere; footage is still the open item.
+
+## 2026-08-29 (later) · cloud Claude · The five anti-slop skills installed; slop detector run on our own site: 85 → 61
+
+Steen re-sent the second TikTok as a saved file, which made it readable
+frame by frame (the link alone was not — its subtitle CDN is egress-blocked).
+Video: @bengusberg, "AI built your website in 10 minutes. So did your
+competitor's." His premise: the tells of a classic AI website are the beige
+background, the AI font, and the italicised word for emphasis. He names five
+fixes. All five are now handled:
+
+1. **Awesome DESIGN.md Collection** — getdesign.md — 550+ analyses of real
+   brands' design systems, usable as a reusable design brief for a coding
+   agent. Free/open part: github.com/VoltAgent/awesome-design-md. Nothing
+   pulled in yet: adopting another brand's system is a design decision for
+   Steen and Will, not a silent install.
+2. **Taste Skill** — `npx skills add Leonxlnx/taste-skill` — installed ✓
+3. **Impeccable** — `npx skills add pbakaus/impeccable` — installed ✓
+   (its own `npx impeccable install` failed here: HTTP 403, its asset CDN is
+   egress-blocked from the container. The GitHub route gives the same files.)
+4. **Emil Kowalski's design/animation skills** — `npx skills add
+   emilkowalski/skill` — installed ✓
+5. **Playwright** — already connected and in use all session; it is what
+   produces every screenshot QA run recorded in this log.
+
+26 skills installed. They are **gitignored, not committed**: 5.7 MB / 201
+files of third-party code, and the Pages workflow would have published all
+of it to smithmadesc.com. `skills-lock.json` pins every one by hash, so the
+PC reinstalls with the three commands now in the handoff, and the deploy
+workflow gained matching excludes as belt-and-braces.
+
+**The detector is the real prize.** `npx impeccable detect` is 59
+deterministic rules, and pointed at our own files it reported **85
+anti-patterns** — evidence, not opinion, and it independently confirmed the
+video's thesis on Steen's live site. Its first-listed rule is literally
+"italic serif display headline on an AI beige palette", which is the Smith
+Made hero.
+
+Fixed the objective ones — now **61**:
+- **All 18 WCAG contrast failures, gone.** `--caramel` (#b07d4f) was being
+  used as text on the cream gradient at **2.6:1**, far under the 4.5:1 floor
+  — on the script display words and the finale line. The palette already
+  had `--caramel-text` (#875430) for exactly this; the surface colour was
+  simply being used as ink. Same bug on the kit's light-stage page
+  (#8d857a at 2.9:1) — darkened.
+- **Side-tab stripe removed** (`.piece::before`, visible on card hover) —
+  the detector calls a coloured bar pinned to one side of a card the single
+  most recognisable generated-UI tell. Hover keeps its lift and shadow.
+- **`transition: padding` on the nav** — animating a layout property
+  thrashes layout every frame; dropped.
+- **Sub-11px functional text** on the kit's light page — raised.
+
+Deliberately NOT changed, and this matters: the cream palette, the script
+face, the tracked uppercase kickers and the hero eyebrow are all still
+flagged, and all four are *brand*, approved by Will, appropriate to a rustic
+wedding-signage business. Stripping them because a generic detector calls
+cream "AI beige" would be following a rule off a cliff. They are recorded in
+the handoff as a decision for Steen and Will, not a defect list.
+
+Nothing deployed; all of it sits on the branch behind PR #35.

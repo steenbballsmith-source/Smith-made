@@ -198,7 +198,8 @@ summary:focus-visible {
   justify-content: space-between;
   gap: 16px;
   padding: 20px clamp(20px, 5vw, 60px);
-  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+  /* padding is a layout property: animating it thrashes layout every frame */
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 #nav.scrolled,
 #nav.menu-open {
@@ -349,7 +350,9 @@ em.script {
   font-family: var(--font-script);
   font-weight: 400;
   font-style: normal;
-  color: var(--caramel);
+  /* --caramel is a surface colour: as text it lands at 2.6:1 on the cream
+     gradient and fails WCAG AA. --caramel-text is the same warmth, legible. */
+  color: var(--caramel-text);
 }
 h2 em.script { font-size: 1.15em; }
 p.lede {
@@ -481,24 +484,15 @@ p.lede.center { margin: 0 auto; }
   -webkit-backdrop-filter: blur(4px);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s, border-color 0.5s;
 }
-.piece::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  z-index: 1;
-  background: linear-gradient(90deg, transparent, var(--brass), transparent);
-  opacity: 0;
-  transition: opacity 0.5s;
-}
+/* The accent stripe that used to run along the top edge of a card on hover
+   is gone: a coloured bar pinned to one side of a card is the single most
+   recognisable generated-UI tell. The lift, shadow and warmer border below
+   carry the hover on their own. */
 .piece:hover {
   transform: translateY(-8px);
   box-shadow: 0 30px 50px -30px rgba(59, 44, 31, 0.45);
   border-color: rgba(176, 125, 79, 0.5);
 }
-.piece:hover::before { opacity: 1; }
 /* 4:3 — the staged photos' own shape, so the whole scene shows */
 /* deep links land below the fixed nav, not under it */
 .piece { scroll-margin-top: 96px; }
@@ -928,7 +922,7 @@ body.staged-open { overflow: hidden; }
 .script-line {
   font-family: var(--font-script);
   font-size: clamp(2.6rem, 6vw, 4.6rem);
-  color: var(--caramel);
+  color: var(--caramel-text);
   transform: rotate(-2deg);
 }
 #inquire h2 { font-size: clamp(2.3rem, 5vw, 4rem); margin: 6px 0 26px; }

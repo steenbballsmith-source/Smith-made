@@ -94,6 +94,42 @@ step-by-step instructions above.
 3. **Say "go" before anything goes live** — Jay's site, Smith Digital, or
    the Smith Made page from this morning. Until then it's all drafts.
 
+### 🟢 Design skills are installed — reinstall them on the PC in two commands
+
+Steen sent a second video (@bengusberg) naming five things to stop a site
+looking AI-generated. Four are agent skills; all four are installed here and
+pinned by hash in `skills-lock.json`. They are **gitignored, not vendored**
+(5.7 MB of third-party code, and the deploy workflow would otherwise publish
+it to the live site), so on the PC run:
+
+```
+npx skills add Leonxlnx/taste-skill      # anti-slop frontend rules
+npx skills add emilkowalski/skill        # design + animation (Emil Kowalski)
+npx skills add pbakaus/impeccable        # design vocabulary + slop detector
+```
+
+(`npx impeccable install` is the vendor's own installer and is the better
+route on the PC — it failed here only because its asset CDN is blocked from
+the cloud container. Either way you end up with the same SKILL.md files.)
+
+The fifth item is **Playwright**, which cloud Claude has been driving all
+along — that is what produces the screenshot QA in this repo's log.
+
+**The detector is the useful part.** It is 59 deterministic rules and it
+runs on our own files:
+
+```
+npx impeccable detect index.html css/ kit/ experience.html
+```
+
+On 2026-08-29 it reported **85 anti-patterns** on the Smith Made site.
+Cloud Claude fixed the objective ones (see LOG) and it now reports **61**.
+What is left is mostly *brand* decisions, not bugs — do not "fix" them
+without Will and Steen, because on a rustic wedding brand several of them
+are deliberate: the cream palette, the script display face, the tracked
+uppercase kickers, the eyebrow line above the hero. A detector calling
+cream "AI beige" does not know Smith Made sells wedding signage.
+
 ### Steen's account setup (agreed 2026-08-28: Steen makes accounts + payments)
 
 **The one account that matters — an AI video generator.** Cloud Claude
