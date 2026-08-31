@@ -74,38 +74,42 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-08-24
+## State as of 2026-08-31
 
-Counts only — the names live in Gmail.
+Counts only — names live in Gmail, and the customer below is deliberately not
+named here.
 
-- **6** targets contacted (2026-08-05) and **all six followed up** (2026-08-18).
-  Steen sent every one himself. Each of those six is now **closed to further
-  contact** — two touches and we stop.
-- **0** replies, ever. Not one of the six has written back. The lone
-  auto-responder's own three-to-four-business-day window closed on 2026-08-11
-  in silence.
-- **9** fresh targets are drafted, accurate, and ready to send.
-- **13** drafts sit retitled `SUPERSEDED — DO NOT SEND` and re-addressed to
-  Steen's own mailbox, so a stray click reaches nobody. They are duplicates and
-  third-contact hazards, kept only because deleting them was refused by the
-  permission layer.
+- **6** targets contacted (2026-08-05) and followed up (2026-08-18). All six
+  are **closed** — two touches and we stop. Zero replies, ever.
+- **9** fresh targets drafted, accurate, and still **unsent**. Nothing has
+  gone out since 2026-08-18, so no follow-ups are due and no new targets are
+  needed. The engine had nothing to do this week.
+- **13** drafts remain defused as `SUPERSEDED — DO NOT SEND`, re-addressed to
+  Steen's own mailbox.
 
-### What the 2026-08-24 rewrite fixed
+### The thing that actually matters this week
 
-The nine fresh drafts were written in July and had quietly rotted. Every one
-of them claimed the site let you spin each piece in 3D (that viewer was
-deleted), that we style pieces at the venue (we deliver; couples style them),
-and that couples can keep a piece forever (buy prices were deliberately raised
-to discourage sales). They said "wedding signage" after the site moved to
-"event signage". They introduced Steen as the carpenter — **Will is the one
-who builds.** They promised "two of the design plates from the catalog" above
-a blank line where images had been stripped out. And none carried a postal
-address or an opt-out, which is the exact omission that has the sister
-business's outreach on hold.
+**Outreach produced nothing. An inbound inquiry produced a live order.**
 
-All nine were rewritten on the template Steen wrote himself for the August 5
-send, which had every one of those things right.
+A couple found Smith Made on their own, asked for a seating-chart piece for an
+October wedding, and have now moved from questions to "quote me three build
+options." Will has been handling it directly and forwarded it to Steen for
+help pricing. That thread is worth more than all fifteen outreach emails
+combined, and it arrived without any of them.
 
-**The lesson worth keeping:** a draft is not inert. It ages against a site
-that keeps changing, and Steen sends what is in Drafts. Any run that changes
-the site's claims should re-read the queued drafts in the same pass.
+Worth remembering when judging this channel: two rounds of cold email to
+fifteen businesses have produced zero replies. One inbound inquiry produced a
+real customer with a date and a budget. The engine is cheap to keep running,
+but it is not what is working.
+
+### A correction the engine should learn from
+
+Steen's first round of coaching to Will was written while the customer was
+still considering a rental, and most of it was about protecting a rental
+surface from glue and pinholes. She then moved toward buying. On a purchase
+that advice is not just unnecessary, it is wrong — a buyer can do whatever she
+likes to her own sign, and telling her otherwise reads as fussy.
+
+Advice written for one scenario goes stale the moment the customer changes
+direction, exactly the way the July drafts went stale against the site. Re-read
+your own prior advice before repeating it.
