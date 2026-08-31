@@ -38,8 +38,8 @@ Use exactly this:
 > SC — and you can rent it for your weekend or keep it forever. Handbuilt
 > arched welcome signs, seating chart walls, champagne walls, ceremony
 > arches, backdrops, and a mobile bar, all made to order in our shop.
-> Every rental includes delivery and pickup after
-> the last dance; placing and styling the pieces is the couple's, their
+> Choose customer pickup and return with no transport fee, or add Smith Made
+> delivery and pickup to the written quote; placing and styling the pieces is the couple's, their
 > planner's, or their florist's. Engraved keepsake signs — names, wedding
 > date, "established" family rounds — go home with you forever. Serving
 > the Upstate: Greenville, Travelers Rest, Greer, Simpsonville,
@@ -50,7 +50,7 @@ Use exactly this:
 Wedding welcome sign rental, from $175 · Seating chart rental, from $375 ·
 Ceremony arch rental, from $595 · Wedding backdrop rental, from $525 ·
 Champagne wall rental, from $325 · Mobile bar rental, from $595 ·
-Custom keepsake wedding sign, from $495 · Delivery & pickup, flat $125 within 25 miles
+Custom keepsake wedding sign, from $495 · Customer pickup & return, no transport fee · Delivery, from $75 · Pickup, from $75
 
 **Verification:** Google will verify by video (film your shop/tools/a
 piece) or postcard. Do it same day — profile is invisible until verified.

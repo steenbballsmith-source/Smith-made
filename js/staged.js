@@ -6,7 +6,6 @@
 (function () {
   "use strict";
 
-  var lenis = null;
   var opener = null;
   var looks = [];
   var index = 0;
@@ -91,15 +90,12 @@
     show(0);
     box.hidden = false;
     document.body.classList.add("staged-open");
-    lenis = window.__smLenis || null;
-    if (lenis && lenis.stop) lenis.stop();
     box.querySelector(".staged-close").focus();
   }
 
   function close() {
     box.hidden = true;
     document.body.classList.remove("staged-open");
-    if (lenis && lenis.start) lenis.start();
     if (opener) opener.focus();
     opener = null;
   }

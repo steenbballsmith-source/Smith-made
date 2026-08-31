@@ -37,8 +37,8 @@
     if (config.formEndpoint) {
       /* Delivery-service niceties (FormSubmit/Formspree understand these;
          harmless extras otherwise): subject line + tidy table layout. */
-      data.append("_subject", "Wedding inquiry — " + (data.get("names") || "new couple"));
-      data.append("_template", "table");
+      data.set("_subject", "Smith Made event inquiry — " + (data.get("names") || "new inquiry"));
+      data.set("_template", "table");
       submitToEndpoint(data);
     } else {
       submitViaEmail(data);
@@ -122,15 +122,16 @@
       "Names: " + data.get("names"),
       "Email: " + data.get("email"),
       "Phone: " + (data.get("phone") || "—"),
-      "Wedding date: " + (data.get("date") || "TBD"),
+      "Event date: " + (data.get("date") || "TBD"),
       "Venue / city: " + (data.get("venue") || "—"),
       "Interested in: " + pieces,
       "Rent or buy: " + data.get("mode"),
+      "Transport: " + (data.get("transport") || "Not selected"),
       "",
       data.get("message") || ""
     ];
 
-    var subject = "Wedding inquiry — " + data.get("names") + (data.get("date") ? " — " + data.get("date") : "");
+    var subject = "Smith Made event inquiry — " + data.get("names") + (data.get("date") ? " — " + data.get("date") : "");
     var mailto = "mailto:" + (config.email || "") +
       "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(lines.join("\n"));

@@ -1,8 +1,7 @@
-/* Smith Made — page motion + ambient background.
-   Lenis smooth scroll, GSAP reveals, process beam, fact counters, section
-   and scrollspy. Degrades gracefully: no JS -> the page still reads; reduced
-   motion -> static
-   page; GSAP/Lenis missing -> native scroll, content fully visible. */
+/* Smith Made — Processional motion and page reveals.
+   Native scrolling remains in control. GSAP is an optional reveal/progress
+   enhancement; no JS, reduced motion, missing libraries, and media failure
+   all retain the complete page and conversion path. */
 
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -13,20 +12,11 @@ if (reduced) document.body.classList.add('reduced');
 if (!hasGsap) document.body.classList.add('no-motion-lib');
 
 /* ============================================================
-   SMOOTH SCROLL (Lenis) + anchor links
+   NATIVE SCROLL + anchor links
 ============================================================ */
-let lenis = null;
 if (hasGsap) window.gsap.registerPlugin(window.ScrollTrigger);
 
-if (!reduced && hasGsap && typeof window.Lenis === 'function') {
-  lenis = new window.Lenis({ lerp: 0.09, smoothWheel: true });
-  window.__smLenis = lenis;
-  lenis.on('scroll', window.ScrollTrigger.update);
-  window.gsap.ticker.add((time) => lenis.raf(time * 1000));
-  window.gsap.ticker.lagSmoothing(0);
-}
-
-/* keep keyboard + history behavior when we hijack anchor clicks */
+/* Keep keyboard focus and normal URL history while using native scrolling. */
 function focusScrollTarget(el) {
   if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
   el.focus({ preventScroll: true });
@@ -38,12 +28,9 @@ document.querySelectorAll('[data-scroll]').forEach((a) => {
     const el = document.querySelector(id);
     if (!el) return;
     e.preventDefault();
-    history.replaceState(null, '', id);
-    if (lenis) lenis.scrollTo(el, { duration: 1.6, onComplete: () => focusScrollTarget(el) });
-    else {
-      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-      focusScrollTarget(el);
-    }
+    if (window.location.hash !== id) history.pushState(null, '', id);
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+    focusScrollTarget(el);
   });
 });
 
@@ -75,12 +62,12 @@ function bindProcessional() {
   const imageEls = Array.from(root.querySelectorAll('[data-processional-image]'));
   const finishEls = Array.from(root.querySelectorAll('[data-processional-finish]'));
   const states = [
-    { id: 'threshold', start: 0, end: 0.18, image: 'choose-form' },
-    { id: 'choose-form', start: 0.18, end: 0.42, image: 'choose-form' },
-    { id: 'choose-finish', start: 0.42, end: 0.66, image: 'choose-finish' },
-    { id: 'place-it', start: 0.66, end: 0.84, image: 'place-it' },
-    { id: 'check-date', start: 0.84, end: 1.001, image: 'place-it' }
+    { id: 'choose-form', start: 0, end: 0.36, image: 'choose-form' },
+    { id: 'choose-finish', start: 0.36, end: 0.62, image: 'choose-finish' },
+    { id: 'place-it', start: 0.62, end: 0.82, image: 'place-it' },
+    { id: 'check-date', start: 0.82, end: 1.001, image: 'place-it' }
   ];
+  const staticProgress = 0.24;
   let lastState = '';
   let lastProgress = 0;
   let nativeFrame = 0;
@@ -98,9 +85,11 @@ function bindProcessional() {
     lastProgress = progress;
 
     root.style.setProperty('--processional-progress', `${(progress * 100).toFixed(2)}%`);
-    root.style.setProperty('--portal-width', `${(58 + easedOpen * 34).toFixed(2)}%`);
-    root.style.setProperty('--portal-lift', `${(18 * (1 - progress)).toFixed(2)}px`);
-    root.style.setProperty('--portal-scale', (1.065 - progress * 0.045).toFixed(4));
+    root.style.setProperty('--portal-width', `${(46 + easedOpen * 46).toFixed(2)}%`);
+    root.style.setProperty('--portal-lift', `${(24 * (1 - progress)).toFixed(2)}px`);
+    root.style.setProperty('--portal-scale', (1.14 - progress * 0.13).toFixed(4));
+    root.style.setProperty('--detail-shift', `${(24 - progress * 34).toFixed(2)}px`);
+    root.style.setProperty('--detail-rotate', `${(-4 + progress * 5).toFixed(2)}deg`);
 
     if (state.id === lastState) return;
     lastState = state.id;
@@ -123,7 +112,7 @@ function bindProcessional() {
   /* Network failure tries the admitted JPEG once, then exposes an authored
      text surface instead of leaving a broken-image hole. */
   root.querySelectorAll('.portal-layer img').forEach((img) => {
-    img.addEventListener('error', () => {
+    const handleImageFailure = () => {
       const fallback = img.dataset.fallback;
       if (fallback && img.dataset.fallbackTried !== 'true') {
         img.dataset.fallbackTried = 'true';
@@ -134,12 +123,18 @@ function bindProcessional() {
       }
       const layer = img.closest('.portal-layer');
       if (layer) layer.classList.add('is-media-failed');
-    });
+    };
+    img.addEventListener('error', handleImageFailure);
+    /* A blocked or cached failure can finish before this module attaches. */
+    if (img.complete && img.naturalWidth === 0) handleImageFailure();
   });
+  const detail = root.querySelector('.processional-detail');
+  const detailImage = detail && detail.querySelector('img');
+  if (detail && detailImage) detailImage.addEventListener('error', () => { detail.hidden = true; });
 
   function nativeProgress() {
     nativeFrame = 0;
-    if (compactMode()) return applyProcessionalState(1);
+    if (compactMode()) return applyProcessionalState(staticProgress);
     const rect = root.getBoundingClientRect();
     const travel = Math.max(1, root.offsetHeight - window.innerHeight);
     applyProcessionalState(clamp(-rect.top / travel));
@@ -149,17 +144,17 @@ function bindProcessional() {
   }
 
   if (reduced) {
-    applyProcessionalState(1);
+    applyProcessionalState(staticProgress);
   } else if (hasGsap) {
     window.ScrollTrigger.create({
       trigger: root,
       start: 'top top',
       end: 'bottom bottom',
       invalidateOnRefresh: true,
-      onUpdate: (self) => applyProcessionalState(compactMode() ? 1 : self.progress),
-      onRefresh: (self) => applyProcessionalState(compactMode() ? 1 : self.progress)
+      onUpdate: (self) => applyProcessionalState(compactMode() ? staticProgress : self.progress),
+      onRefresh: (self) => applyProcessionalState(compactMode() ? staticProgress : self.progress)
     });
-    applyProcessionalState(compactMode() ? 1 : 0);
+    applyProcessionalState(compactMode() ? staticProgress : 0);
   } else {
     window.addEventListener('scroll', scheduleNativeProgress, { passive: true });
     scheduleNativeProgress();
@@ -169,7 +164,7 @@ function bindProcessional() {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
       if (hasGsap) window.ScrollTrigger.refresh();
-      if (compactMode()) applyProcessionalState(1);
+      if (compactMode()) applyProcessionalState(staticProgress);
       else if (!hasGsap) scheduleNativeProgress();
       else applyProcessionalState(lastProgress);
     }, 120);
@@ -184,6 +179,8 @@ function bindReveals() {
   if (reduced || !hasGsap) return;
   const gsap = window.gsap;
   document.querySelectorAll('[data-reveal]').forEach((el) => {
+    /* The first message and action never wait on animation. */
+    if (el.closest('.processional-copy')) return;
     gsap.fromTo(el,
       { opacity: 0, y: 42 },
       { opacity: 1, y: 0, duration: 1.05, ease: 'power3.out',
@@ -209,32 +206,7 @@ function bindReveals() {
 }
 bindReveals();
 
-/* ============================================================
-   LOADER (declared before the renderer branch — the no-WebGL
-   path calls finishLoad() during module evaluation)
-============================================================ */
-let loaderDone = false;
-function finishLoad() {
-  if (loaderDone) return;
-  loaderDone = true;
-  const l = document.getElementById('loader');
-  if (l) setTimeout(() => l.classList.add('done'), 250);
-  if (hasGsap) setTimeout(() => window.ScrollTrigger.refresh(), 900);
-}
-
 /* main.js calls this after filters / gallery change page height */
 window.__smRefresh = () => {
   if (hasGsap) window.ScrollTrigger.refresh();
 };
-
-/* ==============================================================
-   AMBIENT BACKDROP — removed
-   The three.js backdrop cost 670 KB (166 KB gzipped) to draw a few
-   sub-pixel motes and a light that never reached the page: toggling the
-   canvas within one page load changed 17-130 pixels of 1.3 million, a
-   max delta of 38/255. The warm gradients and film grain in the CSS are
-   what the page's atmosphere was actually coming from.
-   ============================================================== */
-const canvas = document.getElementById('webgl');
-if (canvas) canvas.style.display = 'none';
-finishLoad();

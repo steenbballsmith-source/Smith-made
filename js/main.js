@@ -1,6 +1,6 @@
 /* Smith Made — site behavior. Reads owner settings from js/manifest.js
    (window.SMITH_MADE) and progressively enhances the static page.
-   The 3D scene and scroll animation live in js/scene.js; this file stays
+   The Processional scene and scroll animation live in js/scene.js; this file stays
    dependency-free so contact details and booking work no matter what. */
 
 (function () {
@@ -31,6 +31,13 @@
         nav.classList.remove("menu-open");
         toggle.setAttribute("aria-expanded", "false");
       }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || !nav.classList.contains("menu-open")) return;
+      nav.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
     });
   }
 
@@ -66,7 +73,7 @@
   var heroMedia = document.querySelector("[data-hero-media]");
   var heroPoster = document.querySelector("[data-hero-poster]");
 
-  /* No real photo or video yet? Hide the card — the 3D sign carries the
+  /* No real photo or video yet? Hide the card — the built-in scene carries the
      hero until the owner drops a real shot into the manifest. */
   if (heroMedia && !config.heroPoster && !config.heroVideo) {
     heroMedia.hidden = true;
@@ -168,8 +175,7 @@
   }
 
   function scrollToEl(el) {
-    if (window.__smLenis) window.__smLenis.scrollTo(el, { duration: 1.4 });
-    else el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
   }
 
   var inquiryForm = document.querySelector("[data-inquiry-form]");

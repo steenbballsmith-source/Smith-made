@@ -25,7 +25,7 @@ window.SMITH_MADE = {
      A wide photo (landscape, roughly 1600x900) shown behind
      the headline — and shown while the video loads too.
      Drop it in assets/img/ and point to it here:            */
-  heroPoster: "assets/img/gallery/staged-heart.jpg",
+  heroPoster: "assets/img/gallery/staged-arch-riser.jpg",
 
   /* ---- PRODUCT PHOTOS -------------------------------------
      Drop each product photo into assets/img/catalog/ and add
@@ -33,11 +33,12 @@ window.SMITH_MADE = {
      below exactly (it's the product's id). Example:
        "arched-welcome": "assets/img/catalog/arched-welcome.jpg",
 
-     Product ids (No. 01-08):
+     Product ids (No. 01-09):
        arched-welcome        seating-chart-wall
        family-round          champagne-wall
        grand-arch-welcome-wall  ceremony-arch-set
-       slat-backdrop         mobile-bar                     */
+       slat-backdrop         mobile-bar
+       keepsake-heart                                        */
   photos: {
   },
 
