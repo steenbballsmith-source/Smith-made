@@ -9,7 +9,8 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
 
 document.body.classList.remove('no-js');
-if (reduced || !hasGsap) document.body.classList.add('reduced');
+if (reduced) document.body.classList.add('reduced');
+if (!hasGsap) document.body.classList.add('no-motion-lib');
 
 /* ============================================================
    SMOOTH SCROLL (Lenis) + anchor links
@@ -62,6 +63,119 @@ function updateNav() {
 }
 window.addEventListener('scroll', updateNav, { passive: true });
 updateNav();
+
+/* ============================================================
+   THE PROCESSIONAL — one reversible, normalized story
+============================================================ */
+function bindProcessional() {
+  const root = document.querySelector('[data-processional]');
+  if (!root) return;
+
+  const chapterEls = Array.from(root.querySelectorAll('[data-processional-chapter]'));
+  const imageEls = Array.from(root.querySelectorAll('[data-processional-image]'));
+  const finishEls = Array.from(root.querySelectorAll('[data-processional-finish]'));
+  const states = [
+    { id: 'threshold', start: 0, end: 0.18, image: 'choose-form' },
+    { id: 'choose-form', start: 0.18, end: 0.42, image: 'choose-form' },
+    { id: 'choose-finish', start: 0.42, end: 0.66, image: 'choose-finish' },
+    { id: 'place-it', start: 0.66, end: 0.84, image: 'place-it' },
+    { id: 'check-date', start: 0.84, end: 1.001, image: 'place-it' }
+  ];
+  let lastState = '';
+  let lastProgress = 0;
+  let nativeFrame = 0;
+  let resizeTimer = 0;
+
+  function clamp(value) { return Math.max(0, Math.min(1, value)); }
+  function compactMode() {
+    return reduced || window.innerWidth <= 840 || window.innerHeight < 720;
+  }
+
+  function applyProcessionalState(value) {
+    const progress = clamp(Number.isFinite(value) ? value : 0);
+    const state = states.find((candidate) => progress >= candidate.start && progress < candidate.end) || states[states.length - 1];
+    const easedOpen = 1 - Math.pow(1 - progress, 2);
+    lastProgress = progress;
+
+    root.style.setProperty('--processional-progress', `${(progress * 100).toFixed(2)}%`);
+    root.style.setProperty('--portal-width', `${(58 + easedOpen * 34).toFixed(2)}%`);
+    root.style.setProperty('--portal-lift', `${(18 * (1 - progress)).toFixed(2)}px`);
+    root.style.setProperty('--portal-scale', (1.065 - progress * 0.045).toFixed(4));
+
+    if (state.id === lastState) return;
+    lastState = state.id;
+    root.dataset.processionalState = state.id;
+
+    chapterEls.forEach((chapter) => {
+      const active = chapter.dataset.processionalChapter === state.id;
+      chapter.classList.toggle('is-active', active);
+      if (active) chapter.setAttribute('aria-current', 'step');
+      else chapter.removeAttribute('aria-current');
+    });
+    imageEls.forEach((layer) => {
+      layer.classList.toggle('is-active', layer.dataset.processionalImage === state.image);
+    });
+    finishEls.forEach((finish) => {
+      finish.classList.toggle('is-active', finish.dataset.processionalFinish === state.image);
+    });
+  }
+
+  /* Network failure tries the admitted JPEG once, then exposes an authored
+     text surface instead of leaving a broken-image hole. */
+  root.querySelectorAll('.portal-layer img').forEach((img) => {
+    img.addEventListener('error', () => {
+      const fallback = img.dataset.fallback;
+      if (fallback && img.dataset.fallbackTried !== 'true') {
+        img.dataset.fallbackTried = 'true';
+        const picture = img.closest('picture');
+        if (picture) picture.querySelectorAll('source').forEach((source) => source.remove());
+        img.src = fallback;
+        return;
+      }
+      const layer = img.closest('.portal-layer');
+      if (layer) layer.classList.add('is-media-failed');
+    });
+  });
+
+  function nativeProgress() {
+    nativeFrame = 0;
+    if (compactMode()) return applyProcessionalState(1);
+    const rect = root.getBoundingClientRect();
+    const travel = Math.max(1, root.offsetHeight - window.innerHeight);
+    applyProcessionalState(clamp(-rect.top / travel));
+  }
+  function scheduleNativeProgress() {
+    if (!nativeFrame) nativeFrame = window.requestAnimationFrame(nativeProgress);
+  }
+
+  if (reduced) {
+    applyProcessionalState(1);
+  } else if (hasGsap) {
+    window.ScrollTrigger.create({
+      trigger: root,
+      start: 'top top',
+      end: 'bottom bottom',
+      invalidateOnRefresh: true,
+      onUpdate: (self) => applyProcessionalState(compactMode() ? 1 : self.progress),
+      onRefresh: (self) => applyProcessionalState(compactMode() ? 1 : self.progress)
+    });
+    applyProcessionalState(compactMode() ? 1 : 0);
+  } else {
+    window.addEventListener('scroll', scheduleNativeProgress, { passive: true });
+    scheduleNativeProgress();
+  }
+
+  window.addEventListener('resize', () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      if (hasGsap) window.ScrollTrigger.refresh();
+      if (compactMode()) applyProcessionalState(1);
+      else if (!hasGsap) scheduleNativeProgress();
+      else applyProcessionalState(lastProgress);
+    }, 120);
+  }, { passive: true });
+}
+bindProcessional();
 
 /* ============================================================
    CONTENT REVEALS + PROCESS BEAM + FACT COUNTERS

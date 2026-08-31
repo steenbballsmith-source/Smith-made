@@ -360,72 +360,270 @@ p.lede {
 }
 p.lede.center { margin: 0 auto; }
 
-/* ---------- hero ---------- */
-#hero {
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  padding-top: 80px;
-}
-#hero { padding-bottom: 60px; }
-#hero .wrap { max-width: 980px; text-align: center; }
-#hero .kicker { justify-content: center; }
-#hero p.lede { margin-left: auto; margin-right: auto; }
-.hero-ctas { justify-content: center; }
-#hero h1 { font-size: clamp(2.7rem, 6vw, 5.2rem); }
-#hero h1 .script {
+/* ---------- Processional hero ----------
+   One authored threshold-to-date story. The document stays semantic; a single
+   normalized progress value only changes emphasis, aperture and image state. */
+#hero.processional {
+  --portal-width: 58%;
+  --portal-lift: 18px;
+  --portal-scale: 1.065;
+  min-height: 340svh;
   display: block;
-  font-size: clamp(3.2rem, 7vw, 6.2rem);
-  margin-top: 0.06em;
-  transform: rotate(-2deg);
-  transform-origin: center;
+  padding: 0 clamp(20px, 4vw, 56px);
 }
-#hero p.lede { margin: 28px 0 38px; }
-.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-.hero-founder {
-  margin-top: 26px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.02rem;
-  color: var(--caramel-text);
+.processional-stage {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-rows: auto auto;
+  column-gap: clamp(42px, 6vw, 96px);
+  align-content: center;
+  padding: clamp(96px, 12vh, 132px) 0 clamp(62px, 8vh, 92px);
+  overflow: clip;
 }
+.processional-copy {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  max-width: 620px;
+  position: relative;
+  z-index: 3;
+}
+#hero.processional h1 { font-size: clamp(3rem, 5.4vw, 5.8rem); }
+#hero.processional h1 .script {
+  display: block;
+  font-size: clamp(3.25rem, 6.1vw, 6.4rem);
+  margin-top: 0.02em;
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+}
+#hero.processional p.lede { margin: 24px 0 30px; max-width: 52ch; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .hero-note {
-  margin-top: 10px;
-  font-size: 0.8rem;
-  letter-spacing: 0.24em;
+  margin-top: 16px;
+  max-width: 62ch;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
-/* framed photo card (owner's manifest heroPoster/heroVideo land here),
-   pinned under the hero copy like a photo on a workbench */
-.hero-media {
-  margin: 40px auto 0;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
-  overflow: hidden;
+.processional-visual {
+  grid-column: 2;
+  grid-row: 1 / 3;
   position: relative;
-  border: 1px solid rgba(90, 63, 40, 0.22);
-  box-shadow: 0 44px 80px -34px rgba(59, 44, 31, 0.6);
-  background: var(--cream-2);
+  min-height: min(78svh, 780px);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: clip;
 }
-.hero-media img,
-.hero-media video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.processional-halo {
+  position: absolute;
+  z-index: -2;
+  width: min(68vw, 820px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 205, 148, 0.44) 0 12%, rgba(193, 154, 98, 0.18) 34%, transparent 69%);
+  filter: blur(2px);
+  transform: translateY(-2%);
 }
-.hero-media video {
+.processional-portal {
+  width: var(--portal-width);
+  max-width: 680px;
+  height: min(72svh, 720px);
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 48% 48% 24px 24px / 24% 24% 24px 24px;
+  border: 1px solid rgba(90, 63, 40, 0.24);
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.65), rgba(193, 154, 98, 0.18)),
+    var(--cream-2);
+  box-shadow:
+    0 55px 95px -46px rgba(59, 44, 31, 0.82),
+    inset 0 0 0 10px rgba(246, 240, 228, 0.22),
+    inset 0 0 70px rgba(90, 63, 40, 0.13);
+  transform: translateY(var(--portal-lift));
+  transition: width 420ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: width, transform;
+}
+.processional-portal::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: 4;
+  pointer-events: none;
+  border: 1px solid rgba(255, 248, 236, 0.48);
+  border-radius: inherit;
+  mix-blend-mode: screen;
+}
+.portal-layer {
   position: absolute;
   inset: 0;
+  z-index: 1;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transform: scale(1.025);
+  transition: opacity 520ms ease, transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(150deg, var(--cream-2), var(--cream-3));
 }
-.hero-media video.is-playing { opacity: 1; }
+.portal-layer.is-active { opacity: 1; transform: scale(1); }
+.portal-layer picture,
+.portal-layer img { display: block; width: 100%; height: 100%; }
+.portal-layer img {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(var(--portal-scale));
+  transition: transform 420ms linear;
+}
+.portal-layer.is-media-failed picture { display: none; }
+.portal-layer.is-media-failed::after {
+  content: "Image unavailable — the piece details remain below";
+  position: absolute;
+  inset: auto 26px 28px;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.portal-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  color: var(--walnut);
+  text-align: center;
+}
+.portal-fallback span { font-family: var(--font-script); font-size: clamp(3rem, 7vw, 5.8rem); }
+.portal-fallback small { letter-spacing: 0.28em; text-transform: uppercase; }
+.processional-finishes {
+  position: absolute;
+  z-index: 6;
+  right: 2%;
+  bottom: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.processional-finishes span {
+  padding: 0.5em 0.85em;
+  border: 1px solid rgba(90, 63, 40, 0.18);
+  border-radius: 999px;
+  background: rgba(246, 240, 228, 0.76);
+  color: var(--ink-soft);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.48;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity 280ms ease, transform 280ms ease, border-color 280ms ease;
+}
+.processional-finishes span.is-active {
+  opacity: 1;
+  transform: translateX(-8px);
+  border-color: var(--brass);
+}
+.processional-disclosure {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: 4.5%;
+  width: min(88%, 620px);
+  transform: translateX(-50%);
+  color: var(--ink-soft);
+  font-size: 0.65rem;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.processional-aisle {
+  position: absolute;
+  z-index: -1;
+  left: 3%;
+  right: 3%;
+  bottom: 17%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(193, 154, 98, 0.74), transparent);
+  transform: rotate(-4deg);
+  transform-origin: center;
+}
+.processional-aisle i {
+  position: absolute;
+  left: var(--processional-progress, 0%);
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brass);
+  box-shadow: 0 0 0 7px rgba(193, 154, 98, 0.14);
+  transform: translate(-50%, -50%);
+}
+.processional-chapters {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  list-style: none;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 22px;
+  position: relative;
+  z-index: 3;
+}
+.processional-chapters li {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-content: start;
+  padding: 12px 0 6px;
+  border-top: 1px solid rgba(90, 63, 40, 0.2);
+  color: var(--ink-soft);
+  opacity: 0.45;
+  transition: opacity 300ms ease, border-color 300ms ease, transform 300ms ease;
+}
+.processional-chapters li.is-active {
+  opacity: 1;
+  border-color: var(--brass);
+  transform: translateY(-2px);
+}
+.chapter-number {
+  color: var(--brass-text);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+}
+.processional-chapters strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.03rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.processional-chapters small {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+.processional-chapters li.is-active small { opacity: 1; transform: none; }
 .scroll-cue {
   position: absolute;
-  bottom: 26px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -433,7 +631,7 @@ p.lede.center { margin: 0 auto; }
   align-items: center;
   gap: 10px;
   color: var(--ink-soft);
-  font-size: 0.72rem;
+  font-size: 0.64rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
 }
@@ -466,20 +664,21 @@ p.lede.center { margin: 0 auto; }
 #collection > .wrap > p.lede { margin-top: 18px; }
 .catalog {
   list-style: none;
-  margin-top: 40px;
+  margin-top: 52px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(34px, 4vw, 58px) clamp(22px, 3vw, 38px);
+  border-top: 1px solid var(--line);
 }
 .piece {
   position: relative;
-  border: 1px solid rgba(90, 63, 40, 0.16);
-  border-radius: 18px;
-  overflow: hidden;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15));
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s, border-color 0.5s;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 .piece::before {
   content: "";
@@ -487,22 +686,24 @@ p.lede.center { margin: 0 auto; }
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 1px;
   z-index: 1;
   background: linear-gradient(90deg, transparent, var(--brass), transparent);
   opacity: 0;
-  transition: opacity 0.5s;
-}
-.piece:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 50px -30px rgba(59, 44, 31, 0.45);
-  border-color: rgba(176, 125, 79, 0.5);
+  transition: opacity 0.35s;
 }
 .piece:hover::before { opacity: 1; }
-/* 4:3 — the staged photos' own shape, so the whole scene shows */
+/* The folio is a calm proof index: large consistent scenes, quiet numbers,
+   and a stable quote action rather than a grid of floating glass cards. */
 /* deep links land below the fixed nav, not under it */
 .piece { scroll-margin-top: 96px; }
-.piece-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream-2); }
+.piece-media {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--cream-2);
+  box-shadow: 0 24px 45px -34px rgba(59, 44, 31, 0.72);
+}
 /* the media is a button: tap it to open the piece staged and larger */
 .piece-stage {
   display: block;
@@ -549,24 +750,25 @@ p.lede.center { margin: 0 auto; }
 @keyframes photoIn { from { opacity: 0; } to { opacity: 1; } }
 .piece-media img.has-photo,
 .hero-media img.has-photo { animation: photoIn 0.7s ease; }
-.piece-body { padding: 22px 24px 24px; }
+.piece-body { flex: 1; display: flex; flex-direction: column; padding: 18px 2px 8px; }
 .piece-kicker {
-  font-family: var(--font-display);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-style: normal;
   color: var(--brass-text);
-  font-size: 0.98rem;
-  letter-spacing: 0.08em;
+  font-size: 0.67rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 .piece-body h3 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.5rem;
-  margin: 8px 0 10px;
+  margin: 10px 0 12px;
   color: var(--ink);
 }
 .piece-price { margin-top: 14px; font-size: 0.92rem; color: var(--ink-soft); }
 .piece-price strong { font-weight: 500; color: var(--ink); }
-.piece-book { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.piece-book { margin-top: auto; padding-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 .catalog-footnote {
   margin-top: 36px;
   color: var(--ink-soft);
@@ -1076,11 +1278,35 @@ body.staged-open { overflow: hidden; }
 /* ---------- reveals ---------- */
 [data-reveal] { opacity: 0; transform: translateY(42px); }
 .no-js [data-reveal],
-.reduced [data-reveal] { opacity: 1; transform: none; }
+.reduced [data-reveal],
+.no-motion-lib [data-reveal] { opacity: 1; transform: none; }
 /* A keyboard user must be able to see what they have focused even if the
    scroll reveal has not played yet — the form and every FAQ question sit
    inside [data-reveal]. !important because GSAP writes inline styles. */
 [data-reveal]:focus-within { opacity: 1 !important; transform: none !important; }
+
+/* Static/reduced/no-JavaScript Processional keeps every fact and action in
+   document flow. The motion is an enhancement, never the information model. */
+.no-js #hero.processional,
+.reduced #hero.processional { min-height: auto; }
+.no-js .processional-stage,
+.reduced .processional-stage {
+  position: relative;
+  min-height: auto;
+  overflow: visible;
+}
+.no-js .processional-portal,
+.reduced .processional-portal {
+  width: min(88%, 680px);
+  transform: none;
+  will-change: auto;
+}
+.no-js .processional-chapters li,
+.reduced .processional-chapters li { opacity: 1; transform: none; }
+.no-js .processional-chapters small,
+.reduced .processional-chapters small { opacity: 1; transform: none; }
+.no-js .scroll-cue,
+.reduced .scroll-cue { display: none; }
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -1091,6 +1317,7 @@ body.staged-open { overflow: hidden; }
     transition-duration: 0.001s !important;
   }
   [data-reveal] { opacity: 1; transform: none; }
+  .processional-portal { will-change: auto; }
 }
 
 /* ---------- responsive ---------- */
@@ -1099,6 +1326,30 @@ body.staged-open { overflow: hidden; }
   .faq-head { position: static; }
   .inquire-grid { grid-template-columns: 1fr; }
   .inquire-side { order: 2; }
+  .catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* A short laptop gets a composed 62/38 first view, not a cramped pin. */
+@media (min-width: 841px) and (max-height: 719px) {
+  #hero.processional { min-height: auto; }
+  .processional-stage {
+    position: relative;
+    min-height: auto;
+    grid-template-columns: minmax(0, 62fr) minmax(300px, 38fr);
+    padding: 88px 0 42px;
+    overflow: visible;
+  }
+  #hero.processional h1 { font-size: clamp(2.6rem, 4.5vw, 4.5rem); }
+  #hero.processional h1 .script { font-size: clamp(3rem, 5vw, 5rem); }
+  #hero.processional p.lede { margin: 16px 0 20px; }
+  .processional-visual { min-height: 480px; }
+  .processional-portal { width: min(92%, 480px); height: 460px; min-height: 0; transform: none; }
+  .processional-finishes { display: none; }
+  .processional-disclosure { bottom: 1%; }
+  .processional-chapters { margin-top: 18px; }
+  .processional-chapters li { min-height: 76px; }
+  .processional-chapters small { opacity: 1; transform: none; }
+  .scroll-cue { display: none; }
 }
 
 @media (max-width: 840px) {
@@ -1122,8 +1373,32 @@ body.staged-open { overflow: hidden; }
   .nav-links .nav-cta { margin-top: 10px; padding: 0.8em 1.8em; }
   .nav-toggle { display: inline-flex; }
 
-  #hero { padding-top: 110px; padding-bottom: 72px; }
-  .hero-media { aspect-ratio: 4 / 3; margin-top: 30px; }
+  #hero.processional { min-height: auto; padding: 0 clamp(20px, 6vw, 46px); }
+  .processional-stage {
+    position: relative;
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 32px;
+    padding: 112px 0 80px;
+    overflow: visible;
+  }
+  .processional-copy { grid-column: 1; grid-row: 1; align-self: start; }
+  #hero.processional h1 { font-size: clamp(3rem, 12vw, 5rem); }
+  #hero.processional h1 .script { font-size: clamp(3.4rem, 14vw, 5.6rem); }
+  .processional-visual { grid-column: 1; grid-row: 2; min-height: 580px; }
+  .processional-portal { width: min(84%, 560px); height: 550px; min-height: 0; transform: none; }
+  .processional-chapters {
+    grid-column: 1;
+    grid-row: 3;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
+  }
+  .processional-chapters li,
+  .processional-chapters small { opacity: 1; transform: none; }
+  .processional-finishes { right: 0; bottom: 14%; }
+  .processional-disclosure { bottom: 3%; }
+  .scroll-cue { display: none; }
   .feature .filler { display: none; }
   .process-grid { grid-template-columns: 1fr; }
   .sticky-side { position: static; }
@@ -1132,12 +1407,83 @@ body.staged-open { overflow: hidden; }
   .finale-space { height: 5vh; }
 }
 
+/* Phone/tablet landscape: keep the first action visible and collapse the
+   desktop navigation before it turns into a crowded two-line toolbar. */
+@media (max-width: 1000px) and (max-height: 500px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: rgba(246, 240, 228, 0.97);
+    box-shadow: 0 24px 40px -24px rgba(59, 44, 31, 0.4);
+    padding: 8px clamp(20px, 5vw, 60px) 20px;
+    display: none;
+  }
+  #nav.menu-open .nav-links { display: flex; }
+  .nav-links a { padding: 10px 0; font-size: 0.82rem; }
+  .nav-links .nav-cta { margin-top: 6px; padding: 0.7em 1.5em; }
+  .nav-toggle { display: inline-flex; }
+  .processional-stage {
+    grid-template-columns: minmax(0, 58fr) minmax(260px, 42fr);
+    padding: 76px 0 28px;
+    column-gap: 30px;
+  }
+  .processional-copy { display: flex; flex-direction: column; }
+  .processional-copy .kicker { order: 1; }
+  .processional-copy h1 { order: 2; }
+  .processional-copy .hero-ctas { order: 3; margin-top: 12px; }
+  .processional-copy p.lede { order: 4; }
+  .processional-copy .hero-note { order: 5; }
+  #hero.processional h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+  #hero.processional h1 .script { font-size: clamp(2.9rem, 7vw, 4rem); }
+  #hero.processional p.lede { margin: 10px 0 14px; font-size: 0.94rem; line-height: 1.55; }
+  .hero-note { display: none; }
+  .processional-visual { min-height: 350px; }
+  .processional-portal { width: min(92%, 390px); height: 330px; }
+  .processional-disclosure { bottom: -1px; font-size: 0.55rem; }
+  .processional-chapters {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 10px;
+  }
+  .processional-chapters li { min-height: 62px; padding-top: 8px; }
+  .processional-chapters small { display: none; }
+}
+
 @media (max-width: 480px) {
   .form-row { grid-template-columns: 1fr; }
   .catalog { grid-template-columns: 1fr; }
+  #hero.processional h1 { font-size: clamp(2.7rem, 14vw, 4rem); }
+  #hero.processional h1 .script { font-size: clamp(3.1rem, 17vw, 4.7rem); }
+  #hero.processional p.lede { margin: 20px 0 24px; }
+  .hero-ctas { align-items: stretch; }
+  .hero-ctas .btn { flex: 1 1 100%; text-align: center; }
+  .processional-visual { min-height: 500px; }
+  .processional-portal { width: min(92%, 410px); height: 470px; }
+  .processional-halo { width: 130vw; }
+  .processional-finishes { right: -2px; bottom: 15%; }
+  .processional-finishes span { font-size: 0.57rem; }
+  .processional-disclosure { width: 94%; font-size: 0.58rem; }
+  .processional-chapters { grid-template-columns: 1fr; gap: 8px; }
+  .processional-chapters li { min-height: auto; padding: 15px 0 10px; }
   .steps { padding-left: 30px; }
   .step::before { left: -30px; }
   .step::after { left: -24px; }
+}
+
+@media (forced-colors: active) {
+  .processional-halo,
+  .processional-aisle { display: none; }
+  .processional-portal,
+  .processional-finishes span,
+  .processional-chapters li { border: 1px solid CanvasText; }
+  .processional-portal::before { display: none; }
+  .portal-layer { background: Canvas; }
 }
 
 /* ---------- last word: keep content clear of the fixed phone action bar ----
