@@ -1,53 +1,61 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-08-24, after the weekly outreach run. This is your inbox: it
+Updated 2026-08-31, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## 🟢 You sent the six. Here's where that stands, and what's next
+## 🔴 You have a real customer waiting, and the ball is with Will
 
-You sent all six follow-ups on August 18 — they went out properly, threaded
-under the original emails so each venue could see what you first wrote. Good.
+Your first genuine paying inquiry has moved from asking questions to **"quote
+me three options."** She wants a seating-chart piece for an October wedding,
+in her own terracotta colour, with cursive wood lettering.
 
-**Nobody has replied.** Nineteen days, six businesses, zero answers. That is
-not a sign anything is broken. Cold outreach to wedding venues runs like this,
-and two touches with no answer is a normal result, not a failed one.
+Will forwarded it to you Sunday night asking for help. It has been sitting
+about a day and a half. **This is the most valuable thing in your inbox.**
 
-Those six are now **finished**. Two emails and we stop. No third try, ever.
+**I've drafted your reply to Will.** It's in Gmail, inside that same
+conversation. Read it and send it.
 
-### Nine new ones are written and ready
+What it does: it lays out the four things only Will can answer — whether he can
+actually cut the cursive, his three prices, his real build time, and whether
+he'll drive it out — and it includes a finished email to the customer with four
+blanks. Will fills in the blanks and sends it. **I did not invent any prices.**
+Material costs and how long a build takes are his to say, and guessing at them
+could either lose the order or commit you to a number you'd regret.
 
-Nine different venues, planners and photographers — nobody you've contacted
-before. Open Drafts and send them whenever you like. They're the ones **not**
-titled `SUPERSEDED`.
+Three things in there worth your attention:
 
-Fair warning about why they took work this week: those nine were written back
-in July, and the website has changed three times since. Every one of them
-still told people they could spin each piece in 3D on the site (that feature
-is gone), that we set the pieces up at the venue (we don't — we deliver and
-the couple styles it, exactly like Will asked), and that they could keep a
-piece forever (we raised buy prices on purpose to stop that). They called it
-wedding signage after we moved to event signage. They introduced you as the
-carpenter, when **Will is the one who builds.** And they promised "two design
-plates" above an empty gap where pictures used to be.
+**The cursive lettering may not survive.** Seven words of script cut from wood
+snaps at the thin joins. If Will isn't confident, saying "hand-painted
+lettering instead" is a perfectly good answer. Promising a cutout and having it
+arrive broken two weeks before a wedding is not.
 
-I rewrote all nine using the email **you** wrote on August 5 as the model —
-yours had every one of those things right.
+**The "boards only" option can eat the good one.** If it's priced too close to
+the finished version, she takes it, and you've sold lumber with your name on a
+sign somebody else finished. The gap should match the work actually removed.
 
-### Ignore anything titled `SUPERSEDED — DO NOT SEND`
+**The calendar is tighter than it looks.** Forty days to the wedding — but if
+*she* paints it, she needs it in hand around September 26 so she has time to
+paint, let it cure, and attach her cards. That's under four weeks, including
+her driving to collect it. Get Will to confirm the date he can genuinely hit
+before anyone quotes it.
 
-There are thirteen of them. Some are copies of emails you already sent; some
-would have been a third contact to a venue that's already heard from us twice.
-I couldn't delete them, so I pointed them all at your own inbox — they can't
-reach a venue even by accident. Delete them whenever you want.
+One correction to what you told Will on Saturday: most of that advice was about
+keeping glue and pinholes off a **rental** board. She's leaning toward buying
+now. If she buys it, she can do whatever she likes to it, and telling a paying
+customer what she may not stick to her own sign will just read as fussy.
 
-### The thing that would actually change these numbers
+### Meanwhile, outreach did nothing again
 
-Six emails, two rounds, no replies. The missing ingredient isn't more emails —
-it's **one finished piece and five real photographs of it.** Every draft in
-your outbox right now says "once our first display piece is ready." Venues
-hear that sentence from everyone. A photo of the real thing ends the argument.
+The nine new emails are still sitting unsent in Drafts. Nothing has gone out
+since August 18, and none of the fifteen businesses contacted so far has ever
+replied.
+
+That's worth sitting with for a second: **two rounds of cold email to fifteen
+businesses got zero replies. One person finding you on her own got you a real
+order.** The outreach is cheap to keep going and you should send the nine when
+you feel like it — but it isn't what's working. Getting found is.
 
 ---
 
