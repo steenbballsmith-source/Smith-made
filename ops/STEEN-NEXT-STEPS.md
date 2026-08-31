@@ -1,7 +1,61 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-07-30, evening, after Codex reported back. This is your inbox: it
+Updated 2026-08-31, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
+
+---
+
+## 🔴 You have a real customer waiting, and the ball is with Will
+
+Your first genuine paying inquiry has moved from asking questions to **"quote
+me three options."** She wants a seating-chart piece for an October wedding,
+in her own terracotta colour, with cursive wood lettering.
+
+Will forwarded it to you Sunday night asking for help. It has been sitting
+about a day and a half. **This is the most valuable thing in your inbox.**
+
+**I've drafted your reply to Will.** It's in Gmail, inside that same
+conversation. Read it and send it.
+
+What it does: it lays out the four things only Will can answer — whether he can
+actually cut the cursive, his three prices, his real build time, and whether
+he'll drive it out — and it includes a finished email to the customer with four
+blanks. Will fills in the blanks and sends it. **I did not invent any prices.**
+Material costs and how long a build takes are his to say, and guessing at them
+could either lose the order or commit you to a number you'd regret.
+
+Three things in there worth your attention:
+
+**The cursive lettering may not survive.** Seven words of script cut from wood
+snaps at the thin joins. If Will isn't confident, saying "hand-painted
+lettering instead" is a perfectly good answer. Promising a cutout and having it
+arrive broken two weeks before a wedding is not.
+
+**The "boards only" option can eat the good one.** If it's priced too close to
+the finished version, she takes it, and you've sold lumber with your name on a
+sign somebody else finished. The gap should match the work actually removed.
+
+**The calendar is tighter than it looks.** Forty days to the wedding — but if
+*she* paints it, she needs it in hand around September 26 so she has time to
+paint, let it cure, and attach her cards. That's under four weeks, including
+her driving to collect it. Get Will to confirm the date he can genuinely hit
+before anyone quotes it.
+
+One correction to what you told Will on Saturday: most of that advice was about
+keeping glue and pinholes off a **rental** board. She's leaning toward buying
+now. If she buys it, she can do whatever she likes to it, and telling a paying
+customer what she may not stick to her own sign will just read as fussy.
+
+### Meanwhile, outreach did nothing again
+
+The nine new emails are still sitting unsent in Drafts. Nothing has gone out
+since August 18, and none of the fifteen businesses contacted so far has ever
+replied.
+
+That's worth sitting with for a second: **two rounds of cold email to fifteen
+businesses got zero replies. One person finding you on her own got you a real
+order.** The outreach is cheap to keep going and you should send the nine when
+you feel like it — but it isn't what's working. Getting found is.
 
 ---
 

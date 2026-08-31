@@ -2177,3 +2177,139 @@ image serving byte-exact (127658 bytes). Desktop QA passed locally pre-merge.
 No form submission was made; Will's inbox-delivery proof (SM-FORM-001) remains
 open. Next owner input: whether the two tiered display-stand renders Will sent
 become a tenth card (not added — no instruction).
+
+## 2026-08-17 ~13:20 UTC — cloud Claude — Weekly outreach run #4; engine memory moved into the repo
+
+**Run result.** No replies from any contacted target inside the eight-day
+window; the single auto-responder from the previous run asked for three to
+four business days and that window closed in silence. Six targets were
+contacted twelve days earlier and each conversation still holds exactly one
+message, which also proves the two follow-ups drafted last week were never
+sent and no new outreach went out. Six follow-up drafts now wait for Steen —
+four written this run, two carried over. Every contacted target has now spent
+its one permitted follow-up, so no target may be contacted a third time. Step
+three did not fire: nine further targets still hold unsent drafts, far above
+the threshold of three. Nothing was sent by an agent; the send button remains
+a person's.
+
+**Two defects found and fixed inside the run.** First, the follow-ups as
+first written carried no postal address, no business-solicitation line and no
+opt-out — the exact omission that put the sister business's outreach on hold.
+Steen's own originals carry all three. All six drafts were rewritten to match.
+Second, and worse: repairing a reply-draft through the mail tool silently
+destroys its threading. Each repaired draft came back on a brand-new
+conversation, meaning a venue would have received a two-line "floating this
+back up" with no original beneath it. Caught by comparing each draft's
+conversation id against the sent message's before reporting anything. All six
+were re-created from the original message ids and re-verified to sit on the
+correct conversations.
+
+**The six broken copies could not be deleted** — the delete was refused by the
+permission layer and no attempt was made to route around it. They were instead
+retitled `SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox,
+so a stray click reaches nobody. Steen can delete them himself; this is
+recorded so a later agent does not mistake them for real queued mail.
+
+**Why this entry exists at all.** The engine's working notes lived in a
+temporary container folder, and that folder was wiped between runs — three
+weeks of notes gone, discovered only because a line count came back at 38
+instead of 476. The notes were reconstructible solely because Gmail already
+held every fact. That lesson is now written down in `ops/OUTREACH-ENGINE.md`:
+the run order, the never-send rule, the one-follow-up-per-target-forever rule,
+the compliance footer requirement, the threading trap, and the four searches
+that rebuild the entire state from Gmail. Public-repo rules observed — the new
+file carries counts and procedure only, no addresses, names, or contact list.
+
+## 2026-08-24 ~13:20 UTC — cloud Claude — Weekly outreach run #5; the queued drafts had rotted
+
+**Good news first.** Steen sent all six follow-ups on 2026-08-18, correctly
+threaded as replies with the compliance footer intact. All six original
+targets have now had their two contacts and are closed to any further
+approach. Still zero replies from any of them — nineteen days after first
+contact, not one has written back. The lone auto-responder's own stated window
+closed on 2026-08-11 in silence. Nothing was sent by an agent this run or any
+run; drafts only, a person presses send.
+
+**The real finding: drafts are not inert, and this mailbox proves it.** The
+nine remaining new-target drafts were written on 2026-07-20 and had rotted
+against a site that changed underneath them three times since. Every one
+claimed the catalog let you spin each piece in 3D — that viewer was deleted on
+evidence weeks ago. Every one promised pieces "delivered and styled at the
+venue" — we deliver and the couple styles it, which is the correction Will
+asked for by name. Every one offered to let couples "keep the pieces forever"
+after buy prices were deliberately raised to discourage sales. They said
+"wedding signage" after the site moved to "event signage". They introduced
+Steen as the carpenter when Will is the one who builds. They promised "two of
+the design plates from the catalog" directly above a blank line, because the
+images were stripped out and the caption was not. And not one carried a postal
+address or an opt-out — the same omission that has Smith Digital's outreach on
+hold.
+
+All nine were rewritten against the template Steen composed himself for the
+August 5 send, which had every one of those points right. Verified after
+writing by re-reading all nine in full: zero occurrences of the three retired
+claims, "event signage" throughout, Will named as running the shop, postal
+address and opt-out on every one, and no price claims (the site is quote-first
+now).
+
+**Thirteen further drafts were hazards and are now defused.** Two were copies
+of follow-ups Steen had already sent, three were July originals aimed at
+venues already contacted twice, three were duplicate halves of pairs, and five
+were carried over from the previous run. A third contact to a venue that has
+already heard from us twice is the failure mode this channel cannot afford in
+a market where the vendors all know each other. Deleting them was refused by
+the permission layer and no attempt was made to route around it; each was
+instead retitled `SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own
+mailbox, so a stray click reaches nobody.
+
+**Standing correction to how this channel is run:** any session that changes
+what the site claims must re-read the queued outreach drafts in the same pass.
+This drift went unnoticed for five weeks and was only caught because Steen
+started actually sending what was in Drafts. Recorded in
+`ops/OUTREACH-ENGINE.md`.
+
+## 2026-08-31 ~13:20 UTC — cloud Claude — Weekly outreach run #6; the channel that worked was not outreach
+
+**The engine had nothing to do.** No replies from any of the fifteen contacted
+or drafted targets. Nothing has been sent since the six follow-ups went out on
+2026-08-18, so no follow-up is due and no new target is needed — the nine
+rewritten drafts are still sitting unsent. Steps one through three all came
+back empty.
+
+**What did happen is more important.** An inbound inquiry — a couple who found
+Smith Made on their own, for an October wedding — has moved from questions to
+requesting three priced build options. Will has been answering directly and
+forwarded it to Steen for pricing help; that forward had been sitting
+unanswered for roughly thirty-six hours. A reply to Will is now drafted in
+that thread. The customer is not named here and their details stay out of this
+public repo.
+
+**No prices were invented.** The customer asked for three quotes and a build
+timeline, and the material costs, fabrication capability, and shop capacity
+are all Will's to supply. The draft therefore hands him a customer-ready email
+with four blanks and a list of exactly what only he can decide, rather than
+numbers an agent guessed. The one figure it does lean on is the $1,575 Will
+already quoted her, which is on the table and cannot be quietly walked back.
+
+**Three substantive risks were flagged rather than glossed.** First, the
+requested cursive wood cutout is seven words of script that will snap at the
+joins and across the grain unless cut as one connected piece on a backer —
+declining the cutout is fine, promising it and delivering it broken before a
+wedding is not. Second, the "boards only" option will cannibalize the finished
+option unless the price gap equals the labor actually removed. Third, the
+calendar is tighter than it reads: forty days to the wedding, but if the
+customer paints it herself she needs the sign around 2026-09-26, which is under
+four weeks including her own travel to collect it.
+
+**A correction to Steen's own earlier advice was issued.** His first round of
+coaching to Will was written while a rental was still under consideration and
+was largely about keeping adhesive and pinholes off a rental surface. The
+customer has since moved toward buying, and on a purchase that guidance is
+wrong — a buyer may do as she likes with her own sign. Advice goes stale when
+the customer changes direction, the same way the July drafts went stale against
+the site.
+
+**Worth stating plainly for whoever reads this next:** two rounds of cold email
+to fifteen businesses have produced zero replies. One inbound inquiry produced
+a customer with a date and a budget. The engine is cheap to keep running and
+should keep running, but it is not the thing that is working.
