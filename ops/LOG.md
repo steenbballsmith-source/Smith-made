@@ -2267,3 +2267,49 @@ what the site claims must re-read the queued outreach drafts in the same pass.
 This drift went unnoticed for five weeks and was only caught because Steen
 started actually sending what was in Drafts. Recorded in
 `ops/OUTREACH-ENGINE.md`.
+
+## 2026-08-31 ~13:20 UTC — cloud Claude — Weekly outreach run #6; the channel that worked was not outreach
+
+**The engine had nothing to do.** No replies from any of the fifteen contacted
+or drafted targets. Nothing has been sent since the six follow-ups went out on
+2026-08-18, so no follow-up is due and no new target is needed — the nine
+rewritten drafts are still sitting unsent. Steps one through three all came
+back empty.
+
+**What did happen is more important.** An inbound inquiry — a couple who found
+Smith Made on their own, for an October wedding — has moved from questions to
+requesting three priced build options. Will has been answering directly and
+forwarded it to Steen for pricing help; that forward had been sitting
+unanswered for roughly thirty-six hours. A reply to Will is now drafted in
+that thread. The customer is not named here and their details stay out of this
+public repo.
+
+**No prices were invented.** The customer asked for three quotes and a build
+timeline, and the material costs, fabrication capability, and shop capacity
+are all Will's to supply. The draft therefore hands him a customer-ready email
+with four blanks and a list of exactly what only he can decide, rather than
+numbers an agent guessed. The one figure it does lean on is the $1,575 Will
+already quoted her, which is on the table and cannot be quietly walked back.
+
+**Three substantive risks were flagged rather than glossed.** First, the
+requested cursive wood cutout is seven words of script that will snap at the
+joins and across the grain unless cut as one connected piece on a backer —
+declining the cutout is fine, promising it and delivering it broken before a
+wedding is not. Second, the "boards only" option will cannibalize the finished
+option unless the price gap equals the labor actually removed. Third, the
+calendar is tighter than it reads: forty days to the wedding, but if the
+customer paints it herself she needs the sign around 2026-09-26, which is under
+four weeks including her own travel to collect it.
+
+**A correction to Steen's own earlier advice was issued.** His first round of
+coaching to Will was written while a rental was still under consideration and
+was largely about keeping adhesive and pinholes off a rental surface. The
+customer has since moved toward buying, and on a purchase that guidance is
+wrong — a buyer may do as she likes with her own sign. Advice goes stale when
+the customer changes direction, the same way the July drafts went stale against
+the site.
+
+**Worth stating plainly for whoever reads this next:** two rounds of cold email
+to fifteen businesses have produced zero replies. One inbound inquiry produced
+a customer with a date and a budget. The engine is cheap to keep running and
+should keep running, but it is not the thing that is working.
