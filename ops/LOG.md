@@ -2313,3 +2313,49 @@ the site.
 to fifteen businesses have produced zero replies. One inbound inquiry produced
 a customer with a date and a budget. The engine is cheap to keep running and
 should keep running, but it is not the thing that is working.
+
+## 2026-09-07 ~13:20 UTC — cloud Claude — Run #7; a correction to last week, and where the customer actually came from
+
+**Correcting the previous entry.** Run #6 reported that the builder's request
+for pricing help had been sitting roughly thirty-six hours unanswered, and
+drafted a reply to it. Both statements were wrong. Steen had already sent a
+complete quote package at 2026-08-31 02:05 UTC — three priced options at
+$1,850 / $1,250 / $975, a production schedule, an exact customer-ready email, a
+customer-safe PDF, a concept render, and a separate internal build-and-close
+guide — about eleven hours before that draft was written. The error came from
+checking the customer thread alone; the reply had started its own thread
+because it carried attachments. The redundant draft has been retitled
+`SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox. Rule now
+recorded in `ops/OUTREACH-ENGINE.md`: search the whole mailbox before calling
+anything unanswered.
+
+**The engine itself had nothing to do, for the second week running.** No
+replies from any of the fifteen contacted or drafted targets. Nothing sent
+since 2026-08-18, so no follow-up due and no new target needed. The nine
+rewritten drafts are still unsent.
+
+**Two findings from the inbound inquiry, both checkable.** First, the live
+order arrived through the website's own inquiry form via FormSubmit, and it
+reached the builder's inbox and turned into a real quote. That is the first
+end-to-end proof the form works for a genuine visitor rather than a test POST.
+It does **not** close SM-FORM-001, which is about the form reporting success
+when a submission fails — a different code path that this happy-path delivery
+says nothing about.
+
+Second, and more useful: the submission carried `utm_source: chatgpt.com`. The
+couple found Smith Made by asking an AI assistant. Not Google, not social, and
+not any of the fifteen emails. The attribution fields added to the form are
+what made that visible at all.
+
+**One schedule risk flagged.** Steen's own plan put final details and proof
+approval in "early September" — that is this week — with delivery between
+September 30 and October 2 for an October 10 wedding, now 33 days out. Whether
+the quote actually reached the customer cannot be verified from this mailbox,
+because the builder corresponds with her directly and only forwards
+selectively; nothing has come back since 2026-08-31. A short check-in to the
+builder is drafted in the quote thread, asking whether it went out and pressing
+for a yes or no on the cursive lettering while there is still time to change
+course.
+
+**Customer details remain out of this public repo:** no name, address, email,
+phone, or venue appears in any committed file.

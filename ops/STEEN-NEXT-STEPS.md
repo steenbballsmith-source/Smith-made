@@ -1,61 +1,58 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-08-31, after the weekly outreach run. This is your inbox: it
+Updated 2026-09-07, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## 🔴 You have a real customer waiting, and the ball is with Will
+## 🟠 The October order: your schedule says this week is the checkpoint
 
-Your first genuine paying inquiry has moved from asking questions to **"quote
-me three options."** She wants a seating-chart piece for an October wedding,
-in her own terracotta colour, with cursive wood lettering.
+First, a correction to what I told you last Monday. I said Will's request for
+pricing help had been sitting unanswered for a day and a half. **That was
+wrong** — you'd already sent him the whole package eleven hours earlier: three
+priced options, the schedule, the customer email, the PDF, the render and the
+build guide. I'd only checked the customer thread, and your reply had started
+its own thread because it had attachments. The draft I wrote was redundant and
+is now marked DO NOT SEND.
 
-Will forwarded it to you Sunday night asking for help. It has been sitting
-about a day and a half. **This is the most valuable thing in your inbox.**
+**What's actually open.** Your plan had final details and the proof approved in
+"early September" — that's this week — with delivery September 30 to October 2.
+The wedding is October 10, so you're 33 days out.
 
-**I've drafted your reply to Will.** It's in Gmail, inside that same
-conversation. Read it and send it.
+Nothing has come back since August 31. I can't tell from your inbox whether the
+quote ever reached her, because Will emails her directly and only forwards you
+some of it. So this is genuinely unknown, not bad news.
 
-What it does: it lays out the four things only Will can answer — whether he can
-actually cut the cursive, his three prices, his real build time, and whether
-he'll drive it out — and it includes a finished email to the customer with four
-blanks. Will fills in the blanks and sends it. **I did not invent any prices.**
-Material costs and how long a build takes are his to say, and guessing at them
-could either lose the order or commit you to a number you'd regret.
+**I've drafted a short check-in to Will**, sitting in the quote thread. It asks
+whether the quote went out, and pushes for a straight yes or no on whether he
+can actually cut that cursive lettering — because if the answer is no, she
+needs to hear it this week, not in two.
 
-Three things in there worth your attention:
+## 🟢 Worth knowing: you now know how she found you
 
-**The cursive lettering may not survive.** Seven words of script cut from wood
-snaps at the thin joins. If Will isn't confident, saying "hand-painted
-lettering instead" is a perfectly good answer. Promising a cutout and having it
-arrive broken two weeks before a wedding is not.
+Her inquiry came through the form on your own website. The tracking on that
+form recorded where she came from, and the answer is **chatgpt.com**.
 
-**The "boards only" option can eat the good one.** If it's priced too close to
-the finished version, she takes it, and you've sold lumber with your name on a
-sign somebody else finished. The gap should match the work actually removed.
+She found you by asking an AI assistant for a wedding sign maker. Not Google,
+not Instagram, and not one of the fifteen outreach emails.
 
-**The calendar is tighter than it looks.** Forty days to the wedding — but if
-*she* paints it, she needs it in hand around September 26 so she has time to
-paint, let it cure, and attach her cards. That's under four weeks, including
-her driving to collect it. Get Will to confirm the date he can genuinely hit
-before anyone quotes it.
+That's the most useful marketing fact you've got. It means the work done on the
+site — the structured data, the FAQ markup, the plain honest descriptions — is
+what put you in front of her. Those are exactly the things AI assistants read
+when someone asks for a recommendation.
 
-One correction to what you told Will on Saturday: most of that advice was about
-keeping glue and pinholes off a **rental** board. She's leaning toward buying
-now. If she buys it, she can do whatever she likes to it, and telling a paying
-customer what she may not stick to her own sign will just read as fussy.
+It also means the form works. A real stranger filled it in and it reached
+Will's inbox and became a real quote.
 
-### Meanwhile, outreach did nothing again
+### So here's the honest scoreboard
 
-The nine new emails are still sitting unsent in Drafts. Nothing has gone out
-since August 18, and none of the fifteen businesses contacted so far has ever
-replied.
+- Fifteen cold emails, two rounds, **zero replies**.
+- One website form submission, from someone who found you through ChatGPT:
+  **a live order worth $1,850.**
 
-That's worth sitting with for a second: **two rounds of cold email to fifteen
-businesses got zero replies. One person finding you on her own got you a real
-order.** The outreach is cheap to keep going and you should send the nine when
-you feel like it — but it isn't what's working. Getting found is.
+Keep sending the nine drafts when you feel like it — they cost nothing. But if
+you want more of what actually worked, the answer is more of the website and
+more real photos on it, not more email.
 
 ---
 
