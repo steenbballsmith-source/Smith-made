@@ -650,6 +650,21 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
+
+> **2026-09-07 — first real-world delivery, by cloud Claude.** A genuine
+> stranger filled in the live form and the submission reached the builder's
+> inbox through FormSubmit, then became a real quote. That is the happy path
+> proven end to end with an actual visitor rather than a labeled test POST.
+>
+> **It does not close this item.** The defect here is the form reporting
+> success when a submission *fails* — a different branch that a successful
+> delivery says nothing about. Still open, still unpatched on the live site.
+>
+> One thing this did prove that nothing else had: the attribution fields added
+> to the form work. The submission carried `utm_source: chatgpt.com`, which is
+> how we learned the customer found Smith Made by asking an AI assistant rather
+> than through search or outreach.
+
 **Status: THE OPEN QUESTION IS ANSWERED — endpoint IS activated · defect now CONFIRMED LIVE, not theoretical · patch still NOT merged, NOT deployed · 2026-08-01 14:52 PDT by local Claude**
 
 > ## ✅ Answered: `will.smithmade@gmail.com` **has** been activated with FormSubmit
@@ -1108,12 +1123,34 @@ to manufacture the next one, and there is nothing here.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
+**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-08-24 13:20 UTC**
 
-Claude has sent no email, drafted nothing, and opened no venue thread. The three
-venues (Riverain Farm, The Barn at Sitton Hill Farm, The Hollow at Paris
-Mountain) remain entirely Codex's. Ownership transfers only by an explicit edit
-to this line.
+**Ownership changed, and the previous line below was wrong for over two weeks.**
+It read "Owner: CODEX" and "Claude has sent no email, drafted nothing, and
+opened no venue thread." The drafting half stopped being true on 2026-07-20.
+A scheduled weekly engine has been running this channel since, and Steen sent
+the first real emails himself on 2026-08-05 — including to two of the three
+venues this entry reserved for Codex. Nothing was duplicated, but only by luck:
+an agent trusting this line could have contacted the same venues twice.
+Corrected here per the verify-don't-trust rule; history in `ops/LOG.md`.
+
+**Verified against Gmail 2026-08-24**, not against this board: 6 targets
+contacted (2026-08-05) and all 6 followed up (2026-08-18, sent by Steen). Zero
+replies, ever. Those six are CLOSED — two contacts and we stop, no third
+approach. 9 fresh targets drafted and accurate. 13 drafts defused as
+`SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox (duplicates
+and third-contact hazards; deletion was refused by the permission layer).
+
+**Standing rule added 2026-08-24:** any session that changes what the site
+claims must re-read the queued outreach drafts in the same pass. Nine drafts
+sat for five weeks advertising a 3D viewer that had been deleted, styling we
+don't do, and Steen as the carpenter when Will builds. Caught only because
+Steen began sending what was in Drafts.
+
+The engine never sends. It writes drafts; a person presses send. Run order,
+rules, and the four Gmail searches that rebuild all of this from scratch live
+in `ops/OUTREACH-ENGINE.md`. Ownership transfers only by an explicit edit to
+this line.
 
 One thing worth flagging to whoever sends them: the drafts live in
 steenbballsmith@gmail.com but are meant to go from will.smithmade@gmail.com, and

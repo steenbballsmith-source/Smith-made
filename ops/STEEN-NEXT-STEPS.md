@@ -1,7 +1,58 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-07-30, evening, after Codex reported back. This is your inbox: it
+Updated 2026-09-07, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
+
+---
+
+## 🟠 The October order: your schedule says this week is the checkpoint
+
+First, a correction to what I told you last Monday. I said Will's request for
+pricing help had been sitting unanswered for a day and a half. **That was
+wrong** — you'd already sent him the whole package eleven hours earlier: three
+priced options, the schedule, the customer email, the PDF, the render and the
+build guide. I'd only checked the customer thread, and your reply had started
+its own thread because it had attachments. The draft I wrote was redundant and
+is now marked DO NOT SEND.
+
+**What's actually open.** Your plan had final details and the proof approved in
+"early September" — that's this week — with delivery September 30 to October 2.
+The wedding is October 10, so you're 33 days out.
+
+Nothing has come back since August 31. I can't tell from your inbox whether the
+quote ever reached her, because Will emails her directly and only forwards you
+some of it. So this is genuinely unknown, not bad news.
+
+**I've drafted a short check-in to Will**, sitting in the quote thread. It asks
+whether the quote went out, and pushes for a straight yes or no on whether he
+can actually cut that cursive lettering — because if the answer is no, she
+needs to hear it this week, not in two.
+
+## 🟢 Worth knowing: you now know how she found you
+
+Her inquiry came through the form on your own website. The tracking on that
+form recorded where she came from, and the answer is **chatgpt.com**.
+
+She found you by asking an AI assistant for a wedding sign maker. Not Google,
+not Instagram, and not one of the fifteen outreach emails.
+
+That's the most useful marketing fact you've got. It means the work done on the
+site — the structured data, the FAQ markup, the plain honest descriptions — is
+what put you in front of her. Those are exactly the things AI assistants read
+when someone asks for a recommendation.
+
+It also means the form works. A real stranger filled it in and it reached
+Will's inbox and became a real quote.
+
+### So here's the honest scoreboard
+
+- Fifteen cold emails, two rounds, **zero replies**.
+- One website form submission, from someone who found you through ChatGPT:
+  **a live order worth $1,850.**
+
+Keep sending the nine drafts when you feel like it — they cost nothing. But if
+you want more of what actually worked, the answer is more of the website and
+more real photos on it, not more email.
 
 ---
 
