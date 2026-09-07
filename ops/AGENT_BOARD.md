@@ -650,6 +650,21 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
+
+> **2026-09-07 — first real-world delivery, by cloud Claude.** A genuine
+> stranger filled in the live form and the submission reached the builder's
+> inbox through FormSubmit, then became a real quote. That is the happy path
+> proven end to end with an actual visitor rather than a labeled test POST.
+>
+> **It does not close this item.** The defect here is the form reporting
+> success when a submission *fails* — a different branch that a successful
+> delivery says nothing about. Still open, still unpatched on the live site.
+>
+> One thing this did prove that nothing else had: the attribution fields added
+> to the form work. The submission carried `utm_source: chatgpt.com`, which is
+> how we learned the customer found Smith Made by asking an AI assistant rather
+> than through search or outreach.
+
 **Status: THE OPEN QUESTION IS ANSWERED — endpoint IS activated · defect now CONFIRMED LIVE, not theoretical · patch still NOT merged, NOT deployed · 2026-08-01 14:52 PDT by local Claude**
 
 > ## ✅ Answered: `will.smithmade@gmail.com` **has** been activated with FormSubmit

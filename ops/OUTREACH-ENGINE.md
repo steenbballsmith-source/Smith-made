@@ -74,42 +74,38 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-08-31
+## State as of 2026-09-07
 
-Counts only — names live in Gmail, and the customer below is deliberately not
-named here.
+Counts only — the customer below is deliberately not named here.
 
-- **6** targets contacted (2026-08-05) and followed up (2026-08-18). All six
-  are **closed** — two touches and we stop. Zero replies, ever.
-- **9** fresh targets drafted, accurate, and still **unsent**. Nothing has
-  gone out since 2026-08-18, so no follow-ups are due and no new targets are
-  needed. The engine had nothing to do this week.
-- **13** drafts remain defused as `SUPERSEDED — DO NOT SEND`, re-addressed to
-  Steen's own mailbox.
+- **6** targets contacted and followed up; all **closed**, zero replies ever.
+- **9** fresh targets drafted and still **unsent**. Nothing has gone out since
+  2026-08-18, so no follow-up is due and no new target is needed. The engine
+  has now had nothing to do for two consecutive weeks.
+- **14** drafts defused as `SUPERSEDED — DO NOT SEND`.
 
-### The thing that actually matters this week
+### Where the customer actually came from
 
-**Outreach produced nothing. An inbound inquiry produced a live order.**
+The one live order did not come from outreach. It came through the **website
+inquiry form**, and the submission carried `utm_source: chatgpt.com` — the
+couple found Smith Made by asking an AI assistant, not through Google and not
+through any email we sent.
 
-A couple found Smith Made on their own, asked for a seating-chart piece for an
-October wedding, and have now moved from questions to "quote me three build
-options." Will has been handling it directly and forwarded it to Steen for
-help pricing. That thread is worth more than all fifteen outreach emails
-combined, and it arrived without any of them.
+That is worth more than any single result this engine has produced. It also
+means the structured data, the FAQ markup and the plain honest copy on the site
+are doing work that cold email is not. Two rounds to fifteen businesses: zero
+replies. One form submission: a real order in progress.
 
-Worth remembering when judging this channel: two rounds of cold email to
-fifteen businesses have produced zero replies. One inbound inquiry produced a
-real customer with a date and a budget. The engine is cheap to keep running,
-but it is not what is working.
+### A mistake this engine made, recorded so it is not repeated
 
-### A correction the engine should learn from
+On 2026-08-31 this engine reported that the builder's request for pricing help
+had been "sitting about thirty-six hours unanswered" and wrote a draft to
+answer it. Both were wrong. Steen had already sent a complete quote package —
+three priced options, a schedule, a customer-ready email, a customer-safe PDF,
+a concept render and an internal build guide — roughly eleven hours *before*
+that draft was written. The engine had checked the customer thread but not
+whether a reply already existed in a **different** thread.
 
-Steen's first round of coaching to Will was written while the customer was
-still considering a rental, and most of it was about protecting a rental
-surface from glue and pinholes. She then moved toward buying. On a purchase
-that advice is not just unnecessary, it is wrong — a buyer can do whatever she
-likes to her own sign, and telling her otherwise reads as fussy.
-
-Advice written for one scenario goes stale the moment the customer changes
-direction, exactly the way the July drafts went stale against the site. Re-read
-your own prior advice before repeating it.
+**The rule that follows:** before reporting anything as unanswered, search the
+whole mailbox for a reply, not just the thread the request arrived in. A reply
+often starts a new thread, especially when it carries attachments.
