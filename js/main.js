@@ -195,14 +195,25 @@
     });
   });
 
-  /* ---- Phone action bar: appears once the hero is behind you ------------- */
+  // Product pages can prefill an inquiry without submitting it.
+  var productChoices = {"arched-welcome": {"category": "Welcome sign", "name": "The Arched Welcome"}, "seating-chart-wall": {"category": "Seating chart", "name": "Seating Chart Wall"}, "champagne-wall": {"category": "Champagne wall", "name": "Champagne Wall"}, "grand-arch-welcome-wall": {"category": "Welcome sign", "name": "Grand Arch Welcome Wall"}, "ceremony-arch-set": {"category": "Arch set", "name": "Ceremony Arch Set"}, "slat-backdrop": {"category": "Backdrop", "name": "Slat Monogram Backdrop"}, "mobile-bar": {"category": "Bar", "name": "The Mobile Bar"}, "keepsake-heart": {"category": "Keepsake", "name": "The Keepsake Heart"}, "display-wall": {"category": "Backdrop", "name": "The Display Wall"}};
+  var selectedPiece = new URLSearchParams(window.location.search).get("piece");
+  if (inquiryForm && Object.prototype.hasOwnProperty.call(productChoices, selectedPiece)) {
+    var choice = productChoices[selectedPiece];
+    inquiryForm.querySelectorAll('input[name="pieces"]').forEach(function (box) {
+      if (box.value === choice.category) box.checked = true;
+    });
+    var inquiryMessage = inquiryForm.querySelector("#f-message");
+    if (inquiryMessage && !inquiryMessage.value) inquiryMessage.value = "Interested in: " + choice.name;
+  }
+
+  /* ---- Email action bar: appears once the hero is behind you ------------- */
 
   var actionBar = document.querySelector("[data-action-bar]");
-  var actionCall = document.querySelector("[data-action-call]");
+  var actionEmail = document.querySelector("[data-action-email]");
   if (actionBar) {
-    if (actionCall && config.phone) {
-      actionCall.href = "tel:" + config.phone.replace(/[^+\d]/g, "");
-      actionCall.hidden = false;
+    if (actionEmail && config.email) {
+      actionEmail.href = "mailto:" + config.email;
     }
     var hero = document.getElementById("hero");
     if (hero && "IntersectionObserver" in window) {
