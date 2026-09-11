@@ -1,5 +1,9 @@
 # Current handoff to Codex
 
+## Pending cinematic update — September 11, 2026
+
+`codex/higgsfield-motion-20260911` is a review candidate using Higgsfield media. Production publication awaits owner approval. See `HIGGSFIELD-MOTION-20260911.md` for implementation, asset provenance, and the blocked visual-preview check. The live email-first release documented below remains the production baseline.
+
 ## Smith Made current actions — September 11, 2026
 
 The requested website update is live at https://smithmadesc.com/. PR #36,

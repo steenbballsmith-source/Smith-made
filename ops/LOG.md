@@ -2219,3 +2219,8 @@ Reproduce: inspect PR https://github.com/steenbballsmith-source/Smith-made/pull/
 and workflow https://github.com/steenbballsmith-source/Smith-made/actions/runs/34565632989.
 Look for `email-first-20260911` on the live homepage. If rollback is needed,
 revert the scoped release normally; do not reset over later unrelated work.
+
+
+## 2026-09-11-SM2 — Higgsfield cinematic review candidate
+
+Prepared the cinematic hero, optimized silent loops, responsive layouts, reduced-motion and still fallbacks. Static validation passed. Live publishing awaits owner approval; browser visual QA was blocked. Full evidence and media provenance: `HIGGSFIELD-MOTION-20260911.md`. No inquiries or payments were sent.
