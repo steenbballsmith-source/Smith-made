@@ -25,7 +25,7 @@
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css?v=cinema-refined-20260911">
-  <link rel="stylesheet" href="css/motion.css?v=cinema-refined-20260911">
+  <link rel="stylesheet" href="css/motion.css?v=inquiry-refined-20260911">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -576,17 +576,17 @@
             <div class="form-row">
               <div>
                 <label for="f-names">Your name(s)</label>
-                <input id="f-names" name="names" type="text" autocomplete="name" required>
+                <input id="f-names" name="names" type="text" autocomplete="name" maxlength="200" required>
               </div>
               <div>
                 <label for="f-email">Email</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required>
+                <input id="f-email" name="email" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="254" required>
               </div>
             </div>
             <div class="form-row">
               <div>
                 <label for="f-phone">Phone <span>(optional)</span></label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+                <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="60">
               </div>
               <div>
                 <label for="f-date">Event date <span>(a guess is fine)</span></label>
@@ -605,7 +605,7 @@
             </div>
             <div>
               <label for="f-venue">Venue or city</label>
-              <input id="f-venue" name="venue" type="text">
+              <input id="f-venue" name="venue" type="text" maxlength="200">
             </div>
             <fieldset>
               <legend>Which pieces caught your eye?</legend>
@@ -657,7 +657,7 @@
             </div>
             <div>
               <label for="f-message">Anything else about your event?</label>
-              <textarea id="f-message" name="message" placeholder="Colors, style, guest count, ideas — anything helps."></textarea>
+              <textarea id="f-message" name="message" maxlength="3000" placeholder="Colors, style, guest count, ideas — anything helps."></textarea>
             </div>
             <input type="hidden" name="utm_source" data-utm="utm_source">
             <input type="hidden" name="utm_medium" data-utm="utm_medium">
@@ -668,7 +668,19 @@
               <label for="f-company">Leave this field empty</label>
               <input id="f-company" name="company" type="text" tabindex="-1" autocomplete="off">
             </div>
-            <button class="btn" type="submit">Send inquiry</button>
+            <div class="inquiry-actions">
+              <button class="btn" type="submit">Send inquiry</button>
+              <button class="btn ghost" type="button" data-form-review hidden>Review details</button>
+            </div>
+            <section class="inquiry-review" data-inquiry-review aria-labelledby="inquiry-review-title" hidden>
+              <h3 id="inquiry-review-title">Your inquiry details</h3>
+              <textarea data-inquiry-summary aria-label="Your inquiry details" rows="10" readonly></textarea>
+              <div class="inquiry-actions">
+                <button class="btn ghost small" type="button" data-inquiry-copy>Copy details</button>
+                <a class="btn ghost small" data-inquiry-email hidden>Open email draft</a>
+              </div>
+              <p class="form-help" data-inquiry-note role="status" aria-live="polite"></p>
+            </section>
             <p class="form-disclosure">By sending this form, you ask Smith Made to contact you
               about this inquiry. We use FormSubmit to deliver it; your phone number is optional.
               Read our <a href="/privacy.html">Privacy Policy</a>.</p>
@@ -731,9 +743,9 @@
 
   <script src="js/manifest.js?v=cinema-refined-20260911"></script>
   <script src="js/track.js" defer></script>
-  <script src="js/main.js?v=cinema-refined-20260911" defer></script>
+  <script src="js/main.js?v=inquiry-refined-20260911" defer></script>
   <script src="js/motion.js?v=cinema-refined-20260911" defer></script>
-  <script src="js/form.js" defer></script>
+  <script src="js/form.js?v=inquiry-refined-20260911" defer></script>
   <script src="js/staged.js?v=cinema-refined-20260911" defer></script>
   <noscript>
     <style>

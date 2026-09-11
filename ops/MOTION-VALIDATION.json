@@ -14,8 +14,7 @@
     }
   ],
   "errors": [],
-  "smith_digital_motion_simulation": "passed",
-  "smith_made_motion": "preserved from concurrent refinement; syntax checked",
+  "inquiry_flow_simulated_checks": 21,
   "browser_tested": false,
   "inquiry_sent": false
 }

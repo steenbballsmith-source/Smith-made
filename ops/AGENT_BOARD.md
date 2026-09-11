@@ -1641,7 +1641,7 @@ Implementation and optimized Higgsfield media are complete. Production release r
 ---
 
 ### SM-GROWTH-002 — Planner inquiries, conversion, and lead operations
-**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-09-11**
 
 Continue the owner's authorized Smith Made website and growth work. Work branch:
 `codex/smith-made-growth-20260911`. Owns the scoped changes to `index.html`,
@@ -1652,5 +1652,65 @@ contents, and operating artifacts private. Improve the email inquiry path and
 verify the published release. No invented availability, prices, testimonials,
 partnerships, or search-ranking guarantees. No paid advertising spend is included.
 
+**Result:** PR #38 is live as `80a17b702f047b556652756a70591e6b262e6b96`;
+Pages run `34568680744` succeeded. Planner and seating-chart resources, a delivery
+calculator, clearer inquiry options, and a tablet-range success-layout correction
+are published. All 15 sitemap pages pass source checks, 16 calculator cases pass,
+and ten changed live URLs match the release. Desktop visual and inquiry-flow
+checks passed. One labeled internal inquiry was accepted by the form service;
+recipient inbox confirmation and phone/tablet visual review remain open.
+
+Two authorized partner introductions and one internal status request were verified
+in Sent. Reply triage is enabled for relevant incoming mail; it prepares drafts
+and notifications without automatic sends. Its first triggered run is unobserved.
+Private operating files were updated and saved, preserving existing records and
+formulas. The CRM workflow designs remain inactive; search/profile account access
+and real product evidence remain open. No private contact, message, customer,
+pricing, or automation identifiers are included here. See `2026-09-11-SM2` in
+`LOG.md` and the current handoff.
+
+
+---
+
+### SM-SEARCH-003 — Verify search ownership and submit the current sitemap
+**Status: BLOCKED · Owner: CODEX · Updated 2026-09-11**
+
+The owner completed Google sign-in for the requested Smith Made search work.
+Verify the correct website property using the existing owned site, publish only
+an official public verification artifact if required, submit the current sitemap,
+and inspect available indexing status. Scope: the official verification file or
+head tag, scoped board/log/handoff entries, and private operating-status updates.
+Preserve website content and other agents' work. Do not publish account identifiers,
+private dashboard data, or sign-in values; do not promise ranking improvements.
+
+**Result:** Google sign-in succeeded, but adding the website returned an internal
+error. The pending-property check showed no properties awaiting verification.
+No official verification artifact was issued, ownership was not verified, and
+the sitemap was not submitted. A separate business-profile sign-in was interrupted;
+a fresh target-site check showed the public sign-in page. No listing was edited.
+The private operating files now record both blockers. Resume from these states;
+do not equate a successful sign-in with property verification or indexing.
+
+
+---
+
+### SM-UX-004 — Finish inquiries and form reliability
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+
+Improve the owner's existing email-first inquiry flow: carry a chosen catalog
+finish into an inquiry, correct the staged-viewer rental wording, improve dialog
+labels, preserve inquiry details in an email fallback, and prevent indefinite
+sending or optional telemetry from blocking confirmation. Add a defensive photo
+override check and preserve attribution when starting another inquiry. Owns the
+scoped HTML, CSS, main/form/staged/track scripts, related verification checks,
+and board/log/handoff entries on `codex/smith-made-inquiry-polish-20260911`.
+Keep the production endpoint and payment behavior unchanged. Validate failure
+states with isolated tests; do not submit another live internal inquiry or resend
+existing partner introductions. Private operating files remain outside this repo.
+
+
+
 
 SM-MOTION-20260911 continued polish: removed the heart from the candidate collection and search data per the later review request; preserved the newer PR #38 planner and delivery work. Refined side gutters, sticky navigation, phone type, and damped motion. Private review only. Production approval remains outstanding. Full evidence: `HIGGSFIELD-MOTION-20260911.md`.
+
+SM-MOTION-20260911 continuation, inquiry reliability: owner asked to keep working. Extends the same draft task to `js/form.js`, inquiry markup, phone navigation, and matching owner-private review. Preserve the production endpoint and native POST fallback, add local detail review and failure recovery, and keep public-domain publication pending approval. No test inquiry or external message is authorized by this pass.

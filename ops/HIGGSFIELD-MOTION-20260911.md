@@ -36,4 +36,15 @@ A simulated code check passed for settling motion, manual pause, reduced motion,
 
 Retained the complete concurrent review changes from `06d419e` instead of replacing its image viewer, navigation, catalog layout, or motion behavior. The final candidate removes the heart detail route and its two staged images entirely. It does not use the provisional redirect described above. The final Smith Made motion controller retains native touch scrolling, interpolated desktop motion, focus-safe reveals, and the global pause setting. It is distinct from the Smith Digital controller checked in the simulation.
 
-The proposed production files match the reconciled private review except for documented preview-only contact and crawler settings. The PR #38 delivery logic and form handling remain byte-for-byte preserved.
+The proposed production files match the reconciled private review except for documented preview-only contact and crawler settings. At that reconciliation, the PR #38 delivery logic and form handling were byte-for-byte preserved. The later inquiry pass below updates the form controller while retaining its endpoint and native fallback.
+
+
+## Inquiry and navigation continuation
+
+Added a readable inquiry summary, explicit copy and email options, and phone-friendly controls. Details remain available after a failed or offline send. Duplicate submissions are blocked while a request is pending. A 15-second timeout reports an unconfirmed state instead of success; accepted FormSubmit JSON remains required. Optional analytics failures cannot turn an acknowledged inquiry into a failed-send message. Starting another inquiry preserves campaign attribution, while success scrolling respects reduced or paused motion. The existing endpoint, native POST fallback, and payment link are unchanged.
+
+Both phone menus now size themselves to the available viewport and close when keyboard focus leaves navigation. The owner-private Smith Made form shares the controller but is explicitly gated by method=dialog; its preview action reviews details without sending. No real request, email, or payment was made in this pass.
+
+Twenty-one isolated Node VM flow checks passed across both websites. These include invalid input, offline and failed requests, duplicate clicks, timeout ambiguity, clipboard fallback, editing an email draft, multiple chosen pieces, and the preview no-send branch. They are simulations, not browser or inbox-delivery results. Static checks cover the 14 Smith Made pages, eight remaining designs, references, sitemap, and parseable structured data where present. The privacy page intentionally has no product schema. `INQUIRY-FLOW-VALIDATION.json` records the checks. Public-domain publication is still pending approval.
+
+The newer main-branch operational and search notes are preserved through `7c7b5d43e832df1c8ec551e3b545c0b94305bce6`. SM-UX-004 is a separate, currently active inquiry task; reconcile any later changes from that branch before a live-domain merge.

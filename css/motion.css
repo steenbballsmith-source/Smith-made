@@ -309,3 +309,14 @@ html.motion-paused { scroll-behavior: auto; }
 .sm-cinema-caption,.review-notice{font-size:.875rem}
 @media(min-width:761px){.sm-cinema h1{font-size:clamp(3.1rem,4.8vw,4.7rem)}}
 @media(max-width:760px){.sm-estimate input,.sm-estimate select{font-size:1rem;min-height:48px}}
+
+/* Inquiry review stays readable at phone widths and enlarged text sizes. */
+.inquiry-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.inquiry-actions .btn { min-height:48px; max-width:100%; white-space:normal; text-align:center; }
+.form .btn:disabled { cursor:wait; opacity:.65; }
+.inquiry-review { padding:20px; border:1px solid var(--line); border-radius:12px; background:#fffcf5; }
+.inquiry-review h3 { margin:0 0 14px; font-size:1.3rem; }
+.inquiry-review textarea { font:inherit; font-size:1rem; line-height:1.65; margin-bottom:14px; }
+.inquiry-review .form-help { margin:14px 0 0; letter-spacing:normal; }
+.form input, .form select, .form textarea { scroll-margin-top:110px; }
+@media(max-width:480px) { .inquiry-actions > .btn { width:100%; } .inquiry-review { padding:16px; } }

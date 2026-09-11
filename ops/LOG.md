@@ -2221,6 +2221,81 @@ Look for `email-first-20260911` on the live homepage. If rollback is needed,
 revert the scoped release normally; do not reset over later unrelated work.
 
 
+## 2026-09-11-SM2 — Codex — Planner resources, inquiry conversion, and private lead operations
+
+The owner explicitly requested continued website, outreach, business setup, and
+discovery improvements. Claim SM-GROWTH-002 was pushed before the bounded work.
+PR #38 was squash-merged under the existing publication authorization as
+`80a17b702f047b556652756a70591e6b262e6b96`. Pages run `34568680744` succeeded.
+
+Changes: planner/venue referral page; original seating-chart planning guide;
+delivery calculator based on the existing published transport policy; optional
+planning role and allowlisted planner/venue prefill; AI-search discovery option;
+undecided transport choice; and corrected success-layout CSS in the tablet range.
+The 15-page sitemap and internal links include the new pages. The email-first
+contact path, optional phone, production form endpoint, payment link, and render
+disclosures remain intact. No fictional proof, inventory, dimensions, product
+price, partnership, or ranking guarantee was added.
+
+Verification: all 15 sitemap pages passed structural, metadata, JSON-LD, local
+link, image-reference, and no-telephone-link checks. Sixteen calculator cases
+passed, including distance boundaries, trip rounding, non-stacking late fees,
+customer pickup, longer-distance quotes, and invalid input. Ten changed live
+URLs returned HTTP 200 and matched release bytes. Desktop browser review at
+1363x936 covered the planner page, role prefill, inquiry options, calculator, and
+guide. The guide had no horizontal overflow. A 25-mile delivery-plus-pickup
+estimate with pickup at or after midnight displayed the expected $325.
+
+One clearly labeled internal inquiry was submitted through the live form and
+displayed the service-backed success state. The actual recipient inbox was not
+connected, so arrival remains unverified. Do not duplicate the test or count it
+as a lead. No payment was made. Phone/tablet visual rendering remains open.
+
+Private operations: two relevant, authorized partner introductions and one
+internal status request were verified in Sent after current-history and recipient
+checks. Reply triage was enabled to label actionable mail, prepare drafts, notify
+the owner, and handle opt-outs and delivery issues without automatic sends. The
+first event execution is unobserved. Existing private workbook records were
+preserved, current next actions added, and all existing formulas, panes, and
+validations retained. Updated sheets were recalculated and visually reviewed;
+the workbook, playbook, and complete private package were saved.
+
+The CRM specification remains inactive. Correct search/profile access, inbox
+receipt, and real product measurements and photographs remain open. No paid
+advertising, customer booking, invoice, payment, or profile edit occurred.
+Search-ranking and conversion gains have not been measured. All recipient,
+message, customer, quote, and automation identifiers remain private.
+
+Reproduce the public release: https://github.com/steenbballsmith-source/Smith-made/pull/38
+and https://github.com/steenbballsmith-source/Smith-made/actions/runs/34568680744.
+Use a normal scoped revert if recovery is required; preserve unrelated changes.
+
+
+## 2026-09-11-SM3 — Codex — Search account setup reached provider and sign-in blockers
+
+The owner completed Google sign-in for the Smith Made discovery work. Claim
+SM-SEARCH-003 was pushed before property setup. The authenticated Search Console
+page showed the expected account, and the existing website was entered as a
+URL-prefix property. Google returned an internal error. The visible pending
+verification check then showed no properties detected. No official verification
+artifact was issued, no ownership verification completed, and no sitemap was
+submitted. Do not treat this as proof of indexing or a ranking change.
+
+A separate attempt to access the business-profile manager required sign-in. The
+secure handoff was interrupted. The required fresh check of the target site
+showed its public sign-in page, so manager access and ownership remain unverified.
+No business listing was edited. No website source change was needed for these
+attempts. The private workbook's existing task statuses and notes now record both
+blockers; existing formulas, views, and validations were preserved and the changed
+rows visually reviewed. The private package was refreshed and saved.
+
+Resume Search Console property setup after the provider accepts the request,
+then publish only its real verification artifact, verify, and submit the current
+sitemap. Business-profile work requires a completed secure sign-in and the correct
+owned listing. No account identifiers, credentials, or private dashboard content
+are included in this public record.
+
+
 ## 2026-09-11-SM2 — Higgsfield cinematic review candidate
 
 Prepared the cinematic hero, optimized silent loops, responsive layouts, reduced-motion and still fallbacks. Static validation passed. Live publishing awaits owner approval; browser visual QA was blocked. Full evidence and media provenance: `HIGGSFIELD-MOTION-20260911.md`. No inquiries or payments were sent.
@@ -2229,3 +2304,8 @@ Prepared the cinematic hero, optimized silent loops, responsive layouts, reduced
 ## 2026-09-11-SM3 — Continued cinematic polish
 
 Merged the PR #38 planner and delivery release into the pending cinematic branch. Removed the heart from the visible collection and structured data, and later preserved the concurrent cleanup which removes its old route and staged images. Improved gutters, sticky navigation, responsive controls, and eased motion. Source and simulated motion-policy checks passed. No live release, inquiry, payment, or browser test occurred in this pass.
+
+
+## 2026-09-11-MOTION-INQUIRY — Continued inquiry reliability
+
+The pending cinematic candidate now includes detail review/copy, explicit email fallback, duplicate guards, timeout/offline recovery, and keyboard/viewport menu improvements. Twenty-one simulated flow checks passed across Smith Made and Smith Digital. Static source checks passed. No live inquiry, external message, payment, or production-domain deployment occurred. The private reviews are refreshed separately. Preserve the concurrent SM-UX-004 work when integrating the final live release. See `HIGGSFIELD-MOTION-20260911.md`.

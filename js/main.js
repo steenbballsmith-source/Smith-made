@@ -23,11 +23,19 @@
   if (nav && toggle) {
     var menu = document.getElementById("nav-menu");
     var compactNav = window.matchMedia("(max-width: 1100px)");
+    function fitMenu() {
+      if (!menu || !compactNav.matches || !nav.classList.contains("menu-open")) return;
+      var viewport = window.visualViewport;
+      var top = menu.getBoundingClientRect().top - (viewport ? viewport.offsetTop : 0);
+      menu.style.maxHeight = Math.max(0, (viewport ? viewport.height : window.innerHeight) - top - 12) + "px";
+    }
     function setMenu(open) {
       nav.classList.toggle("menu-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
       if (menu) menu.inert = compactNav.matches && !open;
+      if (open) fitMenu();
+      else if (menu) menu.style.maxHeight = "";
     }
     toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("menu-open")); });
     nav.addEventListener("click", function (event) {
@@ -42,6 +50,12 @@
       toggle.focus();
     });
     compactNav.addEventListener("change", function () { setMenu(false); });
+    nav.addEventListener("focusout", function (event) {
+      if (event.relatedTarget && !nav.contains(event.relatedTarget)) setMenu(false);
+    });
+    window.addEventListener("resize", fitMenu, { passive: true });
+    window.addEventListener("scroll", fitMenu, { passive: true });
+    if (window.visualViewport) window.visualViewport.addEventListener("resize", fitMenu, { passive: true });
     setMenu(false);
   }
 

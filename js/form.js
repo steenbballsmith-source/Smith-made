@@ -1,143 +1,169 @@
-/* Smith Made — inquiry form.
-   Two modes, chosen by js/manifest.js:
-   - formEndpoint set  -> POST to it (Formspree-compatible), inline status.
-   - formEndpoint empty -> open the visitor's email app with everything
-     pre-filled, addressed to the owner. Works with zero setup.          */
-
+/* Inquiry enhancement. The native POST remains available without JavaScript.
+   Private reviews use method="dialog" and never send a request. */
 (function () {
   "use strict";
-
   var config = window.SMITH_MADE || {};
   var form = document.querySelector("[data-inquiry-form]");
   var status = document.querySelector("[data-form-status]");
   if (!form || !status) return;
 
-  function say(message, ok) {
+  var preview = (form.getAttribute("method") || "").toLowerCase() === "dialog";
+  var button = form.querySelector("[type=submit]");
+  var reviewButton = form.querySelector("[data-form-review]");
+  var review = form.querySelector("[data-inquiry-review]");
+  var summary = form.querySelector("[data-inquiry-summary]");
+  var email = form.querySelector("[data-inquiry-email]");
+  var copy = form.querySelector("[data-inquiry-copy]");
+  var note = form.querySelector("[data-inquiry-note]");
+  var pending = false;
+  var completed = false;
+  var submitLabel = preview ? "Preview inquiry" : "Send inquiry";
+  button.textContent = submitLabel;
+  reviewButton.hidden = false;
+
+  function say(message, kind) {
     status.textContent = message;
-    status.classList.toggle("is-ok", Boolean(ok));
-    status.classList.toggle("is-error", !ok);
+    status.classList.toggle("is-ok", kind === "success");
+    status.classList.toggle("is-error", kind === "error");
   }
-
-  form.addEventListener("submit", function (event) {
+  function details(data) {
+    return [
+      "Names: " + (data.get("names") || "Not provided"),
+      "Email: " + (data.get("email") || "Not provided"),
+      "Planning as: " + (data.get("planning_role") || "Not specified"),
+      "Phone: " + (data.get("phone") || "Not provided"),
+      "Event date: " + (data.get("date") || "TBD"),
+      "Venue / city: " + (data.get("venue") || "Not decided yet"),
+      "Interested in: " + (data.getAll("pieces").join(", ") || "Not sure yet"),
+      "Rent or buy: " + (data.get("mode") || "Not sure yet"),
+      "Transport: " + (data.get("transport") || "Not decided yet"),
+      "", data.get("message") || ""
+    ].join("\n");
+  }
+  function reviewDetails(data, focus) {
+    summary.value = details(data);
+    var subject = "Smith Made event inquiry: " + (data.get("names") || "new inquiry") +
+      (data.get("date") ? " / " + data.get("date") : "");
+    email.href = "mailto:" + (config.email || "will.smithmade@gmail.com") +
+      "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(summary.value);
+    email.hidden = preview || pending;
+    review.hidden = false;
+    note.textContent = preview ? "Preview only. No inquiry has been sent." :
+      "Review or copy these details. Opening an email draft does not send it; choose Send in your email app.";
+    if (focus) summary.focus();
+  }
+  reviewButton.addEventListener("click", function () { reviewDetails(new FormData(form), true); });
+  form.addEventListener("input", function () {
+    if (!pending && !completed && !review.hidden) reviewDetails(new FormData(form), false);
+  });
+  copy.addEventListener("click", async function () {
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(summary.value);
+      note.textContent = "Details copied. Paste them into your email when you are ready.";
+    } catch (_) {
+      summary.focus(); summary.select();
+      note.textContent = "Your details are selected. Use Copy on your phone or keyboard, then paste them into an email.";
+    }
+  });
+  form.addEventListener("submit", async function (event) {
     event.preventDefault();
-
-    if (!form.reportValidity()) return;
-
+    if (pending || completed || !form.reportValidity()) return;
     var data = new FormData(form);
-
-    /* Honeypot: real visitors never see this field. If it's filled,
-       quietly accept and do nothing. */
     if (data.get("company")) {
-      say("Thank you — we’ll be in touch soon.", true);
-      form.reset();
+      say("Please use the direct email link to ask about your event.", "error");
       return;
     }
     data.delete("company");
-
-    if (config.formEndpoint) {
-      /* Delivery-service niceties (FormSubmit/Formspree understand these;
-         harmless extras otherwise): subject line + tidy table layout. */
-      data.set("_subject", "Smith Made event inquiry — " + (data.get("names") || "new inquiry"));
-      data.set("_template", "table");
-      submitToEndpoint(data);
-    } else {
-      submitViaEmail(data);
+    if (preview) {
+      reviewDetails(data, false);
+      say("Preview prepared. Your inquiry has not been sent.", "success");
+      return;
+    }
+    if (!config.formEndpoint) {
+      reviewDetails(data, false);
+      say("Your email draft is ready below. Open it and choose Send in your email app.");
+      return;
+    }
+    if (navigator.onLine === false) {
+      reviewDetails(data, false);
+      say("You are offline. Your details are still here. Reconnect before sending, or copy them into an email.", "error");
+      return;
+    }
+    pending = true;
+    button.disabled = true;
+    reviewButton.disabled = true;
+    email.hidden = true;
+    button.textContent = "Sending inquiry…";
+    form.setAttribute("aria-busy", "true");
+    say("Sending your inquiry. Please keep this page open.");
+    data.set("_subject", "Smith Made event inquiry: " + (data.get("names") || "new inquiry"));
+    data.set("_template", "table");
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 15000);
+    var locked = Array.from(form.querySelectorAll('input:not(:disabled), select:not(:disabled), textarea:not([readonly]):not(:disabled)'));
+    locked.forEach(function (field) { field.disabled = true; });
+    try {
+      var response = await fetch(config.formEndpoint, {
+        method: "POST", body: data, headers: { Accept: "application/json" }, signal: controller.signal
+      });
+      if (!response.ok) throw new Error("Unconfirmed request");
+      // A 200 HTML verification page is not an acknowledgement. Require the endpoint's JSON.
+      var payload = await response.json();
+      if (!payload || (payload.success !== true && payload.success !== "true")) throw new Error("No acknowledgement");
+      completed = true;
+      // Analytics must never turn an acknowledged inquiry into a failed-send message.
+      try {
+        if (window.smTrack) window.smTrack("inquiry_submit", {
+          heard_about: data.get("heard_about") || "(not answered)",
+          utm_source: data.get("utm_source") || "", utm_medium: data.get("utm_medium") || ""
+        });
+      } catch (_) {}
+      showSuccess();
+    } catch (error) {
+      reviewDetails(data, false);
+      say(controller.signal.aborted || error.name === "AbortError"
+        ? "Confirmation took too long. Your inquiry may have arrived. Keep these details and email us before retrying to avoid a duplicate."
+        : "The website could not confirm your inquiry. Your details are still here. Try again or open the email draft below.", "error");
+    } finally {
+      clearTimeout(timer);
+      pending = false;
+      locked.forEach(function (field) { field.disabled = false; });
+      button.disabled = completed;
+      button.textContent = completed ? "Inquiry submitted" : submitLabel;
+      reviewButton.disabled = completed;
+      email.hidden = preview || completed;
+      form.setAttribute("aria-busy", "false");
     }
   });
-
-  function submitToEndpoint(data) {
-    var button = form.querySelector("[type=submit]");
-    button.disabled = true;
-    say("Sending…", true);
-
-    fetch(config.formEndpoint, {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" }
-    })
-      .then(function (response) {
-        if (!response.ok) throw new Error("HTTP " + response.status);
-        /* A 200 is NOT proof of delivery. FormSubmit answers 200 with an HTML
-           page for its "please activate this form" step on a first-ever send to
-           an address, and for its verification interstitials. Trusting the
-           status alone is what let this form tell a couple "Sent!" while
-           nothing reached the inbox — the worst failure available to us,
-           because nobody finds out.
-           We send Accept: application/json, so a genuine success is JSON.
-           Parsing is what separates it from those HTML pages. */
-        return response.json().catch(function () {
-          throw new Error("Non-JSON response — activation or verification page");
-        });
-      })
-      .then(function (payload) {
-        /* FormSubmit returns success as the STRING "true". Accept the boolean
-           too, in case that ever changes. */
-        var delivered = payload && (payload.success === true || payload.success === "true");
-        if (!delivered) throw new Error("Endpoint reported failure");
-        /* Analytics: the inquiry happened + which channel produced it.
-           Deliberately NO names, emails, phones, or message text. */
-        if (window.smTrack) {
-          window.smTrack("inquiry_submit", {
-            heard_about: data.get("heard_about") || "(not answered)",
-            utm_source: data.get("utm_source") || "",
-            utm_medium: data.get("utm_medium") || ""
-          });
-        }
-        showSuccess();
-        form.reset();
-      })
-      .catch(function () {
-        say("Something went wrong sending the form. Please email us directly at " + (config.email || "the address above") + ".", false);
-      })
-      .then(function () {
-        button.disabled = false;
-      });
-  }
-
-  /* Replace the form with a clear success state: what happened, when we
-     reply, and the next step. The form stays in the DOM (display:none)
-     so "Send another inquiry" can bring it straight back. */
   function showSuccess() {
     var success = document.querySelector("[data-form-success]");
-    if (!success) { say("Sent! We’ll get back to you within a day or two.", true); return; }
+    if (!success) { say("Inquiry submitted for processing. We usually reply within a day or two.", "success"); return; }
     form.style.display = "none";
     success.hidden = false;
-    success.focus();
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
+    success.focus({ preventScroll: true });
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      document.documentElement.classList.contains("motion-paused");
+    success.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
     var again = success.querySelector("[data-form-again]");
     if (again && !again.__wired) {
       again.__wired = true;
       again.addEventListener("click", function () {
+        var attribution = Array.from(form.querySelectorAll('[data-utm]')).map(function (field) {
+          return { field: field, value: field.value };
+        });
+        form.reset();
+        attribution.forEach(function (entry) { entry.field.value = entry.value; });
+        completed = false;
         success.hidden = true;
+        review.hidden = true;
         form.style.display = "";
-        say("", true);
-        form.querySelector("input, select, textarea").focus();
+        button.disabled = false;
+        reviewButton.disabled = false;
+        button.textContent = submitLabel;
+        say("");
+        form.querySelector("#f-names").focus();
       });
     }
-  }
-
-  function submitViaEmail(data) {
-    var pieces = data.getAll("pieces").join(", ") || "Not sure yet";
-    var lines = [
-      "Names: " + data.get("names"),
-      "Email: " + data.get("email"),
-      "Planning as: " + (data.get("planning_role") || "Not specified"),
-      "Phone: " + (data.get("phone") || "—"),
-      "Event date: " + (data.get("date") || "TBD"),
-      "Venue / city: " + (data.get("venue") || "—"),
-      "Interested in: " + pieces,
-      "Rent or buy: " + data.get("mode"),
-      "Transport: " + (data.get("transport") || "Not selected"),
-      "",
-      data.get("message") || ""
-    ];
-
-    var subject = "Smith Made event inquiry — " + data.get("names") + (data.get("date") ? " — " + data.get("date") : "");
-    var mailto = "mailto:" + (config.email || "") +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(lines.join("\n"));
-
-    say("Opening your email app with everything filled in — just press send. If nothing opens, email us at " + (config.email || "the address above") + ".", true);
-    window.location.href = mailto;
   }
 })();
