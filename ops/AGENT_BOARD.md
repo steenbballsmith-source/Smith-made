@@ -1625,3 +1625,18 @@ The product-to-inquiry link selected the correct category and note; no inquiry
 was submitted. No telephone links remain. Phone/tablet visual review, actual
 inbox receipt, and account-based search/CRM setup remain open. See the current
 Smith Made section in `HANDOFF-TO-CODEX.md` and `LOG.md` entry 2026-09-11-SM1.
+
+
+---
+
+### SM-GROWTH-002 — Planner inquiries, conversion, and lead operations
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+
+Continue the owner's authorized Smith Made website and growth work. Work branch:
+`codex/smith-made-growth-20260911`. Owns the scoped changes to `index.html`,
+`css/styles.css`, `js/main.js`, `delivery.html`, new planner/guide pages and
+related scripts, public crawl metadata, and board/log/handoff entries. Review
+current conversations before authorized outreach; keep contact records, message
+contents, and operating artifacts private. Improve the email inquiry path and
+verify the published release. No invented availability, prices, testimonials,
+partnerships, or search-ranking guarantees. No paid advertising spend is included.
