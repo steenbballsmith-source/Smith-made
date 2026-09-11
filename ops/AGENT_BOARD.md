@@ -1636,3 +1636,18 @@ Owner requested Higgsfield visuals, cinematic hero transitions, layered depth, a
 
 
 Implementation and optimized Higgsfield media are complete. Production release remains pending owner approval after automatic approval review rejected the live Smith Digital deployment in the same request. Do not merge or publish this task until approved. Static page/assets, JSON-LD, JavaScript syntax, and preserved inquiry targets pass. The preview browser was blocked; phone/tablet visual QA and inbox delivery are unverified. Private review: https://smith-made-cinema-review.steensmith.chatgpt.site (check deployment status before describing it as available). See ops/HIGGSFIELD-MOTION-20260911.md.
+
+
+---
+
+### SM-GROWTH-002 — Planner inquiries, conversion, and lead operations
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+
+Continue the owner's authorized Smith Made website and growth work. Work branch:
+`codex/smith-made-growth-20260911`. Owns the scoped changes to `index.html`,
+`css/styles.css`, `js/main.js`, `delivery.html`, new planner/guide pages and
+related scripts, public crawl metadata, and board/log/handoff entries. Review
+current conversations before authorized outreach; keep contact records, message
+contents, and operating artifacts private. Improve the email inquiry path and
+verify the published release. No invented availability, prices, testimonials,
+partnerships, or search-ranking guarantees. No paid advertising spend is included.
