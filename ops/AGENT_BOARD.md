@@ -1679,3 +1679,20 @@ the sitemap was not submitted. A separate business-profile sign-in was interrupt
 a fresh target-site check showed the public sign-in page. No listing was edited.
 The private operating files now record both blockers. Resume from these states;
 do not equate a successful sign-in with property verification or indexing.
+
+
+---
+
+### SM-UX-004 — Finish inquiries and form reliability
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+
+Improve the owner's existing email-first inquiry flow: carry a chosen catalog
+finish into an inquiry, correct the staged-viewer rental wording, improve dialog
+labels, preserve inquiry details in an email fallback, and prevent indefinite
+sending or optional telemetry from blocking confirmation. Add a defensive photo
+override check and preserve attribution when starting another inquiry. Owns the
+scoped HTML, CSS, main/form/staged/track scripts, related verification checks,
+and board/log/handoff entries on `codex/smith-made-inquiry-polish-20260911`.
+Keep the production endpoint and payment behavior unchanged. Validate failure
+states with isolated tests; do not submit another live internal inquiry or resend
+existing partner introductions. Private operating files remain outside this repo.
