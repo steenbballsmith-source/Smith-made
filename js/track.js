@@ -14,7 +14,8 @@
      Exposed as window.smTrack so form.js / staged.js can call it. */
   function smTrack(name, params) {
     if (typeof window.gtag === "function") {
-      window.gtag("event", name, params || {});
+      try { window.gtag("event", name, params || {}); }
+      catch (err) { /* Optional tracking must not interrupt browsing or inquiries. */ }
     }
   }
   window.smTrack = smTrack;

@@ -11,6 +11,28 @@
   var form = document.querySelector("[data-inquiry-form]");
   var status = document.querySelector("[data-form-status]");
   if (!form || !status) return;
+  var recovery = form.querySelector("[data-form-recovery]");
+  var recoveryLink = form.querySelector("[data-form-email-draft]");
+  var inFlight = false;
+
+  function updateRecovery() {
+    if (recoveryLink) recoveryLink.href = emailDraft(new FormData(form));
+  }
+  form.addEventListener("input", function () {
+    if (recovery && !recovery.hidden) updateRecovery();
+  });
+  if (recoveryLink) recoveryLink.addEventListener("click", updateRecovery);
+
+  function resetForm() {
+    // A second inquiry should retain the same campaign attribution.
+    var attribution = [];
+    form.querySelectorAll("[data-utm]").forEach(function (field) {
+      attribution.push({ field: field, value: field.value });
+    });
+    form.reset();
+    attribution.forEach(function (entry) { entry.field.value = entry.value; });
+    if (recovery) recovery.hidden = true;
+  }
 
   function say(message, ok) {
     status.textContent = message;
@@ -20,7 +42,7 @@
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-
+    if (inFlight) return;
     if (!form.reportValidity()) return;
 
     var data = new FormData(form);
@@ -29,7 +51,7 @@
        quietly accept and do nothing. */
     if (data.get("company")) {
       say("Thank you — we’ll be in touch soon.", true);
-      form.reset();
+      resetForm();
       return;
     }
     data.delete("company");
@@ -47,13 +69,22 @@
 
   function submitToEndpoint(data) {
     var button = form.querySelector("[type=submit]");
+    var controller = typeof AbortController === "function" ? new AbortController() : null;
+    var timeout;
+    inFlight = true;
     button.disabled = true;
+    form.setAttribute("aria-busy", "true");
+    if (recovery) recovery.hidden = true;
     say("Sending…", true);
 
-    fetch(config.formEndpoint, {
+    var options = {
       method: "POST",
       body: data,
       headers: { Accept: "application/json" }
+    };
+    if (controller) options.signal = controller.signal;
+    var request = Promise.resolve().then(function () {
+      return fetch(config.formEndpoint, options);
     })
       .then(function (response) {
         if (!response.ok) throw new Error("HTTP " + response.status);
@@ -68,7 +99,16 @@
         return response.json().catch(function () {
           throw new Error("Non-JSON response — activation or verification page");
         });
-      })
+      });
+    // Limit the whole request, including JSON parsing. Never retry automatically:
+    // a connection failure can happen after the service accepts an inquiry.
+    var deadline = new Promise(function (resolve, reject) {
+      timeout = setTimeout(function () {
+        if (controller) controller.abort();
+        reject(new Error("Inquiry confirmation timed out"));
+      }, 20000);
+    });
+    Promise.race([request, deadline])
       .then(function (payload) {
         /* FormSubmit returns success as the STRING "true". Accept the boolean
            too, in case that ever changes. */
@@ -76,21 +116,30 @@
         if (!delivered) throw new Error("Endpoint reported failure");
         /* Analytics: the inquiry happened + which channel produced it.
            Deliberately NO names, emails, phones, or message text. */
-        if (window.smTrack) {
-          window.smTrack("inquiry_submit", {
-            heard_about: data.get("heard_about") || "(not answered)",
-            utm_source: data.get("utm_source") || "",
-            utm_medium: data.get("utm_medium") || ""
-          });
-        }
+        try {
+          if (window.smTrack) {
+            window.smTrack("inquiry_submit", {
+              heard_about: data.get("heard_about") || "(not answered)",
+              utm_source: data.get("utm_source") || "",
+              utm_medium: data.get("utm_medium") || ""
+            });
+          }
+        } catch (err) { /* Optional analytics must never hide a confirmed inquiry. */ }
         showSuccess();
-        form.reset();
+        resetForm();
       })
       .catch(function () {
-        say("Something went wrong sending the form. Please email us directly at " + (config.email || "the address above") + ".", false);
+        say("We couldn’t confirm your inquiry was received. You can email us at " + (config.email || "the address above") + ".", false);
+        if (recovery && recoveryLink) {
+          updateRecovery();
+          recovery.hidden = false;
+        }
       })
       .then(function () {
+        clearTimeout(timeout);
+        inFlight = false;
         button.disabled = false;
+        form.removeAttribute("aria-busy");
       });
   }
 
@@ -100,10 +149,12 @@
   function showSuccess() {
     var success = document.querySelector("[data-form-success]");
     if (!success) { say("Sent! We’ll get back to you within a day or two.", true); return; }
+    say("", true);
     form.style.display = "none";
     success.hidden = false;
     success.focus();
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    success.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
     var again = success.querySelector("[data-form-again]");
     if (again && !again.__wired) {
       again.__wired = true;
@@ -116,7 +167,7 @@
     }
   }
 
-  function submitViaEmail(data) {
+  function emailDraft(data) {
     var pieces = data.getAll("pieces").join(", ") || "Not sure yet";
     var lines = [
       "Names: " + data.get("names"),
@@ -128,16 +179,22 @@
       "Interested in: " + pieces,
       "Rent or buy: " + data.get("mode"),
       "Transport: " + (data.get("transport") || "Not selected"),
+      "How you found us: " + (data.get("heard_about") || "Not specified"),
       "",
       data.get("message") || ""
     ];
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (key) {
+      if (data.get(key)) lines.push(key + ": " + data.get(key));
+    });
 
     var subject = "Smith Made event inquiry — " + data.get("names") + (data.get("date") ? " — " + data.get("date") : "");
-    var mailto = "mailto:" + (config.email || "") +
+    return "mailto:" + (config.email || "") +
       "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(lines.join("\n"));
+  }
 
+  function submitViaEmail(data) {
     say("Opening your email app with everything filled in — just press send. If nothing opens, email us at " + (config.email || "the address above") + ".", true);
-    window.location.href = mailto;
+    window.location.href = emailDraft(data);
   }
 })();
