@@ -22,13 +22,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check inquiries before publishing
+        run: npm test
       - uses: actions/configure-pages@v5
         with:
           enablement: true
       - name: Stage site files (internal docs stay out of the deploy)
         run: |
           mkdir -p /tmp/site
-          rsync -a --exclude='.git' --exclude='.github' --exclude='*.md' ./ /tmp/site/
+          rsync -a --exclude='.git' --exclude='.github' --exclude='*.md' --exclude='node_modules' --exclude='tests' --exclude='package*.json' --exclude='.gitignore' ./ /tmp/site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: /tmp/site
