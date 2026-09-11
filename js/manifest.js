@@ -33,12 +33,11 @@ window.SMITH_MADE = {
      below exactly (it's the product's id). Example:
        "arched-welcome": "assets/img/catalog/arched-welcome.jpg",
 
-     Product ids (No. 01-09):
-       arched-welcome        seating-chart-wall
-       family-round          champagne-wall
-       grand-arch-welcome-wall  ceremony-arch-set
-       slat-backdrop         mobile-bar
-       keepsake-heart                                        */
+     Product ids (No. 01-08):
+       arched-welcome           seating-chart-wall
+       champagne-wall           grand-arch-welcome-wall
+       ceremony-arch-set        slat-backdrop
+       mobile-bar               display-wall                */
   photos: {
   },
 

@@ -26,7 +26,9 @@ async function fixture(t, fetchReply = async () => response(true), query = '') {
   const w = dom.window;
   t.after(() => w.close());
   await new Promise(resolve => w.document.addEventListener('DOMContentLoaded', resolve, { once: true }));
-  w.matchMedia = () => ({ matches: true });
+  w.matchMedia = () => ({ matches: true, addEventListener() {} });
+  w.requestAnimationFrame = callback => w.setTimeout(() => callback(0), 0);
+  w.cancelAnimationFrame = id => w.clearTimeout(id);
   w.HTMLElement.prototype.scrollIntoView = function () {};
   const calls = [];
   w.fetch = (...args) => { calls.push(args); return fetchReply(...args); };
@@ -53,8 +55,8 @@ async function fixture(t, fetchReply = async () => response(true), query = '') {
     field('venue').value = 'Example venue';
     field('transport').value = 'Not sure yet - please advise';
     field('message').value = 'Green & ivory — please advise.\nTwo options?';
-    form.querySelector('input[name="pieces"][value="Welcome sign"]').checked = true;
-    form.querySelector('input[name="pieces"][value="Bar"]').checked = true;
+    form.querySelector('input[name="pieces"][value="The Arched Welcome"]').checked = true;
+    form.querySelector('input[name="pieces"][value="The Mobile Bar"]').checked = true;
   };
   return {
     w, d, form, field, fill, calls,
@@ -126,7 +128,7 @@ for (const [name, reply] of Object.entries(failures)) {
     assert.equal(draft.pathname, f.w.SMITH_MADE.email);
     const body = draft.searchParams.get('body');
     for (const detail of ['Example Planner', 'qa@example.test', 'Planner / coordinator',
-      'Welcome sign, Bar', 'Not sure yet - please advise', 'Green & ivory — please advise.\nTwo options?',
+      'The Arched Welcome, The Mobile Bar', 'Not sure yet - please advise', 'Green & ivory — please advise.\nTwo options?',
       'utm_source: venue', 'utm_content: partner']) assert.ok(body.includes(detail), detail);
     assert.equal(f.cleared(), true);
     f.field('message').value = 'Revised & preserved';
@@ -183,10 +185,10 @@ test('a visitor can retry manually after an unconfirmed response', async t => {
   assert.equal(f.recovery.hidden, true);
 });
 
-test('all nine catalog pieces carry the selected finish into the existing inquiry without sending', async t => {
+test('all eight catalog pieces carry the selected finish into the existing inquiry without sending', async t => {
   const f = await fixture(t);
   const pieces = [...f.d.querySelectorAll('li.piece')];
-  assert.equal(pieces.length, 9);
+  assert.equal(pieces.length, 8);
   for (const piece of pieces) {
     f.form.reset(); f.field('message').value = 'Keep my event details';
     const opener = piece.querySelector('[data-staged]');

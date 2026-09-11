@@ -1,0 +1,29 @@
+{
+  "pages": [
+    {
+      "target": "smith-made",
+      "html_pages": 14,
+      "sitemap_urls": 14,
+      "catalog_designs": 8
+    },
+    {
+      "target": "smith-made-preview/dist",
+      "html_pages": 14,
+      "sitemap_urls": 14,
+      "catalog_designs": 8
+    }
+  ],
+  "errors": [],
+  "inquiry_flow_simulated_checks": 21,
+  "browser_tested": false,
+  "inquiry_sent": false,
+  "current_repository_tests": {
+    "command": "npm test",
+    "passed": 18,
+    "failed": 0,
+    "type": "isolated jsdom behavior and static route checks",
+    "external_resources_enabled": false
+  },
+  "current_smith_digital_motion_lifecycle_checks": 9,
+  "publishing_authorized": true
+}

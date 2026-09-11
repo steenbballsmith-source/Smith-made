@@ -2339,3 +2339,17 @@ operating documentation, release evidence, and package were refreshed, retaining
 the workbook and prior records. Search ownership, Business Profile access, actual
 CRM connection, and real product evidence remain open. No private contact,
 message, customer, credential, or automation identifier is published here.
+
+## 2026-09-11-SM2 — Higgsfield cinematic review candidate
+
+Prepared the cinematic hero, optimized silent loops, responsive layouts, reduced-motion and still fallbacks. Static validation passed. Live publishing awaits owner approval; browser visual QA was blocked. Full evidence and media provenance: `HIGGSFIELD-MOTION-20260911.md`. No inquiries or payments were sent.
+
+
+## 2026-09-11-SM3 — Continued cinematic polish
+
+Merged the PR #38 planner and delivery release into the pending cinematic branch. Removed the heart from the visible collection and structured data, and later preserved the concurrent cleanup which removes its old route and staged images. Improved gutters, sticky navigation, responsive controls, and eased motion. Source and simulated motion-policy checks passed. No live release, inquiry, payment, or browser test occurred in this pass.
+
+
+## 2026-09-11-MOTION-INQUIRY — Continued inquiry reliability
+
+The pending cinematic candidate now includes detail review/copy, explicit email fallback, duplicate guards, timeout/offline recovery, and keyboard/viewport menu improvements. Twenty-one simulated flow checks passed across Smith Made and Smith Digital. Static source checks passed. No live inquiry, external message, payment, or production-domain deployment occurred. The private reviews are refreshed separately. Preserve the concurrent SM-UX-004 work when integrating the final live release. See `HIGGSFIELD-MOTION-20260911.md`.

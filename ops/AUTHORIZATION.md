@@ -199,3 +199,8 @@ shared.
   channel actually recorded it — and if one did, say which.
 - Publishing, sending, spending, and deleting stop for a human unless that
   specific action was authorized.
+
+
+## September 11, 2026: cinematic publication approval
+
+In the cinematic website conversation, after being told live-domain publication awaited approval, the owner replied, "i approve but let’s keep working on anything else first". This authorizes publication of the reviewed Smith Digital and Smith Made website updates after further refinement and validation. Preserve existing domains, form destinations, payments, and concurrent work. No new customer messages, test inquiries, payments, paid services, or account changes are included in this website approval.

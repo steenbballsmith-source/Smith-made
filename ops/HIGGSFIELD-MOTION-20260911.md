@@ -1,0 +1,70 @@
+# Higgsfield motion update — September 11, 2026
+
+## Release status
+
+Review candidate on `codex/higgsfield-motion-20260911`. Live smithmadesc.com remains on the previously published email-first release. Do not merge until the owner approves this cinematic update. A private review site is being prepared at https://smith-made-cinema-review.steensmith.chatgpt.site; verify its deployment status separately.
+
+## Changes
+
+A new arched Higgsfield background film with editorial typography, layered depth, native scroll transitions, progressive section entrances, and responsive phone layouts. Touch controls are at least 44 pixels; form controls use 16-pixel type. The fixed navigation has its own readable background. Decorative videos are muted, inline, and deferred until after page load. The video pauses offscreen and in hidden tabs. The control stops authored motion. Reduced-motion and data-saving users receive a still; blocked playback and media errors retain the still.
+
+The homepage no longer loads GSAP, ScrollTrigger, or the old scene controller. Existing menu, catalog, product-to-inquiry links, manifest, contact handling, email addresses, payment destination, and product facts remain intact. Detail pages load the shared responsive enhancement stylesheet. No customer message, payment, or test inquiry was sent.
+
+## Media provenance
+
+Higgsfield Seedance 2.5 animated the existing styled `assets/img/gallery/staged-arch-riser.webp` design render. Job: `a44a590d-e35b-4540-8666-403d2f1356f2`. The six-second silent result was processed inside Higgsfield into a smooth forward/reverse loop, with separate 1280×720 desktop and 640×800 phone encodes at 24 fps. Desktop: 938,252 bytes; phone: 413,410 bytes. The film stays labeled as a styled design film, not footage of a completed rental.
+
+Permanent Higgsfield media URLs appear in the homepage data attributes. Posters are self-hosted WebP files (65,308 and 22,246 bytes). Playback failure leaves the poster visible.
+
+## Verification and limits
+
+All 13 content pages passed static local-asset, unique-H1, JSON-LD, and no-telephone-link checks. Motion JavaScript passed syntax checking and the diff passed whitespace checks. There is no eager video `src`, and no content is hidden behind JavaScript initialization.
+
+The supervised browser could not open the website preview. Desktop/phone/tablet rendering, real autoplay behavior, and on-device performance remain unverified. No inbox delivery test was performed. Do not describe this release as live, visually verified, or perfect.
+
+## Continued polish
+
+The owner asked to keep improving the sites and, in the later Smith Made review, to remove the heart and smooth the details. The candidate now removes the heart card, inquiry preset, and structured-data entries, and excludes the former product from the sitemap. Its old detail URL forwards to the current collection. Eight designs remain. Source media archives stay intact.
+
+Merged production PR #38, preserving planner and venue resources, the seating-chart guide, the delivery estimator, and inquiry-role handling. The hero now has real side gutters. Sticky navigation flows below the preview notice instead of overlapping it. Phone controls and labels use larger text, and the menu closes on outside click or return to the desktop layout.
+
+The shared motion controller eases the scroll and pointer values, caches geometry, avoids nested reveal animations, and stops requesting frames after motion settles. Manual pause retains the current position. An interrupted background play request no longer turns off motion when the page simply leaves view.
+
+A simulated code check passed for settling motion, manual pause, reduced motion, data saving, and hidden-tab pause. These are code checks, not browser or real-device results. No browser test or real inquiry occurred in this continuation. The public release remains pending approval, with all changes kept on draft PR #37 and the private review.
+
+## Reconciliation with the newer review cleanup
+
+Retained the complete concurrent review changes from `06d419e` instead of replacing its image viewer, navigation, catalog layout, or motion behavior. The final candidate removes the heart detail route and its two staged images entirely. It does not use the provisional redirect described above. The final Smith Made motion controller retains native touch scrolling, interpolated desktop motion, focus-safe reveals, and the global pause setting. It is distinct from the Smith Digital controller checked in the simulation.
+
+The proposed production files match the reconciled private review except for documented preview-only contact and crawler settings. At that reconciliation, the PR #38 delivery logic and form handling were byte-for-byte preserved. The later inquiry pass below updates the form controller while retaining its endpoint and native fallback.
+
+
+## Inquiry and navigation continuation
+
+Added a readable inquiry summary, explicit copy and email options, and phone-friendly controls. Details remain available after a failed or offline send. Duplicate submissions are blocked while a request is pending. A 15-second timeout reports an unconfirmed state instead of success; accepted FormSubmit JSON remains required. Optional analytics failures cannot turn an acknowledged inquiry into a failed-send message. Starting another inquiry preserves campaign attribution, while success scrolling respects reduced or paused motion. The existing endpoint, native POST fallback, and payment link are unchanged.
+
+Both phone menus now size themselves to the available viewport and close when keyboard focus leaves navigation. The owner-private Smith Made form shares the controller but is explicitly gated by method=dialog; its preview action reviews details without sending. No real request, email, or payment was made in this pass.
+
+Twenty-one isolated Node VM flow checks passed across both websites. These include invalid input, offline and failed requests, duplicate clicks, timeout ambiguity, clipboard fallback, editing an email draft, multiple chosen pieces, and the preview no-send branch. They are simulations, not browser or inbox-delivery results. Static checks cover the 14 Smith Made pages, eight remaining designs, references, sitemap, and parseable structured data where present. The privacy page intentionally has no product schema. `INQUIRY-FLOW-VALIDATION.json` records the checks. Public-domain publication is still pending approval.
+
+The newer main-branch operational and search notes are preserved through `7c7b5d43e832df1c8ec551e3b545c0b94305bce6`. SM-UX-004 is a separate, currently active inquiry task; reconcile any later changes from that branch before a live-domain merge.
+
+
+Preserved concurrent private-review commit `a5f163c`: page-wide motion preferences, video source changes on rotation, back/forward lifecycle cleanup, active-section navigation, named image-viewer controls, and phone-safe inquiry focus. Combined these with the inquiry review/recovery work in both the final private review and draft production candidate. The same form simulations still pass after reconciliation.
+
+
+## Approval and final short-screen refinement
+
+The owner explicitly approved publication, then requested more refinement first. That approval supersedes the earlier pending-approval notes. The viewer now scrolls within the visible screen, keeps the backdrop fixed, respects safe-area spacing, wraps finish controls, and uses readable captions. Short landscape screens receive a shorter image area. Existing inquiry, motion, and catalog behavior is preserved. Static page checks passed. Phone/browser visual QA and real inbox receipt remain unverified; no additional test inquiry was sent.
+
+
+## Final integration of PR #39
+
+Preserved the current production inquiry release, including selected-finish inquiries, defensive photo and analytics handling, full email attribution, late-response protection, and its pull-request and publishing checks. Combined these with the cinematic viewer, eight-piece collection, and local detail-review/copy UI. The viewer closes and restores page interaction before focusing the inquiry, and chosen finishes survive reopening a completed form. A 20-second deadline covers both the request and response parsing. Confirmed inquiries clear personal fields while retaining campaign attribution for another inquiry. No request is retried automatically.
+
+All 18 repository checks passed against the combined source with external resources and network sending disabled. The two count assertions now match the approved eight designs and 14 sitemap pages. The test fixture supports the existing motion-aware navigation APIs; no browser or phone-rendering claim follows from these tests.
+
+
+## Approved release reconciliation
+
+Preserved the latest main-branch operating handoff and PR #39 inquiry checks. Combined the newer full-product layouts, named finish controls, exact-piece choices, and optional inquiry details with the approved Higgsfield motion work. Production retains the real inquiry endpoint; the private review stays no-send. The current catalog has eight designs and fourteen sitemap pages.

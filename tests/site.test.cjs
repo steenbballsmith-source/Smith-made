@@ -11,7 +11,7 @@ test('every sitemap page retains its search metadata, valid structured data, and
   const sitemap = new JSDOM(read('sitemap.xml'), { contentType: 'text/xml' });
   const urls = [...sitemap.window.document.querySelectorAll('loc')].map(el => el.textContent);
   sitemap.window.close();
-  assert.ok(urls.length >= 15);
+  assert.equal(urls.length, 14);
   assert.equal(new Set(urls).size, urls.length);
   for (const url of urls) {
     const location = new URL(url);

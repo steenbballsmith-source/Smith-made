@@ -1,0 +1,28 @@
+{
+  "checks": [
+    "sm: private preview and copy are local",
+    "sm: edited details refresh the email draft",
+    "sm: invalid form does not submit",
+    "sm: offline preserves review details",
+    "sm: failed request preserves data and restores controls",
+    "sm: duplicate click blocked and timeout is not false success",
+    "sm: clipboard fallback selects the details",
+    "sm: honeypot does not submit",
+    "sd: private preview and copy are local",
+    "sd: edited details refresh the email draft",
+    "sd: invalid form does not submit",
+    "sd: offline preserves review details",
+    "sd: failed request preserves data and restores controls",
+    "sd: duplicate click blocked and timeout is not false success",
+    "sd: clipboard fallback selects the details",
+    "sd: honeypot does not submit",
+    "sm: HTML activation, negative acknowledgement, and HTTP failure do not report success",
+    "sm: accepted inquiry survives analytics failure, respects motion settings, and resets only on explicit new inquiry",
+    "sm: email fallback requires the visitor to open and send the draft",
+    "sm: review preserves multiple pieces and planner role",
+    "sd: acknowledged request blocks a duplicate submit"
+  ],
+  "passed": 21,
+  "mode": "Node VM simulation; no browser or network requests",
+  "real_inquiry_sent": false
+}
