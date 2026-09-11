@@ -121,6 +121,7 @@
     var lines = [
       "Names: " + data.get("names"),
       "Email: " + data.get("email"),
+      "Planning as: " + (data.get("planning_role") || "Not specified"),
       "Phone: " + (data.get("phone") || "—"),
       "Event date: " + (data.get("date") || "TBD"),
       "Venue / city: " + (data.get("venue") || "—"),

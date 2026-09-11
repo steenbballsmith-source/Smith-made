@@ -207,6 +207,15 @@
     if (inquiryMessage && !inquiryMessage.value) inquiryMessage.value = "Interested in: " + choice.name;
   }
 
+  // A planner link selects a role only. Never replace a visitor's entry or send.
+  var inquiryKind = new URLSearchParams(window.location.search).get("inquiry");
+  if (inquiryForm && (inquiryKind === "planner" || inquiryKind === "venue")) {
+    var planningRole = inquiryForm.querySelector("#f-role");
+    if (planningRole && !planningRole.value) {
+      planningRole.value = inquiryKind === "planner" ? "Planner / coordinator" : "Venue team";
+    }
+  }
+
   /* ---- Email action bar: appears once the hero is behind you ------------- */
 
   var actionBar = document.querySelector("[data-action-bar]");

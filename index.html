@@ -24,7 +24,7 @@
   <link rel="preload" href="assets/fonts/great-vibes-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=email-first-20260911">
+  <link rel="stylesheet" href="css/styles.css?v=growth-20260911">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -403,6 +403,7 @@
       <p class="kicker">Our family shop</p><h2 id="craft-title">Handbuilt by Will and Steen Smith.</h2>
       <p class="lede">Smith Made is a family woodworking shop in Greenville, South Carolina. We build wood signage and event pieces to rent for your agreed rental period, plus custom commissions and keepsakes to own.</p>
       <p class="lede">Choose a design from the collection or <a href="custom-signs.html">tell us about a custom piece</a>. We confirm the size, finish, personalization, transport, and price in writing before you book.</p>
+      <p class="sm-resource-note">Planning for a client or venue? <a href="for-planners.html">Explore our planner and venue details</a>. For your guest list, start with the <a href="seating-chart-guide.html">seating chart checklist</a>.</p>
     </div></section>
 
     <!-- ================= HOW IT WORKS ================= -->
@@ -584,6 +585,16 @@
               </div>
             </div>
             <div>
+              <label for="f-role">I'm planning as <span>(optional)</span></label>
+              <select id="f-role" name="planning_role">
+                <option value="">Choose one</option>
+                <option>Couple / private event</option>
+                <option>Planner / coordinator</option>
+                <option>Venue team</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
               <label for="f-venue">Venue or city</label>
               <input id="f-venue" name="venue" type="text">
             </div>
@@ -615,13 +626,16 @@
                 <label><input type="radio" name="transport" value="Smith Made delivery + customer return/keepsake"> <span><strong>Smith Made delivery + customer return/keepsake</strong><small>Delivery starts at $75 within 15 road miles.</small></span></label>
                 <label><input type="radio" name="transport" value="Smith Made delivery + standard pickup"> <span><strong>Smith Made delivery + standard pickup</strong><small>Starts at $150 within 15 road miles.</small></span></label>
                 <label><input type="radio" name="transport" value="Smith Made delivery + late-night pickup"> <span><strong>Smith Made delivery + late-night pickup</strong><small>After-hours and distance charges may apply.</small></span></label>
+                <label><input type="radio" name="transport" value="Not sure yet - please advise"> <span><strong>Not sure yet</strong><small>Help me compare pickup and delivery.</small></span></label>
               </div>
+              <p class="form-help"><a href="delivery.html#estimate">See delivery costs</a> before choosing. We confirm the final route and scope in your quote.</p>
             </fieldset>
             <div>
               <label for="f-heard">How did you hear about us?</label>
               <select id="f-heard" name="heard_about">
                 <option value="">Choose one (optional)</option>
                 <option>Website search</option>
+                <option>ChatGPT / AI search</option>
                 <option>Instagram</option>
                 <option>Google Business</option>
                 <option>Planner</option>
@@ -689,6 +703,8 @@
             <p><a href="#inquire" data-scroll>Check your date</a></p>
             <p><a href="delivery.html">Delivery &amp; service areas</a></p>
             <p><a href="custom-signs.html">Custom signs &amp; keepsakes</a></p>
+            <p><a href="for-planners.html">For planners &amp; venues</a></p>
+            <p><a href="seating-chart-guide.html">Plan your seating chart</a></p>
             <p><a href="/privacy.html">Privacy Policy</a></p>
           </div>
           <p class="foot-legal">&copy; <span data-year>2026</span> Smith Made &middot; Greenville, SC &middot; smithmadesc.com</p>
@@ -708,8 +724,8 @@
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/track.js" defer></script>
-  <script src="js/main.js?v=email-first-20260911" defer></script>
-  <script src="js/form.js" defer></script>
+  <script src="js/main.js?v=growth-20260911" defer></script>
+  <script src="js/form.js?v=growth-20260911" defer></script>
   <script src="js/staged.js" defer></script>
   <script type="module" src="js/scene.js?v=email-first-20260911"></script>
   <noscript>
