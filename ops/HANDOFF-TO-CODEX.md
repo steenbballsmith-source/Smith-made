@@ -2,6 +2,12 @@
 
 ## Smith Made current actions — September 11, 2026
 
+Search setup update: Google sign-in succeeded, but adding the website returned
+an internal error and the pending-property check found none. Property verification
+and sitemap submission are incomplete. A separate business-profile sign-in was
+interrupted; a fresh target-site check showed the public sign-in page. No listing
+was edited. Private task notes were updated. See `2026-09-11-SM3` in the log.
+
 The requested website updates are live at https://smithmadesc.com/. The latest
 release is PR #38, commit `80a17b702f047b556652756a70591e6b262e6b96`, Pages
 run `34568680744`, success. It builds on the email-first release in PR #36.

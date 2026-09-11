@@ -2269,3 +2269,28 @@ message, customer, quote, and automation identifiers remain private.
 Reproduce the public release: https://github.com/steenbballsmith-source/Smith-made/pull/38
 and https://github.com/steenbballsmith-source/Smith-made/actions/runs/34568680744.
 Use a normal scoped revert if recovery is required; preserve unrelated changes.
+
+
+## 2026-09-11-SM3 — Codex — Search account setup reached provider and sign-in blockers
+
+The owner completed Google sign-in for the Smith Made discovery work. Claim
+SM-SEARCH-003 was pushed before property setup. The authenticated Search Console
+page showed the expected account, and the existing website was entered as a
+URL-prefix property. Google returned an internal error. The visible pending
+verification check then showed no properties detected. No official verification
+artifact was issued, no ownership verification completed, and no sitemap was
+submitted. Do not treat this as proof of indexing or a ranking change.
+
+A separate attempt to access the business-profile manager required sign-in. The
+secure handoff was interrupted. The required fresh check of the target site
+showed its public sign-in page, so manager access and ownership remain unverified.
+No business listing was edited. No website source change was needed for these
+attempts. The private workbook's existing task statuses and notes now record both
+blockers; existing formulas, views, and validations were preserved and the changed
+rows visually reviewed. The private package was refreshed and saved.
+
+Resume Search Console property setup after the provider accepts the request,
+then publish only its real verification artifact, verify, and submit the current
+sitemap. Business-profile work requires a completed secure sign-in and the correct
+owned listing. No account identifiers, credentials, or private dashboard content
+are included in this public record.

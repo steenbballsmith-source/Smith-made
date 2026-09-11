@@ -1662,7 +1662,7 @@ pricing, or automation identifiers are included here. See `2026-09-11-SM2` in
 ---
 
 ### SM-SEARCH-003 — Verify search ownership and submit the current sitemap
-**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+**Status: BLOCKED · Owner: CODEX · Updated 2026-09-11**
 
 The owner completed Google sign-in for the requested Smith Made search work.
 Verify the correct website property using the existing owned site, publish only
@@ -1671,3 +1671,11 @@ and inspect available indexing status. Scope: the official verification file or
 head tag, scoped board/log/handoff entries, and private operating-status updates.
 Preserve website content and other agents' work. Do not publish account identifiers,
 private dashboard data, or sign-in values; do not promise ranking improvements.
+
+**Result:** Google sign-in succeeded, but adding the website returned an internal
+error. The pending-property check showed no properties awaiting verification.
+No official verification artifact was issued, ownership was not verified, and
+the sitemap was not submitted. A separate business-profile sign-in was interrupted;
+a fresh target-site check showed the public sign-in page. No listing was edited.
+The private operating files now record both blockers. Resume from these states;
+do not equate a successful sign-in with property verification or indexing.
