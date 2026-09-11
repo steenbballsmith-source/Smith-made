@@ -1625,3 +1625,11 @@ The product-to-inquiry link selected the correct category and note; no inquiry
 was submitted. No telephone links remain. Phone/tablet visual review, actual
 inbox receipt, and account-based search/CRM setup remain open. See the current
 Smith Made section in `HANDOFF-TO-CODEX.md` and `LOG.md` entry 2026-09-11-SM1.
+
+
+---
+
+### SM-MOTION-20260911 — Higgsfield cinematic hero and mobile motion
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+
+Owner requested Higgsfield visuals, cinematic hero transitions, layered depth, and phone-friendly layouts. Task branch: `codex/higgsfield-motion-20260911`. Owns scoped homepage hero markup, `css/motion.css`, `js/motion.js`, generated public hero assets, and this task's board/log/handoff entries. Preserve current email-first inquiries, catalog facts, payments, domain, and existing pages. Native scrolling, reduced-motion and media-failure fallbacks required. Verify before publishing.
