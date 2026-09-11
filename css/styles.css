@@ -1646,3 +1646,58 @@ body.staged-open { overflow: hidden; }
 .form-success p { margin: 0 0 12px; line-height: 1.6; }
 .form-success .fs-next { font-size: 0.95rem; }
 .form-success [data-form-again] { margin-top: 8px; }
+
+/* Smith Made email-first update, 2026-09-11. */
+:root { --ink-soft: #635447; }
+body { font-weight: 400; }
+.sm-hero { padding: 146px 0 64px; min-height: auto; }
+.sm-hero-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; gap: clamp(28px,5vw,72px); }
+.sm-hero h1 { font-size: clamp(2.7rem,4.6vw,4.5rem); line-height: 1.05; max-width: 14ch; margin: 18px 0 24px; }
+.sm-hero h1 .script { display: block; font-size: .95em; line-height: 1.2; }
+.sm-hero .lede { max-width: 42ch; }
+.sm-hero-photo { margin: 0; min-width: 0; }
+.sm-hero-photo img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 48% 48% 10px 10px; display: block; }
+.sm-hero-photo figcaption { font-size: .85rem; color: var(--ink-soft); line-height: 1.5; margin-top: 14px; }
+#collection, #how-it-works, #pricing, #faq, #craft { padding-top: 72px; padding-bottom: 72px; }
+.sm-craft .lede { max-width: 70ch; }
+.sm-piece-summary { font-size: 1rem; color: var(--ink-soft); line-height: 1.6; margin: 12px 0; }
+.sm-piece-detail { font-size: .95rem; margin: 12px 0; text-decoration: underline; text-underline-offset: 4px; }
+.piece h3 a { color: inherit; }
+#inquire { padding-top: 72px; }
+.inquire-grid { margin-top: 36px; }
+.form-success { grid-column: 2; grid-row: 1; }
+.sm-page { padding: 130px 0 72px; }
+.sm-page h1 { font-size: clamp(2.6rem,5vw,4.5rem); line-height: 1.08; margin: 20px 0; }
+.sm-page h2 { font-size: clamp(1.8rem,3vw,2.5rem); margin: 30px 0 14px; }
+.sm-page p, .sm-page li { line-height: 1.7; }
+.sm-page p { margin-bottom: 18px; }
+.sm-page ul { padding-left: 24px; margin-bottom: 24px; }
+.sm-page .sm-detail-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 48px; align-items: start; }
+.sm-detail-photo { margin: 0; }
+.sm-detail-photo img { width: 100%; height: auto; border-radius: 18px; }
+.sm-detail-photo figcaption, .sm-breadcrumb { font-size: .9rem; color: var(--ink-soft); }
+.sm-detail-photo figcaption { margin-top: 12px; line-height: 1.6; }
+.sm-facts { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 24px 0; margin: 28px 0; }
+.sm-facts dt { font-weight: 600; margin-top: 14px; }
+.sm-facts dd { margin: 6px 0 12px; color: var(--ink-soft); line-height: 1.6; }
+.sm-page .sm-footer { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line); }
+.sm-simple-nav { position: absolute; inset: 0 0 auto; padding: 26px 0; }
+.sm-simple-nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.sm-simple-nav .wordmark { font-size: 2rem; }
+.sm-page .hero-ctas { flex-wrap: wrap; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #8c5c32; outline-offset: 4px; }
+@media (max-width: 760px) {
+ .sm-hero { padding: 112px 0 40px; }
+ .sm-hero-grid, .sm-page .sm-detail-grid { grid-template-columns: minmax(0,1fr); gap: 30px; }
+ .sm-hero h1 { max-width: 16ch; font-size: clamp(2.5rem,9vw,3.5rem); }
+ .sm-hero-photo { max-width: 520px; }
+ #collection, #how-it-works, #pricing, #faq, #craft, #inquire { padding-top: 48px; padding-bottom: 48px; }
+ .inquire-grid { display: flex; flex-direction: column; }
+ .inquire-grid > * { width: 100%; }
+ .inquire-side { order: 2; }
+ .form, .form-success { order: 1; }
+ .sm-page { padding-top: 112px; }
+ .sm-simple-nav .wordmark { font-size: 1.6rem; }
+ .sm-simple-nav .btn { font-size: .8rem; padding: .75em 1em; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
