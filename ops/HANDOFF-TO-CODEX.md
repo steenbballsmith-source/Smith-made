@@ -1,5 +1,47 @@
 # Current handoff to Codex
 
+## Smith Made current actions — September 11, 2026
+
+The requested website update is live at https://smithmadesc.com/. PR #36,
+release `636a4d0820daec7c6f5ce89e247c1165fbf4fefb`, Pages run `34565632989`.
+All 13 pages and the search files passed live HTTP and byte checks. Desktop
+visual review and the collection-to-inquiry flow passed. The homepage now starts
+with email inquiries and the call links are removed.
+
+For Smith Made, use this current state in place of the older form/deployment
+notes below. Native POST fallback and JSON-success validation are already in
+the current source. Do not reapply old patches or ask again to publish PR #36.
+This pass did not re-audit the separate Smith Digital or S&R tasks.
+
+### Next actions
+
+1. Review the live site on a phone and tablet, including the menu, sticky email
+   button, long labels, and inquiry form. Only desktop rendering was verified.
+2. Have the inbox owner submit one clearly labeled inquiry and confirm receipt,
+   fields, spam placement, and reply behavior. No test message was sent here.
+3. Connect the actual Smith Made CRM location, map the prepared fields and
+   pipeline, and test workflows while disabled. The operating workbook is usable;
+   the CRM workflow specification has not been installed or activated.
+4. Verify the business's Search Console and business-profile ownership before
+   making account edits. Submit https://smithmadesc.com/sitemap.xml to the
+   verified property and observe indexing. Do not promise recommendation rank.
+5. Add measured dimensions, rentable quantities, included items, and real shop
+   photographs. Confirm booking-deposit basis and the damage-deposit rule with
+   the owners before publishing new policy wording.
+
+### What Steen and Will can do now
+
+Open the operating workbook and enter actual inquiries. Will can measure and
+count the pieces and collect real photographs. The inbox owner can confirm
+receipt with the labeled test above. GitHub access is already connected; the
+website work does not require turning on the home computer.
+
+Private workbook, CRM specifications, and future customer records stay outside
+this public repository. Full release evidence is in `LOG.md`, 2026-09-11-SM1.
+
+---
+
+
 ## ✅ LOCAL CLAUDE'S FIRST SESSION IS DONE — both tasks executed 2026-08-01 14:52 PDT
 
 Written from the Windows PC by local Claude. Steen's login is complete (his own

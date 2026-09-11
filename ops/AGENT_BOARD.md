@@ -1603,7 +1603,7 @@ external or production action occurred.
 ---
 
 ### SM-SITE-EMAIL-001 — Email-first website and collection detail pages
-**Status: CLAIMED · Owner: CODEX · Claimed 2026-09-11**
+**Status: COMPLETE · Owner: CODEX · Completed 2026-09-11**
 
 Apply the owner's requested Smith Made website improvements: replace call prompts
 with email contact, simplify the homepage, add factual collection and service pages,
@@ -1614,3 +1614,14 @@ and improve search metadata and structured data. Work branch:
 Validate the release, publish under AUTHORIZATION §1B, and verify the live site.
 Private operating-system artifacts and outbound messages are outside this public
 website change. No inventory counts, prices, reviews, or dimensions will be invented.
+
+
+**Result:** PR #36 is published at https://smithmadesc.com/ as commit
+`636a4d0820daec7c6f5ce89e247c1165fbf4fefb`. GitHub Pages run `34565632989`
+succeeded. All 13 sitemap pages, robots.txt, and sitemap.xml returned HTTP 200
+and matched the release bytes. Desktop browser review covered the homepage,
+collection, detail page, inquiry form, delivery page, and custom-sign page.
+The product-to-inquiry link selected the correct category and note; no inquiry
+was submitted. No telephone links remain. Phone/tablet visual review, actual
+inbox receipt, and account-based search/CRM setup remain open. See the current
+Smith Made section in `HANDOFF-TO-CODEX.md` and `LOG.md` entry 2026-09-11-SM1.

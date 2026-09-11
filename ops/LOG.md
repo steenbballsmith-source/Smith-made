@@ -2177,3 +2177,45 @@ image serving byte-exact (127658 bytes). Desktop QA passed locally pre-merge.
 No form submission was made; Will's inbox-delivery proof (SM-FORM-001) remains
 open. Next owner input: whether the two tiered display-stand renders Will sent
 become a tenth card (not added — no instruction).
+
+
+## 2026-09-11-SM1 — Codex — Smith Made email-first website published
+
+The owner requested website improvements and email inquiries before calls.
+Claim SM-SITE-EMAIL-001 was pushed before source edits. The isolated change in
+PR #36 was reviewed and squash-merged under AUTHORIZATION §1B. Release commit:
+`636a4d0820daec7c6f5ce89e247c1165fbf4fefb`; prior site commit:
+`3ac55ef83ec1c4b679c269e7b01982dfad3ff8ae` (the intervening claim changed only
+coordination text). GitHub Pages run `34565632989` completed successfully.
+
+Changes: email replaces call prompts; compact hero and collection before the
+shop story; clearer body text; nine factual collection pages and two service
+pages; inquiry prefill; successful-inquiry date-hold placement; accurate service
+schema, canonicals, and 13-page sitemap. Existing images retain styled-render
+labels. No fabricated reviews, inventory, dimensions, or product prices were
+added. The production form endpoint, native POST fallback, and existing payment
+link were preserved.
+
+Verification: all 12 changed HTML pages passed structural, metadata, JSON-LD,
+local-link and image-reference checks. All nine prefill mappings passed; unknown
+keys were ignored and existing text preserved. JavaScript syntax and whitespace
+checks passed. All 13 sitemap pages plus robots.txt and sitemap.xml returned
+HTTP 200 and matched release bytes. Live desktop browser review at 1363x936
+covered the homepage, collection, Arched Welcome detail, inquiry form, delivery,
+and custom-sign pages. Hero height was approximately 782px and collection began
+at 782px, compared with the earlier observed 2995px hero and 3931px collection.
+The live product inquiry preselected Welcome sign and its product note; phone
+was optional, the date hold was initially hidden, and telephone links numbered
+zero. No site-origin console warning/error appeared in the inspected log.
+
+Limits and remaining work: mobile/tablet visual rendering and actual inbox
+receipt were not tested. No customer message, payment, profile edit, or CRM
+activation occurred. The private operating package contains a workbook and CRM
+implementation specifications; workflows are not active. Real product dimensions,
+quantities, photos, and policy clarifications require owner/shop facts. Ranking
+or recommendation improvements are not established by a successful deployment.
+
+Reproduce: inspect PR https://github.com/steenbballsmith-source/Smith-made/pull/36
+and workflow https://github.com/steenbballsmith-source/Smith-made/actions/runs/34565632989.
+Look for `email-first-20260911` on the live homepage. If rollback is needed,
+revert the scoped release normally; do not reset over later unrelated work.
