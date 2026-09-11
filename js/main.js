@@ -21,24 +21,28 @@
   var toggle = document.querySelector(".nav-toggle");
 
   if (nav && toggle) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("menu-open");
+    var menu = document.getElementById("nav-menu");
+    var compactNav = window.matchMedia("(max-width: 1100px)");
+    function setMenu(open) {
+      nav.classList.toggle("menu-open", open);
       toggle.setAttribute("aria-expanded", String(open));
-    });
-
+      toggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+      if (menu) menu.inert = compactNav.matches && !open;
+    }
+    toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("menu-open")); });
     nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) {
-        nav.classList.remove("menu-open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
+      if (event.target.closest("a")) setMenu(false);
     });
-
+    document.addEventListener("click", function (event) {
+      if (!nav.contains(event.target)) setMenu(false);
+    });
     document.addEventListener("keydown", function (event) {
       if (event.key !== "Escape" || !nav.classList.contains("menu-open")) return;
-      nav.classList.remove("menu-open");
-      toggle.setAttribute("aria-expanded", "false");
+      setMenu(false);
       toggle.focus();
     });
+    compactNav.addEventListener("change", function () { setMenu(false); });
+    setMenu(false);
   }
 
   /* ---- Footer year ------------------------------------------------------ */
@@ -175,7 +179,7 @@
   }
 
   function scrollToEl(el) {
-    el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("motion-paused") ? "instant" : "smooth" });
   }
 
   var inquiryForm = document.querySelector("[data-inquiry-form]");
@@ -196,7 +200,7 @@
   });
 
   // Product pages can prefill an inquiry without submitting it.
-  var productChoices = {"arched-welcome": {"category": "Welcome sign", "name": "The Arched Welcome"}, "seating-chart-wall": {"category": "Seating chart", "name": "Seating Chart Wall"}, "champagne-wall": {"category": "Champagne wall", "name": "Champagne Wall"}, "grand-arch-welcome-wall": {"category": "Welcome sign", "name": "Grand Arch Welcome Wall"}, "ceremony-arch-set": {"category": "Arch set", "name": "Ceremony Arch Set"}, "slat-backdrop": {"category": "Backdrop", "name": "Slat Monogram Backdrop"}, "mobile-bar": {"category": "Bar", "name": "The Mobile Bar"}, "keepsake-heart": {"category": "Keepsake", "name": "The Keepsake Heart"}, "display-wall": {"category": "Backdrop", "name": "The Display Wall"}};
+  var productChoices = {"arched-welcome": {"category": "Welcome sign", "name": "The Arched Welcome"}, "seating-chart-wall": {"category": "Seating chart", "name": "Seating Chart Wall"}, "champagne-wall": {"category": "Champagne wall", "name": "Champagne Wall"}, "grand-arch-welcome-wall": {"category": "Welcome sign", "name": "Grand Arch Welcome Wall"}, "ceremony-arch-set": {"category": "Arch set", "name": "Ceremony Arch Set"}, "slat-backdrop": {"category": "Backdrop", "name": "Slat Monogram Backdrop"}, "mobile-bar": {"category": "Bar", "name": "The Mobile Bar"}, "display-wall": {"category": "Backdrop", "name": "The Display Wall"}};
   var selectedPiece = new URLSearchParams(window.location.search).get("piece");
   if (inquiryForm && Object.prototype.hasOwnProperty.call(productChoices, selectedPiece)) {
     var choice = productChoices[selectedPiece];
@@ -205,6 +209,15 @@
     });
     var inquiryMessage = inquiryForm.querySelector("#f-message");
     if (inquiryMessage && !inquiryMessage.value) inquiryMessage.value = "Interested in: " + choice.name;
+  }
+
+  // A planner link selects a role only. Never replace a visitor's entry or send.
+  var inquiryKind = new URLSearchParams(window.location.search).get("inquiry");
+  if (inquiryForm && (inquiryKind === "planner" || inquiryKind === "venue")) {
+    var planningRole = inquiryForm.querySelector("#f-role");
+    if (planningRole && !planningRole.value) {
+      planningRole.value = inquiryKind === "planner" ? "Planner / coordinator" : "Venue team";
+    }
   }
 
   /* ---- Email action bar: appears once the hero is behind you ------------- */
@@ -216,11 +229,18 @@
       actionEmail.href = "mailto:" + config.email;
     }
     var hero = document.getElementById("hero");
+    var inquirySection = document.getElementById("inquire");
     if (hero && "IntersectionObserver" in window) {
+      var heroVisible = true, inquiryVisible = false;
+      function syncActionBar() { actionBar.hidden = heroVisible || inquiryVisible; }
       new IntersectionObserver(function (entries) {
-        /* visible hero -> no bar; the opening screen stays uncluttered */
-        actionBar.hidden = entries[0].isIntersecting;
-      }, { rootMargin: "-70% 0px 0px 0px" }).observe(hero);
+        heroVisible = entries[0].isIntersecting;
+        syncActionBar();
+      }, { threshold: 0 }).observe(hero);
+      if (inquirySection) new IntersectionObserver(function (entries) {
+        inquiryVisible = entries[0].isIntersecting;
+        syncActionBar();
+      }, { threshold: 0 }).observe(inquirySection);
     } else {
       actionBar.hidden = false;
     }

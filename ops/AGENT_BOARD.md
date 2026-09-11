@@ -1651,3 +1651,6 @@ current conversations before authorized outreach; keep contact records, message
 contents, and operating artifacts private. Improve the email inquiry path and
 verify the published release. No invented availability, prices, testimonials,
 partnerships, or search-ranking guarantees. No paid advertising spend is included.
+
+
+SM-MOTION-20260911 continued polish: removed the heart from the candidate collection and search data per the later review request; preserved the newer PR #38 planner and delivery work. Refined side gutters, sticky navigation, phone type, and damped motion. Private review only. Production approval remains outstanding. Full evidence: `HIGGSFIELD-MOTION-20260911.md`.

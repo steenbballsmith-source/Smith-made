@@ -2224,3 +2224,8 @@ revert the scoped release normally; do not reset over later unrelated work.
 ## 2026-09-11-SM2 — Higgsfield cinematic review candidate
 
 Prepared the cinematic hero, optimized silent loops, responsive layouts, reduced-motion and still fallbacks. Static validation passed. Live publishing awaits owner approval; browser visual QA was blocked. Full evidence and media provenance: `HIGGSFIELD-MOTION-20260911.md`. No inquiries or payments were sent.
+
+
+## 2026-09-11-SM3 — Continued cinematic polish
+
+Merged the PR #38 planner and delivery release into the pending cinematic branch. Removed the heart from the visible collection and structured data, and later preserved the concurrent cleanup which removes its old route and staged images. Improved gutters, sticky navigation, responsive controls, and eased motion. Source and simulated motion-policy checks passed. No live release, inquiry, payment, or browser test occurred in this pass.

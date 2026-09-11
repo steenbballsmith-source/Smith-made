@@ -1666,6 +1666,9 @@ body { font-weight: 400; }
 #inquire { padding-top: 72px; }
 .inquire-grid { margin-top: 36px; }
 .form-success { grid-column: 2; grid-row: 1; }
+@media (max-width: 960px) {
+ .form-success { grid-column: auto; grid-row: auto; }
+}
 .sm-page { padding: 130px 0 72px; }
 .sm-page h1 { font-size: clamp(2.6rem,5vw,4.5rem); line-height: 1.08; margin: 20px 0; }
 .sm-page h2 { font-size: clamp(1.8rem,3vw,2.5rem); margin: 30px 0 14px; }
@@ -1701,3 +1704,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
  .sm-simple-nav .btn { font-size: .8rem; padding: .75em 1em; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Planner resources and the transport estimate share the existing shop palette. */
+.sm-resource-note { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 24px; }
+.sm-page .sm-reading { max-width: 76ch; }
+.sm-page .sm-section-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin: 32px 0; }
+.sm-page .sm-section-grid > section { border-top: 1px solid var(--line); }
+.sm-page ol { padding-left: 26px; }
+.sm-page ol li { margin-bottom: 14px; padding-left: 4px; }
+.sm-estimate { margin: 32px 0; padding: clamp(20px, 4vw, 36px); border: 1px solid var(--line); border-radius: 12px; background: var(--cream); }
+.sm-estimate-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.sm-estimate-fields { display: grid; gap: 18px; }
+.sm-estimate label { display: block; margin-bottom: 6px; font-weight: 600; }
+.sm-estimate input, .sm-estimate select { width: 100%; min-height: 48px; font: inherit; padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+.sm-estimate-result { background: #fff; border-radius: 8px; padding: 24px; }
+.sm-estimate-total { display: block; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; font-weight: 600; margin: 8px 0 16px; }
+.sm-estimate .sm-estimate-note, .form-help { font-size: .9rem; line-height: 1.6; color: var(--ink-soft); }
+.sm-estimate-result p:last-child { margin-bottom: 0; }
+.sm-estimate [hidden] { display: none; }
+@media (max-width: 760px) {
+ .sm-page .sm-section-grid, .sm-estimate-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}

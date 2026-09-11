@@ -1,4 +1,4 @@
-/* Progressive cinema. Static HTML remains usable if media or JavaScript fails. */
+/* Static content stays visible while cinema progressively enhances the page. */
 (() => {
   'use strict';
   const hero = document.querySelector('[data-cinema-hero]');
@@ -12,65 +12,84 @@
   let preference = null;
   try { preference = sessionStorage.getItem('smith-cinema-motion'); } catch (_) {}
   let inView = true, requestedFrame = 0, ready = false, failed = false;
-  let pointerX = 0, pointerY = 0, playPending = false;
-  const animations = new Set();
+  let pointerX = 0, pointerY = 0, playPending = false, lastFrame = 0;
+  const state = { progress: 0, x: 0, y: 0 };
+  const animations = new Map();
   const constrained = () => connection && (connection.saveData || /(^|-)2g$|^3g$/.test(connection.effectiveType || ''));
   const enabled = () => !failed && !reduce.matches && preference !== 'off' && (preference === 'on' || !constrained());
   const stopAnimations = () => { animations.forEach(a => a.cancel()); animations.clear(); };
-  function renderMotion() {
+  function stopFrame() {
+    if (requestedFrame) cancelAnimationFrame(requestedFrame);
+    requestedFrame = lastFrame = 0;
+  }
+  function renderMotion(time) {
     requestedFrame = 0;
-    if (!enabled() || document.hidden || !inView) return;
+    if (!enabled() || document.hidden || !inView) { lastFrame = 0; return; }
     const rect = hero.getBoundingClientRect();
-    const progress = Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height)));
-    hero.style.setProperty('--scene-progress', progress.toFixed(4));
-    hero.style.setProperty('--scene-lift', (-progress * (mobile.matches ? 12 : 48)).toFixed(2) + 'px');
-    hero.style.setProperty('--scene-scale', (1 + progress * (mobile.matches ? .035 : .10)).toFixed(4));
-    hero.style.setProperty('--scene-radius', (progress * 36).toFixed(2) + 'px');
-    hero.style.setProperty('--scene-rx', (-pointerY * 2).toFixed(2) + 'deg');
-    hero.style.setProperty('--scene-ry', (pointerX * 2.8).toFixed(2) + 'deg');
+    const target = {
+      progress: mobile.matches ? 0 : Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height))),
+      x: fine.matches && !mobile.matches ? pointerX : 0,
+      y: fine.matches && !mobile.matches ? pointerY : 0
+    };
+    const elapsed = lastFrame ? Math.min(48, time - lastFrame) : 16;
+    const blend = 1 - Math.exp(-elapsed / 145);
+    lastFrame = time;
+    let unsettled = false;
+    Object.keys(state).forEach(key => {
+      state[key] += (target[key] - state[key]) * blend;
+      if (Math.abs(target[key] - state[key]) < .0005) state[key] = target[key];
+      else unsettled = true;
+    });
+    hero.style.setProperty('--scene-lift', (-state.progress * 22).toFixed(2) + 'px');
+    hero.style.setProperty('--scene-scale', (1 + state.progress * .04).toFixed(4));
+    hero.style.setProperty('--scene-rx', (-state.y * 1.2).toFixed(3) + 'deg');
+    hero.style.setProperty('--scene-ry', (state.x * 1.6).toFixed(3) + 'deg');
+    if (unsettled) requestedFrame = requestAnimationFrame(renderMotion);
+    else lastFrame = 0;
   }
   function schedule() {
-    if (!requestedFrame && enabled()) requestedFrame = requestAnimationFrame(renderMotion);
+    if (!requestedFrame && enabled() && inView && !document.hidden) requestedFrame = requestAnimationFrame(renderMotion);
   }
   function updateLabel() {
     control.hidden = false;
     control.disabled = reduce.matches || failed;
     control.textContent = reduce.matches ? 'Reduced motion' : failed ? 'Still view' : enabled() ? 'Pause motion' : 'Play motion';
-    control.setAttribute('aria-pressed', String(enabled() && !failed));
+    control.setAttribute('aria-pressed', String(enabled()));
     control.setAttribute('aria-label', reduce.matches ? 'Motion follows your reduced motion setting' : failed ? 'Background film is unavailable. Still image shown.' : enabled() ? 'Pause background video and visual motion' : 'Play background video and visual motion');
   }
+  function playbackFailed(error) {
+    playPending = false;
+    if (error && error.name === 'AbortError') return;
+    preference = 'off';
+    hero.classList.remove('film-playing');
+    policyChanged();
+  }
   function syncVideo() {
-    if (!ready || !enabled() || !inView || document.hidden || failed) {
-      video.pause();
-      return;
-    }
+    if (!ready || !enabled() || !inView || document.hidden) { video.pause(); return; }
     if (!video.hasAttribute('src')) {
-      video.muted = true;
-      video.defaultMuted = true;
+      video.muted = video.defaultMuted = true;
       video.src = mobile.matches ? video.dataset.mobileSrc : video.dataset.desktopSrc;
       video.load();
     }
     if (video.paused && !playPending) {
       playPending = true;
-      const attempt = video.play();
-      if (attempt && attempt.then) attempt.then(() => { playPending = false; if (!enabled() || document.hidden || !inView) video.pause(); }).catch(() => {
-        playPending = false;
-        preference = 'off';
-        hero.classList.add('motion-off');
-        hero.classList.remove('film-playing');
-        stopAnimations();
-        updateLabel();
-      });
-      else playPending = false;
+      try {
+        const attempt = video.play();
+        if (attempt && attempt.then) attempt.then(() => {
+          playPending = false;
+          if (!enabled() || document.hidden || !inView) video.pause();
+        }).catch(playbackFailed);
+        else playPending = false;
+      } catch (error) { playbackFailed(error); }
     }
   }
   function policyChanged() {
     hero.classList.toggle('motion-off', !enabled());
+    document.documentElement.classList.toggle('motion-paused', !enabled());
     if (!enabled()) {
-      video.pause(); stopAnimations();
-      if (requestedFrame) cancelAnimationFrame(requestedFrame);
-      requestedFrame = 0;
-      ['--scene-progress','--scene-lift','--scene-scale','--scene-radius','--scene-rx','--scene-ry'].forEach(key => hero.style.removeProperty(key));
+      video.pause(); stopAnimations(); stopFrame();
+      state.progress = state.x = state.y = 0;
+      ['--scene-lift','--scene-scale','--scene-rx','--scene-ry'].forEach(key => hero.style.removeProperty(key));
     }
     updateLabel(); syncVideo(); schedule();
   }
@@ -79,39 +98,59 @@
     try { sessionStorage.setItem('smith-cinema-motion', preference); } catch (_) {}
     ready = true; policyChanged();
   });
-  video.addEventListener('playing', () => { if (enabled() && !document.hidden && inView) hero.classList.add('film-playing'); else video.pause(); });
+  video.addEventListener('playing', () => {
+    if (enabled() && !document.hidden && inView) hero.classList.add('film-playing');
+    else video.pause();
+  });
   video.addEventListener('error', () => { failed = true; hero.classList.remove('film-playing'); policyChanged(); });
-  document.addEventListener('visibilitychange', () => { syncVideo(); schedule(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { stopFrame(); stopAnimations(); }
+    syncVideo(); schedule();
+  });
+  document.addEventListener('focusin', event => animations.forEach((animation, element) => {
+    if (element.contains(event.target)) { animation.cancel(); animations.delete(element); }
+  }));
   reduce.addEventListener('change', policyChanged);
+  fine.addEventListener('change', schedule);
+  mobile.addEventListener('change', schedule);
   if (connection && connection.addEventListener) connection.addEventListener('change', policyChanged);
-  window.addEventListener('scroll', schedule, {passive:true});
-  window.addEventListener('resize', schedule, {passive:true});
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule, { passive: true });
   hero.addEventListener('pointermove', event => {
-    if (!fine.matches || !enabled()) return;
+    if (!fine.matches || mobile.matches || !enabled()) return;
     const r = hero.getBoundingClientRect();
-    pointerX = (event.clientX-r.left)/r.width-.5;
-    pointerY = (event.clientY-r.top)/r.height-.5;
+    pointerX = (event.clientX - r.left) / r.width - .5;
+    pointerY = (event.clientY - r.top) / r.height - .5;
     schedule();
-  }, {passive:true});
+  }, { passive: true });
   hero.addEventListener('pointerleave', () => { pointerX = pointerY = 0; schedule(); });
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(entries => { inView = entries[0].isIntersecting; syncVideo(); schedule(); }, {threshold:0}).observe(hero);
+    new IntersectionObserver(entries => {
+      inView = entries[0].isIntersecting;
+      if (!inView) stopFrame();
+      syncVideo(); schedule();
+    }, { threshold: 0 }).observe(hero);
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       observer.unobserve(entry.target);
-      if (!enabled() || !entry.target.animate) return;
-      const animation = entry.target.animate([{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'translateY(0)'}], {duration:650,easing:'cubic-bezier(.2,.65,.3,1)',fill:'none'});
-      animations.add(animation);
-      animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
-    }), {threshold:.08});
-    document.querySelectorAll('[data-cinema-reveal]').forEach(el => observer.observe(el));
+      if (!enabled() || document.hidden || entry.boundingClientRect.top < 80 || !entry.target.animate || entry.target.contains(document.activeElement)) return;
+      const animation = entry.target.animate([
+        { opacity: 0, transform: 'translateY(14px)' },
+        { opacity: 1, transform: 'translateY(0)' }
+      ], { duration: 720, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'none' });
+      animations.set(entry.target, animation);
+      animation.finished.then(() => animations.delete(entry.target)).catch(() => animations.delete(entry.target));
+    }), { threshold: .06, rootMargin: '0px 0px -24px 0px' });
+    document.querySelectorAll('[data-cinema-reveal]').forEach(el => {
+      if (el.getBoundingClientRect().top >= window.innerHeight) observer.observe(el);
+    });
   }
   function begin() {
     const start = () => { ready = true; syncVideo(); };
-    if ('requestIdleCallback' in window) requestIdleCallback(start, {timeout:1200});
+    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 1200 });
     else setTimeout(start, 250);
   }
   if (document.readyState === 'complete') begin();
-  else window.addEventListener('load', begin, {once:true});
+  else window.addEventListener('load', begin, { once: true });
   policyChanged();
 })();
