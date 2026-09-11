@@ -1657,3 +1657,17 @@ formulas. The CRM workflow designs remain inactive; search/profile account acces
 and real product evidence remain open. No private contact, message, customer,
 pricing, or automation identifiers are included here. See `2026-09-11-SM2` in
 `LOG.md` and the current handoff.
+
+
+---
+
+### SM-SEARCH-003 — Verify search ownership and submit the current sitemap
+**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+
+The owner completed Google sign-in for the requested Smith Made search work.
+Verify the correct website property using the existing owned site, publish only
+an official public verification artifact if required, submit the current sitemap,
+and inspect available indexing status. Scope: the official verification file or
+head tag, scoped board/log/handoff entries, and private operating-status updates.
+Preserve website content and other agents' work. Do not publish account identifiers,
+private dashboard data, or sign-in values; do not promise ranking improvements.
