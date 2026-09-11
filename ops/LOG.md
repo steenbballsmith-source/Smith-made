@@ -2219,3 +2219,53 @@ Reproduce: inspect PR https://github.com/steenbballsmith-source/Smith-made/pull/
 and workflow https://github.com/steenbballsmith-source/Smith-made/actions/runs/34565632989.
 Look for `email-first-20260911` on the live homepage. If rollback is needed,
 revert the scoped release normally; do not reset over later unrelated work.
+
+
+## 2026-09-11-SM2 — Codex — Planner resources, inquiry conversion, and private lead operations
+
+The owner explicitly requested continued website, outreach, business setup, and
+discovery improvements. Claim SM-GROWTH-002 was pushed before the bounded work.
+PR #38 was squash-merged under the existing publication authorization as
+`80a17b702f047b556652756a70591e6b262e6b96`. Pages run `34568680744` succeeded.
+
+Changes: planner/venue referral page; original seating-chart planning guide;
+delivery calculator based on the existing published transport policy; optional
+planning role and allowlisted planner/venue prefill; AI-search discovery option;
+undecided transport choice; and corrected success-layout CSS in the tablet range.
+The 15-page sitemap and internal links include the new pages. The email-first
+contact path, optional phone, production form endpoint, payment link, and render
+disclosures remain intact. No fictional proof, inventory, dimensions, product
+price, partnership, or ranking guarantee was added.
+
+Verification: all 15 sitemap pages passed structural, metadata, JSON-LD, local
+link, image-reference, and no-telephone-link checks. Sixteen calculator cases
+passed, including distance boundaries, trip rounding, non-stacking late fees,
+customer pickup, longer-distance quotes, and invalid input. Ten changed live
+URLs returned HTTP 200 and matched release bytes. Desktop browser review at
+1363x936 covered the planner page, role prefill, inquiry options, calculator, and
+guide. The guide had no horizontal overflow. A 25-mile delivery-plus-pickup
+estimate with pickup at or after midnight displayed the expected $325.
+
+One clearly labeled internal inquiry was submitted through the live form and
+displayed the service-backed success state. The actual recipient inbox was not
+connected, so arrival remains unverified. Do not duplicate the test or count it
+as a lead. No payment was made. Phone/tablet visual rendering remains open.
+
+Private operations: two relevant, authorized partner introductions and one
+internal status request were verified in Sent after current-history and recipient
+checks. Reply triage was enabled to label actionable mail, prepare drafts, notify
+the owner, and handle opt-outs and delivery issues without automatic sends. The
+first event execution is unobserved. Existing private workbook records were
+preserved, current next actions added, and all existing formulas, panes, and
+validations retained. Updated sheets were recalculated and visually reviewed;
+the workbook, playbook, and complete private package were saved.
+
+The CRM specification remains inactive. Correct search/profile access, inbox
+receipt, and real product measurements and photographs remain open. No paid
+advertising, customer booking, invoice, payment, or profile edit occurred.
+Search-ranking and conversion gains have not been measured. All recipient,
+message, customer, quote, and automation identifiers remain private.
+
+Reproduce the public release: https://github.com/steenbballsmith-source/Smith-made/pull/38
+and https://github.com/steenbballsmith-source/Smith-made/actions/runs/34568680744.
+Use a normal scoped revert if recovery is required; preserve unrelated changes.

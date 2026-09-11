@@ -2,11 +2,23 @@
 
 ## Smith Made current actions — September 11, 2026
 
-The requested website update is live at https://smithmadesc.com/. PR #36,
-release `636a4d0820daec7c6f5ce89e247c1165fbf4fefb`, Pages run `34565632989`.
-All 13 pages and the search files passed live HTTP and byte checks. Desktop
-visual review and the collection-to-inquiry flow passed. The homepage now starts
-with email inquiries and the call links are removed.
+The requested website updates are live at https://smithmadesc.com/. The latest
+release is PR #38, commit `80a17b702f047b556652756a70591e6b262e6b96`, Pages
+run `34568680744`, success. It builds on the email-first release in PR #36.
+The homepage uses email inquiries and has no call links. Planner and venue
+information, a seating-chart guide, and the delivery calculator are now live.
+
+All 15 sitemap pages pass source checks, 16 calculator cases pass, and ten
+changed live URLs match the latest release. Desktop planner, guide, calculator,
+and inquiry-flow review passed. One clearly labeled internal inquiry was accepted
+by the form service; recipient inbox delivery is still unverified.
+
+Two authorized partner introductions and one internal status request were
+verified in Sent. Incoming reply triage is enabled to label, draft, and notify;
+it does not send automatically, and its first event run has not been observed.
+Private operating files were saved with current next actions. CRM workflows are
+still inactive designs. Do not send old outreach drafts without checking the
+current thread, offer, and suppression state.
 
 For Smith Made, use this current state in place of the older form/deployment
 notes below. Native POST fallback and JSON-success validation are already in
@@ -17,8 +29,9 @@ This pass did not re-audit the separate Smith Digital or S&R tasks.
 
 1. Review the live site on a phone and tablet, including the menu, sticky email
    button, long labels, and inquiry form. Only desktop rendering was verified.
-2. Have the inbox owner submit one clearly labeled inquiry and confirm receipt,
-   fields, spam placement, and reply behavior. No test message was sent here.
+2. Have the inbox owner confirm receipt, fields, spam placement, and reply
+   behavior for the already-submitted `INTERNAL TEST - SM-GROWTH-002`. Do not
+   duplicate the submission. Service acceptance is not inbox delivery.
 3. Connect the actual Smith Made CRM location, map the prepared fields and
    pipeline, and test workflows while disabled. The operating workbook is usable;
    the CRM workflow specification has not been installed or activated.
@@ -31,13 +44,15 @@ This pass did not re-audit the separate Smith Digital or S&R tasks.
 
 ### What Steen and Will can do now
 
-Open the operating workbook and enter actual inquiries. Will can measure and
-count the pieces and collect real photographs. The inbox owner can confirm
-receipt with the labeled test above. GitHub access is already connected; the
-website work does not require turning on the home computer.
+Open the operating workbook's Dashboard, Pipeline, and Tasks. Review current
+customer and partner conversations before updating next actions or commitments.
+Will can measure and count finished pieces and collect real photographs. The
+inbox owner can confirm receipt of the existing test above. GitHub access is
+already connected; website work does not require turning on the home computer.
 
-Private workbook, CRM specifications, and future customer records stay outside
-this public repository. Full release evidence is in `LOG.md`, 2026-09-11-SM1.
+Private workbook, CRM specifications, outreach records, and customer data stay
+outside this public repository. It copies files broadly during deployment.
+Release evidence is in `LOG.md`, 2026-09-11-SM1 and 2026-09-11-SM2.
 
 ---
 
