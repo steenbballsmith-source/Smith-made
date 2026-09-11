@@ -1598,3 +1598,19 @@ and Meta readiness state and routes local Claude to the private execution
 files. `LOG.md` entry `2026-07-30-C23` preserves the verification and privacy
 boundary. Paid traffic and the commercial-email hold remain in place; no
 external or production action occurred.
+
+
+---
+
+### SM-SITE-EMAIL-001 — Email-first website and collection detail pages
+**Status: CLAIMED · Owner: CODEX · Claimed 2026-09-11**
+
+Apply the owner's requested Smith Made website improvements: replace call prompts
+with email contact, simplify the homepage, add factual collection and service pages,
+and improve search metadata and structured data. Work branch:
+`codex/smith-made-email-first-20260911`. Owns `index.html`, `css/styles.css`,
+`js/main.js`, `js/manifest.js`, `sitemap.xml`, new `collection/*.html`,
+`delivery.html`, `custom-signs.html`, and the scoped board/log/handoff entries.
+Validate the release, publish under AUTHORIZATION §1B, and verify the live site.
+Private operating-system artifacts and outbound messages are outside this public
+website change. No inventory counts, prices, reviews, or dimensions will be invented.
