@@ -31,6 +31,8 @@ body::after { opacity: .018; }
 .nav-links { gap: clamp(16px, 2vw, 28px); }
 .nav-links a { font-size: .875rem; letter-spacing: .08em; }
 .nav-links a:not(.btn) { padding-block: 12px; }
+.nav-links a[aria-current="location"]:not(.btn) { color: var(--walnut); text-decoration-color: var(--brass); }
+.nav-links .nav-cta[aria-current="location"] { text-decoration: none; box-shadow: 0 0 0 3px #c19a6230; }
 .nav-toggle { font-size: .875rem; letter-spacing: .09em; }
 .nav-toggle-bar, .nav-toggle-bar::before, .nav-toggle-bar::after {
   transition: transform 280ms var(--motion-ease), background 220ms ease;
@@ -192,6 +194,7 @@ section[id], .sm-page { scroll-margin-top: 104px; }
 .sm-cinema ~ #how-it-works .step h3 { font-size: 1.9rem; }
 .form label, .form legend, .foot-heading { font-size: .875rem; letter-spacing: .1em; }
 .form input, .form select, .form textarea { font-size: 1rem; }
+.form, .sm-estimate { color-scheme: light; }
 .form-checks label, .transport-options label { letter-spacing: .02em; }
 .form-checks { grid-template-columns: repeat(auto-fit,minmax(min(100%,170px),1fr)); }
 .transport-options { grid-template-columns: 1fr; }
@@ -303,7 +306,12 @@ html.motion-paused { scroll-behavior: auto; }
 ::view-transition-new(root) { animation: 340ms ease both page-in; }
 @keyframes page-out { to { opacity: 0; } }
 @keyframes page-in { from { opacity: 0; } }
-@media (prefers-reduced-motion:reduce) { ::view-transition-group(*) { animation-duration: 0s !important; } }
+html.motion-paused::view-transition-group(*),
+html.motion-paused::view-transition-old(*),
+html.motion-paused::view-transition-new(*) { animation: none !important; }
+@media (prefers-reduced-motion:reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
 
 /* Final details alongside the planner and delivery tools. */
 .sm-cinema-caption,.review-notice{font-size:.875rem}

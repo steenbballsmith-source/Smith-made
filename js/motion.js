@@ -4,19 +4,33 @@
   const hero = document.querySelector('[data-cinema-hero]');
   const video = document.querySelector('[data-cinema-video]');
   const control = document.querySelector('[data-motion-toggle]');
-  if (!hero || !video || !control) return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const mobile = matchMedia('(max-width: 760px)');
   const connection = navigator.connection;
   let preference = null;
-  try { preference = sessionStorage.getItem('smith-cinema-motion'); } catch (_) {}
+  function readPreference() {
+    try { preference = sessionStorage.getItem('smith-cinema-motion'); } catch (_) {}
+  }
+  readPreference();
+  const constrained = () => connection && (connection.saveData || /(^|-)2g$|^3g$/.test(connection.effectiveType || ''));
+  const permitted = () => !reduce.matches && preference !== 'off' && (preference === 'on' || !constrained());
+  function syncPagePreference() {
+    document.documentElement.classList.toggle('motion-paused', !permitted());
+  }
+  syncPagePreference();
+  if (!hero || !video || !control) {
+    reduce.addEventListener('change', syncPagePreference);
+    if (connection && connection.addEventListener) connection.addEventListener('change', syncPagePreference);
+    window.addEventListener('pageshow', () => { readPreference(); syncPagePreference(); });
+    return;
+  }
   let inView = true, requestedFrame = 0, ready = false, failed = false;
   let pointerX = 0, pointerY = 0, playPending = false, lastFrame = 0;
+  let playbackRequest = 0, loadedSource = '';
   const state = { progress: 0, x: 0, y: 0 };
   const animations = new Map();
-  const constrained = () => connection && (connection.saveData || /(^|-)2g$|^3g$/.test(connection.effectiveType || ''));
-  const enabled = () => !failed && !reduce.matches && preference !== 'off' && (preference === 'on' || !constrained());
+  const enabled = () => !failed && permitted();
   const stopAnimations = () => { animations.forEach(a => a.cancel()); animations.clear(); };
   function stopFrame() {
     if (requestedFrame) cancelAnimationFrame(requestedFrame);
@@ -59,33 +73,43 @@
   }
   function playbackFailed(error) {
     playPending = false;
-    if (error && error.name === 'AbortError') return;
+    if (error && error.name === 'AbortError') {
+      if (ready && enabled() && inView && !document.hidden) requestAnimationFrame(syncVideo);
+      return;
+    }
     preference = 'off';
     hero.classList.remove('film-playing');
     policyChanged();
   }
   function syncVideo() {
     if (!ready || !enabled() || !inView || document.hidden) { video.pause(); return; }
-    if (!video.hasAttribute('src')) {
+    const nextSource = mobile.matches ? video.dataset.mobileSrc : video.dataset.desktopSrc;
+    if (loadedSource !== nextSource) {
+      ++playbackRequest;
+      playPending = false;
+      video.pause();
+      hero.classList.remove('film-playing');
       video.muted = video.defaultMuted = true;
-      video.src = mobile.matches ? video.dataset.mobileSrc : video.dataset.desktopSrc;
+      video.src = loadedSource = nextSource;
       video.load();
     }
     if (video.paused && !playPending) {
       playPending = true;
+      const request = ++playbackRequest;
       try {
         const attempt = video.play();
         if (attempt && attempt.then) attempt.then(() => {
+          if (request !== playbackRequest) return;
           playPending = false;
           if (!enabled() || document.hidden || !inView) video.pause();
-        }).catch(playbackFailed);
+        }).catch(error => { if (request === playbackRequest) playbackFailed(error); });
         else playPending = false;
-      } catch (error) { playbackFailed(error); }
+      } catch (error) { if (request === playbackRequest) playbackFailed(error); }
     }
   }
   function policyChanged() {
     hero.classList.toggle('motion-off', !enabled());
-    document.documentElement.classList.toggle('motion-paused', !enabled());
+    syncPagePreference();
     if (!enabled()) {
       video.pause(); stopAnimations(); stopFrame();
       state.progress = state.x = state.y = 0;
@@ -107,12 +131,26 @@
     if (document.hidden) { stopFrame(); stopAnimations(); }
     syncVideo(); schedule();
   });
+  window.addEventListener('pagehide', () => {
+    ++playbackRequest;
+    playPending = false;
+    video.pause();
+    stopFrame();
+    stopAnimations();
+  });
+  window.addEventListener('pageshow', event => {
+    readPreference();
+    if (event.persisted) ready = true;
+    const bounds = hero.getBoundingClientRect();
+    inView = bounds.bottom > 0 && bounds.top < window.innerHeight;
+    policyChanged();
+  });
   document.addEventListener('focusin', event => animations.forEach((animation, element) => {
     if (element.contains(event.target)) { animation.cancel(); animations.delete(element); }
   }));
   reduce.addEventListener('change', policyChanged);
   fine.addEventListener('change', schedule);
-  mobile.addEventListener('change', schedule);
+  mobile.addEventListener('change', () => { syncVideo(); schedule(); });
   if (connection && connection.addEventListener) connection.addEventListener('change', policyChanged);
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule, { passive: true });

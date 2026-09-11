@@ -2,6 +2,7 @@
 (function () {
   'use strict';
   var opener = null, looks = [], index = 0, requestId = 0, closeTimer = 0;
+  var displayedLook = null;
   var background = [];
   var box = document.createElement('div');
   box.className = 'staged';
@@ -35,6 +36,7 @@
   function show(i) {
     index = (i + looks.length) % looks.length;
     var look = looks[index];
+    if (look === displayedLook && !img.classList.contains('is-loading') && !img.classList.contains('is-failed')) return;
     var currentRequest = ++requestId;
     var loader = new Image();
     var fallback = false;
@@ -52,6 +54,7 @@
         img.src = loader.src;
         img.alt = look.alt || ('Smith Made piece staged in ' + look.finish);
         img.classList.remove('is-loading', 'is-failed');
+        displayedLook = look;
         frame.setAttribute('aria-busy', 'false');
         finishLine.textContent = look.finish;
         if (window.smTrack) {
@@ -80,8 +83,10 @@
     if (!Array.isArray(nextLooks)) return;
     nextLooks = nextLooks.filter(function (look) { return look && (look.src || look.webp); });
     if (!nextLooks.length) return;
+    nextLooks.forEach(function (look) { if (!look.finish) look.finish = 'Design view'; });
     clearTimeout(closeTimer);
     looks = nextLooks;
+    displayedLook = null;
     opener = trigger;
     dots.innerHTML = '';
     looks.forEach(function (look, n) {
@@ -110,6 +115,7 @@
     show(0);
   }
   function finishClose() {
+    clearTimeout(closeTimer);
     box.hidden = true;
     box.inert = false;
     document.body.classList.remove('staged-open');
@@ -118,6 +124,12 @@
     if (opener && opener.isConnected) opener.focus({ preventScroll: true });
     opener = null;
   }
+  window.addEventListener('pagehide', function () {
+    if (box.hidden) return;
+    ++requestId;
+    box.classList.remove('is-open');
+    finishClose();
+  });
   function close() {
     if (!box.classList.contains('is-open')) return;
     ++requestId;

@@ -50,13 +50,47 @@
       toggle.focus();
     });
     compactNav.addEventListener("change", function () { setMenu(false); });
-    nav.addEventListener("focusout", function (event) {
-      if (event.relatedTarget && !nav.contains(event.relatedTarget)) setMenu(false);
+    nav.addEventListener("focusout", function () {
+      requestAnimationFrame(function () {
+        if (!nav.contains(document.activeElement)) setMenu(false);
+      });
     });
+    window.addEventListener("pagehide", function () { setMenu(false); });
     window.addEventListener("resize", fitMenu, { passive: true });
     window.addEventListener("scroll", fitMenu, { passive: true });
     if (window.visualViewport) window.visualViewport.addEventListener("resize", fitMenu, { passive: true });
     setMenu(false);
+  }
+
+  /* Keep the existing navigation in step with the section being read. */
+  if (nav) {
+    var sectionLinks = Array.from(nav.querySelectorAll('.nav-links a[href^="#"]')).map(function (link) {
+      return { link: link, section: document.getElementById(link.getAttribute("href").slice(1)) };
+    }).filter(function (item) { return item.section; });
+    var navigationFrame = 0;
+    function markCurrentSection() {
+      navigationFrame = 0;
+      var readingLine = nav.getBoundingClientRect().bottom + 40;
+      var current = null;
+      sectionLinks.forEach(function (item) {
+        if (!item.section.hidden && item.section.getBoundingClientRect().top <= readingLine) current = item;
+      });
+      sectionLinks.forEach(function (item) {
+        var active = item === current;
+        item.link.classList.toggle("active", active);
+        if (active) item.link.setAttribute("aria-current", "location");
+        else item.link.removeAttribute("aria-current");
+      });
+    }
+    function queueNavigationUpdate() {
+      if (!navigationFrame) navigationFrame = requestAnimationFrame(markCurrentSection);
+    }
+    window.addEventListener("scroll", queueNavigationUpdate, { passive: true });
+    window.addEventListener("resize", queueNavigationUpdate, { passive: true });
+    window.addEventListener("pageshow", queueNavigationUpdate);
+    window.addEventListener("load", queueNavigationUpdate, { once: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueNavigationUpdate);
+    queueNavigationUpdate();
   }
 
   /* ---- Footer year ------------------------------------------------------ */
@@ -207,9 +241,16 @@
       if (message && message.value.indexOf(note) === -1) {
         message.value = (message.value ? message.value + "\n" : "") + note;
       }
-      scrollToEl(document.getElementById("inquire"));
+      var section = document.getElementById("inquire");
+      scrollToEl(section);
       var names = inquiryForm.querySelector("#f-names");
-      if (names) names.focus({ preventScroll: true });
+      if (names && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        names.focus({ preventScroll: true });
+      } else if (section) {
+        // Keep the phone keyboard closed while scrolling to the form.
+        section.tabIndex = -1;
+        section.focus({ preventScroll: true });
+      }
     });
   });
 

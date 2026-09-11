@@ -48,3 +48,6 @@ Both phone menus now size themselves to the available viewport and close when ke
 Twenty-one isolated Node VM flow checks passed across both websites. These include invalid input, offline and failed requests, duplicate clicks, timeout ambiguity, clipboard fallback, editing an email draft, multiple chosen pieces, and the preview no-send branch. They are simulations, not browser or inbox-delivery results. Static checks cover the 14 Smith Made pages, eight remaining designs, references, sitemap, and parseable structured data where present. The privacy page intentionally has no product schema. `INQUIRY-FLOW-VALIDATION.json` records the checks. Public-domain publication is still pending approval.
 
 The newer main-branch operational and search notes are preserved through `7c7b5d43e832df1c8ec551e3b545c0b94305bce6`. SM-UX-004 is a separate, currently active inquiry task; reconcile any later changes from that branch before a live-domain merge.
+
+
+Preserved concurrent private-review commit `a5f163c`: page-wide motion preferences, video source changes on rotation, back/forward lifecycle cleanup, active-section navigation, named image-viewer controls, and phone-safe inquiry focus. Combined these with the inquiry review/recovery work in both the final private review and draft production candidate. The same form simulations still pass after reconciliation.
