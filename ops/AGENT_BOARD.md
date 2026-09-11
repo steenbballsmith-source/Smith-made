@@ -1684,7 +1684,7 @@ do not equate a successful sign-in with property verification or indexing.
 ---
 
 ### SM-UX-004 — Finish inquiries and form reliability
-**Status: IN PROGRESS · Owner: CODEX · Claimed 2026-09-11**
+**Status: DONE · Owner: CODEX · Completed 2026-09-11**
 
 Improve the owner's existing email-first inquiry flow: carry a chosen catalog
 finish into an inquiry, correct the staged-viewer rental wording, improve dialog
@@ -1696,3 +1696,15 @@ and board/log/handoff entries on `codex/smith-made-inquiry-polish-20260911`.
 Keep the production endpoint and payment behavior unchanged. Validate failure
 states with isolated tests; do not submit another live internal inquiry or resend
 existing partner introductions. Private operating files remain outside this repo.
+
+
+**Result:** PR #39 is live as `d7c7b202f99226e1df08006f876b030d00cbbe8a`.
+PR check run `34576117802` and Pages run `34576178012` succeeded. All 18
+isolated checks pass, including all nine catalog finish mappings, inquiry
+confirmation/recovery states, and search metadata/local links on 15 sitemap pages.
+The 20 changed public files match the release. Desktop review verified the finish
+viewer and its handoff into the inquiry; real phone/tablet review remains open.
+The release workflow now runs these checks before publishing and excludes test
+tooling from the site. No additional live form submission, payment, or outreach
+message was sent. Private operating documentation and package were refreshed.
+Search-account and inbox-confirmation blockers remain unchanged. See log SM4.
