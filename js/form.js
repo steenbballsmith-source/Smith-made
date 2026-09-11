@@ -37,6 +37,7 @@
       "Interested in: " + (data.getAll("pieces").join(", ") || "Not sure yet"),
       "Rent or buy: " + (data.get("mode") || "Not sure yet"),
       "Transport: " + (data.get("transport") || "Not decided yet"),
+      "Found us through: " + (data.get("heard_about") || "Not specified"),
       "", data.get("message") || ""
     ].join("\n");
   }
@@ -47,7 +48,7 @@
     var attribution = ["utm_source", "utm_medium", "utm_campaign", "utm_content"].filter(function (key) {
       return data.get(key);
     }).map(function (key) { return key + ": " + data.get(key); });
-    var body = summary.value + "\nHow you found us: " + (data.get("heard_about") || "Not specified") +
+    var body = summary.value +
       (attribution.length ? "\n\n" + attribution.join("\n") : "");
     email.href = "mailto:" + (config.email || "will.smithmade@gmail.com") +
       "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);

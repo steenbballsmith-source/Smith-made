@@ -63,3 +63,8 @@ The owner explicitly approved publication, then requested more refinement first.
 Preserved the current production inquiry release, including selected-finish inquiries, defensive photo and analytics handling, full email attribution, late-response protection, and its pull-request and publishing checks. Combined these with the cinematic viewer, eight-piece collection, and local detail-review/copy UI. The viewer closes and restores page interaction before focusing the inquiry, and chosen finishes survive reopening a completed form. A 20-second deadline covers both the request and response parsing. Confirmed inquiries clear personal fields while retaining campaign attribution for another inquiry. No request is retried automatically.
 
 All 18 repository checks passed against the combined source with external resources and network sending disabled. The two count assertions now match the approved eight designs and 14 sitemap pages. The test fixture supports the existing motion-aware navigation APIs; no browser or phone-rendering claim follows from these tests.
+
+
+## Approved release reconciliation
+
+Preserved the latest main-branch operating handoff and PR #39 inquiry checks. Combined the newer full-product layouts, named finish controls, exact-piece choices, and optional inquiry details with the approved Higgsfield motion work. Production retains the real inquiry endpoint; the private review stays no-send. The current catalog has eight designs and fourteen sitemap pages.

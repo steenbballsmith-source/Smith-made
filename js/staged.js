@@ -55,14 +55,14 @@
       decoded.then(function () {
         if (currentRequest !== requestId || box.hidden) return;
         img.src = loader.src;
-        img.alt = look.alt || ('Smith Made piece staged in ' + look.finish);
+        img.alt = look.alt || ('Styled design render of a Smith Made piece in ' + look.finish);
         img.classList.remove('is-loading', 'is-failed');
         displayedLook = look;
         frame.setAttribute('aria-busy', 'false');
         finishLine.textContent = pieceName + ' · ' + look.finish;
         if (window.smTrack) {
-          var piece = opener && opener.closest('li.piece');
-          window.smTrack('finish_view', { piece: piece && piece.id ? piece.id.replace(/^piece-/, '') : '', finish: look.finish });
+          var piece = opener && opener.closest('li.piece, [data-staged-piece]');
+          window.smTrack('finish_view', { piece: piece ? (piece.getAttribute('data-staged-piece') || piece.id.replace(/^piece-/, '')) : '', finish: look.finish });
         }
       });
     };
@@ -82,7 +82,9 @@
   }
   function open(trigger) {
     var nextLooks;
-    try { nextLooks = JSON.parse(trigger.getAttribute('data-staged')); } catch (_) { return; }
+    var owner = trigger.closest('[data-staged-looks]');
+    var source = trigger.getAttribute('data-staged') || (owner && owner.getAttribute('data-staged-looks'));
+    try { nextLooks = JSON.parse(source); } catch (_) { return; }
     if (!Array.isArray(nextLooks)) return;
     nextLooks = nextLooks.filter(function (look) { return look && (look.src || look.webp); });
     if (!nextLooks.length) return;
@@ -95,6 +97,7 @@
     looks.forEach(function (look, n) {
       var dot = document.createElement('button');
       dot.type = 'button';
+      dot.textContent = look.finish;
       dot.setAttribute('aria-label', look.finish || 'Finish ' + (n + 1));
       dot.addEventListener('click', function () { show(n); });
       dots.appendChild(dot);
@@ -103,7 +106,7 @@
     arrows.forEach(function (a) { a.hidden = looks.length < 2; });
     var piece = trigger.closest('li.piece');
     var heading = piece && piece.querySelector('h3');
-    pieceName = heading ? heading.textContent.trim() : 'Smith Made piece';
+    pieceName = (owner && owner.getAttribute('data-staged-name')) || (heading && heading.textContent.trim()) || 'Smith Made piece';
     bookButton = piece && piece.querySelector('[data-book]');
     box.querySelector('[data-staged-inquire]').hidden = !bookButton;
     box.setAttribute('aria-label', pieceName + ' design finishes');
@@ -118,7 +121,9 @@
     background.forEach(function (item) { item.element.inert = true; });
     box.getBoundingClientRect();
     box.classList.add('is-open');
-    show(0);
+    var initial = Number(trigger.getAttribute('data-staged-index'));
+    show(Number.isInteger(initial) && initial >= 0 && initial < looks.length ? initial : 0);
+    return true;
   }
   function finishClose() {
     clearTimeout(closeTimer);
@@ -146,7 +151,9 @@
   }
   document.addEventListener('click', function (event) {
     var trigger = event.target.closest('[data-staged]');
-    if (trigger && !box.contains(trigger) && box.hidden) open(trigger);
+    if (trigger && !box.contains(trigger) && box.hidden && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+      if (open(trigger)) event.preventDefault();
+    }
   });
   box.addEventListener('click', function (event) {
     if (event.target.closest('[data-staged-close]')) return close();

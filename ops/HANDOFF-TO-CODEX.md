@@ -13,15 +13,28 @@ interrupted; a fresh target-site check showed the public sign-in page. No listin
 was edited. Private task notes were updated. See `2026-09-11-SM3` in the log.
 
 The requested website updates are live at https://smithmadesc.com/. The latest
-release is PR #38, commit `80a17b702f047b556652756a70591e6b262e6b96`, Pages
-run `34568680744`, success. It builds on the email-first release in PR #36.
-The homepage uses email inquiries and has no call links. Planner and venue
-information, a seating-chart guide, and the delivery calculator are now live.
+release is PR #39, commit `d7c7b202f99226e1df08006f876b030d00cbbe8a`, Pages
+run `34576178012`, success. It builds on PRs #36 and #38. The homepage uses
+email inquiries and has no call links. Planner and venue information, a
+seating-chart guide, and the delivery calculator are live.
 
-All 15 sitemap pages pass source checks, 16 calculator cases pass, and ten
-changed live URLs match the latest release. Desktop planner, guide, calculator,
-and inquiry-flow review passed. One clearly labeled internal inquiry was accepted
-by the form service; recipient inbox delivery is still unverified.
+Visitors can carry a selected catalog finish into an inquiry. Unconfirmed
+requests retain details and offer a prepared email draft; a 20-second deadline
+prevents indefinite waiting. Selecting another piece after confirmation reopens
+the form. Dialog controls and rental wording are clearer. Optional analytics
+cannot mask successful confirmation, and repeat inquiries retain attribution.
+
+All 18 isolated checks pass locally and in CI. They cover nine catalog pieces,
+form success/failure/recovery, and metadata/local links on all 15 sitemap pages.
+The 20 changed public files match PR #39. Desktop finish-viewer and inquiry
+handoff review passed at 1363 × 936, with no horizontal overflow in the inspected
+state. The release workflow now runs these checks before publishing and excludes
+test tooling. Run `npm ci --ignore-scripts --no-audit --no-fund` and `npm test`
+for later inquiry changes. Tests never submit a real inquiry.
+
+The earlier release passed 16 calculator cases and planner/guide/calculator
+review. One labeled internal inquiry was accepted in PR #38 validation; recipient
+inbox delivery remains unverified. PR #39 added no live inquiry or payment test.
 
 Two authorized partner introductions and one internal status request were
 verified in Sent. Incoming reply triage is enabled to label, draft, and notify;
@@ -61,8 +74,8 @@ inbox owner can confirm receipt of the existing test above. GitHub access is
 already connected; website work does not require turning on the home computer.
 
 Private workbook, CRM specifications, outreach records, and customer data stay
-outside this public repository. It copies files broadly during deployment.
-Release evidence is in `LOG.md`, 2026-09-11-SM1 and 2026-09-11-SM2.
+outside this public repository. Deployment excludes Markdown and test tooling; other files are copied broadly.
+Release evidence is in `LOG.md`, 2026-09-11-SM1 through 2026-09-11-SM4.
 
 ---
 

@@ -241,11 +241,7 @@
       }
       var box = inquiryForm.querySelector('input[name="pieces"][value="' + button.getAttribute("data-book") + '"]');
       if (box) box.checked = true;
-      var message = inquiryForm.querySelector("#f-message");
-      var note = "Interested in: " + button.getAttribute("data-piece");
-      if (message && message.value.indexOf(note) === -1) {
-        message.value = (message.value ? message.value + "\n" : "") + note;
-      }
+      if (box) box.dispatchEvent(new Event("input", { bubbles: true }));
       var section = document.getElementById("inquire");
       scrollToEl(section);
       var names = inquiryForm.querySelector("#f-names");
@@ -265,10 +261,8 @@
   if (inquiryForm && Object.prototype.hasOwnProperty.call(productChoices, selectedPiece)) {
     var choice = productChoices[selectedPiece];
     inquiryForm.querySelectorAll('input[name="pieces"]').forEach(function (box) {
-      if (box.value === choice.category) box.checked = true;
+      if (box.value === choice.name) box.checked = true;
     });
-    var inquiryMessage = inquiryForm.querySelector("#f-message");
-    if (inquiryMessage && !inquiryMessage.value) inquiryMessage.value = "Interested in: " + choice.name;
   }
 
   // A planner link selects a role only. Never replace a visitor's entry or send.
@@ -277,6 +271,8 @@
     var planningRole = inquiryForm.querySelector("#f-role");
     if (planningRole && !planningRole.value) {
       planningRole.value = inquiryKind === "planner" ? "Planner / coordinator" : "Venue team";
+      var extraDetails = planningRole.closest("details");
+      if (extraDetails) extraDetails.open = true;
     }
   }
 

@@ -2296,6 +2296,50 @@ owned listing. No account identifiers, credentials, or private dashboard content
 are included in this public record.
 
 
+## 2026-09-11-SM4 — Finish inquiries and confirmation reliability
+
+Completed SM-UX-004 under the owner's ongoing website authorization. The claim
+was pushed before source work. PR #39 was prepared on its isolated branch,
+validated, and merged as `d7c7b202f99226e1df08006f876b030d00cbbe8a`.
+PR check run `34576117802` and Pages run `34576178012` both succeeded.
+
+A chosen catalog piece and finish now pass into the inquiry without replacing
+existing notes. Another selection after confirmation reopens the form. Distinct
+viewer labels, larger finish controls, a scrollable panel, and rental-consistent
+wording improve the browsing path. A preventive same-photo override check avoids
+redundant future preloads; current overrides are empty, so no measured current
+bandwidth saving is claimed.
+
+The form retains entered details after unconfirmed receipt and offers a prepared
+email draft. A 20-second deadline covers sending and response parsing, duplicate
+pending requests are prevented, and optional analytics errors cannot mask service
+confirmation. A second inquiry retains campaign attribution. The production
+endpoint and payment behavior are unchanged.
+
+All 18 isolated regression checks passed locally and in CI. They cover success,
+failure, timeouts, late responses, retry, duplicate pending requests, recovery
+email content, all nine catalog finish mappings, keyboard-selection logic, and
+metadata/local references on all 15 sitemap pages. A regression case exposed
+and then verified the fix for choosing another piece after confirmation. Tests
+use mocked fetch and load local scripts only. The Pages pipeline runs the suite
+before publishing; a staging check confirms test dependencies, test files,
+package metadata, and internal Markdown are excluded from the site.
+
+All 20 changed public files returned HTTP 200 and matched release bytes. Desktop
+review at 1363 × 936 confirmed a loaded image and a dialog inside the viewport.
+Selecting a finish closed the viewer, checked the correct inquiry category,
+carried the exact finish note, and focused the name field. There were no telephone
+links or horizontal overflow in that inspected state; phone remains optional.
+No additional production inquiry, payment, outreach message, or booking occurred.
+Real phone/tablet review and inbox receipt confirmation remain open.
+
+Current internal-status and partner threads were reviewed without a new reply
+observed. Existing follow-up dates and reply monitoring remain in place. Private
+operating documentation, release evidence, and package were refreshed, retaining
+the workbook and prior records. Search ownership, Business Profile access, actual
+CRM connection, and real product evidence remain open. No private contact,
+message, customer, credential, or automation identifier is published here.
+
 ## 2026-09-11-SM2 — Higgsfield cinematic review candidate
 
 Prepared the cinematic hero, optimized silent loops, responsive layouts, reduced-motion and still fallbacks. Static validation passed. Live publishing awaits owner approval; browser visual QA was blocked. Full evidence and media provenance: `HIGGSFIELD-MOTION-20260911.md`. No inquiries or payments were sent.

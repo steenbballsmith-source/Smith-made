@@ -55,8 +55,8 @@ async function fixture(t, fetchReply = async () => response(true), query = '') {
     field('venue').value = 'Example venue';
     field('transport').value = 'Not sure yet - please advise';
     field('message').value = 'Green & ivory — please advise.\nTwo options?';
-    form.querySelector('input[name="pieces"][value="Welcome sign"]').checked = true;
-    form.querySelector('input[name="pieces"][value="Bar"]').checked = true;
+    form.querySelector('input[name="pieces"][value="The Arched Welcome"]').checked = true;
+    form.querySelector('input[name="pieces"][value="The Mobile Bar"]').checked = true;
   };
   return {
     w, d, form, field, fill, calls,
@@ -128,7 +128,7 @@ for (const [name, reply] of Object.entries(failures)) {
     assert.equal(draft.pathname, f.w.SMITH_MADE.email);
     const body = draft.searchParams.get('body');
     for (const detail of ['Example Planner', 'qa@example.test', 'Planner / coordinator',
-      'Welcome sign, Bar', 'Not sure yet - please advise', 'Green & ivory — please advise.\nTwo options?',
+      'The Arched Welcome, The Mobile Bar', 'Not sure yet - please advise', 'Green & ivory — please advise.\nTwo options?',
       'utm_source: venue', 'utm_content: partner']) assert.ok(body.includes(detail), detail);
     assert.equal(f.cleared(), true);
     f.field('message').value = 'Revised & preserved';
