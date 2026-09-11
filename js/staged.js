@@ -3,9 +3,11 @@
   'use strict';
   var opener = null, looks = [], index = 0, requestId = 0, closeTimer = 0;
   var displayedLook = null;
+  var pieceName = 'Smith Made piece', bookButton = null;
   var background = [];
   var box = document.createElement('div');
   box.className = 'staged';
+  box.id = 'staged';
   box.id = 'staged';
   box.setAttribute('role', 'dialog');
   box.setAttribute('aria-modal', 'true');
@@ -23,6 +25,7 @@
       '<p class="staged-finish" aria-live="polite"></p>' +
       '<p class="staged-note">Styled design render. Your quote confirms the finish and included items.</p>' +
       '<div class="staged-dots" role="group" aria-label="Choose a finish"></div>' +
+      '<button class="btn staged-inquire" type="button" data-staged-inquire>Ask about this finish</button>' +
     '</div>';
   document.body.appendChild(box);
   var img = box.querySelector('.staged-img');
@@ -56,7 +59,7 @@
         img.classList.remove('is-loading', 'is-failed');
         displayedLook = look;
         frame.setAttribute('aria-busy', 'false');
-        finishLine.textContent = look.finish;
+        finishLine.textContent = pieceName + ' · ' + look.finish;
         if (window.smTrack) {
           var piece = opener && opener.closest('li.piece');
           window.smTrack('finish_view', { piece: piece && piece.id ? piece.id.replace(/^piece-/, '') : '', finish: look.finish });
@@ -100,7 +103,10 @@
     arrows.forEach(function (a) { a.hidden = looks.length < 2; });
     var piece = trigger.closest('li.piece');
     var heading = piece && piece.querySelector('h3');
-    box.setAttribute('aria-label', heading ? heading.textContent.trim() + ' finishes' : 'Piece shown staged');
+    pieceName = heading ? heading.textContent.trim() : 'Smith Made piece';
+    bookButton = piece && piece.querySelector('[data-book]');
+    box.querySelector('[data-staged-inquire]').hidden = !bookButton;
+    box.setAttribute('aria-label', pieceName + ' design finishes');
     img.classList.add('is-failed');
     box.hidden = false;
     box.inert = false;
@@ -130,12 +136,12 @@
     box.classList.remove('is-open');
     finishClose();
   });
-  function close() {
+  function close(immediate) {
     if (!box.classList.contains('is-open')) return;
     ++requestId;
     box.classList.remove('is-open');
     box.inert = true;
-    if (noMotion()) finishClose();
+    if (immediate || noMotion()) finishClose();
     else closeTimer = setTimeout(finishClose, 300);
   }
   document.addEventListener('click', function (event) {
@@ -144,6 +150,19 @@
   });
   box.addEventListener('click', function (event) {
     if (event.target.closest('[data-staged-close]')) return close();
+    if (event.target.closest('[data-staged-inquire]') && bookButton) {
+      var target = bookButton;
+      var note = 'Interested in finish: ' + pieceName + ' — ' + looks[index].finish;
+      // Restore the page before moving focus. Reopen a completed form before adding its new finish.
+      close(true);
+      target.click();
+      var message = document.querySelector('[data-inquiry-form] #f-message');
+      if (message && message.value.indexOf(note) === -1) {
+        message.value += (message.value ? '\n' : '') + note;
+        message.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      return;
+    }
     var step = event.target.closest('[data-staged-step]');
     if (step) show(index + Number(step.getAttribute('data-staged-step')));
   });

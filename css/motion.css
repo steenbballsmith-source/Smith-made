@@ -328,3 +328,11 @@ html.motion-paused::view-transition-new(*) { animation: none !important; }
 .inquiry-review .form-help { margin:14px 0 0; letter-spacing:normal; }
 .form input, .form select, .form textarea { scroll-margin-top:110px; }
 @media(max-width:480px) { .inquiry-actions > .btn { width:100%; } .inquiry-review { padding:16px; } }
+
+/* Keep every viewer control reachable on short screens and enlarged text. */
+.staged { align-items:center; overflow:hidden; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); }
+.staged-backdrop { position:fixed; }
+.staged-panel { margin:0; flex-shrink:0; max-height:calc(100dvh - max(12px,env(safe-area-inset-top)) - max(12px,env(safe-area-inset-bottom))); overflow-y:auto; overscroll-behavior:contain; }
+.staged-note { font-size:.875rem; line-height:1.6; letter-spacing:.035em; text-transform:none; }
+.staged-dots { flex-wrap:wrap; }
+@media(max-height:500px) { .staged-frame { height:48svh; } .staged { padding-inline:12px; } }

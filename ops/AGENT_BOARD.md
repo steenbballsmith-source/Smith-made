@@ -1635,7 +1635,7 @@ Smith Made section in `HANDOFF-TO-CODEX.md` and `LOG.md` entry 2026-09-11-SM1.
 Owner requested Higgsfield visuals, cinematic hero transitions, layered depth, and phone-friendly layouts. Task branch: `codex/higgsfield-motion-20260911`. Owns scoped homepage hero markup, `css/motion.css`, `js/motion.js`, generated public hero assets, and this task's board/log/handoff entries. Preserve current email-first inquiries, catalog facts, payments, domain, and existing pages. Native scrolling, reduced-motion and media-failure fallbacks required. Verify before publishing.
 
 
-Implementation and optimized Higgsfield media are complete. Production release remains pending owner approval after automatic approval review rejected the live Smith Digital deployment in the same request. Do not merge or publish this task until approved. Static page/assets, JSON-LD, JavaScript syntax, and preserved inquiry targets pass. The preview browser was blocked; phone/tablet visual QA and inbox delivery are unverified. Private review: https://smith-made-cinema-review.steensmith.chatgpt.site (check deployment status before describing it as available). See ops/HIGGSFIELD-MOTION-20260911.md.
+Implementation and optimized Higgsfield media are complete. The owner explicitly approved publication on September 11, then asked for further refinement first. Complete the current refinement and validation before publishing. The earlier approval blocker is resolved. Static page/assets, JSON-LD, JavaScript syntax, and preserved inquiry targets pass. The preview browser was blocked; phone/tablet visual QA and inbox delivery are unverified. Private review: https://smith-made-cinema-review.steensmith.chatgpt.site (check deployment status before describing it as available). See ops/HIGGSFIELD-MOTION-20260911.md.
 
 
 ---
@@ -1714,3 +1714,6 @@ existing partner introductions. Private operating files remain outside this repo
 SM-MOTION-20260911 continued polish: removed the heart from the candidate collection and search data per the later review request; preserved the newer PR #38 planner and delivery work. Refined side gutters, sticky navigation, phone type, and damped motion. Private review only. Production approval remains outstanding. Full evidence: `HIGGSFIELD-MOTION-20260911.md`.
 
 SM-MOTION-20260911 continuation, inquiry reliability: owner asked to keep working. Extends the same draft task to `js/form.js`, inquiry markup, phone navigation, and matching owner-private review. Preserve the production endpoint and native POST fallback, add local detail review and failure recovery, and keep public-domain publication pending approval. No test inquiry or external message is authorized by this pass.
+
+
+SM-MOTION-20260911 current authorization: owner approval is now explicit. The September 11 short-screen and motion-lifecycle refinement is complete. Proceed with the validated cinematic release while preserving any later main-branch work. This supersedes earlier pending-approval statements for this task.

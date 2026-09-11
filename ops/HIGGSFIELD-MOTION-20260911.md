@@ -51,3 +51,15 @@ The newer main-branch operational and search notes are preserved through `7c7b5d
 
 
 Preserved concurrent private-review commit `a5f163c`: page-wide motion preferences, video source changes on rotation, back/forward lifecycle cleanup, active-section navigation, named image-viewer controls, and phone-safe inquiry focus. Combined these with the inquiry review/recovery work in both the final private review and draft production candidate. The same form simulations still pass after reconciliation.
+
+
+## Approval and final short-screen refinement
+
+The owner explicitly approved publication, then requested more refinement first. That approval supersedes the earlier pending-approval notes. The viewer now scrolls within the visible screen, keeps the backdrop fixed, respects safe-area spacing, wraps finish controls, and uses readable captions. Short landscape screens receive a shorter image area. Existing inquiry, motion, and catalog behavior is preserved. Static page checks passed. Phone/browser visual QA and real inbox receipt remain unverified; no additional test inquiry was sent.
+
+
+## Final integration of PR #39
+
+Preserved the current production inquiry release, including selected-finish inquiries, defensive photo and analytics handling, full email attribution, late-response protection, and its pull-request and publishing checks. Combined these with the cinematic viewer, eight-piece collection, and local detail-review/copy UI. The viewer closes and restores page interaction before focusing the inquiry, and chosen finishes survive reopening a completed form. A 20-second deadline covers both the request and response parsing. Confirmed inquiries clear personal fields while retaining campaign attribution for another inquiry. No request is retried automatically.
+
+All 18 repository checks passed against the combined source with external resources and network sending disabled. The two count assertions now match the approved eight designs and 14 sitemap pages. The test fixture supports the existing motion-aware navigation APIs; no browser or phone-rendering claim follows from these tests.

@@ -44,8 +44,13 @@
     summary.value = details(data);
     var subject = "Smith Made event inquiry: " + (data.get("names") || "new inquiry") +
       (data.get("date") ? " / " + data.get("date") : "");
+    var attribution = ["utm_source", "utm_medium", "utm_campaign", "utm_content"].filter(function (key) {
+      return data.get(key);
+    }).map(function (key) { return key + ": " + data.get(key); });
+    var body = summary.value + "\nHow you found us: " + (data.get("heard_about") || "Not specified") +
+      (attribution.length ? "\n\n" + attribution.join("\n") : "");
     email.href = "mailto:" + (config.email || "will.smithmade@gmail.com") +
-      "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(summary.value);
+      "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     email.hidden = preview || pending;
     review.hidden = false;
     note.textContent = preview ? "Preview only. No inquiry has been sent." :
@@ -100,16 +105,26 @@
     data.set("_subject", "Smith Made event inquiry: " + (data.get("names") || "new inquiry"));
     data.set("_template", "table");
     var controller = new AbortController();
-    var timer = setTimeout(function () { controller.abort(); }, 15000);
+    var timer;
+    var deadline = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        controller.abort();
+        reject(new Error("Confirmation timed out"));
+      }, 20000);
+    });
     var locked = Array.from(form.querySelectorAll('input:not(:disabled), select:not(:disabled), textarea:not([readonly]):not(:disabled)'));
     locked.forEach(function (field) { field.disabled = true; });
     try {
-      var response = await fetch(config.formEndpoint, {
-        method: "POST", body: data, headers: { Accept: "application/json" }, signal: controller.signal
+      var request = Promise.resolve().then(function () {
+        return fetch(config.formEndpoint, {
+          method: "POST", body: data, headers: { Accept: "application/json" }, signal: controller.signal
+        });
+      }).then(function (response) {
+        if (!response.ok) throw new Error("Unconfirmed request");
+        // A 200 HTML verification page is not an acknowledgement. Require the endpoint's JSON.
+        return response.json();
       });
-      if (!response.ok) throw new Error("Unconfirmed request");
-      // A 200 HTML verification page is not an acknowledgement. Require the endpoint's JSON.
-      var payload = await response.json();
+      var payload = await Promise.race([request, deadline]);
       if (!payload || (payload.success !== true && payload.success !== "true")) throw new Error("No acknowledgement");
       completed = true;
       // Analytics must never turn an acknowledged inquiry into a failed-send message.
@@ -124,16 +139,16 @@
       reviewDetails(data, false);
       say(controller.signal.aborted || error.name === "AbortError"
         ? "Confirmation took too long. Your inquiry may have arrived. Keep these details and email us before retrying to avoid a duplicate."
-        : "The website could not confirm your inquiry. Your details are still here. Try again or open the email draft below.", "error");
+        : "We couldn’t confirm your inquiry. Your details are still here. Try again or open the email draft below.", "error");
     } finally {
       clearTimeout(timer);
       pending = false;
       locked.forEach(function (field) { field.disabled = false; });
-      button.disabled = completed;
+      button.disabled = false;
       button.textContent = completed ? "Inquiry submitted" : submitLabel;
       reviewButton.disabled = completed;
       email.hidden = preview || completed;
-      form.setAttribute("aria-busy", "false");
+      form.removeAttribute("aria-busy");
     }
   });
   function showSuccess() {
@@ -146,14 +161,16 @@
       document.documentElement.classList.contains("motion-paused");
     success.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
     var again = success.querySelector("[data-form-again]");
+    var attribution = Array.from(form.querySelectorAll('[data-utm]')).map(function (field) {
+      return { field: field, value: field.value };
+    });
+    form.reset();
+    attribution.forEach(function (entry) { entry.field.value = entry.value; });
+    review.hidden = true;
+    say("");
     if (again && !again.__wired) {
       again.__wired = true;
       again.addEventListener("click", function () {
-        var attribution = Array.from(form.querySelectorAll('[data-utm]')).map(function (field) {
-          return { field: field, value: field.value };
-        });
-        form.reset();
-        attribution.forEach(function (entry) { entry.field.value = entry.value; });
         completed = false;
         success.hidden = true;
         review.hidden = true;

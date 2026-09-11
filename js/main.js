@@ -205,7 +205,7 @@
 
   document.querySelectorAll("[data-piece-photo]").forEach(function (img) {
     var src = photos[img.getAttribute("data-piece-photo")];
-    if (!src) return;
+    if (!src || img.getAttribute("src") === src) return;
     /* Preload, then swap — the placeholder stays visible until the real
        photo is ready, so there's never a blank card. */
     var real = new Image();
@@ -234,10 +234,15 @@
   document.querySelectorAll("[data-book]").forEach(function (button) {
     button.addEventListener("click", function () {
       if (!inquiryForm) return;
+      var success = document.querySelector("[data-form-success]");
+      if (success && !success.hidden) {
+        var again = success.querySelector("[data-form-again]");
+        if (again) again.click();
+      }
       var box = inquiryForm.querySelector('input[name="pieces"][value="' + button.getAttribute("data-book") + '"]');
       if (box) box.checked = true;
       var message = inquiryForm.querySelector("#f-message");
-      var note = "Booking: " + button.getAttribute("data-piece");
+      var note = "Interested in: " + button.getAttribute("data-piece");
       if (message && message.value.indexOf(note) === -1) {
         message.value = (message.value ? message.value + "\n" : "") + note;
       }
