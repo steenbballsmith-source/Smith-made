@@ -107,7 +107,7 @@
     var piece = trigger.closest('li.piece');
     var heading = piece && piece.querySelector('h3');
     pieceName = (owner && owner.getAttribute('data-staged-name')) || (heading && heading.textContent.trim()) || 'Smith Made piece';
-    bookButton = piece && piece.querySelector('[data-book]');
+    bookButton = (piece && piece.querySelector('[data-book]')) || (owner && document.querySelector('[data-piece-inquiry]'));
     box.querySelector('[data-staged-inquire]').hidden = !bookButton;
     box.setAttribute('aria-label', pieceName + ' design finishes');
     img.classList.add('is-failed');
@@ -160,6 +160,13 @@
     if (event.target.closest('[data-staged-inquire]') && bookButton) {
       var target = bookButton;
       var note = 'Interested in finish: ' + pieceName + ' — ' + looks[index].finish;
+      var form = document.querySelector('[data-inquiry-form]');
+      if (form && form.getAttribute('aria-busy') === 'true') return;
+      if (!form && target.tagName === 'A') {
+        var destination = new URL(target.href, window.location.href);
+        destination.searchParams.set('finish', looks[index].finish);
+        target.href = destination.href;
+      }
       // Restore the page before moving focus. Reopen a completed form before adding its new finish.
       close(true);
       target.click();

@@ -1,5 +1,7 @@
 # Smith Made website — the complete owner's guide
 
+> September 12, 2026: For the current collection, event photography, product facts, and inquiry handoff, use [WEBSITE-CONTENT.md](WEBSITE-CONTENT.md). It supersedes the older file paths, media instructions, and collection examples below. The live site has eight pieces, a separate collection page, and detailed policies in `delivery.html`.
+
 Everything you will ever need to do with this website, step by step, in
 plain words. No coding knowledge needed — every step happens in a web
 browser on **github.com**, and nothing here can permanently break the

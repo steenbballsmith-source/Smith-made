@@ -18,8 +18,8 @@ const response = success => ({ ok: true, json: async () => ({ success }) });
 
 // Only our local markup/scripts execute. jsdom's external resource loading is
 // disabled; fetch is replaced before any script runs. No inquiry is sent.
-async function fixture(t, fetchReply = async () => response(true), query = '') {
-  const dom = new JSDOM(html, {
+async function fixture(t, fetchReply = async () => response(true), query = '', source = html) {
+  const dom = new JSDOM(source, {
     url: 'https://smithmadesc.com/' + query,
     runScripts: 'outside-only'
   });
@@ -185,10 +185,10 @@ test('a visitor can retry manually after an unconfirmed response', async t => {
   assert.equal(f.recovery.hidden, true);
 });
 
-test('all eight catalog pieces carry the selected finish into the existing inquiry without sending', async t => {
+test('all four homepage pieces carry the selected finish into the existing inquiry without sending', async t => {
   const f = await fixture(t);
   const pieces = [...f.d.querySelectorAll('li.piece')];
-  assert.equal(pieces.length, 8);
+  assert.equal(pieces.length, 4);
   for (const piece of pieces) {
     f.form.reset(); f.field('message').value = 'Keep my event details';
     const opener = piece.querySelector('[data-staged]');
@@ -252,4 +252,126 @@ test('optional analytics errors do not interrupt the finish viewer', async t => 
   assert.doesNotThrow(() => f.w.smTrack('finish_view', {}));
   f.d.querySelector('li.piece [data-staged]').click();
   assert.equal(f.d.querySelector('#staged').hidden, false);
+});
+
+test('every pairing selects its exact pieces and preserves entered notes and an open review', async t => {
+  const f = await fixture(t);
+  const pairings = {
+    'warm-welcome': ['The Arched Welcome', 'Seating Chart Wall'],
+    'ceremony-moment': ['The Arched Welcome', 'Ceremony Arch Set'],
+    'time-to-toast': ['Champagne Wall', 'The Mobile Bar']
+  };
+  for (const [id, expected] of Object.entries(pairings)) {
+    f.form.reset(); f.fill();
+    f.form.querySelectorAll('[name="pieces"]').forEach(box => { box.checked = false; });
+    f.form.querySelector('[data-form-review]').click();
+    const message = f.field('message').value;
+    f.d.querySelector('[data-book-set="' + id + '"]').click();
+    assert.deepEqual([...f.form.querySelectorAll('[name="pieces"]:checked')].map(box => box.value), expected);
+    assert.equal(f.field('message').value, message);
+    assert.equal(f.field('names').value, 'Example Planner');
+    assert.ok(f.field('requested_set').value);
+    assert.ok(f.form.querySelector('[data-inquiry-summary]').value.includes(f.field('requested_set').value));
+    assert.equal(f.d.querySelector('[data-selection-note]').hidden, false);
+    const box = f.form.querySelector('[name="pieces"]:checked');
+    box.checked = false; box.dispatchEvent(new f.w.Event('input', { bubbles: true }));
+    assert.equal(f.field('requested_set').value, '');
+    assert.equal(f.d.querySelector('[data-selection-note]').hidden, true);
+  }
+  await flush(); assert.equal(f.calls.length, 0);
+});
+
+test('pairing and product finish deep links prefill safely without sending', async t => {
+  const paired = await fixture(t, undefined, '?set=time-to-toast');
+  assert.equal(paired.field('requested_set').value, 'Time to toast');
+  assert.equal(paired.form.querySelectorAll('[name="pieces"]:checked').length, 2);
+  const piece = await fixture(t, undefined, '?piece=ceremony-arch-set&finish=Walnut%20Trio');
+  assert.equal(piece.form.querySelector('[name="pieces"]:checked').value, 'Ceremony Arch Set');
+  assert.match(piece.field('message').value, /Ceremony Arch Set — Walnut Trio/);
+  const unknown = await fixture(t, undefined, '?set=__proto__&piece=constructor&finish=Unknown');
+  assert.equal(unknown.form.querySelectorAll('[name="pieces"]:checked').length, 0);
+  assert.equal(unknown.field('message').value, '');
+  assert.equal(paired.calls.length + piece.calls.length + unknown.calls.length, 0);
+});
+
+test('inquiry reference and pairing survive failure, email fallback, and manual retry', async t => {
+  let attempt = 0;
+  const f = await fixture(t, async () => response(++attempt > 1), '?set=warm-welcome');
+  f.fill(); f.field('event_type').value = 'Wedding';
+  const reference = f.field('submission_id').value;
+  assert.match(reference, /^SM-/);
+  f.submit(); await flush();
+  const body = new URL(f.draft.href).searchParams.get('body');
+  assert.ok(body.includes(reference));
+  assert.ok(body.includes('Event type: Wedding'));
+  assert.ok(body.includes('Suggested pairing: A warm welcome'));
+  assert.equal(f.calls[0][1].body.get('submission_id'), reference);
+  f.submit(); await flush();
+  assert.equal(f.calls[1][1].body.get('submission_id'), reference);
+  assert.equal(f.success.hidden, false);
+  assert.ok(f.d.querySelector('[data-inquiry-reference]').textContent.includes(reference));
+  f.d.querySelector('[data-book-set="time-to-toast"]').click();
+  assert.equal(f.success.hidden, true);
+  assert.equal(f.field('requested_set').value, 'Time to toast');
+  assert.notEqual(f.field('submission_id').value, reference);
+  assert.equal(f.field('email').value, '');
+});
+
+test('selection cannot mutate a request while it is sending', async t => {
+  const pending = deferred();
+  const f = await fixture(t, () => pending.promise);
+  f.fill(); f.submit(); await flush();
+  const before = [...f.form.querySelectorAll('[name="pieces"]:checked')].map(box => box.value);
+  f.d.querySelector('[data-book-set="ceremony-moment"]').click();
+  assert.deepEqual([...f.form.querySelectorAll('[name="pieces"]:checked')].map(box => box.value), before);
+  pending.resolve(response(true)); await flush();
+});
+
+test('private preview reviews the new fields without making a request', async t => {
+  const f = await fixture(t, undefined, '?set=warm-welcome', html.replace('method="POST"', 'method="dialog"'));
+  f.fill(); f.submit(); await flush();
+  assert.equal(f.calls.length, 0);
+  assert.equal(f.success.hidden, true);
+  assert.equal(f.recovery.hidden, false);
+  assert.match(f.form.querySelector('[data-inquiry-summary]').value, /Suggested pairing: A warm welcome/);
+  assert.match(f.status.textContent, /has not been sent/);
+});
+
+test('all eight detail galleries and full catalog carry a selected finish to the correct inquiry URL', async t => {
+  const catalog = fs.readFileSync(path.join(root, 'collection/index.html'), 'utf8');
+  const cat = new JSDOM(catalog);
+  const ids = [...cat.window.document.querySelectorAll('li.piece')].map(el => el.id.replace('piece-', ''));
+  cat.window.close();
+  assert.equal(ids.length, 8);
+  const pages = ['index', ...ids];
+  for (const id of pages) {
+    const dom = new JSDOM(fs.readFileSync(path.join(root, 'collection', id + '.html'), 'utf8'), {
+      url: 'https://smithmadesc.com/collection/' + id + '.html', runScripts: 'outside-only'
+    });
+    const w = dom.window, d = w.document;
+    t.after(() => w.close());
+    w.matchMedia = () => ({ matches: true });
+    w.HTMLElement.prototype.scrollIntoView = function () {};
+    d.addEventListener('click', event => { if (event.target.closest('[data-book], [data-piece-inquiry]')) event.preventDefault(); });
+    w.eval(scripts[scripts.length - 1]);
+    const openers = id === 'index' ? [...d.querySelectorAll('li.piece [data-staged]')] : [d.querySelector('[data-staged]')];
+    for (const opener of openers) {
+      opener.click();
+      const dialog = d.querySelector('#staged');
+      const dots = [...dialog.querySelectorAll('.staged-dots button')];
+      dots[dots.length - 1].click();
+      const finish = dots[dots.length - 1].textContent;
+      const button = dialog.querySelector('[data-staged-inquire]');
+      assert.equal(button.hidden, false);
+      button.click();
+      const target = id === 'index' ? opener.closest('li.piece').querySelector('[data-book]') : d.querySelector('[data-piece-inquiry]');
+      const url = new URL(target.href);
+      assert.equal(url.origin, 'https://smithmadesc.com');
+      assert.equal(url.pathname, '/index.html');
+      assert.equal(url.hash, '#inquire');
+      assert.equal(url.searchParams.get('piece'), id === 'index' ? opener.closest('li.piece').id.replace('piece-', '') : id);
+      assert.equal(url.searchParams.get('finish'), finish);
+      assert.equal(dialog.hidden, true);
+    }
+  }
 });

@@ -1,26 +1,23 @@
 # SM-CELEBRATIONS-20260912
 
 Owner: ChatGPT
-Status: implemented and locally validated on marketing/celebrations-inquiries-20260912; not published
+Status: release reconciliation in progress in PR #40
 
-## Changes
+## Scope
 
-- Add celebrations.html with separate party/shower, business-event, and graduation/team inquiry routes.
-- Link to the new page from custom-signs.html without removing existing wedding or custom-commission paths.
-- Add the page to sitemap.xml. Preserve unrelated sitemap dates.
-- Preserve the existing inquiry form destination, public email, payment flow, prices, availability policy, analytics, and domain settings.
+Add celebrations.html for private celebrations, business events and milestones. Add links from custom-signs.html and include the page in the sitemap. Preserve existing wedding routes, inquiry endpoint, payment flow, prices, stock policy and analytics.
 
-## Validation completed
+## September 12 reconciliation
 
-- Parsed HTML, one H1, canonical URL, JSON-LD, local fragment targets, and four mailto links checked.
-- Generated page rendered with Chromium at 320 x 780, 390 x 844, and 1365 x 900. Document width equaled viewport width in all three tests.
-- Phone and desktop screenshots visually reviewed. No generated product photographs or claimed customer events used.
-- No new form handler, analytics script, price, stock count, or service guarantee added.
+The original PR check failed because tests/site.test.cjs expected 14 sitemap entries. The customer inquiry tests passed in that run. Main subsequently received PR #41, including a collection index, updated journey assets and 24 isolated checks.
 
-The browser received the generated HTML through set_content for local layout review. This does not establish production delivery, actual inbox receipt, indexing, or live publication.
+The merge resolution uses main commit 4eddf8c7009ba5336864d9d287e14edbce9b429e as its file baseline. It preserves the collection index, journey asset versions and directory URL handling. It adds celebrations as the sixteenth sitemap entry and explicitly asserts its presence. The original celebrations page blob is unchanged.
 
-## Next release checks
+## Evidence and remaining checks
 
-Review the pull-request diff against current main. After an authorized release, verify the deployed celebrations page, incoming links, sitemap, and the existing inquiry route. Do not call a lead delivered until its intended inbox receives it. No production deployment was performed for this branch.
+Original failing workflow: https://github.com/steenbballsmith-source/Smith-made/actions/runs/34674370283
+Last observed main deployment before this release: https://github.com/steenbballsmith-source/Smith-made/actions/runs/34675037930
 
-Private client and outreach records stay outside this public repository. Do not copy inbox records, prospect contacts, private mailing addresses, or commercial approvals here.
+The prior task recorded local mobile/desktop layout review. This follow-on work has not repeated that browser review or submitted a customer inquiry. Require passing checks on the reconciled PR, then verify the deployed page, source links and sitemap after an authorized merge. Do not infer actual inbox delivery, indexing or customer bookings from repository checks.
+
+Private outreach and customer records stay outside this public repository.
