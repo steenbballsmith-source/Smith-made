@@ -41,6 +41,12 @@ window.SMITH_MADE = {
   photos: {
   },
 
+  /* Real event photographs, only with permission to publish.
+     Each entry needs approved: true, src, alt, width, height, caption,
+     a photographer credit, and the ids of the actual rented pieces.
+     See WEBSITE-CONTENT.md for the complete entry format. */
+  events: [],
+
   /* ---- GALLERY --------------------------------------------
      Real-wedding and shop photos. Drop files into
      assets/img/gallery/ and add one line per photo. Either

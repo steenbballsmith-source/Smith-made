@@ -11,12 +11,12 @@ test('every sitemap page retains its search metadata, valid structured data, and
   const sitemap = new JSDOM(read('sitemap.xml'), { contentType: 'text/xml' });
   const urls = [...sitemap.window.document.querySelectorAll('loc')].map(el => el.textContent);
   sitemap.window.close();
-  assert.equal(urls.length, 14);
+  assert.equal(urls.length, 15);
   assert.equal(new Set(urls).size, urls.length);
   for (const url of urls) {
     const location = new URL(url);
     assert.equal(location.origin, 'https://smithmadesc.com');
-    const filename = location.pathname === '/' ? 'index.html' : location.pathname.slice(1);
+    const filename = location.pathname.endsWith('/') ? location.pathname.slice(1) + 'index.html' : location.pathname.slice(1);
     const page = new JSDOM(read(filename), { url });
     try {
       const d = page.window.document;

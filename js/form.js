@@ -21,6 +21,22 @@
   button.textContent = submitLabel;
   reviewButton.hidden = false;
 
+  // A reference connects an email, a retry, and the owner's existing lead record.
+  // It contains no personal data and is kept only in this form, not browser storage.
+  function ensureReference() {
+    var field = form.querySelector('[name="submission_id"]');
+    if (!field || field.value) return;
+    var random = window.crypto && typeof window.crypto.randomUUID === "function"
+      ? window.crypto.randomUUID() : Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+    field.value = "SM-" + random;
+  }
+  function formData() { ensureReference(); return new FormData(form); }
+  ensureReference();
+  form.addEventListener("reset", function () {
+    var field = form.querySelector('[name="submission_id"]');
+    if (field) field.value = "";
+  });
+
   function say(message, kind) {
     status.textContent = message;
     status.classList.toggle("is-ok", kind === "success");
@@ -28,13 +44,16 @@
   }
   function details(data) {
     return [
+      "Inquiry reference: " + (data.get("submission_id") || "Not assigned"),
       "Names: " + (data.get("names") || "Not provided"),
       "Email: " + (data.get("email") || "Not provided"),
       "Planning as: " + (data.get("planning_role") || "Not specified"),
       "Phone: " + (data.get("phone") || "Not provided"),
       "Event date: " + (data.get("date") || "TBD"),
+      "Event type: " + (data.get("event_type") || "Not specified"),
       "Venue / city: " + (data.get("venue") || "Not decided yet"),
       "Interested in: " + (data.getAll("pieces").join(", ") || "Not sure yet"),
+      "Suggested pairing: " + (data.get("requested_set") || "Individual pieces"),
       "Rent or buy: " + (data.get("mode") || "Not sure yet"),
       "Transport: " + (data.get("transport") || "Not decided yet"),
       "Found us through: " + (data.get("heard_about") || "Not specified"),
@@ -58,9 +77,9 @@
       "Review or copy these details. Opening an email draft does not send it; choose Send in your email app.";
     if (focus) summary.focus();
   }
-  reviewButton.addEventListener("click", function () { reviewDetails(new FormData(form), true); });
+  reviewButton.addEventListener("click", function () { reviewDetails(formData(), true); });
   form.addEventListener("input", function () {
-    if (!pending && !completed && !review.hidden) reviewDetails(new FormData(form), false);
+    if (!pending && !completed && !review.hidden) reviewDetails(formData(), false);
   });
   copy.addEventListener("click", async function () {
     try {
@@ -75,7 +94,7 @@
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     if (pending || completed || !form.reportValidity()) return;
-    var data = new FormData(form);
+    var data = formData();
     if (data.get("company")) {
       say("Please use the direct email link to ask about your event.", "error");
       return;
@@ -103,7 +122,8 @@
     button.textContent = "Sending inquiry…";
     form.setAttribute("aria-busy", "true");
     say("Sending your inquiry. Please keep this page open.");
-    data.set("_subject", "Smith Made event inquiry: " + (data.get("names") || "new inquiry"));
+    data.set("_subject", "Smith Made event inquiry: " + (data.get("names") || "new inquiry") +
+      (data.get("date") ? " / " + data.get("date") : ""));
     data.set("_template", "table");
     var controller = new AbortController();
     var timer;
@@ -135,7 +155,7 @@
           utm_source: data.get("utm_source") || "", utm_medium: data.get("utm_medium") || ""
         });
       } catch (_) {}
-      showSuccess();
+      showSuccess(data);
     } catch (error) {
       reviewDetails(data, false);
       say(controller.signal.aborted || error.name === "AbortError"
@@ -152,9 +172,11 @@
       form.removeAttribute("aria-busy");
     }
   });
-  function showSuccess() {
+  function showSuccess(data) {
     var success = document.querySelector("[data-form-success]");
     if (!success) { say("Inquiry submitted for processing. We usually reply within a day or two.", "success"); return; }
+    var reference = success.querySelector('[data-inquiry-reference]');
+    if (reference) reference.textContent = "Your reference: " + data.get("submission_id");
     form.style.display = "none";
     success.hidden = false;
     success.focus({ preventScroll: true });
@@ -180,6 +202,7 @@
         reviewButton.disabled = false;
         button.textContent = submitLabel;
         say("");
+        ensureReference();
         form.querySelector("#f-names").focus();
       });
     }

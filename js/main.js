@@ -231,9 +231,65 @@
   }
 
   var inquiryForm = document.querySelector("[data-inquiry-form]");
+  var pairings = {
+    "warm-welcome": { name: "A warm welcome", pieces: ["The Arched Welcome", "Seating Chart Wall"] },
+    "ceremony-moment": { name: "The ceremony moment", pieces: ["Ceremony Arch Set", "The Arched Welcome"] },
+    "time-to-toast": { name: "Time to toast", pieces: ["The Mobile Bar", "Champagne Wall"] }
+  };
+  var chosenPairings = [];
+  function openInquiry() {
+    if (!inquiryForm || inquiryForm.getAttribute("aria-busy") === "true") return false;
+    var success = document.querySelector("[data-form-success]");
+    var again = success && !success.hidden && success.querySelector("[data-form-again]");
+    if (again) again.click();
+    return true;
+  }
+  function syncPairings() {
+    if (!inquiryForm) return;
+    var selected = Array.from(inquiryForm.querySelectorAll('input[name="pieces"]:checked')).map(function (box) { return box.value; });
+    chosenPairings = chosenPairings.filter(function (id) { return pairings[id].pieces.every(function (name) { return selected.indexOf(name) !== -1; }); });
+    var labels = chosenPairings.map(function (id) { return pairings[id].name; });
+    var field = inquiryForm.querySelector('[name="requested_set"]');
+    if (field) field.value = labels.join("; ");
+    var note = document.querySelector('[data-selection-note]');
+    if (note) {
+      note.hidden = !labels.length;
+      note.textContent = "Selected pairing: " + labels.join("; ") + ". You can adjust your pieces below.";
+    }
+  }
+  function choosePairing(id) {
+    if (!Object.prototype.hasOwnProperty.call(pairings, id) || !openInquiry()) return false;
+    inquiryForm.querySelectorAll('input[name="pieces"]').forEach(function (box) {
+      if (pairings[id].pieces.indexOf(box.value) !== -1) box.checked = true;
+    });
+    if (chosenPairings.indexOf(id) === -1) chosenPairings.push(id);
+    syncPairings();
+    inquiryForm.dispatchEvent(new Event("input", { bubbles: true }));
+    return true;
+  }
+  document.querySelectorAll('[data-book-set]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      if (!inquiryForm) return;
+      event.preventDefault();
+      if (!choosePairing(link.getAttribute("data-book-set"))) return;
+      var section = document.getElementById("inquire");
+      scrollToEl(section);
+      section.tabIndex = -1;
+      section.focus({ preventScroll: true });
+    });
+  });
+  if (inquiryForm) {
+    inquiryForm.addEventListener("input", syncPairings);
+    inquiryForm.addEventListener("reset", function () {
+      chosenPairings = [];
+      syncPairings();
+    });
+    choosePairing(new URLSearchParams(window.location.search).get("set"));
+  }
   document.querySelectorAll("[data-book]").forEach(function (button) {
     button.addEventListener("click", function () {
-      if (!inquiryForm) return;
+      if (!openInquiry()) return;
       var success = document.querySelector("[data-form-success]");
       if (success && !success.hidden) {
         var again = success.querySelector("[data-form-again]");
@@ -263,6 +319,12 @@
     inquiryForm.querySelectorAll('input[name="pieces"]').forEach(function (box) {
       if (box.value === choice.name) box.checked = true;
     });
+    var finish = new URLSearchParams(window.location.search).get("finish");
+    var message = inquiryForm.querySelector('#f-message');
+    if (finish && finish.length <= 120 && message) {
+      var finishNote = "Interested in finish: " + choice.name + " — " + finish;
+      if (message.value.indexOf(finishNote) === -1) message.value += (message.value ? "\n" : "") + finishNote;
+    }
   }
 
   // A planner link selects a role only. Never replace a visitor's entry or send.
@@ -335,6 +397,43 @@
   }
 
   /* ---- Gallery: built entirely from the manifest ------------------------- */
+
+  // Real events remain absent until permission and actual product links exist.
+  var eventsSection = document.querySelector('[data-events-section]');
+  var eventsList = document.querySelector('[data-events-list]');
+  var events = Array.isArray(config.events) ? config.events : [];
+  if (eventsSection && eventsList) events.forEach(function (entry) {
+    if (!entry || entry.approved !== true || !entry.src || !entry.alt || !entry.caption ||
+        !entry.credit || !(entry.width > 0) || !(entry.height > 0) || !Array.isArray(entry.pieces)) return;
+    var eventPieces = entry.pieces.filter(function (id) { return Object.prototype.hasOwnProperty.call(productChoices, id); });
+    var source;
+    try { source = new URL(entry.src, window.location.href); } catch (_) { return; }
+    if (!eventPieces.length || source.origin !== window.location.origin) return;
+    var figure = document.createElement('figure');
+    var photograph = document.createElement('img');
+    photograph.src = source.href;
+    photograph.alt = entry.alt;
+    photograph.width = entry.width;
+    photograph.height = entry.height;
+    photograph.loading = 'lazy';
+    photograph.decoding = 'async';
+    var caption = document.createElement('figcaption');
+    caption.appendChild(document.createTextNode(entry.caption + ' Photo: ' + entry.credit + '. '));
+    eventPieces.forEach(function (id) {
+      var link = document.createElement('a');
+      link.href = 'collection/' + id + '.html';
+      link.textContent = productChoices[id].name;
+      caption.appendChild(link);
+    });
+    photograph.addEventListener('error', function () {
+      figure.remove();
+      eventsSection.hidden = !eventsList.children.length;
+    }, { once: true });
+    figure.appendChild(photograph);
+    figure.appendChild(caption);
+    eventsList.appendChild(figure);
+    eventsSection.hidden = false;
+  });
 
   var gallerySection = document.querySelector("[data-gallery-section]");
   var galleryList = document.querySelector("[data-gallery-list]");
