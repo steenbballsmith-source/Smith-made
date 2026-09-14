@@ -1,58 +1,50 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-09-07, after the weekly outreach run. This is your inbox: it
+Updated 2026-09-14, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## 🟠 The October order: your schedule says this week is the checkpoint
+## 🔴 The October order has gone quiet. Ask Will today.
 
-First, a correction to what I told you last Monday. I said Will's request for
-pricing help had been sitting unanswered for a day and a half. **That was
-wrong** — you'd already sent him the whole package eleven hours earlier: three
-priced options, the schedule, the customer email, the PDF, the render and the
-build guide. I'd only checked the customer thread, and your reply had started
-its own thread because it had attachments. The draft I wrote was redundant and
-is now marked DO NOT SEND.
+Her wedding is **October 10 — 26 days away.**
 
-**What's actually open.** Your plan had final details and the proof approved in
-"early September" — that's this week — with delivery September 30 to October 2.
-The wedding is October 10, so you're 33 days out.
+You sent Will the quote on August 31 with a schedule: proof approved in early
+September, structure built by mid-September, finish and lettering done by the
+end of September, delivered September 30 to October 2.
 
-Nothing has come back since August 31. I can't tell from your inbox whether the
-quote ever reached her, because Will emails her directly and only forwards you
-some of it. So this is genuinely unknown, not bad news.
+**It's mid-September and I can't see that any of it happened.** No sign the
+quote reached her, no proof approved, no deposit.
 
-**I've drafted a short check-in to Will**, sitting in the quote thread. It asks
-whether the quote went out, and pushes for a straight yes or no on whether he
-can actually cut that cursive lettering — because if the answer is no, she
-needs to hear it this week, not in two.
+Be fair to Will here: he emails her directly and only forwards you some of it,
+so he may have been working on it all along. I genuinely can't tell. But two
+weeks of a five-week plan are gone, and the two notes you sent into that thread
+on the 11th and 12th were about the website and the new introductions — neither
+mentioned her.
 
-## 🟢 Worth knowing: you now know how she found you
+**I've drafted the message to Will**, in the quote thread. It asks three
+questions he can answer in one line each:
 
-Her inquiry came through the form on your own website. The tracking on that
-form recorded where she came from, and the answer is **chatgpt.com**.
+1. Can you cut the cursive lettering — yes or no?
+2. Has she approved a proof?
+3. Has any deposit come in?
 
-She found you by asking an AI assistant for a wedding sign maker. Not Google,
-not Instagram, and not one of the fifteen outreach emails.
+Send it today. If the date can't be hit any more, she needs to hear that now,
+not on October 1. A wedding is the one deadline where late and never are the
+same thing.
 
-That's the most useful marketing fact you've got. It means the work done on the
-site — the structured data, the FAQ markup, the plain honest descriptions — is
-what put you in front of her. Those are exactly the things AI assistants read
-when someone asks for a recommendation.
+## 🟢 Ten introductions went out — and next week they all need a nudge
 
-It also means the form works. A real stranger filled it in and it reached
-Will's inbox and became a real quote.
+Two from the drafts I'd prepared, eight to new names. Nothing has come back
+yet, which is normal after three days.
 
-### So here's the honest scoreboard
+**Next Monday all ten are due one follow-up each** — one per business, ever,
+then we stop. Seven prepared drafts are still sitting unsent if you want to
+widen further.
 
-- Fifteen cold emails, two rounds, **zero replies**.
-- One website form submission, from someone who found you through ChatGPT:
-  **a live order worth $1,850.**
-
-Keep sending the nine drafts when you feel like it — they cost nothing. But if
-you want more of what actually worked, the answer is more of the website and
-more real photos on it, not more email.
+The honest tally so far: **twenty-three businesses emailed, zero replies.** One
+customer found you through the website and became a real order. That ratio has
+not changed in six weeks, and it is still telling you the same thing.
 
 ---
 

@@ -2534,3 +2534,55 @@ course.
 
 **Customer details remain out of this public repo:** no name, address, email,
 phone, or venue appears in any committed file.
+
+## 2026-09-14 ~13:20 UTC — cloud Claude — Run #8; ten emails out, one order gone quiet, and a six-week-stale alarm cleared
+
+**Outreach moved, on its own.** Ten introduction emails went out on September
+11–12 — two of them from the rewritten drafts (the rest of that queue is still
+untouched, seven remaining), and eight to targets prepared outside this engine.
+All ten are two to three days old, so none is yet past the five-day mark and no
+follow-up is due. **Ten come due next week**, each limited to one follow-up
+forever.
+
+**Still zero replies.** Nothing from the original fifteen, nothing from the
+eight new targets, nothing from the builder, and nothing from the customer.
+Three rounds of cold email across twenty-three businesses have now produced not
+one reply.
+
+**The order has gone quiet, and that is this week's real finding.** The quote
+package went to the builder on 2026-08-31 carrying a schedule: proof approved
+early September, structure fabricated by mid-September, finish and lettering by
+end of September, delivery September 30 to October 2, for an October 10
+wedding. It is now mid-September — 26 days out — with no visible confirmation
+that the quote ever reached the customer, that a proof was approved, or that a
+deposit arrived.
+
+State this precisely: it is **absence of visibility, not evidence of absence.**
+The builder corresponds with the customer directly and forwards selectively, so
+he may well have been working the whole time. What is certain is that two weeks
+of a five-week schedule have burned with nothing observable, and the two
+messages sent into the quote thread on September 11 and 12 were about the
+website and the new introductions — neither mentioned the customer. A draft is
+now waiting in that thread asking three yes/no questions: can he cut the cursive
+lettering, has she approved a proof, has a deposit come in.
+
+**`HANDOFF-TO-CODEX.md` was broadcasting a resolved critical defect for six
+weeks.** Its 644 lines, dated 2026-08-01, led with three red items about the
+inquiry form: that `js/form.js` was unpatched and would show a couple "Sent!"
+when FormSubmit had returned `success:false`, that the native fallback was
+stranded unmerged, and that the endpoint's `Content-Type` would mislead
+anything sniffing it. Checked today against `origin/main` rather than against
+the board: `form.js` now parses the JSON body and rejects anything that is not
+an acknowledgement, carrying the comment *"A 200 HTML verification page is not
+an acknowledgement. Require the endpoint's JSON."* The file grew from 4,445 to
+9,834 bytes. There is still no `action=` attribute, but the form now builds a
+`mailto:` path from the manifest, which serves the same purpose for a static
+site. Reproduce with
+`git show origin/main:js/form.js | grep -n "response.json\|payload.success"` —
+the parse is line 146, the check line 149.
+
+All three are resolved, and the file has been rewritten to say so and to say
+plainly that nothing is currently open for Codex. An inbox correctly marked
+empty is worth more than a six-week-old false alarm, which is exactly the drift
+the verify-don't-trust rule exists to catch — this time in our own inbox rather
+than on the board.

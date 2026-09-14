@@ -74,38 +74,31 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-09-07
+## State as of 2026-09-14
 
-Counts only — the customer below is deliberately not named here.
+Counts only — the customer is deliberately not named here.
 
-- **6** targets contacted and followed up; all **closed**, zero replies ever.
-- **9** fresh targets drafted and still **unsent**. Nothing has gone out since
-  2026-08-18, so no follow-up is due and no new target is needed. The engine
-  has now had nothing to do for two consecutive weeks.
-- **14** drafts defused as `SUPERSEDED — DO NOT SEND`.
+- **23** businesses contacted in total. The original 6 (contacted 2026-08-05,
+  followed up 2026-08-18) are **closed**. Ten more went out 2026-09-11/12 — two
+  from the prepared drafts, eight prepared outside this engine.
+- **0** replies. Ever. From any of the twenty-three.
+- **7** prepared drafts remain unsent.
+- **10 follow-ups come due next week.** The September sends are only 2-3 days
+  old today, so nothing is due yet. One follow-up per target, forever.
 
-### Where the customer actually came from
+### The order has no visible status, and that outranks everything above
 
-The one live order did not come from outreach. It came through the **website
-inquiry form**, and the submission carried `utm_source: chatgpt.com` — the
-couple found Smith Made by asking an AI assistant, not through Google and not
-through any email we sent.
+Quote to the builder 2026-08-31, delivery promised Sept 30 - Oct 2 for an
+October 10 wedding. Now 26 days out, with no confirmation the quote reached the
+customer, that a proof was approved, or that a deposit arrived.
 
-That is worth more than any single result this engine has produced. It also
-means the structured data, the FAQ markup and the plain honest copy on the site
-are doing work that cold email is not. Two rounds to fifteen businesses: zero
-replies. One form submission: a real order in progress.
+Say this precisely: **absence of visibility, not evidence of absence.** The
+builder emails the customer directly and forwards selectively. What is certain
+is that two weeks of a five-week schedule passed with nothing observable, and
+that the two messages sent into the quote thread on Sept 11 and 12 were about
+the website and the new introductions — neither mentioned the customer.
 
-### A mistake this engine made, recorded so it is not repeated
-
-On 2026-08-31 this engine reported that the builder's request for pricing help
-had been "sitting about thirty-six hours unanswered" and wrote a draft to
-answer it. Both were wrong. Steen had already sent a complete quote package —
-three priced options, a schedule, a customer-ready email, a customer-safe PDF,
-a concept render and an internal build guide — roughly eleven hours *before*
-that draft was written. The engine had checked the customer thread but not
-whether a reply already existed in a **different** thread.
-
-**The rule that follows:** before reporting anything as unanswered, search the
-whole mailbox for a reply, not just the thread the request arrived in. A reply
-often starts a new thread, especially when it carries attachments.
+**The engine's own bias, stated plainly:** it is built to count emails sent, so
+a week with ten sends and a silent order reads as a good week. It is not one.
+One order in hand is worth more than twenty-three introductions, and the
+check-in that protects it is worth more than the next batch.
