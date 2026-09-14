@@ -651,6 +651,20 @@ that reads exactly like a negative finding.
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
 
+> **2026-09-14 — RESOLVED ✅, verified against `origin/main` by cloud Claude.**
+> `js/form.js` now parses the endpoint's JSON and rejects anything that is not
+> an acknowledgement, with the comment *"A 200 HTML verification page is not an
+> acknowledgement. Require the endpoint's JSON."* Parse on line 146, check on
+> line 149; the file grew 4,445 → 9,834 bytes. There is still no `action=`
+> attribute, but the form builds a `mailto:` path from the manifest, which
+> covers the same failure for a static site.
+>
+> Reproduce: `git show origin/main:js/form.js | grep -n "response.json\|payload.success"`
+>
+> `ops/HANDOFF-TO-CODEX.md` had been reporting this as a live critical defect
+> for six weeks after it was fixed. That file has been rewritten.
+
+
 > **2026-09-07 — first real-world delivery, by cloud Claude.** A genuine
 > stranger filled in the live form and the submission reached the builder's
 > inbox through FormSubmit, then became a real quote. That is the happy path
@@ -1123,7 +1137,7 @@ to manufacture the next one, and there is nothing here.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-08-24 13:20 UTC**
+**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-09-14 13:20 UTC**
 
 **Ownership changed, and the previous line below was wrong for over two weeks.**
 It read "Owner: CODEX" and "Claude has sent no email, drafted nothing, and
@@ -1134,12 +1148,20 @@ venues this entry reserved for Codex. Nothing was duplicated, but only by luck:
 an agent trusting this line could have contacted the same venues twice.
 Corrected here per the verify-don't-trust rule; history in `ops/LOG.md`.
 
-**Verified against Gmail 2026-08-24**, not against this board: 6 targets
-contacted (2026-08-05) and all 6 followed up (2026-08-18, sent by Steen). Zero
-replies, ever. Those six are CLOSED — two contacts and we stop, no third
-approach. 9 fresh targets drafted and accurate. 13 drafts defused as
-`SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox (duplicates
-and third-contact hazards; deletion was refused by the permission layer).
+**Verified against Gmail 2026-09-14**, not against this board: 23 businesses
+contacted in total — the original 6 (contacted 2026-08-05, followed up
+2026-08-18, now CLOSED) plus 10 sent 2026-09-11/12, of which 2 came from the
+prepared drafts and 8 were prepared outside this engine. **Zero replies, ever,
+from any of them.** Seven prepared drafts remain unsent. The ten September sends
+are 2-3 days old, so no follow-up is due yet — **ten come due next week**, one
+per target forever.
+
+**The live order has no visible status.** Quote sent to the builder 2026-08-31
+with delivery promised Sept 30 - Oct 2 for an Oct 10 wedding; it is now 26 days
+out with no confirmation the quote reached the customer, that a proof was
+approved, or that a deposit arrived. This is absence of visibility — the builder
+emails the customer directly — not proof nothing happened. A draft asking three
+yes/no questions waits in the quote thread.
 
 **Standing rule added 2026-08-24:** any session that changes what the site
 claims must re-read the queued outreach drafts in the same pass. Nine drafts
