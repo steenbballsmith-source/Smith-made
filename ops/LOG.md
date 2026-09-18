@@ -6,6 +6,98 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-09-18-C2 · cloud Claude · CORRECTION to C1 — wrong market researched; Fort Myers work replaces it
+
+**Correcting `2026-09-18-C1`, which is left standing above per the append-only
+rule.** C1 researched Lebanon/Sweet Home/Albany, **Oregon**. Steen states he
+lives in the **Greenville SC area** and is in **Fort Myers, Florida for the next
+month**. The Oregon lead work is therefore wrong-market and is withdrawn. Its
+*method* holds; its targets do not.
+
+**Where the error came from, because it is reusable.** C1 did not invent the
+location — it took it from this repo. `AGENT_BOARD.md` `SM-PHONE-001` states
+*"541 is the Willamette Valley — Lebanon/Albany, Oregon. **That is Steen's
+region**"*, and `LOG.md` `2026-07-31-C26` repeats it as *"Steen's own region."*
+Both are inferences drawn from an area code and were written as fact. C1 weighed
+them against `SESSION_HANDOFF.md` (Greenville SC) and picked the board, on the
+reasoning that a phone number is harder evidence than a stale handoff. **That
+reasoning was wrong: an area code is evidence of where a number was issued, not
+where its owner lives.**
+
+**Two entries in this repo should now be read as unreliable:** the residency
+claim inside `SM-PHONE-001`, and the same claim in `2026-07-31-C26`. The
+*question* SM-PHONE-001 raises stays valid — a Greenville business publishing a
+541 number is still worth Steen confirming — but **"that is Steen's region" is
+not established**. Do not re-derive his location from the 541 number.
+
+**Corrected facts, from Steen directly 2026-09-18:** home base Greenville SC
+area; physically in Fort Myers FL for roughly the next month; goal restated as
+*what digital services can be sold with AI to make money fast*, which is broader
+than the website-only framing in C1.
+
+---
+
+**Fort Myers findings — verified 2026-09-18.**
+
+**Market shape is the opposite of Oregon's.** Of roughly thirty Lee County
+businesses examined across home watch, fishing charters, pool/lawn and pressure
+washing, **nearly all have working websites**, several with online booking,
+instant quoting, published pricing or an existing SEO vendor. "You need a
+website" is not a viable opener here. Two exceptions were verified and recorded
+on the private page: a charter operator whose live site carries multiple visible
+defects, and an active licensed service business running on a free builder
+subdomain.
+
+**A hypothesis was formed and then killed by verification, which is the point.**
+A home watch company appeared, in search-engine extract text, to be serving
+placeholder contact details (`555-555-5555`, `mymail@mailservice.com`) on its
+live site. Re-fetched with a JavaScript-rendering driver: **the rendered page
+carries the real number throughout and the placeholders are absent.** The snippet
+was stale or drawn from a non-rendered element. Had this gone out unchecked,
+Steen would have told a business owner something untrue about their own website
+as an opening line. **Recorded as a standing rule: render the page before using
+any defect as an opener.**
+
+**The actual opportunity is short-term rental owners**, and the timing is real,
+not manufactured. Snowbird arrival season in Lee County runs September–October;
+industry guidance is to secure season contracts in September and to have
+listings "dialled by December" or lose the bookings that carry the year.
+Supporting figures, from a 2026 Fort Myers Beach market analysis citing AirROI:
+~1,127 active STR units, **+71.3% year on year**, ~60.2% professionally managed
+(so ~40% owner-run), ADR $420 on the beach against $222 mainland and $299 Cape
+Coral, average booking lead time 68 days. Attribution matters here — these are a
+market analysis and a trade blog, **not audited figures**, and the private page
+says so.
+
+**Pricing was taken from published 2026 rate surveys rather than invented:** GBP
+one-time setup $300–800 and $150–400/month managed; a mobile-first
+lead-capture page at **$500 in ~48 hours is a published market price**;
+freelance site builds $500–3,000; freelance video $45–150/hour; missed-call
+text-back $50–300/month platform cost; local SEO retainers $250–3,000/month
+(Ahrefs' 2026 poll of 439 providers: local SEO averages $1,557/month, freelancers
+~$1,150). Fort Myers STR marketing agencies start at $1,000–1,500/month, which
+is the gap a one-off fee sells into.
+
+**Capability blocker found and confirmed.** `mcp__High_Level__list_locations`
+returns **`AUTH_REAUTH_REQUIRED`, upstream 401** — the GoHighLevel connection's
+credentials are rejected. This is consistent with `OPS-CALLERS-001`'s note that
+the trial may never have activated, and it **settles that open question: the
+connection does not work today.** Consequence: missed-call text-back, CRM
+follow-up and review automation cannot be delivered to a client until Steen
+reconnects it. That is also the only recurring-revenue service on the menu.
+
+**Placement unchanged.** Named prospects stay off this public repository
+(`CHARTER.md` §7 and §9). Private page: linked from `HANDOFF-TO-CODEX.md`.
+The superseded Oregon page is noted there as withdrawn.
+
+**No external contact of any kind.** No call, email, message, listing enquiry or
+form submission. Nothing deployed. Markdown only, because
+`deploy-pages.yml` excludes only `*.md` and would publish anything else to
+smithmadesc.com.
+
+
+---
+
 ## 2026-09-18-C1 · cloud Claude · Local web-work leads found and verified; two "no website" assumptions proved false
 
 **Task:** Steen asked for local businesses needing a website and a route to

@@ -232,40 +232,43 @@ warrants a message.*
 
 ## Tasks
 
-### SD-REVENUE-001 — Local web work to reach $1,000 🟢
-**Status: RESEARCH DONE · Owner: CLAUDE (research) → STEEN (every contact) · Verified 2026-09-18**
+### SD-REVENUE-001 — Digital services to reach $1,000 fast 🟢
+**Status: RESEARCH DONE (corrected) · Owner: CLAUDE (research) → STEEN (every contact) · Verified 2026-09-18**
 
-Steen asked for local businesses that need a website and a route to $1,000 fast.
-Research and verification are complete. **Nobody has been contacted** — every
-call, door and message below is Steen's to make.
+**Corrected the same day it was written.** The first pass researched Oregon. Steen
+is **Greenville SC based and in Fort Myers, Florida for about a month**. The
+Oregon targets are withdrawn; see `LOG.md` `2026-09-18-C2`.
 
-**Named prospects are deliberately not in this repo.** It is public, and
-`CHARTER.md` §7 forbids committing lead lists. They are on a private page whose
-link is in `HANDOFF-TO-CODEX.md`. Do not copy them back in here.
+**Do not re-derive Steen's location from the 541 area code.** `SM-PHONE-001` and
+`LOG.md` `2026-07-31-C26` both assert Oregon is "Steen's region." That is an
+inference from a phone number, written as fact, and it sent a full work unit to
+the wrong market. The SM-PHONE-001 *question* remains valid; its residency claim
+does not.
 
-**What the verification actually showed.** Of four local businesses that looked
-like they had no website, **two had good ones** — with online booking and online
-ordering. The "you have no website" pitch is weak in this market now. The
-durable source is new business registrations: Linn County filed 452 in 120 days,
-free and public. A registry filing is not evidence a business is trading or
-lacks a site, so each name needs a 30-second check before contact.
+**Fort Myers is a mature market — the opposite of the first pass.** Of ~30 Lee
+County businesses checked across home watch, charters, pool, lawn and pressure
+washing, nearly all have working sites, several with online booking or an
+existing SEO vendor. "You need a website" does not open here. Sell instead into
+**short-term rental owners**: ~1,127 active units on Fort Myers Beach, up 71%
+year on year, ~40% owner-run, heading into a season that must be set by December.
 
-**The blocker on fast money is Smith Digital's own funnel, not lead supply.**
-Every call to action on the live site is a free 15-minute audit and a quote
-after it. That is a two-to-three week path. One fixed-price offer with the
-number said out loud is what turns this week into cash. Copy is drafted in
-`HANDOFF-TO-CODEX.md` for Codex, which holds the Smith Digital files; cloud
-Claude cannot deploy that site (`AUTHORIZATION.md` §2).
+**Verification killed one lead before it shipped.** A business appeared to be
+serving placeholder contact details on its live site; a JavaScript-rendered
+fetch showed the real details and no placeholders. Standing rule recorded:
+render the page before using any defect as an opener.
 
-**Two standing risks apply to this work and are not Claude's to clear:**
+**Capability blocker — this one is Steen's to clear.** The GoHighLevel
+connection returns **401 / `AUTH_REAUTH_REQUIRED`**. This settles the open
+question in `OPS-CALLERS-001`: the connection does not work today. Until he
+reconnects it, missed-call text-back, CRM follow-up and review automation
+**cannot be delivered to a client** — and that is the only recurring-revenue
+service on the menu.
 
-- `OPS-CALLERS-001` — two other callers are already working ~40–50 Smith Digital
-  leads off separate private lists. Steen must reconcile before a first wave or
-  risk being the company that rang twice.
-- `SD-COMPLIANCE-001` — marketing **email** stays on hold. Phone, door and text
-  are unaffected.
+Named prospects stay off this public repo (`CHARTER.md` §7, §9); private page
+linked from `HANDOFF-TO-CODEX.md`. Email outreach still held by
+`SD-COMPLIANCE-001`; phone, in-person and listing enquiries are unaffected.
 
-Evidence and method: `LOG.md` `2026-09-18-C1`.
+Evidence and method: `LOG.md` `2026-09-18-C2`, correcting `2026-09-18-C1`.
 
 ---
 
@@ -962,6 +965,13 @@ telephone:  +1-541-570-5570        <-- 541 is an Oregon area code
 
 **541 is the Willamette Valley — Lebanon/Albany, Oregon.** That is Steen's
 region, roughly 2,500 miles from the market this business serves.
+
+> **Correction 2026-09-18.** The sentence above — "that is Steen's region" — is
+> **not established**. It is an inference from an area code, and Steen states he
+> is Greenville SC based. A work unit was researched against the wrong market on
+> the strength of it (`LOG.md` `2026-09-18-C2`). The rest of this entry stands:
+> a Greenville business publishing a 541 number is still worth one phone call to
+> confirm.
 
 It appears on **three surfaces**, not one:
 1. the `LocalBusiness` JSON-LD `telephone` — what Google reads for search

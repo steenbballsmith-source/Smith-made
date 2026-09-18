@@ -1,75 +1,82 @@
 # Current handoff
 
-**Written 2026-09-18 by cloud Claude.** This file is an inbox, not an archive.
-History lives in `LOG.md`.
+**Written 2026-09-18 by cloud Claude, and corrected the same day.** This file is
+an inbox, not an archive. History lives in `LOG.md`.
 
 ---
 
 # 1. Steen — read this part first
 
-You asked me to find you somewhere local that needs a website, and a way to make
-$1,000 fast. Both are done. **The list of actual businesses is on a private page,
-not in this repo** — this repository is public on GitHub, and your own rules say
-prospect lists don't go in it.
+You asked what digital services you can sell, using AI, to make money fast while
+you're in Fort Myers.
 
-**Your list is here:** https://claude.ai/artifact/4ezV3RgM1u8KYAL6APabae
+**Your page:** https://claude.ai/artifact/FSetbfo3shZwawTsNaqu5b
 
-It opens on your phone. It has the businesses, what's wrong with each one, what
-to charge, and the exact words to say. Keep the link to yourself.
+It opens on your phone. Service menu with real prices, why the rental owners are
+the opening, two verified leads, what to say, and the week. Keep the link to
+yourself.
+
+**The earlier Oregon page is withdrawn** — I researched the wrong state before
+you corrected me. Ignore it; this one replaces it.
 
 ## The short version
 
-**The fastest $1,000 is two customers at $500, taken half up front.** Not one big
-project, not a monthly retainer. Two people say yes, you invoice $250 each on the
-spot through Square, and **$500 is in your account before you've built anything.**
-The other $500 lands when you deliver a few days later.
+**Sell direct-booking pages to vacation rental owners, $600–900, half up front.**
 
-What you're selling, in one sentence: *"A one-page website, live in five days,
-five hundred dollars. Half now, half when it's live. You own the domain."*
+Fort Myers Beach has about **1,127 short-term rental units, up 71% in a year**,
+and roughly **40% are run by the owner** rather than a management company. That's
+around 450 people who decide for themselves, have money, and are up against a
+booking deadline. Snowbird season arrivals are happening now, and listings that
+aren't sorted by December miss the bookings that carry their whole year.
 
-## Three things I found that you should know
+The pitch is their arithmetic, not yours: *every booking through Airbnb costs
+them about 15%. On a $60,000 property, moving a quarter of bookings direct keeps
+roughly $2,300 a year. Your page costs $800 once.* The cheapest agency
+alternative in that market starts at $1,000 **a month** — that gap is your whole
+opportunity.
 
-**1. "You don't have a website" barely works here any more.** I checked four
-local businesses that looked like they had nothing. **Two had good websites** —
-one with online ordering, one with online booking. So don't lead with that.
-Lead with businesses that registered in the last few months: no site, no Google
-listing, startup money, and nobody else calling them yet. Linn County registered
-**452 new businesses in 120 days.** That list is free and public, and the page
-above tells you exactly where to look.
+## Two things you should know before you start
 
-**2. The best single target I found is a Lebanon landscaping and handyman
-outfit** that does everything right except the website — before-and-after photos,
-licensed and insured, free estimates — and their entire website is a **free
-Google Sites page** with a personal iCloud email on it. They already care how
-they look. You're agreeing with them, not selling them.
+**One. Fort Myers is nothing like the market I first looked at.** I checked about
+thirty local businesses — home watch, fishing charters, pool, lawn, pressure
+washing — and nearly all of them already have working websites, several with
+online booking and published pricing. **"You need a website" will not open a
+door here.** What works is pointing at something specific and broken on the site
+they already have, or selling the rental owners something they don't have at all.
 
-**3. Your own website is what's slowing the money down.** Every button on
-smithdigitalco.com says "Get my free 15-minute audit," and the pricing page says
-"Quoted after audit." That's a good way to sell a $4,000 project and a bad way
-to collect $1,000 this week — it puts an audit, a scope and a quote between you
-and the cash. For this week, say the $500 number out loud on the phone and at
-the door.
+**Two. I nearly handed you a false opening line.** One home watch company looked,
+in a search snippet, like it had placeholder contact details on its live site —
+a fake phone number, a fake email. I loaded the real page before writing it down
+and it was completely clean. If I hadn't checked, you'd have walked in and told
+a business owner something untrue about his own website. **Load any page
+yourself before you use it as an opener.**
 
-## Two things to be careful about — these are real
+## What only you can do
 
-**Check with your callers before you dial anyone.** Two other people are already
-ringing businesses for Smith Digital — roughly forty to fifty of them, off
-separate private lists that don't talk to each other. If you cold-call someone
-one of them already called, you're the company that rang twice. That's worse
-than not calling. Sort this out before your first wave.
+**Reconnect GoHighLevel — two minutes, and it unlocks your only monthly income.**
+I tested the connection today and it returns a 401, which means the saved login
+is rejected. Until that's fixed you cannot set up missed-call text-back, CRM
+follow-up or review automation for a paying client — so don't sell those. It's
+also the one service on the menu that pays you every month instead of once. This
+also settles the open question in `OPS-CALLERS-001`, which had been sitting on
+"the trial may never have activated."
 
-**Don't send marketing emails yet.** Smith Digital's outbound email is on hold
-until the messages carry a real postal address and an opt-out line
-(`SD-COMPLIANCE-001`). Phone, knocking on doors and texting are all fine — and
-in person closes better anyway.
+**Still no marketing emails.** Outbound email stays on hold until the messages
+carry a real postal address and an opt-out line (`SD-COMPLIANCE-001`). Phone,
+walking in, and replying through someone's own rental listing are all fine.
+
+**Check the caller lists before you dial anything back home.** Two other people
+are contacting roughly forty to fifty businesses for Smith Digital off separate
+lists that don't join up. Those are Oregon-area leads, so Fort Myers should be
+clear — but there is still no single shared do-not-contact list, and that is the
+thing that will eventually produce a complaint.
 
 ## One small thing on your own site
 
-Your homepage says **"9 Services, listed in full with what each one costs."**
-I checked today: the services page lists **ten** services and **no prices**, and
-the pricing page says "Quoted after audit." So the site promises prices it
-doesn't show. Worth fixing — it's the kind of thing a careful customer notices,
-and your own rules say not to publish claims that aren't true.
+Your homepage says **"9 Services, listed in full with what each one costs."** I
+checked with a full browser render: the services page lists **ten** services and
+**no prices**, and `/pricing` says "Quoted after audit." The site promises prices
+it doesn't show. Worth fixing either way — publish the prices or change the line.
 
 ---
 
@@ -77,103 +84,98 @@ and your own rules say not to publish claims that aren't true.
 
 ## SD-REVENUE-002 — Put one fixed price on smithdigitalco.com
 
-Cloud Claude cannot deploy that site. You hold the files; this is yours.
+Cloud Claude cannot deploy that site. You hold the files.
 
-**The problem:** every conversion path on the live site is "free 15-minute
-audit" → written scope → quote. There is no way for a small local buyer to see
-a price and commit. That is the constraint on near-term revenue.
+Every conversion path on the live site is "free 15-minute audit" → written scope
+→ quote. There's no way for a small local buyer to see a price and commit, and
+that is the constraint on near-term revenue.
 
-**The ask:** one offer block, above the fold on the homepage and on
-`/services/websites/`, reading approximately:
+Add one offer block, above the fold on the homepage and on `/services/websites/`:
 
-> **The One-Page Local Site — $500.** Live in five days. Half to start, half
-> when it goes live. Your services written out plainly, your own photos, a phone
+> **The One-Page Local Site — $500.** Live in five days. Half to start, half when
+> it goes live. Your services written out plainly, your own photos, a phone
 > button that works, and a contact form that reaches your inbox. You own the
 > domain and every account.
 
-Keep the free-audit path as the secondary action for larger work. Do not remove
-it.
+$500 for a mobile-first lead-capture page in about 48 hours is a **published 2026
+market rate**, not an invented number. Keep the free-audit path as the secondary
+action for larger work.
 
-**Also fix the false claim** described in §1: the homepage stat block advertises
-per-service costs that no page publishes. Either publish the prices or change
-the wording. Verified 2026-09-18 by extracting `/services/` with a
-JavaScript-rendering driver, so this is the rendered DOM, not a static-fetch
-artifact — ten services, no prices, and `/pricing` says "Quoted after audit."
+**Also fix the false claim** in §1 — ten services, no prices, against a homepage
+that advertises per-service costs.
 
-**Before you deploy:** the publish itself no longer needs a second confirmation
-(`AUTHORIZATION.md` §1B), but Steen still starts it, and a price on a public
-page is a commercial commitment — get the $500 figure from him in his own words
-first. Verify the live URL after publishing and record the deploy ID.
+**Before deploying:** publishing no longer needs a second confirmation
+(`AUTHORIZATION.md` §1B), but Steen still starts it, and a price on a public page
+is a commercial commitment — get the $500 from him in his own words first. Verify
+the live URL afterwards and record the deploy ID.
 
-## SD-REVENUE-003 — One shared call list with a do-not-contact column
+## SD-REVENUE-003 — Reconnect GoHighLevel, then one shared call list
 
-`OPS-CALLERS-001` has been open since 1 August. Three people will now be
-contacting local businesses for Smith Digital — two callers and Steen himself —
-off lists that do not join up. A business that tells one of them to stop is
-still live on the other two lists.
+The connection is dead (401). Steen has to do the reconnect himself — it's a
+credential action, off-limits to both agents.
 
-A Google Sheet is enough. One list, one row per business, a column for who
-contacted them and when, and a do-not-contact flag everyone can see. The
-platform does not matter; **one list instead of three** is the whole
-requirement.
+Once it works, `OPS-CALLERS-001` is still open and now two months old: three
+people will be contacting businesses for Smith Digital off lists that don't join
+up. A business that tells one of them to stop stays live on the other two lists.
+**One list with a do-not-contact column, visible to everyone.** A Google Sheet is
+enough; the platform is irrelevant.
 
-This is worth doing before Steen's first wave, not after.
+## SD-REVENUE-004 — A reusable direct-booking page template
 
-## SD-REVENUE-004 — Optional: a reusable one-page template
+If Steen sells two of these he'll build the same thing twice. A plain-HTML
+template — hero, photos, rates table, availability, enquiry form, house rules,
+and a slot for the rental registration number — would cut each build to an
+afternoon.
 
-If Steen sells two of these, he will build the same thing twice. A single
-plain-HTML template — hero, services, gallery, hours and service area, contact
-form, phone button — that takes a business name, photos and copy would cut each
-build to an afternoon.
+**Put the registration number field in by default.** Fort Myers Beach requires
+every short-term rental to be registered at $300 a unit and to display its
+registration number in all advertising, and the town started issuing violation
+notices to unregistered rentals in late 2025. Cape Coral brought in a $350/year
+registration this January. Asking for it also makes Steen sound local.
 
-**Do not put it in the Smith-made repo.** That repository's deploy workflow
-rsyncs everything except `.git`, `.github`, `*.md`, `node_modules`, `tests` and
-`package*.json` — so **any non-Markdown file added anywhere in it publishes to
-smithmadesc.com.** That is why this work committed Markdown only. Keep the
-template with the Smith Digital files.
+**Do not put the template in the Smith-made repo.** That deploy workflow rsyncs
+everything except `.git`, `.github`, `*.md`, `node_modules`, `tests` and
+`package*.json`, so **any non-Markdown file added anywhere in it publishes to
+smithmadesc.com.** That's why this work is Markdown only. Keep it with the Smith
+Digital files.
 
 ---
 
 # 3. Still open on Smith Made — unchanged, do not drop
 
-These carried over from the 11 September handoff. Nothing in this pass touched
-them.
+Carried over from 11 September. Nothing in this pass touched them.
 
 1. **Review the live site on a phone and tablet** — menu, sticky email button,
    long labels, inquiry form. Only desktop rendering was ever verified.
 2. **Have the inbox owner confirm receipt** of the already-submitted
-   `INTERNAL TEST - SM-GROWTH-002` — fields, spam placement, reply behaviour.
-   Do not duplicate the submission. Service acceptance is not inbox delivery.
-3. **Connect the actual Smith Made CRM location**, map the prepared fields and
-   pipeline, test workflows while disabled. The CRM specification is still an
-   inactive design.
+   `INTERNAL TEST - SM-GROWTH-002`. Do not duplicate it. Service acceptance is
+   not inbox delivery.
+3. **Connect the actual Smith Made CRM location**, map the fields and pipeline,
+   test workflows while disabled. Note the GoHighLevel 401 above may be the same
+   blocker.
 4. **Verify Search Console and business-profile ownership** before any account
-   edits, then submit `https://smithmadesc.com/sitemap.xml`. Do not promise
-   ranking.
+   edits, then submit `https://smithmadesc.com/sitemap.xml`. Do not promise rank.
 5. **Add measured dimensions, rentable quantities, included items and real shop
-   photographs.** Confirm deposit basis and the damage-deposit rule with the
-   owners before publishing new policy wording.
-6. **`SM-PHONE-001`** — Smith Made publishes a 541 (Oregon) number on a
-   Greenville SC business, one digit from Steen's Smith Digital line. Thirty
-   seconds on the phone settles whether it is a retained number or a typo.
+   photographs.** Confirm deposit and damage-deposit rules with the owners before
+   publishing new policy wording.
+6. **`SM-PHONE-001`** — still worth one phone call. But note the correction on
+   the board: that entry's claim about where Steen lives is an inference from an
+   area code and is wrong. Do not reuse it.
 
-The pending cinematic branch `codex/higgsfield-motion-20260911` is still a review
-candidate; see `HIGGSFIELD-MOTION-20260911.md`. The live baseline remains PR #39,
-commit `d7c7b202f99226e1df08006f876b030d00cbbe8a`.
-
-For inquiry changes run `npm ci --ignore-scripts --no-audit --no-fund` then
-`npm test`. Tests never submit a real inquiry.
+Pending cinematic branch `codex/higgsfield-motion-20260911` is still a review
+candidate. Live baseline remains PR #39, commit
+`d7c7b202f99226e1df08006f876b030d00cbbe8a`. For inquiry changes run
+`npm ci --ignore-scripts --no-audit --no-fund` then `npm test`.
 
 ---
 
 # 4. What this pass did not do
 
-No call, email, message or form submission was made to anyone. Nothing was
-deployed. Every prospect contact is Steen's.
+No call, email, message, listing enquiry or form submission was made to anyone.
+Nothing was deployed. Every prospect contact is Steen's.
 
-Two tools were tried and discarded rather than trusted: `WebFetch` is blocked
-from this container for ordinary business domains, and `dig` returns no A record
-for **every** domain here including known-live controls — so no "that domain is
-dead" conclusion can be drawn from DNS in this environment. All verification ran
-through server-side fetching, and every claim on the private page says how it
-was checked. Full method: `LOG.md` `2026-09-18-C1`.
+Tools discarded rather than trusted: `WebFetch` is egress-blocked here, and `dig`
+returns no A record for **every** domain including known-live controls, so no
+"that domain is dead" conclusion can come from DNS in this environment. One lead
+was killed by re-rendering a page that a search snippet had misrepresented.
+Method and evidence: `LOG.md` `2026-09-18-C2`, correcting `2026-09-18-C1`.
