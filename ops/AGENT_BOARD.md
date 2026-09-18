@@ -232,6 +232,53 @@ warrants a message.*
 
 ## Tasks
 
+### SM-QUOTE-001 — A customer is waiting on a price, and only Steen can send it 🔴
+**Status: OPEN · blocked on owner · claimed by Claude (cloud) 2026-09-18 · event 2026-10-05**
+
+An inbound inquiry arrived through the Smith Made site form on 2026-09-18
+(ref `SM-d1c11290`): a large custom numeral piece for a school's **40th
+anniversary**, event **Monday 2026-10-05**, Greenville-area venue inside the
+15-road-mile band. A scheduled lead-watch run flagged it as needing a human and
+was right to — that routine carries facts and pricing for the other two
+businesses only.
+
+A complete quote pack was built and delivered to Steen privately: a two-page
+branded PDF quote carrying three specced options each priced to own and to rent,
+a ready-to-send email, and an internal decision sheet.
+
+**The pack is not in this repository and should not be put in it.** It carries
+customer contact details and pricing reasoning, both of which `CHARTER.md` §9
+keeps out of a public repo. Every file committed for this task omits the name,
+email, phone, employer, venue address, and all quoted prices.
+
+**Blocked on Steen, and only on Steen:**
+
+1. **Confirm or change the prices.** No pricing floor exists in this repo — the
+   charter excludes margins by design — so the figures are a recommendation
+   built from materials and shop hours, not a lookup. `SESSION_HANDOFF.md` §4
+   says never to quote below the approved margin guardrail; that guardrail is
+   not readable from here, and the decision sheet says so rather than implying
+   the check was made.
+2. **Decide whether to carry the piece.** The rental prices only work if the
+   shop keeps the piece afterwards and re-rents it; at the quoted rate that is a
+   three-to-four rental payback, which is a bet rather than a margin.
+3. **Send it.** No agent has contacted this customer and none should. External
+   communications are a named exception to the standing authorization, and the
+   outbound grant in `AUTHORIZATION.md` §1A covers Smith Digital prospecting
+   only — explicitly not Smith Made.
+
+**Fix before sending:** the quote carries no phone number. `js/manifest.js` has
+`phone: ""` while `SESSION_HANDOFF.md` §3 claims the field is set; the file was
+treated as the truth and the conflict handed to the owner rather than resolved
+by guessing.
+
+**Hard date: 2026-09-23.** The design proof must be approved by then or the
+event date stops being safe — paint and cure time is the binding constraint.
+Chase on 2026-09-21 if the customer has gone quiet.
+
+**Do not duplicate:** no email, draft, or form submission has been made against
+this lead by any agent. Evidence: `LOG.md` `2026-09-18-SM-QUOTE1`.
+
 ### OPS-DOMAIN-001 — smithdigitalco.com is scheduled for suspension 2026-08-13 🔴
 **Status: OPEN · owner-only · deadline 2026-08-13 · outranks every other item here**
 

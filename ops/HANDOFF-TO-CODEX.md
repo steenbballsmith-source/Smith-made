@@ -1,5 +1,57 @@
 # Current handoff to Codex
 
+## 🔴 SM-QUOTE-001 — A real customer is waiting on a price. September 18, 2026.
+
+**This is the most time-sensitive thing in this file. It is not a website task.**
+
+An inquiry came through the site form on 2026-09-18 (ref `SM-d1c11290`): a
+school wants a large custom numeral piece for its **40th anniversary**, and the
+event is **Monday 2026-10-05** — seventeen days out. The venue is in the
+Greenville area, inside the 15-road-mile band, so published transport rates
+apply with no distance arithmetic.
+
+A complete quote pack is built and has been handed to Steen privately: a
+two-page branded PDF quote with three specced options each priced to own and to
+rent, a ready-to-send email, and an internal sheet covering the pricing
+reasoning and the decisions only he can make.
+
+**None of that is in this repository, deliberately.** It carries customer
+contact details and pricing reasoning, and `CHARTER.md` §9 keeps both out of a
+public repo. Do not ask for it to be committed here.
+
+### Codex: what this means for you
+
+**Do not contact this customer.** No agent has emailed them and no agent should.
+External communications remain a named exception to the standing authorization,
+and the outbound grant on file (`AUTHORIZATION.md` §1A) covers Smith Digital
+prospecting only — explicitly not Smith Made. The send is Steen's.
+
+There is no code change here and nothing to merge. If you are picking up work,
+leave this one alone and take from the list further down. The single useful
+thing you could do is make sure Steen has actually seen it.
+
+### Steen: the part only you can do
+
+1. **Read the decision sheet first.** It is short. Three things need your
+   sign-off and one thing needs fixing before anything goes out.
+2. **Check the three prices.** There is no pricing floor anywhere in this repo —
+   the charter keeps margins out of a public repository on purpose — so those
+   numbers are a recommendation built up from materials and shop hours, not
+   something looked up. Confirm them or change them.
+3. **Add a phone number.** The quote goes out without one, because
+   `js/manifest.js` has the phone field empty and there was nothing verified to
+   put on the page. A school's business office will want a number.
+4. **Then send it**, with the PDF attached.
+
+**The date that matters is Wednesday 2026-09-23.** The design proof has to be
+approved by then or October 5th stops being safe — paint and cure time is the
+binding constraint, not shop time. If they have gone quiet by Monday the 21st,
+chase. If the 23rd passes with no approval, say plainly that the date is at
+risk rather than trying to rescue it; a late piece at a school anniversary is
+worse than a job turned down.
+
+---
+
 ## Pending cinematic update — September 11, 2026
 
 `codex/higgsfield-motion-20260911` is a review candidate using Higgsfield media. Production publication awaits owner approval. See `HIGGSFIELD-MOTION-20260911.md` for implementation, asset provenance, and the blocked visual-preview check. The live email-first release documented below remains the production baseline.
