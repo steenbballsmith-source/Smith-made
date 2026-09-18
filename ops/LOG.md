@@ -6,6 +6,80 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-09-18-C1 · cloud Claude · Local web-work leads found and verified; two "no website" assumptions proved false
+
+**Task:** Steen asked for local businesses needing a website and a route to
+$1,000 fast. Worked as `SD-REVENUE-001` (claimed on the board in this same
+push).
+
+**Market corrected before searching.** `SESSION_HANDOFF.md` describes Smith
+Made as a Greenville SC business, which would have sent this work 2,500 miles
+wrong. `AGENT_BOARD.md` `SM-PHONE-001` and `LOG.md` `2026-07-31-C26` both place
+Steen in the 541 — Willamette Valley, Lebanon/Albany. Searched Linn County.
+First chamber directory fetched was **Lebanon, Ohio** (513 area code, 27 N.
+Mechanic St, OH 45036) and was discarded unused.
+
+**Two tools failed and were discarded rather than trusted:**
+
+1. `WebFetch` returns `EGRESS_BLOCKED` for ordinary business domains. All
+   verification was done through the Exa and Nimble MCP servers, which fetch
+   server-side.
+2. `dig` returns **no A record for every domain**, including known-live
+   controls (`smithdigitalco.com`, and a local cafe domain confirmed serving
+   seconds earlier through the MCP fetchers). DNS is blocked
+   from this container. **No "domain is dead" conclusion may be drawn from
+   `dig` here** — that was checked against controls before being ruled out.
+
+**Findings — verified 2026-09-18, each against the business's own live page:**
+
+| Business | Finding | Evidence |
+|---|---|---|
+| Landscaping/handyman firm, Lebanon | Free `sites.google.com/view/...` page, no own domain, iCloud address for enquiries, no service pages or form | Page fetched; footer reads "Google Sites · Report abuse" |
+| Property-services firm, Lebanon | Own domain, but headline repeats three times in extracted text; landscaping, junk removal, snow plowing and vending on one page | Page text read. Flagged as **extraction, not rendered** — the owner must confirm on screen before it is used in a pitch |
+| Cafe/bakery, Sweet Home | **Has a real site** with ChowNow online ordering — dropped | Own domain fetched; ordering platform embedded |
+| Hair salon, Sweet Home | **Has a real site** with online booking — dropped | Own domain fetched; booking and policy pages present |
+| Asphalt contractor, Lebanon | **Has a real site** with per-town pages and schema — dropped | Own domain fetched; per-town pages and schema present |
+| Auto repair, Lebanon | **Has a NAPA-supplied site** — dropped | Own domain fetched; supplied through a trade programme |
+
+**Two of four "obvious no-website" candidates had good sites.** Recorded because
+it changes the offer: "you have no website" is a weak 2026 pitch locally. The
+durable source is instead **new business registrations** — Linn County filed 452
+in 120 days, public and free at `oregonrecordsfinder.com/albany/new-businesses`,
+`opencorpdata.com/us-or?city=LEBANON`, and `ccblookup.com` for CCB status.
+Qualifier carried into the deliverable: a registry filing is **not** evidence a
+business is trading or lacks a site — CorpFacts' own note on the Oregon dataset
+says so. Each name needs a 30-second check before contact.
+
+**Finding on Smith Digital's own site, verified today.** The homepage stat block
+reads *"9 Services, listed in full with what each one costs."* The services
+index, extracted with a JavaScript-rendering driver (`vx8`) so this is the real
+DOM and not a static-fetch artifact, lists **ten** services and **no prices**;
+`/pricing` says "Quoted after audit"; `/services/websites/` says "Exact quote
+before paid work." **The published claim is not currently true.** It is also the
+practical blocker on fast revenue: every call to action is a free audit, which
+is a two-to-three week path to money. Reproduce: fetch those three URLs.
+
+**Business names and domains are omitted above on purpose** (`CHARTER.md` §9);
+the four dropped candidates are named on the private page so a later agent does
+not re-check them. Method is reproducible without them: fetch each candidate's
+own site server-side and read what it actually serves.
+
+**Deliverable placement, per `CHARTER.md` §9 and §7.** The named prospect list
+is **not in this repo** — this repository is public and the charter forbids
+committing lead lists. It went to a private page instead. Method and asks are
+here; names are there. `OPS-PRIVACY-001` is the live precedent.
+
+**Also confirmed before writing anything:** `.github/workflows/deploy-pages.yml`
+rsyncs the tree excluding only `.git`, `.github`, `*.md`, `node_modules`,
+`tests` and `package*.json`. **Any non-Markdown file added anywhere in this repo
+publishes to smithmadesc.com.** This work therefore committed Markdown only.
+
+**No external contact of any kind was made** — no call, email, message or form
+submission. Every prospect contact is Steen's to make. Nothing was deployed.
+
+
+---
+
 ## 2026-08-01-C42 · cloud Claude · Bridge proven both directions; local Claude's findings cross-checked
 
 **Local Claude's first push (`3fd3db3`, 21:48 UTC) was received in the cloud

@@ -232,6 +232,43 @@ warrants a message.*
 
 ## Tasks
 
+### SD-REVENUE-001 — Local web work to reach $1,000 🟢
+**Status: RESEARCH DONE · Owner: CLAUDE (research) → STEEN (every contact) · Verified 2026-09-18**
+
+Steen asked for local businesses that need a website and a route to $1,000 fast.
+Research and verification are complete. **Nobody has been contacted** — every
+call, door and message below is Steen's to make.
+
+**Named prospects are deliberately not in this repo.** It is public, and
+`CHARTER.md` §7 forbids committing lead lists. They are on a private page whose
+link is in `HANDOFF-TO-CODEX.md`. Do not copy them back in here.
+
+**What the verification actually showed.** Of four local businesses that looked
+like they had no website, **two had good ones** — with online booking and online
+ordering. The "you have no website" pitch is weak in this market now. The
+durable source is new business registrations: Linn County filed 452 in 120 days,
+free and public. A registry filing is not evidence a business is trading or
+lacks a site, so each name needs a 30-second check before contact.
+
+**The blocker on fast money is Smith Digital's own funnel, not lead supply.**
+Every call to action on the live site is a free 15-minute audit and a quote
+after it. That is a two-to-three week path. One fixed-price offer with the
+number said out loud is what turns this week into cash. Copy is drafted in
+`HANDOFF-TO-CODEX.md` for Codex, which holds the Smith Digital files; cloud
+Claude cannot deploy that site (`AUTHORIZATION.md` §2).
+
+**Two standing risks apply to this work and are not Claude's to clear:**
+
+- `OPS-CALLERS-001` — two other callers are already working ~40–50 Smith Digital
+  leads off separate private lists. Steen must reconcile before a first wave or
+  risk being the company that rang twice.
+- `SD-COMPLIANCE-001` — marketing **email** stays on hold. Phone, door and text
+  are unaffected.
+
+Evidence and method: `LOG.md` `2026-09-18-C1`.
+
+---
+
 ### OPS-DOMAIN-001 — smithdigitalco.com is scheduled for suspension 2026-08-13 🔴
 **Status: OPEN · owner-only · deadline 2026-08-13 · outranks every other item here**
 
@@ -252,6 +289,14 @@ verification key that cannot be published here).
 *Close this only when Steen confirms the verification went through.* Until then
 every other task on this board is an improvement to something with a
 switch-off date on it.
+
+**Update 2026-09-18 by Claude — the deadline passed and the domain is live.**
+`smithdigitalco.com` was fetched today and serves a full multi-page site
+(`/services`, `/pricing`, `/services/websites/`, current nav and footer). So the
+registrant verification either completed or the suspension never ran. **This is
+evidence the domain resolves today, not confirmation Steen did the step** — if
+the contact verification is still outstanding with the registrar it can resurface.
+Ask him once, then close this.
 
 ---
 
