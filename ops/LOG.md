@@ -6,6 +6,56 @@ evidence that lets the other agent reproduce the check.
 
 ---
 
+## 2026-09-18-C3 · cloud Claude · CLAUDE.md said pull requests get no CI. They do, and the check passed.
+
+**Found by acting on a PR notification rather than trusting it.** Two
+`check_suite.completed` events arrived for PR #42 saying nothing was failing.
+Verifying the PR's own state instead of taking the relay at its word turned up a
+check run that, according to this repo's own documentation, should not exist.
+
+**The stale claim.** `CLAUDE.md` — the first file every agent in this repo reads
+— stated: *"It runs **only on push to `main`** — so pull requests get no CI
+here, and a PR with no checks is normal, not broken."* That is false.
+`.github/workflows/check-inquiries.yml` runs `on: pull_request: branches:
+[main]` and executes `npm test` as a job named `test`. Only `deploy-pages.yml`
+is push-to-`main`-only.
+
+**Why this one mattered more than a typo.** It was wrong in the direction that
+causes harm: it told every future agent that an absent or failing PR check was
+expected. An agent following it would have ignored a genuinely broken test run
+and reported the PR as fine. `CLAUDE.md` is corrected in place, with the old
+wording quoted so the drift stays visible rather than being silently
+overwritten.
+
+**It also propagated.** The claim was repeated verbatim in the PR #42
+description (*"No CI runs on pull requests in this repo"*) because it was taken
+from `CLAUDE.md` in good faith and never checked against
+`.github/workflows/`. Only one of the two workflow files had been read. The PR
+body is corrected.
+
+**PR #42 state, verified 2026-09-18 16:00 UTC**, head `08b43ac`:
+
+| Fact | Value |
+|---|---|
+| `mergeable_state` | `clean` — no conflict, 2 ahead of `main`, 0 behind |
+| Check run `test` | **completed, success** (run `35365861369`) |
+| Review threads | 0 |
+| State | open, draft |
+
+**No repo skills exist.** `.claude/skills/steward/` and
+`.claude/skills/babysit/` were both checked for and are absent, so no
+repo-specific PR guidance applies here.
+
+**Also corrected in `CLAUDE.md` while in that section:** the deploy note now
+states the consequence, not just the rule — the workflow excludes `*.md` and
+copies everything else, so **any non-Markdown file added anywhere in this repo
+publishes to smithmadesc.com.** That was verified from the workflow's `rsync`
+line in `2026-09-18-C1` and is the reason this work unit has been Markdown only,
+but it was not written down where an agent would find it before acting.
+
+
+---
+
 ## 2026-09-18-C2 · cloud Claude · CORRECTION to C1 — wrong market researched; Fort Myers work replaces it
 
 **Correcting `2026-09-18-C1`, which is left standing above per the append-only

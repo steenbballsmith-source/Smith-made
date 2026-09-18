@@ -73,8 +73,15 @@ Full detail: `ops/README.md`.
 - Plain HTML/CSS/JS, no build step. `js/manifest.js` is the only file the owner
   edits.
 - GitHub Pages deploys from `main` via `.github/workflows/deploy-pages.yml`.
-  It runs **only on push to `main`** — so pull requests get no CI here, and a
-  PR with no checks is normal, not broken.
-- That workflow excludes `*.md` from the deploy, so these docs never reach the
-  live site. They are still public on GitHub.
+  It runs **only on push to `main`**, so no deploy happens from a pull request.
+- **Pull requests do get CI.** `.github/workflows/check-inquiries.yml` runs on
+  every PR against `main` and runs `npm test` as a job named `test`. *(Corrected
+  2026-09-18: this file previously said "pull requests get no CI here, and a PR
+  with no checks is normal, not broken." That was wrong, and it was wrong in the
+  one direction that matters — it told every agent to ignore a missing or failed
+  check. A PR with no checks is now worth looking into. Evidence: `LOG.md`
+  `2026-09-18-C3`.)*
+- The deploy workflow excludes `*.md`, so these docs never reach the live site —
+  but it copies **everything else**, so any non-Markdown file added anywhere in
+  this repo publishes to smithmadesc.com. They are still public on GitHub.
 - Full business state: `SESSION_HANDOFF.md`.
