@@ -2353,3 +2353,298 @@ Merged the PR #38 planner and delivery release into the pending cinematic branch
 ## 2026-09-11-MOTION-INQUIRY — Continued inquiry reliability
 
 The pending cinematic candidate now includes detail review/copy, explicit email fallback, duplicate guards, timeout/offline recovery, and keyboard/viewport menu improvements. Twenty-one simulated flow checks passed across Smith Made and Smith Digital. Static source checks passed. No live inquiry, external message, payment, or production-domain deployment occurred. The private reviews are refreshed separately. Preserve the concurrent SM-UX-004 work when integrating the final live release. See `HIGGSFIELD-MOTION-20260911.md`.
+## 2026-08-17 ~13:20 UTC — cloud Claude — Weekly outreach run #4; engine memory moved into the repo
+
+**Run result.** No replies from any contacted target inside the eight-day
+window; the single auto-responder from the previous run asked for three to
+four business days and that window closed in silence. Six targets were
+contacted twelve days earlier and each conversation still holds exactly one
+message, which also proves the two follow-ups drafted last week were never
+sent and no new outreach went out. Six follow-up drafts now wait for Steen —
+four written this run, two carried over. Every contacted target has now spent
+its one permitted follow-up, so no target may be contacted a third time. Step
+three did not fire: nine further targets still hold unsent drafts, far above
+the threshold of three. Nothing was sent by an agent; the send button remains
+a person's.
+
+**Two defects found and fixed inside the run.** First, the follow-ups as
+first written carried no postal address, no business-solicitation line and no
+opt-out — the exact omission that put the sister business's outreach on hold.
+Steen's own originals carry all three. All six drafts were rewritten to match.
+Second, and worse: repairing a reply-draft through the mail tool silently
+destroys its threading. Each repaired draft came back on a brand-new
+conversation, meaning a venue would have received a two-line "floating this
+back up" with no original beneath it. Caught by comparing each draft's
+conversation id against the sent message's before reporting anything. All six
+were re-created from the original message ids and re-verified to sit on the
+correct conversations.
+
+**The six broken copies could not be deleted** — the delete was refused by the
+permission layer and no attempt was made to route around it. They were instead
+retitled `SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox,
+so a stray click reaches nobody. Steen can delete them himself; this is
+recorded so a later agent does not mistake them for real queued mail.
+
+**Why this entry exists at all.** The engine's working notes lived in a
+temporary container folder, and that folder was wiped between runs — three
+weeks of notes gone, discovered only because a line count came back at 38
+instead of 476. The notes were reconstructible solely because Gmail already
+held every fact. That lesson is now written down in `ops/OUTREACH-ENGINE.md`:
+the run order, the never-send rule, the one-follow-up-per-target-forever rule,
+the compliance footer requirement, the threading trap, and the four searches
+that rebuild the entire state from Gmail. Public-repo rules observed — the new
+file carries counts and procedure only, no addresses, names, or contact list.
+
+## 2026-08-24 ~13:20 UTC — cloud Claude — Weekly outreach run #5; the queued drafts had rotted
+
+**Good news first.** Steen sent all six follow-ups on 2026-08-18, correctly
+threaded as replies with the compliance footer intact. All six original
+targets have now had their two contacts and are closed to any further
+approach. Still zero replies from any of them — nineteen days after first
+contact, not one has written back. The lone auto-responder's own stated window
+closed on 2026-08-11 in silence. Nothing was sent by an agent this run or any
+run; drafts only, a person presses send.
+
+**The real finding: drafts are not inert, and this mailbox proves it.** The
+nine remaining new-target drafts were written on 2026-07-20 and had rotted
+against a site that changed underneath them three times since. Every one
+claimed the catalog let you spin each piece in 3D — that viewer was deleted on
+evidence weeks ago. Every one promised pieces "delivered and styled at the
+venue" — we deliver and the couple styles it, which is the correction Will
+asked for by name. Every one offered to let couples "keep the pieces forever"
+after buy prices were deliberately raised to discourage sales. They said
+"wedding signage" after the site moved to "event signage". They introduced
+Steen as the carpenter when Will is the one who builds. They promised "two of
+the design plates from the catalog" directly above a blank line, because the
+images were stripped out and the caption was not. And not one carried a postal
+address or an opt-out — the same omission that has Smith Digital's outreach on
+hold.
+
+All nine were rewritten against the template Steen composed himself for the
+August 5 send, which had every one of those points right. Verified after
+writing by re-reading all nine in full: zero occurrences of the three retired
+claims, "event signage" throughout, Will named as running the shop, postal
+address and opt-out on every one, and no price claims (the site is quote-first
+now).
+
+**Thirteen further drafts were hazards and are now defused.** Two were copies
+of follow-ups Steen had already sent, three were July originals aimed at
+venues already contacted twice, three were duplicate halves of pairs, and five
+were carried over from the previous run. A third contact to a venue that has
+already heard from us twice is the failure mode this channel cannot afford in
+a market where the vendors all know each other. Deleting them was refused by
+the permission layer and no attempt was made to route around it; each was
+instead retitled `SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own
+mailbox, so a stray click reaches nobody.
+
+**Standing correction to how this channel is run:** any session that changes
+what the site claims must re-read the queued outreach drafts in the same pass.
+This drift went unnoticed for five weeks and was only caught because Steen
+started actually sending what was in Drafts. Recorded in
+`ops/OUTREACH-ENGINE.md`.
+
+## 2026-08-31 ~13:20 UTC — cloud Claude — Weekly outreach run #6; the channel that worked was not outreach
+
+**The engine had nothing to do.** No replies from any of the fifteen contacted
+or drafted targets. Nothing has been sent since the six follow-ups went out on
+2026-08-18, so no follow-up is due and no new target is needed — the nine
+rewritten drafts are still sitting unsent. Steps one through three all came
+back empty.
+
+**What did happen is more important.** An inbound inquiry — a couple who found
+Smith Made on their own, for an October wedding — has moved from questions to
+requesting three priced build options. Will has been answering directly and
+forwarded it to Steen for pricing help; that forward had been sitting
+unanswered for roughly thirty-six hours. A reply to Will is now drafted in
+that thread. The customer is not named here and their details stay out of this
+public repo.
+
+**No prices were invented.** The customer asked for three quotes and a build
+timeline, and the material costs, fabrication capability, and shop capacity
+are all Will's to supply. The draft therefore hands him a customer-ready email
+with four blanks and a list of exactly what only he can decide, rather than
+numbers an agent guessed. The one figure it does lean on is the $1,575 Will
+already quoted her, which is on the table and cannot be quietly walked back.
+
+**Three substantive risks were flagged rather than glossed.** First, the
+requested cursive wood cutout is seven words of script that will snap at the
+joins and across the grain unless cut as one connected piece on a backer —
+declining the cutout is fine, promising it and delivering it broken before a
+wedding is not. Second, the "boards only" option will cannibalize the finished
+option unless the price gap equals the labor actually removed. Third, the
+calendar is tighter than it reads: forty days to the wedding, but if the
+customer paints it herself she needs the sign around 2026-09-26, which is under
+four weeks including her own travel to collect it.
+
+**A correction to Steen's own earlier advice was issued.** His first round of
+coaching to Will was written while a rental was still under consideration and
+was largely about keeping adhesive and pinholes off a rental surface. The
+customer has since moved toward buying, and on a purchase that guidance is
+wrong — a buyer may do as she likes with her own sign. Advice goes stale when
+the customer changes direction, the same way the July drafts went stale against
+the site.
+
+**Worth stating plainly for whoever reads this next:** two rounds of cold email
+to fifteen businesses have produced zero replies. One inbound inquiry produced
+a customer with a date and a budget. The engine is cheap to keep running and
+should keep running, but it is not the thing that is working.
+
+## 2026-09-07 ~13:20 UTC — cloud Claude — Run #7; a correction to last week, and where the customer actually came from
+
+**Correcting the previous entry.** Run #6 reported that the builder's request
+for pricing help had been sitting roughly thirty-six hours unanswered, and
+drafted a reply to it. Both statements were wrong. Steen had already sent a
+complete quote package at 2026-08-31 02:05 UTC — three priced options at
+$1,850 / $1,250 / $975, a production schedule, an exact customer-ready email, a
+customer-safe PDF, a concept render, and a separate internal build-and-close
+guide — about eleven hours before that draft was written. The error came from
+checking the customer thread alone; the reply had started its own thread
+because it carried attachments. The redundant draft has been retitled
+`SUPERSEDED — DO NOT SEND` and re-addressed to Steen's own mailbox. Rule now
+recorded in `ops/OUTREACH-ENGINE.md`: search the whole mailbox before calling
+anything unanswered.
+
+**The engine itself had nothing to do, for the second week running.** No
+replies from any of the fifteen contacted or drafted targets. Nothing sent
+since 2026-08-18, so no follow-up due and no new target needed. The nine
+rewritten drafts are still unsent.
+
+**Two findings from the inbound inquiry, both checkable.** First, the live
+order arrived through the website's own inquiry form via FormSubmit, and it
+reached the builder's inbox and turned into a real quote. That is the first
+end-to-end proof the form works for a genuine visitor rather than a test POST.
+It does **not** close SM-FORM-001, which is about the form reporting success
+when a submission fails — a different code path that this happy-path delivery
+says nothing about.
+
+Second, and more useful: the submission carried `utm_source: chatgpt.com`. The
+couple found Smith Made by asking an AI assistant. Not Google, not social, and
+not any of the fifteen emails. The attribution fields added to the form are
+what made that visible at all.
+
+**One schedule risk flagged.** Steen's own plan put final details and proof
+approval in "early September" — that is this week — with delivery between
+September 30 and October 2 for an October 10 wedding, now 33 days out. Whether
+the quote actually reached the customer cannot be verified from this mailbox,
+because the builder corresponds with her directly and only forwards
+selectively; nothing has come back since 2026-08-31. A short check-in to the
+builder is drafted in the quote thread, asking whether it went out and pressing
+for a yes or no on the cursive lettering while there is still time to change
+course.
+
+**Customer details remain out of this public repo:** no name, address, email,
+phone, or venue appears in any committed file.
+
+## 2026-09-14 ~13:20 UTC — cloud Claude — Run #8; ten emails out, one order gone quiet, and a six-week-stale alarm cleared
+
+**Outreach moved, on its own.** Ten introduction emails went out on September
+11–12 — two of them from the rewritten drafts (the rest of that queue is still
+untouched, seven remaining), and eight to targets prepared outside this engine.
+All ten are two to three days old, so none is yet past the five-day mark and no
+follow-up is due. **Ten come due next week**, each limited to one follow-up
+forever.
+
+**Still zero replies.** Nothing from the original fifteen, nothing from the
+eight new targets, nothing from the builder, and nothing from the customer.
+Three rounds of cold email across twenty-three businesses have now produced not
+one reply.
+
+**The order has gone quiet, and that is this week's real finding.** The quote
+package went to the builder on 2026-08-31 carrying a schedule: proof approved
+early September, structure fabricated by mid-September, finish and lettering by
+end of September, delivery September 30 to October 2, for an October 10
+wedding. It is now mid-September — 26 days out — with no visible confirmation
+that the quote ever reached the customer, that a proof was approved, or that a
+deposit arrived.
+
+State this precisely: it is **absence of visibility, not evidence of absence.**
+The builder corresponds with the customer directly and forwards selectively, so
+he may well have been working the whole time. What is certain is that two weeks
+of a five-week schedule have burned with nothing observable, and the two
+messages sent into the quote thread on September 11 and 12 were about the
+website and the new introductions — neither mentioned the customer. A draft is
+now waiting in that thread asking three yes/no questions: can he cut the cursive
+lettering, has she approved a proof, has a deposit come in.
+
+**`HANDOFF-TO-CODEX.md` was broadcasting a resolved critical defect for six
+weeks.** Its 644 lines, dated 2026-08-01, led with three red items about the
+inquiry form: that `js/form.js` was unpatched and would show a couple "Sent!"
+when FormSubmit had returned `success:false`, that the native fallback was
+stranded unmerged, and that the endpoint's `Content-Type` would mislead
+anything sniffing it. Checked today against `origin/main` rather than against
+the board: `form.js` now parses the JSON body and rejects anything that is not
+an acknowledgement, carrying the comment *"A 200 HTML verification page is not
+an acknowledgement. Require the endpoint's JSON."* The file grew from 4,445 to
+9,834 bytes. There is still no `action=` attribute, but the form now builds a
+`mailto:` path from the manifest, which serves the same purpose for a static
+site. Reproduce with
+`git show origin/main:js/form.js | grep -n "response.json\|payload.success"` —
+the parse is line 146, the check line 149.
+
+All three are resolved, and the file has been rewritten to say so and to say
+plainly that nothing is currently open for Codex. An inbox correctly marked
+empty is worth more than a six-week-old false alarm, which is exactly the drift
+the verify-don't-trust rule exists to catch — this time in our own inbox rather
+than on the board.
+
+## 2026-09-21 ~13:20 UTC — cloud Claude — Run #9; two new customers, ten follow-ups, and two corrections to my own work
+
+**Correcting the 2026-09-14 entry.** That entry said `HANDOFF-TO-CODEX.md` had
+been "broadcasting a resolved critical defect for six weeks" and reported
+rewriting it to say nothing was open for Codex. The defect finding was right and
+still holds. **The rewrite was wrong.** It was made against a stale local copy;
+`main` already carried a current September 11 handoff — 724 lines covering PR
+#39, the Search Console blockers, the 18-check test suite and the release
+workflow — written by the other agent. Replacing it would have destroyed live
+content. The rewrite has been reverted and this week's outreach notes are
+**prepended** as a new section instead. Independent corroboration of the form
+finding, from that same file: *"Native POST fallback and JSON-success validation
+are already in the current source. Do not reapply old patches."*
+
+**Second correction, same entry.** Commit `40ef0b2` unintentionally included
+`index.html` and `js/form.js`. They entered the index via a
+`git checkout origin/main -- <file>` used to *inspect* those files, and a later
+`git commit` swept up the staged copies. Their content matched `main` exactly, so
+nothing was corrupted, but a merge of a stale site file is precisely how a live
+site gets silently reverted. The branch has been rebased onto `d352abe` and now
+differs from `main` in `ops/` only; `index.html`, `js/form.js`, `js/manifest.js`
+and `css/styles.css` are byte-identical to main. Verified with
+`git diff --name-only d352abe HEAD | grep -v '^ops/'` returning empty.
+
+**Two new inbound customers, both via the builder.** A planner submitted the site
+form on 2026-09-18 for a local school's 40th anniversary on **October 5** — 14
+days — wanting a large freestanding "40", having abandoned a marquee light-up
+idea because the event runs in daylight. A second arrived 2026-09-20 direct to
+the shop address: one photo and "can you make something like this?", with no
+date, size or budget. Customer-ready replies are drafted for both, each with
+blanks only the builder can fill; no prices were invented.
+
+Noted for pricing rather than buried: **a "40" is not dead stock.** Fortieth
+birthdays recur, so a well-built freestanding numeral returns to rental, which
+argues for building it properly and quoting a rental rate. And the customer is a
+local school, so the piece stands in front of every family at the event — the
+local visibility twenty-three cold emails have failed to buy.
+
+**The October 10 order is silent for a third week.** Quote 2026-08-31, chase
+2026-09-14, nothing back to either. 19 days out against a schedule that called
+for fabrication by mid-September. Still absence of visibility rather than
+evidence of failure — the builder corresponds directly and forwards selectively —
+but three weeks is itself the finding. A blunt four-question draft now waits in
+the quote thread, and says plainly that if the date is unreachable she must hear
+it this week rather than on October 1.
+
+**Ten follow-ups drafted, and two traps caught by reading before acting.** The
+ten introductions of 2026-09-11/12 passed five days with no replies, so each
+received its one permitted follow-up, threaded onto the original send with the
+postal address and opt-out. First trap: eight drafts already addressed to those
+recipients *looked* like follow-ups and were `DO NOT SEND` tombstones marking
+superseded intros — sending them would have delivered ten duplicates. Second: two
+prepared drafts aimed at venues that had already received a different
+introduction on September 11; both retired as superseded and re-addressed to
+Steen's own mailbox. Five prepared drafts remain genuinely unsent, so step three
+did not fire.
+
+**The scoreboard.** Twenty-three businesses, three rounds of cold email, **zero
+replies**. Three inbound inquiries, one quoted order and two live. **Two of the
+three carried `utm_source: chatgpt.com`.** The structured data and honest copy
+are outperforming the outreach by every measure available.

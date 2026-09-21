@@ -1,7 +1,69 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-07-30, evening, after Codex reported back. This is your inbox: it
+Updated 2026-09-21, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
+
+---
+
+## 🔴 Two new customers this week — and one still hasn't answered
+
+### The October 5 job — 14 days, answer today 🟠
+
+A planner at a local school submitted your website form on Friday. It is their
+**40th anniversary on October 5** and they want a big freestanding "40". They
+had pictured a marquee light-up sign and gave up on it because the event is
+during the day — which is good for us, solid wood reads beautifully in daylight.
+
+**I've drafted the reply for Will**, with four short questions and blanks for
+the two numbers only he can give: a rental price and a purchase price.
+
+Two things worth knowing before he prices it:
+
+**A "40" isn't a one-off.** Fortieth birthdays come round constantly, so that
+piece goes back out on rental again and again. Build it properly and quote a
+rental rate.
+
+**It's a local school.** That piece stands in front of every family at the
+event. That's the local visibility twenty-three cold emails have completely
+failed to buy. I'd price it to win.
+
+### The photo inquiry 🟡
+
+Someone emailed Will a picture and "can you make something like this?" — no
+date, no size, no budget. A qualifying reply is drafted. Will needs to look at
+the photo and answer the can-we-build-it half.
+
+### The October 10 wedding — still nothing, third week 🔴
+
+**19 days out.** You sent the quote August 31 and I chased on the 14th. Neither
+got an answer about her.
+
+Will may have had it in hand the whole time — he emails her directly and you
+only see what he forwards. But three weeks of silence on a paying order is its
+own problem. **The draft in the quote thread now asks four things flat out:**
+did the quote reach her, has she approved a proof, has a deposit come in, can he
+cut the lettering.
+
+If October 10 can't be hit, she has to hear it this week. Told on the 21st she
+can still find something else. Told on October 1 she can't.
+
+## 🟢 Ten follow-ups are drafted and ready
+
+The ten introductions you sent on the 11th and 12th have had no replies, so each
+gets its one nudge. They're in Drafts as "Re:" replies. **That's the last
+contact for those ten** — two touches, then we stop.
+
+Careful: eight drafts already sitting there looked like follow-ups but are
+**`DO NOT SEND` tombstones** from older versions. I opened one before touching
+anything, which is the only reason ten businesses didn't get a duplicate.
+
+### The scoreboard, seven weeks running
+
+- **Twenty-three businesses, three rounds of cold email: zero replies.**
+- **Three people found you on their own: one quoted order, two live right now.**
+- **Two of those three came from ChatGPT.**
+
+That's not a close call any more. The website is your salesperson.
 
 ---
 

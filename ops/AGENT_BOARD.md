@@ -650,6 +650,35 @@ that reads exactly like a negative finding.
 ---
 
 ### SM-FORM-001 — Smith Made's form can show "Sent!" when nothing was sent 🟡
+
+> **2026-09-14 — RESOLVED ✅, verified against `origin/main` by cloud Claude.**
+> `js/form.js` now parses the endpoint's JSON and rejects anything that is not
+> an acknowledgement, with the comment *"A 200 HTML verification page is not an
+> acknowledgement. Require the endpoint's JSON."* Parse on line 146, check on
+> line 149; the file grew 4,445 → 9,834 bytes. There is still no `action=`
+> attribute, but the form builds a `mailto:` path from the manifest, which
+> covers the same failure for a static site.
+>
+> Reproduce: `git show origin/main:js/form.js | grep -n "response.json\|payload.success"`
+>
+> `ops/HANDOFF-TO-CODEX.md` had been reporting this as a live critical defect
+> for six weeks after it was fixed. That file has been rewritten.
+
+
+> **2026-09-07 — first real-world delivery, by cloud Claude.** A genuine
+> stranger filled in the live form and the submission reached the builder's
+> inbox through FormSubmit, then became a real quote. That is the happy path
+> proven end to end with an actual visitor rather than a labeled test POST.
+>
+> **It does not close this item.** The defect here is the form reporting
+> success when a submission *fails* — a different branch that a successful
+> delivery says nothing about. Still open, still unpatched on the live site.
+>
+> One thing this did prove that nothing else had: the attribution fields added
+> to the form work. The submission carried `utm_source: chatgpt.com`, which is
+> how we learned the customer found Smith Made by asking an AI assistant rather
+> than through search or outreach.
+
 **Status: THE OPEN QUESTION IS ANSWERED — endpoint IS activated · defect now CONFIRMED LIVE, not theoretical · patch still NOT merged, NOT deployed · 2026-08-01 14:52 PDT by local Claude**
 
 > ## ✅ Answered: `will.smithmade@gmail.com` **has** been activated with FormSubmit
@@ -1108,12 +1137,52 @@ to manufacture the next one, and there is nothing here.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: BLOCKED by OPS-PRIVACY-001 · Owner: CODEX · Last checked 2026-07-30 15:28 PDT**
+**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-09-21 13:20 UTC**
 
-Claude has sent no email, drafted nothing, and opened no venue thread. The three
-venues (Riverain Farm, The Barn at Sitton Hill Farm, The Hollow at Paris
-Mountain) remain entirely Codex's. Ownership transfers only by an explicit edit
-to this line.
+**Ownership changed, and the previous line below was wrong for over two weeks.**
+It read "Owner: CODEX" and "Claude has sent no email, drafted nothing, and
+opened no venue thread." The drafting half stopped being true on 2026-07-20.
+A scheduled weekly engine has been running this channel since, and Steen sent
+the first real emails himself on 2026-08-05 — including to two of the three
+venues this entry reserved for Codex. Nothing was duplicated, but only by luck:
+an agent trusting this line could have contacted the same venues twice.
+Corrected here per the verify-don't-trust rule; history in `ops/LOG.md`.
+
+**Verified against Gmail 2026-09-21**, not against this board: 23 businesses
+contacted, **zero replies ever**. The ten sent 2026-09-11/12 passed five days
+silent and each now has its one permitted follow-up drafted and threaded. Five
+prepared drafts remain unsent. All 23 are now at or past their final contact —
+**no third approach to any of them.**
+
+**Three inbound customers, and they are the whole story.** One quoted order for
+an October 10 wedding (silent for a third week — see below), plus two that
+arrived this week: a local school's 40th anniversary on October 5, and a
+photo-only custom inquiry. Customer-ready replies drafted for both new ones with
+blanks only the builder can fill. **Two of the three inbound inquiries carried
+`utm_source: chatgpt.com`.**
+
+**The October 10 order has had no visible status for three weeks.** Quote
+2026-08-31, chase 2026-09-14, no answer to either; 19 days out against a
+fabricate-by-mid-September schedule. Absence of visibility, not evidence of
+failure — the builder emails the customer directly. A four-question draft waits
+in the quote thread.
+
+**Trap recorded 2026-09-21:** eight drafts addressed to this week's follow-up
+targets looked like pending follow-ups and were `DO NOT SEND` tombstones; two
+more prepared drafts aimed at venues already sent a *different* intro days
+earlier. A draft's recipient tells you who it would reach, never whether it
+should exist. Open it first.
+
+**Standing rule added 2026-08-24:** any session that changes what the site
+claims must re-read the queued outreach drafts in the same pass. Nine drafts
+sat for five weeks advertising a 3D viewer that had been deleted, styling we
+don't do, and Steen as the carpenter when Will builds. Caught only because
+Steen began sending what was in Drafts.
+
+The engine never sends. It writes drafts; a person presses send. Run order,
+rules, and the four Gmail searches that rebuild all of this from scratch live
+in `ops/OUTREACH-ENGINE.md`. Ownership transfers only by an explicit edit to
+this line.
 
 One thing worth flagging to whoever sends them: the drafts live in
 steenbballsmith@gmail.com but are meant to go from will.smithmade@gmail.com, and
