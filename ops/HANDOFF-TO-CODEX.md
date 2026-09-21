@@ -1,5 +1,60 @@
 # Current handoff to Codex
 
+## Outreach and live customers — September 21, 2026 (cloud Claude)
+
+Added above the September 11 notes, which remain current and were **not**
+replaced. A correction first: last week this file was rewritten from a stale
+copy as "nothing is open for Codex," which would have destroyed the September 11
+content below. That rewrite has been reverted; only this section is new.
+
+Your line below — *"Do not send old outreach drafts without checking the current
+thread, offer, and suppression state"* — was exactly right, and acting on it
+caught two hazards this week.
+
+### Three live customers, one overdue
+
+1. **An October 10 wedding — third week with no visibility.** Quote went to the
+   builder 2026-08-31, chased 2026-09-14, nothing back either time. 19 days out
+   against our own schedule of fabricate-by-mid-September. Absence of visibility,
+   not evidence of failure — the builder emails the customer directly. A blunt
+   four-question draft waits in the quote thread. **If the date is unreachable
+   she must be told this week**, not on October 1.
+2. **A local school's 40th anniversary, event October 5** — 14 days. Arrived
+   through the site form on 2026-09-18 from a planner. Wants a large freestanding
+   "40"; dropped the marquee idea because the event is in daylight. A "40" is not
+   dead stock — fortieth birthdays recur, so it can be re-rented. Customer-ready
+   reply drafted with blanks only the builder can fill.
+3. **A photo-only custom inquiry**, straight to the shop address. No date, size
+   or budget. Qualifying reply drafted.
+
+### Outreach: ten follow-ups drafted, two traps avoided
+
+The ten introductions of 2026-09-11/12 are 9-10 days old with no replies, so each
+received its one permitted follow-up, threaded onto the original.
+
+**Trap one:** eight drafts already sitting against those addresses looked like
+follow-ups and were `DO NOT SEND` tombstones marking superseded intros. Reading
+one before acting is what prevented ten duplicates.
+
+**Trap two:** two prepared drafts targeted venues that had already received a
+*different* introduction on September 11. Retired as superseded.
+
+Five prepared drafts remain genuinely unsent.
+
+### What is working, in numbers
+
+| Channel | Result |
+|---|---|
+| Cold email — 23 businesses, three rounds | **0 replies** |
+| Website form / shop address | **3 inquiries, 1 quoted order, 2 live** |
+
+**Two of the three inbound inquiries recorded `utm_source: chatgpt.com`.** The
+newer form fields — event type, transport, planning role — arrive populated and
+make the first reply materially sharper. That work is earning more than the
+outreach is.
+
+---
+
 ## Pending cinematic update — September 11, 2026
 
 `codex/higgsfield-motion-20260911` is a review candidate using Higgsfield media. Production publication awaits owner approval. See `HIGGSFIELD-MOTION-20260911.md` for implementation, asset provenance, and the blocked visual-preview check. The live email-first release documented below remains the production baseline.
