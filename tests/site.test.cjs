@@ -11,7 +11,7 @@ test('every sitemap page retains its search metadata, valid structured data, and
   const sitemap = new JSDOM(read('sitemap.xml'), { contentType: 'text/xml' });
   const urls = [...sitemap.window.document.querySelectorAll('loc')].map(el => el.textContent);
   sitemap.window.close();
-  assert.equal(urls.length, 16, 'the sitemap includes the collection index and celebrations page');
+  assert.equal(urls.length, 19, 'the sitemap includes the purchase landing pages');
   assert.ok(urls.includes('https://smithmadesc.com/celebrations.html'), 'celebrations stays discoverable');
   assert.equal(new Set(urls).size, urls.length);
   for (const url of urls) {

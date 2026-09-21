@@ -67,6 +67,7 @@ async function fixture(t, fetchReply = async () => response(true), query = '', s
     recovery: d.querySelector('[data-form-recovery]'),
     draft: d.querySelector('[data-form-email-draft]'),
     success: d.querySelector('[data-form-success]'),
+    hold: d.querySelector('[data-hold-callout]'),
     send: form.querySelector('[type="submit"]')
   };
 }
@@ -374,4 +375,91 @@ test('all eight detail galleries and full catalog carry a selected finish to the
       assert.equal(dialog.hidden, true);
     }
   }
+});
+
+for (const [project, expected] of Object.entries({
+  custom: 'Custom wood sign',
+  wedding: 'Wedding seating chart',
+  milestone: 'School or milestone display',
+  business: 'Business or logo sign'
+})) {
+  test('purchase landing link preserves ' + project + ' intent', async t => {
+    const f = await fixture(t, undefined, '?project=' + project);
+    assert.equal(f.field('mode').value, 'Buy');
+    assert.equal(f.field('project_type').value, expected);
+  });
+}
+
+test('unknown or prototype purchase query cannot prefill the form', async t => {
+  const f = await fixture(t, undefined, '?project=__proto__');
+  assert.equal(f.field('mode').value, 'Not sure yet');
+  assert.equal(f.field('project_type').value, '');
+});
+
+test('campaign tags are carried through internal links and arrive at the inquiry form', async t => {
+  const source = html.replace('<a class="wordmark"', '<a data-test-internal href="custom-signs.html" class="wordmark"');
+  const f = await fixture(t, undefined, '?utm_source=chatgpt.com&utm_campaign=custom', source);
+  const link = f.d.querySelector('[data-test-internal]');
+  const target = new URL(link.href);
+  assert.equal(target.searchParams.get('utm_source'), 'chatgpt.com');
+  assert.equal(target.searchParams.get('utm_campaign'), 'custom');
+  assert.equal(f.field('utm_source').value, 'chatgpt.com');
+  assert.equal(f.field('utm_campaign').value, 'custom');
+});
+
+test('direct URL campaign tags survive when session storage is unavailable', async t => {
+  const dom = new JSDOM('<form><input name="utm_source" data-utm="utm_source"><input name="landing_page"></form>', {
+    url: 'https://smithmadesc.com/celebrations.html?utm_source=chatgpt.com&utm_campaign=school',
+    runScripts: 'outside-only'
+  });
+  t.after(() => dom.window.close());
+  Object.defineProperty(dom.window, 'sessionStorage', {
+    configurable: true,
+    get() { throw new Error('storage disabled'); }
+  });
+  dom.window.eval(fs.readFileSync(path.join(root, 'js', 'track.js'), 'utf8'));
+  dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+  assert.equal(dom.window.document.querySelector('[data-utm="utm_source"]').value, 'chatgpt.com');
+});
+
+test('new project fields are submitted and retained in the recovery email draft', async t => {
+  const f = await fixture(t, async () => response(false));
+  f.fill();
+  f.field('mode').value = 'Buy';
+  f.field('project_type').value = 'Custom wood sign';
+  f.field('dimensions').value = '48 x 24 inches';
+  f.field('placement').value = 'Outdoors';
+  f.field('budget').value = '$1,500–$1,999';
+  f.submit(); await flush();
+  const body = new URL(f.draft.href).searchParams.get('body');
+  for (const detail of ['Project: Custom wood sign', 'Approximate size: 48 x 24 inches',
+    'Placement: Outdoors', 'Budget: $1,500–$1,999']) assert.ok(body.includes(detail), detail);
+});
+
+test('buy mode disables rental transport and restores purchase transport', async t => {
+  const f = await fixture(t);
+  f.field('mode').value = 'Buy';
+  f.field('mode').dispatchEvent(new f.w.Event('change', { bubbles: true }));
+  assert.equal(f.d.querySelectorAll('[data-rental-transport]:not([hidden])').length, 0);
+  assert.equal(f.d.querySelectorAll('[data-rental-transport] input:not(:disabled)').length, 0);
+  assert.equal(f.d.querySelectorAll('[data-purchase-transport] input:not(:disabled)').length, 2);
+  f.field('mode').value = 'Rent';
+  f.field('mode').dispatchEvent(new f.w.Event('change', { bubbles: true }));
+  assert.equal(f.d.querySelectorAll('[data-purchase-transport]:not([hidden])').length, 0);
+  assert.equal(f.d.querySelectorAll('[data-rental-transport] input:not(:disabled)').length, 4);
+});
+
+test('date hold is offered only after an acknowledged rental inquiry', async t => {
+  const f = await fixture(t, async () => response(true));
+  f.fill();
+  f.field('mode').value = 'Rent';
+  f.submit(); await flush();
+  assert.equal(f.hold.hidden, false);
+  f.d.querySelector('[data-form-again]').click();
+  assert.equal(f.hold.hidden, true);
+  f.fill();
+  f.field('mode').value = 'Buy';
+  f.submit(); await flush();
+  assert.equal(f.success.hidden, false);
+  assert.equal(f.hold.hidden, true);
 });
