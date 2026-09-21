@@ -55,6 +55,10 @@
       "Interested in: " + (data.getAll("pieces").join(", ") || "Not sure yet"),
       "Suggested pairing: " + (data.get("requested_set") || "Individual pieces"),
       "Rent or buy: " + (data.get("mode") || "Not sure yet"),
+      "Project: " + (data.get("project_type") || "Not specified"),
+      "Approximate size: " + (data.get("dimensions") || "Not specified"),
+      "Placement: " + (data.get("placement") || "Not specified"),
+      "Budget: " + (data.get("budget") || "Not specified"),
       "Transport: " + (data.get("transport") || "Not decided yet"),
       "Found us through: " + (data.get("heard_about") || "Not specified"),
       "", data.get("message") || ""
@@ -62,9 +66,9 @@
   }
   function reviewDetails(data, focus) {
     summary.value = details(data);
-    var subject = "Smith Made event inquiry: " + (data.get("names") || "new inquiry") +
+    var subject = "Smith Made sign inquiry: " + (data.get("names") || "new inquiry") +
       (data.get("date") ? " / " + data.get("date") : "");
-    var attribution = ["utm_source", "utm_medium", "utm_campaign", "utm_content"].filter(function (key) {
+    var attribution = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "landing_page", "referral_host"].filter(function (key) {
       return data.get(key);
     }).map(function (key) { return key + ": " + data.get(key); });
     var body = summary.value +
@@ -122,7 +126,7 @@
     button.textContent = "Sending inquiry…";
     form.setAttribute("aria-busy", "true");
     say("Sending your inquiry. Please keep this page open.");
-    data.set("_subject", "Smith Made event inquiry: " + (data.get("names") || "new inquiry") +
+    data.set("_subject", "Smith Made sign inquiry: " + (data.get("names") || "new inquiry") +
       (data.get("date") ? " / " + data.get("date") : ""));
     data.set("_template", "table");
     var controller = new AbortController();
@@ -177,6 +181,8 @@
     if (!success) { say("Inquiry submitted for processing. We usually reply within a day or two.", "success"); return; }
     var reference = success.querySelector('[data-inquiry-reference]');
     if (reference) reference.textContent = "Your reference: " + data.get("submission_id");
+    var hold = success.querySelector('[data-hold-callout]');
+    if (hold) hold.hidden = data.get("mode") !== "Rent" || !config.dateHoldUrl;
     form.style.display = "none";
     success.hidden = false;
     success.focus({ preventScroll: true });
@@ -196,6 +202,7 @@
       again.addEventListener("click", function () {
         completed = false;
         success.hidden = true;
+        if (hold) hold.hidden = true;
         review.hidden = true;
         form.style.display = "";
         button.disabled = false;

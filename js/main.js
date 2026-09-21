@@ -223,7 +223,8 @@
   var holdLink = document.querySelector("[data-hold-link]");
   if (holdCallout && holdLink && config.dateHoldUrl) {
     holdLink.href = config.dateHoldUrl;
-    holdCallout.hidden = false;
+    // The acknowledgement may offer this only for an explicit rental inquiry.
+    holdCallout.hidden = true;
   }
 
   function scrollToEl(el) {
@@ -336,6 +337,53 @@
       var extraDetails = planningRole.closest("details");
       if (extraDetails) extraDetails.open = true;
     }
+  }
+
+  // A custom landing page supplies intent, never customer details or a submission.
+  var purchaseProjects = {
+    custom: "Custom wood sign", wedding: "Wedding seating chart",
+    milestone: "School or milestone display", business: "Business or logo sign"
+  };
+  function updateTransport() {
+    if (!inquiryForm) return;
+    var mode = inquiryForm.elements.namedItem("mode").value;
+    inquiryForm.querySelectorAll("[data-rental-transport], [data-purchase-transport]").forEach(function (label) {
+      var hide = mode === "Buy" ? label.hasAttribute("data-rental-transport") :
+        mode === "Rent" && label.hasAttribute("data-purchase-transport");
+      label.hidden = hide;
+      var radio = label.querySelector("input");
+      if (hide) radio.checked = false;
+      radio.disabled = hide;
+    });
+  }
+  function choosePurchase(id) {
+    if (!Object.prototype.hasOwnProperty.call(purchaseProjects, id) || !openInquiry()) return false;
+    inquiryForm.elements.namedItem("mode").value = "Buy";
+    var project = inquiryForm.elements.namedItem("project_type");
+    if (project && !project.value) project.value = purchaseProjects[id];
+    updateTransport();
+    inquiryForm.dispatchEvent(new Event("input", { bubbles: true }));
+    return true;
+  }
+  if (inquiryForm) {
+    var customQuery = new URLSearchParams(window.location.search);
+    choosePurchase(customQuery.get("project"));
+    if (customQuery.get("mode") === "buy") inquiryForm.elements.namedItem("mode").value = "Buy";
+    if (customQuery.get("mode") === "rent") inquiryForm.elements.namedItem("mode").value = "Rent";
+    updateTransport();
+    inquiryForm.elements.namedItem("mode").addEventListener("change", updateTransport);
+    inquiryForm.addEventListener("reset", function () { setTimeout(updateTransport, 0); });
+    document.querySelectorAll("[data-project]").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (!choosePurchase(link.getAttribute("data-project"))) return;
+        var section = document.getElementById("inquire");
+        scrollToEl(section);
+        section.tabIndex = -1;
+        section.focus({ preventScroll: true });
+      });
+    });
   }
 
   /* ---- Email action bar: appears once the hero is behind you ------------- */

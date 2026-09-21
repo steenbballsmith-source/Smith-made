@@ -26,21 +26,52 @@
      hidden form fields so the values arrive with the inquiry
      email. No analytics involvement, no personal data.          */
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+  var currentAttribution = {};
+  var qs = new URLSearchParams(window.location.search);
+  // Keep the campaign available even when a browser disallows session storage.
+  UTM_KEYS.forEach(function (key) {
+    var value = qs.get(key);
+    if (value) currentAttribution[key] = value.slice(0, 120);
+  });
   try {
-    var qs = new URLSearchParams(window.location.search);
     UTM_KEYS.forEach(function (key) {
-      var val = qs.get(key);
-      if (val) sessionStorage.setItem("sm_" + key, val.slice(0, 120));
+      if (currentAttribution[key]) sessionStorage.setItem("sm_" + key, currentAttribution[key]);
+      else currentAttribution[key] = sessionStorage.getItem("sm_" + key) || "";
     });
   } catch (err) { /* private-mode storage errors are fine */ }
+  var landingPage = window.location.pathname;
+  var referralHost = "";
+  try {
+    var referrer = document.referrer ? new URL(document.referrer) : null;
+    if (referrer && referrer.origin !== window.location.origin) referralHost = referrer.hostname;
+    landingPage = sessionStorage.getItem("sm_landing_page") || landingPage;
+    referralHost = sessionStorage.getItem("sm_referral_host") || referralHost;
+    sessionStorage.setItem("sm_landing_page", landingPage);
+    if (referralHost) sessionStorage.setItem("sm_referral_host", referralHost);
+  } catch (err) { /* current URL remains usable */ }
 
   function fillUtmFields() {
     UTM_KEYS.forEach(function (key) {
       var field = document.querySelector('[data-utm="' + key + '"]');
       if (!field) return;
+      field.value = currentAttribution[key] || "";
+    });
+    var landing = document.querySelector('[name="landing_page"]');
+    var referral = document.querySelector('[name="referral_host"]');
+    if (landing) landing.value = landingPage;
+    if (referral) referral.value = referralHost;
+    // Carry campaign tags through ordinary internal links, including new-tab use.
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var raw = link.getAttribute("href");
+      if (!raw || raw.charAt(0) === "#") return;
       try {
-        field.value = sessionStorage.getItem("sm_" + key) || "";
-      } catch (err) { /* ignore */ }
+        var target = new URL(raw, window.location.href);
+        if (target.origin !== window.location.origin || !/(?:\.html|\/)$/i.test(target.pathname)) return;
+        UTM_KEYS.forEach(function (key) {
+          if (currentAttribution[key] && !target.searchParams.has(key)) target.searchParams.set(key, currentAttribution[key]);
+        });
+        link.href = target.pathname + target.search + target.hash;
+      } catch (err) { /* ignore unsupported links */ }
     });
   }
 

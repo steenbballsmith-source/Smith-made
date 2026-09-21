@@ -1728,3 +1728,11 @@ SM-MOTION-20260911 continuation, inquiry reliability: owner asked to keep workin
 
 
 SM-MOTION-20260911 current authorization: owner approval is now explicit. The September 11 short-screen and motion-lifecycle refinement is complete. Proceed with the validated cinematic release while preserving any later main-branch work. This supersedes earlier pending-approval statements for this task.
+
+## SM-CUSTOM-PURCHASES-20260921
+
+ACTIVE - Codex. Owner-directed purchase-first positioning, custom sign pages and inquiry improvements. Owns this isolated branch and public website files only. Preserve existing media, inquiry destination and payment account. No outreach or new paid services. Release follows source, inquiry and responsive QA through a normal pull request. Prior production d352abe is the rollback point.
+
+Release candidate ready: purchase-first homepage, custom hub and three buying pages;
+34/34 tests pass with desktop, phone, reduced-motion and native-form checks. Public
+handoff: `CUSTOM-SIGN-RELEASE-20260921.md`. Live deployment is verified separately.
