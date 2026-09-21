@@ -1736,3 +1736,13 @@ ACTIVE - Codex. Owner-directed purchase-first positioning, custom sign pages and
 Release candidate ready: purchase-first homepage, custom hub and three buying pages;
 34/34 tests pass with desktop, phone, reduced-motion and native-form checks. Public
 handoff: `CUSTOM-SIGN-RELEASE-20260921.md`. Live deployment is verified separately.
+
+COMPLETE: PR44 merged as 19753f1953d74ecde9c7fd4bccf2e900d3413399; Pages
+35622503695 succeeded. Thirteen public source checks matched and the live custom
+quote recovery draft retained campaign and landing-page attribution.
+
+## SM-GOOGLE-MEASUREMENT-20260921
+
+Codex owns the additive Google Search Console ownership tag on this branch under
+the owner's Google SEO request. Preserve the tag after verification. No DNS,
+billing, customer outreach or business-profile ownership transfer is included.
