@@ -74,31 +74,40 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-09-14
+## State as of 2026-09-21
 
-Counts only — the customer is deliberately not named here.
+Counts only; customers are deliberately not named here.
 
-- **23** businesses contacted in total. The original 6 (contacted 2026-08-05,
-  followed up 2026-08-18) are **closed**. Ten more went out 2026-09-11/12 — two
-  from the prepared drafts, eight prepared outside this engine.
+- **23** businesses contacted. The first 6 are closed. Ten sent 2026-09-11/12
+  now have their one permitted follow-up drafted and waiting.
 - **0** replies. Ever. From any of the twenty-three.
-- **7** prepared drafts remain unsent.
-- **10 follow-ups come due next week.** The September sends are only 2-3 days
-  old today, so nothing is due yet. One follow-up per target, forever.
+- **5** prepared drafts remain genuinely unsent.
+- **3** inbound inquiries: one quoted order and two live, arrived this week.
 
-### The order has no visible status, and that outranks everything above
+### Read the draft before you trust its address
 
-Quote to the builder 2026-08-31, delivery promised Sept 30 - Oct 2 for an
-October 10 wedding. Now 26 days out, with no confirmation the quote reached the
-customer, that a proof was approved, or that a deposit arrived.
+Eight drafts addressed to this week's follow-up targets *looked* like pending
+follow-ups. They were `DO NOT SEND` tombstones marking superseded intros.
+Sending them would have delivered ten duplicates to ten businesses.
 
-Say this precisely: **absence of visibility, not evidence of absence.** The
-builder emails the customer directly and forwards selectively. What is certain
-is that two weeks of a five-week schedule passed with nothing observable, and
-that the two messages sent into the quote thread on Sept 11 and 12 were about
-the website and the new introductions — neither mentioned the customer.
+Two more prepared drafts aimed at venues that had already received a *different*
+introduction days earlier — a second intro, not a follow-up.
 
-**The engine's own bias, stated plainly:** it is built to count emails sent, so
-a week with ten sends and a silent order reads as a good week. It is not one.
-One order in hand is worth more than twenty-three introductions, and the
-check-in that protects it is worth more than the next batch.
+**The rule:** a draft's recipient tells you who it would reach, never what it
+would say or whether it should exist. Open it.
+
+### What is actually working
+
+| Channel | Result |
+|---|---|
+| Cold email — 23 businesses, three rounds | **0 replies** |
+| Website form / shop address | **3 inquiries, 1 quoted order, 2 live** |
+
+**Two of three inbound inquiries carried `utm_source: chatgpt.com`.** People are
+finding Smith Made by asking an AI assistant. The newer form fields — event
+type, transport, planning role — arrive populated and make the first reply
+sharper.
+
+This engine counts emails sent, so it will keep reporting busy weeks. The
+scoreboard above is the honest measure, and it has pointed the same direction
+for seven weeks.

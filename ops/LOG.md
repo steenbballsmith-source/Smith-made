@@ -2586,3 +2586,65 @@ plainly that nothing is currently open for Codex. An inbox correctly marked
 empty is worth more than a six-week-old false alarm, which is exactly the drift
 the verify-don't-trust rule exists to catch — this time in our own inbox rather
 than on the board.
+
+## 2026-09-21 ~13:20 UTC — cloud Claude — Run #9; two new customers, ten follow-ups, and two corrections to my own work
+
+**Correcting the 2026-09-14 entry.** That entry said `HANDOFF-TO-CODEX.md` had
+been "broadcasting a resolved critical defect for six weeks" and reported
+rewriting it to say nothing was open for Codex. The defect finding was right and
+still holds. **The rewrite was wrong.** It was made against a stale local copy;
+`main` already carried a current September 11 handoff — 724 lines covering PR
+#39, the Search Console blockers, the 18-check test suite and the release
+workflow — written by the other agent. Replacing it would have destroyed live
+content. The rewrite has been reverted and this week's outreach notes are
+**prepended** as a new section instead. Independent corroboration of the form
+finding, from that same file: *"Native POST fallback and JSON-success validation
+are already in the current source. Do not reapply old patches."*
+
+**Second correction, same entry.** Commit `40ef0b2` unintentionally included
+`index.html` and `js/form.js`. They entered the index via a
+`git checkout origin/main -- <file>` used to *inspect* those files, and a later
+`git commit` swept up the staged copies. Their content matched `main` exactly, so
+nothing was corrupted, but a merge of a stale site file is precisely how a live
+site gets silently reverted. The branch has been rebased onto `d352abe` and now
+differs from `main` in `ops/` only; `index.html`, `js/form.js`, `js/manifest.js`
+and `css/styles.css` are byte-identical to main. Verified with
+`git diff --name-only d352abe HEAD | grep -v '^ops/'` returning empty.
+
+**Two new inbound customers, both via the builder.** A planner submitted the site
+form on 2026-09-18 for a local school's 40th anniversary on **October 5** — 14
+days — wanting a large freestanding "40", having abandoned a marquee light-up
+idea because the event runs in daylight. A second arrived 2026-09-20 direct to
+the shop address: one photo and "can you make something like this?", with no
+date, size or budget. Customer-ready replies are drafted for both, each with
+blanks only the builder can fill; no prices were invented.
+
+Noted for pricing rather than buried: **a "40" is not dead stock.** Fortieth
+birthdays recur, so a well-built freestanding numeral returns to rental, which
+argues for building it properly and quoting a rental rate. And the customer is a
+local school, so the piece stands in front of every family at the event — the
+local visibility twenty-three cold emails have failed to buy.
+
+**The October 10 order is silent for a third week.** Quote 2026-08-31, chase
+2026-09-14, nothing back to either. 19 days out against a schedule that called
+for fabrication by mid-September. Still absence of visibility rather than
+evidence of failure — the builder corresponds directly and forwards selectively —
+but three weeks is itself the finding. A blunt four-question draft now waits in
+the quote thread, and says plainly that if the date is unreachable she must hear
+it this week rather than on October 1.
+
+**Ten follow-ups drafted, and two traps caught by reading before acting.** The
+ten introductions of 2026-09-11/12 passed five days with no replies, so each
+received its one permitted follow-up, threaded onto the original send with the
+postal address and opt-out. First trap: eight drafts already addressed to those
+recipients *looked* like follow-ups and were `DO NOT SEND` tombstones marking
+superseded intros — sending them would have delivered ten duplicates. Second: two
+prepared drafts aimed at venues that had already received a different
+introduction on September 11; both retired as superseded and re-addressed to
+Steen's own mailbox. Five prepared drafts remain genuinely unsent, so step three
+did not fire.
+
+**The scoreboard.** Twenty-three businesses, three rounds of cold email, **zero
+replies**. Three inbound inquiries, one quoted order and two live. **Two of the
+three carried `utm_source: chatgpt.com`.** The structured data and honest copy
+are outperforming the outreach by every measure available.
