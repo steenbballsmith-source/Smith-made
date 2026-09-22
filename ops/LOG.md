@@ -2353,3 +2353,68 @@ Merged the PR #38 planner and delivery release into the pending cinematic branch
 ## 2026-09-11-MOTION-INQUIRY — Continued inquiry reliability
 
 The pending cinematic candidate now includes detail review/copy, explicit email fallback, duplicate guards, timeout/offline recovery, and keyboard/viewport menu improvements. Twenty-one simulated flow checks passed across Smith Made and Smith Digital. Static source checks passed. No live inquiry, external message, payment, or production-domain deployment occurred. The private reviews are refreshed separately. Preserve the concurrent SM-UX-004 work when integrating the final live release. See `HIGGSFIELD-MOTION-20260911.md`.
+
+
+## 2026-09-18-SM-QUOTE1 — Inbound custom-build lead worked into a quote
+
+A Smith Made inquiry arrived through the site form on 2026-09-18 and was
+forwarded into the owner inbox. A scheduled lead-watch run had already flagged
+it as needing a human, correctly: that routine holds facts and pricing for the
+other two businesses only, so it could not answer a Smith Made product question
+without guessing.
+
+**Verified before quoting, not assumed.** The venue address was checked against
+the school's own website and its published phone matched the one on the
+inquiry. The venue sits inside the 15-road-mile band, so the published transport
+rates apply directly: $75 delivery, $150 delivery and collection, $0 on customer
+pickup. No distance arithmetic was needed and none was invented. The event date
+was confirmed to fall on a Monday, seventeen days after the inquiry, and inside
+the 60-day window — which makes the deposit non-refundable from the moment it is
+paid. That was written onto the face of the quote rather than left to be
+discovered later.
+
+**Deliverables:** a two-page branded quote rendered to PDF using the site's own
+brand tokens and self-hosted typefaces, carrying three specced build options
+each priced to own and to rent; a ready-to-send email; and an internal decision
+sheet. Layout was verified by measuring both rendered sections against the
+printable page box and then by extracting text from the finished PDF, confirming
+two pages with the closing copy and both footers intact.
+
+**A design finding worth recording.** The customer had abandoned their original
+idea — a lit marquee sign — because the event runs in daylight. That reasoning
+was sound but the conclusion was not: lit bulbs are weakest in daylight and
+bring cords and a power supply onto a school campus. The quote instead offers
+the marquee character built into the piece as dimensional bulb detail, which
+reads in full sun and photographs better than the lit version would have. This
+recovers the customer's own first instinct rather than replacing it.
+
+**Pricing is a recommendation, and is labelled as one.** No pricing floor exists
+anywhere in this repository; `CHARTER.md` §9 keeps margins and floors out of a
+public repo by design. The quoted figures were built from materials and shop
+hours and are marked for the owner to confirm or change. Nothing was quoted as
+though it had been looked up. `SESSION_HANDOFF.md` §4's instruction not to quote
+below the approved margin guardrail cannot be checked from here, and the
+decision sheet says so plainly instead of implying the check was made.
+
+**Two discrepancies found and reported rather than papered over.** The quote
+carries no phone number, because `js/manifest.js` has `phone: ""` while
+`SESSION_HANDOFF.md` §3 claims the field is set — the file was treated as the
+truth and the conflict was handed to the owner. Separately, the domain-forwarded
+address would read as more credible to a school than the gmail address, but the
+forward could not be tested from here without sending mail, so the gmail address
+was used and the upgrade was offered as a checked step.
+
+**No external communication occurred.** Nothing was sent to the customer. The
+outbound grant in `AUTHORIZATION.md` §1A covers Smith Digital prospecting only
+and explicitly excludes Smith Made, and external communications remain a named
+exception to the standing authorization. The send is the owner's.
+
+**Nothing customer-identifying was committed.** The quote pack was delivered to
+the owner privately and is deliberately absent from this repository. The name,
+email address, telephone number, employer, venue address, and all quoted prices
+are omitted from every file in this commit, per `CHARTER.md` §9. The form
+submission reference is retained as an opaque handle.
+
+**Open, and owned by the owner:** confirm the pricing, add a phone number, send
+the quote. The binding date is 2026-09-23 for proof approval; the event is
+2026-10-05.
