@@ -232,6 +232,46 @@ warrants a message.*
 
 ## Tasks
 
+### SD-REVENUE-001 — Digital services to reach $1,000 fast 🟢
+**Status: RESEARCH DONE (corrected) · Owner: CLAUDE (research) → STEEN (every contact) · Verified 2026-09-18**
+
+**Corrected the same day it was written.** The first pass researched Oregon. Steen
+is **Greenville SC based and in Fort Myers, Florida for about a month**. The
+Oregon targets are withdrawn; see `LOG.md` `2026-09-18-C2`.
+
+**Do not re-derive Steen's location from the 541 area code.** `SM-PHONE-001` and
+`LOG.md` `2026-07-31-C26` both assert Oregon is "Steen's region." That is an
+inference from a phone number, written as fact, and it sent a full work unit to
+the wrong market. The SM-PHONE-001 *question* remains valid; its residency claim
+does not.
+
+**Fort Myers is a mature market — the opposite of the first pass.** Of ~30 Lee
+County businesses checked across home watch, charters, pool, lawn and pressure
+washing, nearly all have working sites, several with online booking or an
+existing SEO vendor. "You need a website" does not open here. Sell instead into
+**short-term rental owners**: ~1,127 active units on Fort Myers Beach, up 71%
+year on year, ~40% owner-run, heading into a season that must be set by December.
+
+**Verification killed one lead before it shipped.** A business appeared to be
+serving placeholder contact details on its live site; a JavaScript-rendered
+fetch showed the real details and no placeholders. Standing rule recorded:
+render the page before using any defect as an opener.
+
+**Capability blocker — this one is Steen's to clear.** The GoHighLevel
+connection returns **401 / `AUTH_REAUTH_REQUIRED`**. This settles the open
+question in `OPS-CALLERS-001`: the connection does not work today. Until he
+reconnects it, missed-call text-back, CRM follow-up and review automation
+**cannot be delivered to a client** — and that is the only recurring-revenue
+service on the menu.
+
+Named prospects stay off this public repo (`CHARTER.md` §7, §9); private page
+linked from `HANDOFF-TO-CODEX.md`. Email outreach still held by
+`SD-COMPLIANCE-001`; phone, in-person and listing enquiries are unaffected.
+
+Evidence and method: `LOG.md` `2026-09-18-C2`, correcting `2026-09-18-C1`.
+
+---
+
 ### OPS-DOMAIN-001 — smithdigitalco.com is scheduled for suspension 2026-08-13 🔴
 **Status: OPEN · owner-only · deadline 2026-08-13 · outranks every other item here**
 
@@ -252,6 +292,14 @@ verification key that cannot be published here).
 *Close this only when Steen confirms the verification went through.* Until then
 every other task on this board is an improvement to something with a
 switch-off date on it.
+
+**Update 2026-09-18 by Claude — the deadline passed and the domain is live.**
+`smithdigitalco.com` was fetched today and serves a full multi-page site
+(`/services`, `/pricing`, `/services/websites/`, current nav and footer). So the
+registrant verification either completed or the suspension never ran. **This is
+evidence the domain resolves today, not confirmation Steen did the step** — if
+the contact verification is still outstanding with the registrar it can resurface.
+Ask him once, then close this.
 
 ---
 
@@ -917,6 +965,13 @@ telephone:  +1-541-570-5570        <-- 541 is an Oregon area code
 
 **541 is the Willamette Valley — Lebanon/Albany, Oregon.** That is Steen's
 region, roughly 2,500 miles from the market this business serves.
+
+> **Correction 2026-09-18.** The sentence above — "that is Steen's region" — is
+> **not established**. It is an inference from an area code, and Steen states he
+> is Greenville SC based. A work unit was researched against the wrong market on
+> the strength of it (`LOG.md` `2026-09-18-C2`). The rest of this entry stands:
+> a Greenville business publishing a 541 number is still worth one phone call to
+> confirm.
 
 It appears on **three surfaces**, not one:
 1. the `LocalBusiness` JSON-LD `telephone` — what Google reads for search
