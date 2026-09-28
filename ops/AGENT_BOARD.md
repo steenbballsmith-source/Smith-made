@@ -1137,7 +1137,7 @@ to manufacture the next one, and there is nothing here.
 ---
 
 ### SM-PR-001 — Smith Made venue outreach
-**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-09-21 13:20 UTC**
+**Status: ACTIVE, owner-gated · Owner: CLAUDE (weekly engine) · Last checked 2026-09-28 13:20 UTC**
 
 **Ownership changed, and the previous line below was wrong for over two weeks.**
 It read "Owner: CODEX" and "Claude has sent no email, drafted nothing, and
@@ -1148,30 +1148,26 @@ venues this entry reserved for Codex. Nothing was duplicated, but only by luck:
 an agent trusting this line could have contacted the same venues twice.
 Corrected here per the verify-don't-trust rule; history in `ops/LOG.md`.
 
-**Verified against Gmail 2026-09-21**, not against this board: 23 businesses
-contacted, **zero replies ever**. The ten sent 2026-09-11/12 passed five days
-silent and each now has its one permitted follow-up drafted and threaded. Five
-prepared drafts remain unsent. All 23 are now at or past their final contact —
-**no third approach to any of them.**
+**🔴 SCOPE WARNING added 2026-09-28: this task can no longer be verified from
+one mailbox.** Outreach is now also being sent from `steen.smithmade@gmail.com`;
+the connector used here reads only `steenbballsmith@gmail.com`. Two
+introductions and one follow-up sent 2026-09-22 are invisible to this engine.
+Consequences: "zero replies" is no longer assertable, and the
+one-follow-up-per-target rule cannot be enforced across both mailboxes — one
+target already had its follow-up sent from the new address while a follow-up
+draft sat here, caught only by reading a status email. **Rule: do not draft a
+follow-up for any target whose original send is not visible in the readable
+account.** Unblock by connecting the second mailbox.
 
-**Three inbound customers, and they are the whole story.** One quoted order for
-an October 10 wedding (silent for a third week — see below), plus two that
-arrived this week: a local school's 40th anniversary on October 5, and a
-photo-only custom inquiry. Customer-ready replies drafted for both new ones with
-blanks only the builder can fill. **Two of the three inbound inquiries carried
-`utm_source: chatgpt.com`.**
+**Verified against the readable mailbox 2026-09-28:** 26 businesses contacted
+from this account, 3 new follow-ups drafted today, 1 retired as already chased
+elsewhere, 5 prepared drafts unsent, no replies *seen*.
 
-**The October 10 order has had no visible status for three weeks.** Quote
-2026-08-31, chase 2026-09-14, no answer to either; 19 days out against a
-fabricate-by-mid-September schedule. Absence of visibility, not evidence of
-failure — the builder emails the customer directly. A four-question draft waits
-in the quote thread.
-
-**Trap recorded 2026-09-21:** eight drafts addressed to this week's follow-up
-targets looked like pending follow-ups and were `DO NOT SEND` tombstones; two
-more prepared drafts aimed at venues already sent a *different* intro days
-earlier. A draft's recipient tells you who it would reach, never whether it
-should exist. Open it first.
+**Three inbound customers remain unconfirmed and two dates are inside two
+weeks** — an Oct 5 school anniversary (inquired Sept 18, likely lost to
+silence) and an Oct 10 wedding (fourth week without proof, deposit, or
+confirmation the quote reached her). A structured status request to the builder
+on 2026-09-22 is unanswered; a three-line reply-form has been drafted.
 
 **Standing rule added 2026-08-24:** any session that changes what the site
 claims must re-read the queued outreach drafts in the same pass. Nine drafts

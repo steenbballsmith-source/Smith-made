@@ -74,40 +74,47 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-09-21
+## State as of 2026-09-28
 
-Counts only; customers are deliberately not named here.
+### 🔴 This engine is now half-blind — read this before trusting any count below
 
-- **23** businesses contacted. The first 6 are closed. Ten sent 2026-09-11/12
-  now have their one permitted follow-up drafted and waiting.
-- **0** replies. Ever. From any of the twenty-three.
-- **5** prepared drafts remain genuinely unsent.
-- **3** inbound inquiries: one quoted order and two live, arrived this week.
+Outreach has moved to a **second mailbox, `steen.smithmade@gmail.com`**, and the
+connector this engine uses reads only `steenbballsmith@gmail.com`. Discovered
+2026-09-28 from a status email that mentioned sends this engine had no record
+of: two introductions and one follow-up went out from the new address on
+September 22 and are invisible here.
 
-### Read the draft before you trust its address
+**What that breaks, concretely:**
 
-Eight drafts addressed to this week's follow-up targets *looked* like pending
-follow-ups. They were `DO NOT SEND` tombstones marking superseded intros.
-Sending them would have delivered ten duplicates to ten businesses.
+- "Zero replies" can no longer be asserted. A reply may be sitting in a mailbox
+  this engine cannot open.
+- The one-follow-up-per-target rule cannot be enforced across both mailboxes.
+  One target already had its follow-up sent from the new address while a
+  follow-up draft for it sat here; it was caught by reading a status email, not
+  by any check this engine runs.
+- Every count in this file is now "as seen from one of two mailboxes."
 
-Two more prepared drafts aimed at venues that had already received a *different*
-introduction days earlier — a second intro, not a follow-up.
+**Until the second mailbox is connected, do not draft a follow-up for any
+target whose original send is not visible in this account.** Drafting blind is
+how a business gets chased twice, and that is the one mistake this channel
+cannot afford in a market where the vendors all know each other.
 
-**The rule:** a draft's recipient tells you who it would reach, never what it
-would say or whether it should exist. Open it.
+### Counts, as seen from this mailbox only
 
-### What is actually working
+- **26** businesses contacted from this account; 10 have follow-up drafts
+  waiting, 3 more drafted today, 1 retired as already-followed-up elsewhere.
+- **2** further introductions went out from the other mailbox. Not tracked here.
+- **0** replies seen — with the caveat above.
+- **5** prepared drafts remain unsent.
 
-| Channel | Result |
-|---|---|
-| Cold email — 23 businesses, three rounds | **0 replies** |
-| Website form / shop address | **3 inquiries, 1 quoted order, 2 live** |
+### The three inbound customers are still the whole story
 
-**Two of three inbound inquiries carried `utm_source: chatgpt.com`.** People are
-finding Smith Made by asking an AI assistant. The newer form fields — event
-type, transport, planning role — arrive populated and make the first reply
-sharper.
+One quoted order for an October 10 wedding, one for an October 5 school
+anniversary, one undated. **Their status has been unconfirmed for weeks**, and
+two of the dates are now inside two weeks. The builder handles all three
+directly; a structured status request went to him on September 22 and has not
+been answered.
 
-This engine counts emails sent, so it will keep reporting busy weeks. The
-scoreboard above is the honest measure, and it has pointed the same direction
-for seven weeks.
+An inquiry that arrives and then waits is worth less than one that never
+arrived, because the second costs nothing and the first costs a reputation.
+Chasing the answer matters more than sending the next introduction.

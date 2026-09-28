@@ -2648,3 +2648,62 @@ did not fire.
 replies**. Three inbound inquiries, one quoted order and two live. **Two of the
 three carried `utm_source: chatgpt.com`.** The structured data and honest copy
 are outperforming the outreach by every measure available.
+
+## 2026-09-28 ~13:20 UTC — cloud Claude — Run #10; the engine went half-blind, and two customer dates are now inside two weeks
+
+**The finding that matters most: outreach has moved to a second mailbox this
+engine cannot read.** A status email dated 2026-09-22 records two introductions
+and one follow-up sent from `steen.smithmade@gmail.com`. The connector this
+engine uses is bound to `steenbballsmith@gmail.com`, so none of that traffic is
+visible here. It was discovered only because the status email happened to land
+in the readable mailbox.
+
+Three consequences, all of which invalidate work this engine has been doing
+confidently for ten weeks:
+
+1. **"Zero replies" is no longer assertable.** A reply may be sitting where this
+   engine cannot look. Every prior week's claim of zero replies was true of one
+   mailbox; from today it is true of one mailbox *that may not be the one being
+   replied to*.
+2. **The one-follow-up-per-target rule cannot be enforced across both.** One
+   target had its follow-up sent from the new address on September 22 while a
+   follow-up draft for the same target sat unsent here. Sending it would have
+   been a third contact. It was caught by reading a status email, not by any
+   check this engine performs. That draft has been retired as
+   `SUPERSEDED — DO NOT SEND`.
+3. Every count recorded here is now "as seen from one of two mailboxes," and
+   `ops/OUTREACH-ENGINE.md` says so at the top rather than in a footnote.
+
+**The rule adopted:** do not draft a follow-up for any target whose original
+send is not visible in the readable account. Drafting blind is how a business
+gets chased twice.
+
+**Follow-ups: three drafted, one refused.** Three introductions sent from this
+account on 2026-09-21 passed five days silent and each received its one
+permitted follow-up, threaded onto the original with postal address and opt-out.
+Two further introductions sent from the other mailbox on 2026-09-22 will come due
+next week and **cannot be managed from here**.
+
+**The three inbound customers are still unconfirmed, and time has largely run
+out on one.** A structured status request naming all three went to the builder
+on 2026-09-22 — customer, quote sent, invoice reference, proof approved,
+needed-by date, next step and owner. Six days later it is unanswered.
+
+- The October 5 school anniversary inquired on September 18. If no reply has
+  gone out, that is ten days of silence on a seventeen-day lead, and it is
+  probably lost. An honest answer today still costs nothing and protects the
+  next referral; planners remember who answered.
+- The October 10 wedding is twelve days out and in its fourth week without a
+  visible proof, deposit, or confirmation the quote ever reached the customer.
+- The undated inquiry has waited eight days for a yes or no.
+
+A blunt three-line reply-form has been drafted to the builder — replied yes /
+replied no / not replied, per customer — with an explicit offer to write and
+send all three replies instead if that is easier, and an explicit statement that
+"I dropped it" is a recoverable answer today and much less so next week.
+
+**Also noted, not acted on:** an automated sequencer in this mailbox has
+reported `sent 0 / fixed 0 / parked N` every day for a week, once with
+`run blocked`. Something is queuing work and shipping none of it. Outside this
+engine's remit, but it should not keep reporting daily without someone reading
+it.

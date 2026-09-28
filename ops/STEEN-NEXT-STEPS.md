@@ -1,69 +1,63 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-09-21, after the weekly outreach run. This is your inbox: it
+Updated 2026-09-28, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## 🔴 Two new customers this week — and one still hasn't answered
+## 🔴 Two dates are now inside two weeks and Will hasn't answered
 
-### The October 5 job — 14 days, answer today 🟠
+You asked Will on September 22 for the status of all three customers. Six days
+later, nothing back.
 
-A planner at a local school submitted your website form on Friday. It is their
-**40th anniversary on October 5** and they want a big freestanding "40". They
-had pictured a marquee light-up sign and gave up on it because the event is
-during the day — which is good for us, solid wood reads beautifully in daylight.
+**The school anniversary — October 5. Seven days.** They asked on September 18. If nobody has
+replied, that's ten days of silence on a lead that only had seventeen. Be
+honest with yourself: she has probably booked someone else.
 
-**I've drafted the reply for Will**, with four short questions and blanks for
-the two numbers only he can give: a rental price and a purchase price.
+Send something today anyway. Either "yes, we can still do this" or "we can't
+make October 5, sorry for the slow reply." Both are fine answers. Silence is the
+only one that also costs you the next referral — planners talk, and what they
+remember is who bothered to answer.
 
-Two things worth knowing before he prices it:
+**The wedding — October 10. Twelve days.** Fourth week with no proof, no deposit, no
+confirmation the quote ever reached her. If she's booked and Will's building,
+one line settles it. If she isn't, she needs telling this week.
 
-**A "40" isn't a one-off.** Fortieth birthdays come round constantly, so that
-piece goes back out on rental again and again. Build it properly and quote a
-rental rate.
+**The photo inquiry — no date**, but they're been waiting eight days for a yes or no.
 
-**It's a local school.** That piece stands in front of every family at the
-event. That's the local visibility twenty-three cold emails have completely
-failed to buy. I'd price it to win.
+**I've drafted the message to Will.** It asks for three lines — replied yes /
+replied no / not replied, per customer — and offers to write and send all three
+replies yourself if that's easier. It also says plainly that "I dropped it" is a
+fine answer today and a much worse one next Monday.
 
-### The photo inquiry 🟡
+## 🟠 I can only see half your outreach now
 
-Someone emailed Will a picture and "can you make something like this?" — no
-date, no size, no budget. A qualifying reply is drafted. Will needs to look at
-the photo and answer the can-we-build-it half.
+You've started sending from **steen.smithmade@gmail.com**. I can only read
+**steenbballsmith@gmail.com**, so anything sent or received on the new address
+is invisible to me.
 
-### The October 10 wedding — still nothing, third week 🔴
+That already caused one near-miss: One planner got its follow-up from the new
+address on the 22nd, while a follow-up draft for the same planner was still sitting in
+this mailbox. If you'd sent it, they'd have been chased twice. I've marked that
+one DO NOT SEND.
 
-**19 days out.** You sent the quote August 31 and I chased on the 14th. Neither
-got an answer about her.
+It also means **I can't honestly tell you "no replies" any more.** Someone may
+have replied where I can't look.
 
-Will may have had it in hand the whole time — he emails her directly and you
-only see what he forwards. But three weeks of silence on a paying order is its
-own problem. **The draft in the quote thread now asks four things flat out:**
-did the quote reach her, has she approved a proof, has a deposit come in, can he
-cut the lettering.
+**The fix is to connect the new mailbox** the same way this one is connected.
+Until then I'll only draft follow-ups for emails I can actually see, because
+drafting blind is how a venue gets chased twice.
 
-If October 10 can't be hit, she has to hear it this week. Told on the 21st she
-can still find something else. Told on October 1 she can't.
+## 🟢 Three follow-ups drafted
 
-## 🟢 Ten follow-ups are drafted and ready
+Three introductions went out from this account on the 21st with no replies, so
+each has its one nudge waiting in Drafts. Two more went from the other address —
+those are yours to track, I can't see them.
 
-The ten introductions you sent on the 11th and 12th have had no replies, so each
-gets its one nudge. They're in Drafts as "Re:" replies. **That's the last
-contact for those ten** — two touches, then we stop.
-
-Careful: eight drafts already sitting there looked like follow-ups but are
-**`DO NOT SEND` tombstones** from older versions. I opened one before touching
-anything, which is the only reason ten businesses didn't get a duplicate.
-
-### The scoreboard, seven weeks running
-
-- **Twenty-three businesses, three rounds of cold email: zero replies.**
-- **Three people found you on their own: one quoted order, two live right now.**
-- **Two of those three came from ChatGPT.**
-
-That's not a close call any more. The website is your salesperson.
+One last thing, and it's the same thing as every week: **the photo folder is
+still empty.** Every quote you send says some version of "once our first piece
+is ready." Three people have now come to you on their own. Five real photos
+would do more than every email in this account.
 
 ---
 
