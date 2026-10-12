@@ -2353,3 +2353,14 @@ Merged the PR #38 planner and delivery release into the pending cinematic branch
 ## 2026-09-11-MOTION-INQUIRY — Continued inquiry reliability
 
 The pending cinematic candidate now includes detail review/copy, explicit email fallback, duplicate guards, timeout/offline recovery, and keyboard/viewport menu improvements. Twenty-one simulated flow checks passed across Smith Made and Smith Digital. Static source checks passed. No live inquiry, external message, payment, or production-domain deployment occurred. The private reviews are refreshed separately. Preserve the concurrent SM-UX-004 work when integrating the final live release. See `HIGGSFIELD-MOTION-20260911.md`.
+
+
+## 2026-10-12-C1 — cloud Claude — App strategy: Baystead phone view over a new consumer app
+
+Steen asked whether to build a new big-revenue app (citing "Cut AI", reportedly $20k+/day) and whether Baystead should get a mobile version. Wrote `ops/APP-STRATEGY-2026-10-12.md` and opened `BAYSTEAD-PHONE-001` in the handoff. No code, deploy, purchase or external message.
+
+Evidence (reproducible):
+- No viral app named "Cut AI" was found in web search. The matching story is Cal AI. Founder-reported run rate is ~$35M/yr (Latka interview, May 2025). The figures come from interviews and press and are unaudited. Sources are listed in the strategy file.
+- US collision shops: ~30,000 (Focus Advisors 2025, via Repairer Driven News). The 2019 Census count was 35,306 independents.
+- Baystead (`steenbballsmith-source/baystead-parts`, HEAD `6b97ab6`, last commit 2026-09-28): `docs/BAYSTEAD-CURRENT-PLAN.md` and `docs/BAYSTEAD-COMMERCIAL-LAUNCH.md` already require phone/browser/Windows access to the same workspace (launch stage 3). The hosted service exists in source and is disabled by default. Both docs state that no paid production customer exists.
+- Cloud Claude cannot see the Baystead board at `C:\Users\SJ\.claude\ops`, so it did not check for an existing phone claim. Codex must check before starting.

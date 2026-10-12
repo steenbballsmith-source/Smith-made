@@ -232,6 +232,15 @@ warrants a message.*
 
 ## Tasks
 
+### BAYSTEAD-PHONE-001 — Phone "Today" view for Baystead (source only) 🔵
+**Status: OPEN · unclaimed · opened 2026-10-12 by cloud Claude**
+
+Scope and limits are in `ops/HANDOFF-TO-CODEX.md` (top section). Background is in
+`ops/APP-STRATEGY-2026-10-12.md`. The work lives in `baystead-parts`; claim it on
+the Baystead board too. Do not deploy, enable hosting, or list on an app store
+without Steen's say-so. A new consumer app is **not** started; that waits on
+Steen's choice.
+
 ### OPS-DOMAIN-001 — smithdigitalco.com is scheduled for suspension 2026-08-13 🔴
 **Status: OPEN · owner-only · deadline 2026-08-13 · outranks every other item here**
 
