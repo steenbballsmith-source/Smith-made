@@ -2707,3 +2707,52 @@ reported `sent 0 / fixed 0 / parked N` every day for a week, once with
 `run blocked`. Something is queuing work and shipping none of it. Outside this
 engine's remit, but it should not keep reporting daily without someone reading
 it.
+
+## 2026-10-12 ~13:20 UTC — cloud Claude — Run #11; the engine's own record now argues for stopping it
+
+**Both deadlines passed. One loss is now documented in the customer's own
+words.** The October 5 inquiry arrived 2026-09-18 and was answered 2026-09-28,
+ten days later. The reply came back sixty-nine minutes after that: *"We have
+moved forward with other options."* A local school's admissions director,
+planning a fortieth anniversary, lost not on price, product or portfolio but on
+response time. It is the only confirmed attributable loss in eleven weeks of
+these records, and it was entirely avoidable.
+
+A gracious close has been drafted to her — no pitch, an explicit admission that
+the delay was ours, and an open door. She did us the courtesy of a straight
+answer and that deserves one back.
+
+**The October 10 wedding's outcome is still unknown, and the date has now
+passed.** Its thread has had no message since 2026-08-31. Six weeks of asking
+produced no visible proof, deposit, or confirmation the quote ever reached her.
+Whether the piece was delivered cannot be determined from this mailbox; the
+builder corresponds directly. One question to him still settles it.
+
+**The undated photo inquiry was answered 2026-09-28 with a qualifying email and
+has been silent for fourteen days.**
+
+**The finding that matters: the drafts are not being used.** Thirteen follow-up
+drafts written on 2026-09-21 and 2026-09-28 remain unsent — all threaded, all
+carrying postal address and opt-out. Four escalation drafts to the builder sit
+beside them, also unsent, though the two customer replies they argued for *were*
+sent on 2026-09-28, so the substance landed even where the draft did not.
+
+Eleven weeks, 26-plus businesses, four rounds of cold email, **zero replies
+ever**. Three inbound inquiries, all through the website, two of them carrying
+`utm_source: chatgpt.com`. That is not a close call and it has not moved in six
+weeks.
+
+**No new follow-up drafts were created this run, deliberately.** Writing a
+fourteenth draft for a queue where thirteen have gone unsent for three weeks
+would be manufacturing activity, not doing work. `ops/OUTREACH-ENGINE.md` now
+carries the full table and a recommendation to repoint the weekly cycle at
+response time on inbound inquiries and at getting five real photographs — the
+two things the evidence actually supports. That is the owner's call to make, but
+it should be made with the record in front of him.
+
+**Repo state noted:** `main` has not moved in two weeks and PR #34 is still
+open and unmerged. The site work has gone quiet alongside the outreach. A third
+mailbox (`steen.smithdigital@gmail.com`) now generates heavy automated traffic
+for a different venture, and the owner's attention is visibly elsewhere — which
+is information, not a complaint, and it is the context any future run should
+read these counts against.

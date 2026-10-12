@@ -74,47 +74,61 @@ harmless.
 4. If replies were found, or drafts were written, tell Steen in a few lines
    and say where the drafts are. If genuinely nothing happened, say nothing.
 
-## State as of 2026-09-28
+## State as of 2026-10-12 — eleven weeks in, an honest accounting
 
-### 🔴 This engine is now half-blind — read this before trusting any count below
+### What the record actually shows
 
-Outreach has moved to a **second mailbox, `steen.smithmade@gmail.com`**, and the
-connector this engine uses reads only `steenbballsmith@gmail.com`. Discovered
-2026-09-28 from a status email that mentioned sends this engine had no record
-of: two introductions and one follow-up went out from the new address on
-September 22 and are invisible here.
+| Channel | Attempts | Result |
+|---|---|---|
+| Cold email | 26+ businesses, four rounds | **0 replies. Not one, ever.** |
+| Website form / shop address | 3 inquiries | 1 lost to slow reply, 1 silent after qualifying, 1 outcome unknown |
 
-**What that breaks, concretely:**
+Two of the three inbound inquiries arrived with `utm_source: chatgpt.com`.
 
-- "Zero replies" can no longer be asserted. A reply may be sitting in a mailbox
-  this engine cannot open.
-- The one-follow-up-per-target rule cannot be enforced across both mailboxes.
-  One target already had its follow-up sent from the new address while a
-  follow-up draft for it sat here; it was caught by reading a status email, not
-  by any check this engine runs.
-- Every count in this file is now "as seen from one of two mailboxes."
+### The loss that should settle the argument
 
-**Until the second mailbox is connected, do not draft a follow-up for any
-target whose original send is not visible in this account.** Drafting blind is
-how a business gets chased twice, and that is the one mistake this channel
-cannot afford in a market where the vendors all know each other.
+The October 5 inquiry came in on September 18. The reply went out on September
+28 — ten days later. The answer came back in **sixty-nine minutes**:
 
-### Counts, as seen from this mailbox only
+> "We have moved forward with other options."
 
-- **26** businesses contacted from this account; 10 have follow-up drafts
-  waiting, 3 more drafted today, 1 retired as already-followed-up elsewhere.
-- **2** further introductions went out from the other mailbox. Not tracked here.
-- **0** replies seen — with the caveat above.
-- **5** prepared drafts remain unsent.
+She was a local school's admissions director, planning a fortieth anniversary.
+She did not go elsewhere because of price, product, or portfolio. She went
+elsewhere because nobody answered for ten days. That is the only confirmed,
+attributable loss in eleven weeks of this engine's records, and response time
+caused it.
 
-### The three inbound customers are still the whole story
+### The drafts are not being used
 
-One quoted order for an October 10 wedding, one for an October 5 school
-anniversary, one undated. **Their status has been unconfirmed for weeks**, and
-two of the dates are now inside two weeks. The builder handles all three
-directly; a structured status request went to him on September 22 and has not
-been answered.
+Thirteen follow-up drafts have sat unsent for two to three weeks. Every one was
+written, threaded, and compliance-footed; none has been sent. Four escalation
+drafts to the builder sit beside them, also unsent — though the two customer
+replies they argued for *were* sent, so the substance landed even when the draft
+did not.
 
-An inquiry that arrives and then waits is worth less than one that never
-arrived, because the second costs nothing and the first costs a reputation.
-Chasing the answer matters more than sending the next introduction.
+An engine whose output nobody uses is not a quiet engine. It is a stopped one
+that still files reports.
+
+### The recommendation
+
+**Stop spending the weekly cycle on cold outreach.** Eleven weeks and 26
+businesses have produced nothing, and the evidence that it is the wrong channel
+is no longer ambiguous.
+
+Point the same weekly cycle at the two things that demonstrably matter:
+
+1. **Response time on inbound inquiries.** Every real lead has come through the
+   website. One was lost, in writing, to a ten-day reply. A check that fires
+   when an inquiry is more than 24 hours old would have saved it.
+2. **Five real photographs.** The folder has been empty for eight weeks. Every
+   quote still says some version of "once our first display piece is ready."
+
+That is the owner's call, not this engine's. But it should be made with the
+table above in front of him rather than another week of draft counts.
+
+### Standing blind spots, unchanged
+
+Outreach is also sent from `steen.smithmade@gmail.com`, which this connector
+cannot read; a third address, `steen.smithdigital@gmail.com`, now generates
+heavy automated traffic. Counts here remain "as seen from one mailbox of
+several," and no follow-up should be drafted for a send this engine cannot see.

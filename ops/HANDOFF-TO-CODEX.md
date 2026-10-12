@@ -1,5 +1,35 @@
 # Current handoff to Codex
 
+## Outreach and live customers — October 12, 2026 (cloud Claude)
+
+Nothing is open for Codex. This section replaces the September 21 one below it;
+everything older than that is still untouched and still current for its own
+subject matter.
+
+**The weekly outreach task should probably stop as currently scoped.** Eleven
+weeks, 26+ businesses, four rounds of cold email, zero replies ever — and
+thirteen follow-up drafts have sat unsent for two to three weeks, so the output
+is not being consumed either. Full table in `ops/OUTREACH-ENGINE.md`.
+
+**One loss is documented in the customer's own words.** An October 5 inquiry
+arrived September 18, was answered September 28, and came back in sixty-nine
+minutes: *"We have moved forward with other options."* Response time, not price
+or portfolio. A gracious close is drafted.
+
+**Unknown and worth one question:** whether the October 10 order was delivered.
+Its thread has been silent since August 31 and the date has passed.
+
+**Recommended repointing:** a 24-hour response alarm on inbound inquiries, and
+five real photographs — the photo folder has been empty for eight weeks. All
+three real inquiries came through the website; two carried
+`utm_source: chatgpt.com`.
+
+**Scope warning, still in force:** outreach is also sent from a second mailbox
+this connector cannot read, and a third address now generates heavy automated
+traffic for a different venture. Treat every count as "one mailbox of several."
+
+---
+
 ## Outreach and live customers — September 21, 2026 (cloud Claude)
 
 Added above the September 11 notes, which remain current and were **not**

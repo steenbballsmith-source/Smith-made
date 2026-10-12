@@ -1,63 +1,65 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-09-28, after the weekly outreach run. This is your inbox: it
+Updated 2026-10-12, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
 
 ---
 
-## 🔴 Two dates are now inside two weeks and Will hasn't answered
+## 🔴 You lost the October 5 job, and she told you exactly why
 
-You asked Will on September 22 for the status of all three customers. Six days
-later, nothing back.
+She wrote back **sixty-nine minutes** after your reply:
 
-**The school anniversary — October 5. Seven days.** They asked on September 18. If nobody has
-replied, that's ten days of silence on a lead that only had seventeen. Be
-honest with yourself: she has probably booked someone else.
+> "We have moved forward with other options."
 
-Send something today anyway. Either "yes, we can still do this" or "we can't
-make October 5, sorry for the slow reply." Both are fine answers. Silence is the
-only one that also costs you the next referral — planners talk, and what they
-remember is who bothered to answer.
+Her inquiry came in September 18. The reply went out September 28. Ten days.
 
-**The wedding — October 10. Twelve days.** Fourth week with no proof, no deposit, no
-confirmation the quote ever reached her. If she's booked and Will's building,
-one line settles it. If she isn't, she needs telling this week.
+She didn't go elsewhere on price, or product, or because you have no photos. She
+went elsewhere because nobody answered. That's the only loss in eleven weeks
+you can point at a cause for, and the cause was response time.
 
-**The photo inquiry — no date**, but they're been waiting eight days for a yes or no.
+**I've drafted a short, gracious close to her** — no pitch, an honest "the delay
+was ours," and an open door for the next thing the school needs built. She did
+you the courtesy of a straight answer; it's worth one back. She's an admissions
+director at a local school, five minutes from your shop.
 
-**I've drafted the message to Will.** It asks for three lines — replied yes /
-replied no / not replied, per customer — and offers to write and send all three
-replies yourself if that's easier. It also says plainly that "I dropped it" is a
-fine answer today and a much worse one next Monday.
+## 🟠 Two things I still can't answer
 
-## 🟠 I can only see half your outreach now
+**The October 10 wedding.** The date has passed. I have no idea whether that
+sign got built and delivered — the thread hasn't had a message since August 31,
+and Will handles her directly. **One question to Will settles it.** If it got
+delivered, that's your first completed order and you should get a photo and a
+review out of it. If it didn't, you need to know that too.
 
-You've started sending from **steen.smithmade@gmail.com**. I can only read
-**steenbballsmith@gmail.com**, so anything sent or received on the new address
-is invisible to me.
+**The photo inquiry.** Answered September 28 with your qualifying questions,
+silent for fourteen days since.
 
-That already caused one near-miss: One planner got its follow-up from the new
-address on the 22nd, while a follow-up draft for the same planner was still sitting in
-this mailbox. If you'd sent it, they'd have been chased twice. I've marked that
-one DO NOT SEND.
+## 🔴 And now the part you won't enjoy
 
-It also means **I can't honestly tell you "no replies" any more.** Someone may
-have replied where I can't look.
+**Eleven weeks. Twenty-six businesses. Four rounds of cold email. Zero replies.
+Not one.**
 
-**The fix is to connect the new mailbox** the same way this one is connected.
-Until then I'll only draft follow-ups for emails I can actually see, because
-drafting blind is how a venue gets chased twice.
+Meanwhile **thirteen follow-up drafts have sat in your Drafts unsent for two to
+three weeks.** I wrote them, threaded them, put the legal footer on them. Nobody
+sent them.
 
-## 🟢 Three follow-ups drafted
+I didn't write a fourteenth this week. Writing more drafts for a queue nobody
+touches isn't work, it's just activity that looks like work.
 
-Three introductions went out from this account on the 21st with no replies, so
-each has its one nudge waiting in Drafts. Two more went from the other address —
-those are yours to track, I can't see them.
+So here's my recommendation, and it's yours to accept or ignore:
 
-One last thing, and it's the same thing as every week: **the photo folder is
-still empty.** Every quote you send says some version of "once our first piece
-is ready." Three people have now come to you on their own. Five real photos
-would do more than every email in this account.
+**Stop the weekly cold-outreach run.** It has produced nothing in eleven weeks
+and the evidence isn't ambiguous any more.
+
+**Point that same weekly slot at the two things that actually did something:**
+
+1. **Answer inquiries within a day.** All three real leads came through your
+   website. You lost one, in writing, to a ten-day reply. A simple check that
+   flags any inquiry older than 24 hours would have saved it.
+2. **Get five photographs.** The folder has been empty for eight weeks. Every
+   quote you send still says "once our first display piece is ready."
+
+Two of your three leads found you by asking ChatGPT. The website works. The
+follow-through is what's leaking.
 
 ---
 
