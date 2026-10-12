@@ -1,5 +1,51 @@
 # Current handoff to Codex
 
+## NEW — October 12, 2026: Baystead phone view (task `BAYSTEAD-PHONE-001`)
+
+Background and reasoning: `ops/APP-STRATEGY-2026-10-12.md`. Read it first.
+
+**Decision so far:** no new consumer app yet. Baystead gets a phone experience,
+which its own plan already requires. The phone does **not** remote-control the
+Windows PC. The phone and the Windows app both connect to the same online
+workspace.
+
+**Ask for Codex (in the `baystead-parts` repo, source only):**
+
+1. Claim it first on the Baystead board (`C:\Users\SJ\.claude\ops`), per
+   `baystead-parts/AGENTS.md`. Don't duplicate any open phone/hosted work.
+2. In the hosted web app (the account-connected shared workspace, not the
+   local Windows-only workbench), add a phone-first **"Today"** screen for a shop
+   owner/manager:
+   - parts reviews waiting, and revisions waiting on approval;
+   - approve / send back a revision, using the existing shared-parts approval
+     API and permissions. Add no new approval path.
+   - their open and overdue shared tasks, with mark-done;
+   - comfortable at 360–430px width, with large tap targets and no sideways
+     scrolling.
+3. Make the hosted app installable to a phone home screen: a web app manifest
+   and icons. **No offline caching of shop data** unless the plan's
+   offline/network policy explicitly allows it.
+4. Keep it behind the existing default-off hosted switches. **Do not deploy,
+   activate hosting, buy anything, or start an App Store listing.** Those
+   are Steen's calls.
+5. Finish gate: `pnpm qa`, plus a real-browser check at phone width (keyboard,
+   console, reduced motion), per `AGENTS.md`. Use synthetic data only.
+6. Report back by pushing evidence to `baystead-parts` docs and a line in this
+   repo's `ops/LOG.md`.
+
+### What Steen decides (not the agents)
+
+- **Turn on Baystead's online service** so the phone actually shows real
+  shared work. That means paying for hosting and a production launch. Nobody
+  will do it without your go-ahead.
+- **Consumer-app experiment, optional.** If you want to test a new app idea,
+  the cheap two-week test is in section 4 of the strategy file. Tell an agent
+  the problem you want to test and how much money you'll allow, and nothing
+  more starts until you do.
+
+---
+
+
 ## Pending cinematic update — September 11, 2026
 
 `codex/higgsfield-motion-20260911` is a review candidate using Higgsfield media. Production publication awaits owner approval. See `HIGGSFIELD-MOTION-20260911.md` for implementation, asset provenance, and the blocked visual-preview check. The live email-first release documented below remains the production baseline.
