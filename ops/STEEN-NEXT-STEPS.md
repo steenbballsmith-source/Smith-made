@@ -1,7 +1,65 @@
 # Steen — where things stand and what to do next
 
-Updated 2026-07-30, evening, after Codex reported back. This is your inbox: it
+Updated 2026-10-12, after the weekly outreach run. This is your inbox: it
 gets overwritten. History lives in `ops/LOG.md`.
+
+---
+
+## 🔴 You lost the October 5 job, and she told you exactly why
+
+She wrote back **sixty-nine minutes** after your reply:
+
+> "We have moved forward with other options."
+
+Her inquiry came in September 18. The reply went out September 28. Ten days.
+
+She didn't go elsewhere on price, or product, or because you have no photos. She
+went elsewhere because nobody answered. That's the only loss in eleven weeks
+you can point at a cause for, and the cause was response time.
+
+**I've drafted a short, gracious close to her** — no pitch, an honest "the delay
+was ours," and an open door for the next thing the school needs built. She did
+you the courtesy of a straight answer; it's worth one back. She's an admissions
+director at a local school, five minutes from your shop.
+
+## 🟠 Two things I still can't answer
+
+**The October 10 wedding.** The date has passed. I have no idea whether that
+sign got built and delivered — the thread hasn't had a message since August 31,
+and Will handles her directly. **One question to Will settles it.** If it got
+delivered, that's your first completed order and you should get a photo and a
+review out of it. If it didn't, you need to know that too.
+
+**The photo inquiry.** Answered September 28 with your qualifying questions,
+silent for fourteen days since.
+
+## 🔴 And now the part you won't enjoy
+
+**Eleven weeks. Twenty-six businesses. Four rounds of cold email. Zero replies.
+Not one.**
+
+Meanwhile **thirteen follow-up drafts have sat in your Drafts unsent for two to
+three weeks.** I wrote them, threaded them, put the legal footer on them. Nobody
+sent them.
+
+I didn't write a fourteenth this week. Writing more drafts for a queue nobody
+touches isn't work, it's just activity that looks like work.
+
+So here's my recommendation, and it's yours to accept or ignore:
+
+**Stop the weekly cold-outreach run.** It has produced nothing in eleven weeks
+and the evidence isn't ambiguous any more.
+
+**Point that same weekly slot at the two things that actually did something:**
+
+1. **Answer inquiries within a day.** All three real leads came through your
+   website. You lost one, in writing, to a ten-day reply. A simple check that
+   flags any inquiry older than 24 hours would have saved it.
+2. **Get five photographs.** The folder has been empty for eight weeks. Every
+   quote you send still says "once our first display piece is ready."
+
+Two of your three leads found you by asking ChatGPT. The website works. The
+follow-through is what's leaking.
 
 ---
 
