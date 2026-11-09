@@ -1,5 +1,90 @@
 # Current handoff to Codex
 
+## Outreach and live customers — October 12, 2026 (cloud Claude)
+
+Nothing is open for Codex. This section replaces the September 21 one below it;
+everything older than that is still untouched and still current for its own
+subject matter.
+
+**The weekly outreach task should probably stop as currently scoped.** Eleven
+weeks, 26+ businesses, four rounds of cold email, zero replies ever — and
+thirteen follow-up drafts have sat unsent for two to three weeks, so the output
+is not being consumed either. Full table in `ops/OUTREACH-ENGINE.md`.
+
+**One loss is documented in the customer's own words.** An October 5 inquiry
+arrived September 18, was answered September 28, and came back in sixty-nine
+minutes: *"We have moved forward with other options."* Response time, not price
+or portfolio. A gracious close is drafted.
+
+**Unknown and worth one question:** whether the October 10 order was delivered.
+Its thread has been silent since August 31 and the date has passed.
+
+**Recommended repointing:** a 24-hour response alarm on inbound inquiries, and
+five real photographs — the photo folder has been empty for eight weeks. All
+three real inquiries came through the website; two carried
+`utm_source: chatgpt.com`.
+
+**Scope warning, still in force:** outreach is also sent from a second mailbox
+this connector cannot read, and a third address now generates heavy automated
+traffic for a different venture. Treat every count as "one mailbox of several."
+
+---
+
+## Outreach and live customers — September 21, 2026 (cloud Claude)
+
+Added above the September 11 notes, which remain current and were **not**
+replaced. A correction first: last week this file was rewritten from a stale
+copy as "nothing is open for Codex," which would have destroyed the September 11
+content below. That rewrite has been reverted; only this section is new.
+
+Your line below — *"Do not send old outreach drafts without checking the current
+thread, offer, and suppression state"* — was exactly right, and acting on it
+caught two hazards this week.
+
+### Three live customers, one overdue
+
+1. **An October 10 wedding — third week with no visibility.** Quote went to the
+   builder 2026-08-31, chased 2026-09-14, nothing back either time. 19 days out
+   against our own schedule of fabricate-by-mid-September. Absence of visibility,
+   not evidence of failure — the builder emails the customer directly. A blunt
+   four-question draft waits in the quote thread. **If the date is unreachable
+   she must be told this week**, not on October 1.
+2. **A local school's 40th anniversary, event October 5** — 14 days. Arrived
+   through the site form on 2026-09-18 from a planner. Wants a large freestanding
+   "40"; dropped the marquee idea because the event is in daylight. A "40" is not
+   dead stock — fortieth birthdays recur, so it can be re-rented. Customer-ready
+   reply drafted with blanks only the builder can fill.
+3. **A photo-only custom inquiry**, straight to the shop address. No date, size
+   or budget. Qualifying reply drafted.
+
+### Outreach: ten follow-ups drafted, two traps avoided
+
+The ten introductions of 2026-09-11/12 are 9-10 days old with no replies, so each
+received its one permitted follow-up, threaded onto the original.
+
+**Trap one:** eight drafts already sitting against those addresses looked like
+follow-ups and were `DO NOT SEND` tombstones marking superseded intros. Reading
+one before acting is what prevented ten duplicates.
+
+**Trap two:** two prepared drafts targeted venues that had already received a
+*different* introduction on September 11. Retired as superseded.
+
+Five prepared drafts remain genuinely unsent.
+
+### What is working, in numbers
+
+| Channel | Result |
+|---|---|
+| Cold email — 23 businesses, three rounds | **0 replies** |
+| Website form / shop address | **3 inquiries, 1 quoted order, 2 live** |
+
+**Two of the three inbound inquiries recorded `utm_source: chatgpt.com`.** The
+newer form fields — event type, transport, planning role — arrive populated and
+make the first reply materially sharper. That work is earning more than the
+outreach is.
+
+---
+
 ## Pending cinematic update — September 11, 2026
 
 `codex/higgsfield-motion-20260911` is a review candidate using Higgsfield media. Production publication awaits owner approval. See `HIGGSFIELD-MOTION-20260911.md` for implementation, asset provenance, and the blocked visual-preview check. The live email-first release documented below remains the production baseline.
